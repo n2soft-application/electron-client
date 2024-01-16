@@ -4,6 +4,13 @@ const path = require('path');
 app.whenReady().then(() => {
   let win = new BrowserWindow({
     show: false,
+    minWidth: 1200,
+    minHeight: 800,
+    width: 1200,
+    height: 800,
+    // transparent: true,
+    // frame: false,
+    // titleBarStyle: 'hidden',
     webPreferences: {
       enableRemoteModule: true,
       preload: `${__dirname}/preload.js`
