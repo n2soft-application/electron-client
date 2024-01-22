@@ -16,7 +16,6 @@ app.whenReady().then(() => {
       preload: `${__dirname}/preload.js`
     }
   })
-  console.log(process.env)
   if (process.env.mode === 'dev') {
     win.loadURL('http://localhost:3000')
     win.webContents.openDevTools()
