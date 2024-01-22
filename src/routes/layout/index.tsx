@@ -9,9 +9,9 @@ function Layout() {
   return (
     <div className="flex w-full h-full bg-primary">
       <Sidebar open={true} />
-      <main className="w-full h-full ml-[300px] flex flex-col">
+      <main className="w-full h-full ml-[300px]  mr-4 flex flex-col">
         <Header />
-        <div className="flex flex-grow">
+        <div className="flex flex-grow pt-5">
           <Outlet />
         </div>
         <Footer />
