@@ -1,3 +1,4 @@
+
 function Home() {
   return (
     <div>
@@ -14,6 +15,9 @@ function Home() {
         <a href="/" target="_blank">
           새창열기2
         </a>
+        {Array(100).fill(0).map(item => (
+            <p>{item}</p>
+        ))}
       </div>
     </div>
   );
