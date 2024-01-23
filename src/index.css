@@ -1,91 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  html {
-    font-family: "Pretendard";
-  }
+	html {
+		font-family: 'DM Sans', sans-serif !important;
+		font-feature-settings: 'kern' !important;
+		-webkit-font-smoothing: antialiased;
+		letter-spacing: -0.5px;
+	}
 }
 
-@layer components {
-  ::selection {
-    @apply text-white bg-primary;
-  }
-  
-  /* ScrollBar */
-  /* width */
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
+input.defaultCheckbox::before {
+	content: url(../src/assets/svg/checked.svg); 
+	color: white;
+	opacity: 0; 
+	height: 16px; 
+	width: 16px;
+	position: absolute; 
+	left: 50%;
+	transform: translate(-50%, 0px);
+} 
 
-  /* Track */
-  ::-webkit-scrollbar-track {
-    @apply bg-primary/30;
-  }
-
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    @apply rounded-md bg-primary;
-  }
-
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-primary/70;
-  }
-}
-
-@font-face {
-  font-family: "Pretendard";
-  font-weight: 100;
-  src: url("assets/fonts/Pretendard-Thin.woff");
-}
-
-@font-face {
-  font-family: "Pretendard";
-  font-weight: 200;
-  src: url("assets/fonts/Pretendard-ExtraLight.woff");
-}
-
-@font-face {
-  font-family: "Pretendard";
-  font-weight: 300;
-  src: url("assets/fonts/Pretendard-Light.woff");
-}
-
-@font-face {
-  font-family: "Pretendard";
-  font-weight: 400;
-  src: url("assets/fonts/Pretendard-Regular.woff");
-}
-
-@font-face {
-  font-family: "Pretendard";
-  font-weight: 500;
-  src: url("assets/fonts/Pretendard-Medium.woff");
-}
-
-@font-face {
-  font-family: "Pretendard";
-  font-weight: 600;
-  src: url("assets/fonts/Pretendard-SemiBold.woff");
-}
-
-@font-face {
-  font-family: "Pretendard";
-  font-weight: 700;
-  src: url("assets/fonts/Pretendard-Bold.woff");
-}
-
-@font-face {
-  font-family: "Pretendard";
-  font-weight: 800;
-  src: url("assets/fonts/Pretendard-ExtraBold.woff");
-}
-
-@font-face {
-  font-family: "Pretendard";
-  font-weight: 900;
-  src: url("assets/fonts/Pretendard-Black.woff");
+input:checked.defaultCheckbox::before { 
+	opacity: 1;
 }
