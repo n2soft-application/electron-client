@@ -7,7 +7,7 @@ function Layout() {
   const location = useLocation();
 
   return (
-    <div className="flex w-full h-full bg-primary">
+    <div className="flex w-full h-full bg-background">
       <Sidebar open={true} />
       <main className="w-full h-full ml-[300px]  mr-4 flex flex-col">
         <Header />
