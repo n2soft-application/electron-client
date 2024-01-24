@@ -37,6 +37,7 @@
     "wait-on": "^7.2.0"
   },
   "scripts": {
+    "start": "concurrently \"npm run react:start\" \"npm run electron:start\"",
     "electron:start": "wait-on tcp:127.0.0.1:3000 && mode=dev electron .",
     "react:start": "react-scripts start",
     "react:build": "react-scripts build",
