@@ -1,8 +1,31 @@
+import { useRecoilState } from "recoil";
+import { demoState } from "../../state/demoAtom";
+
 function Home() {
+  const [value, setValue] = useRecoilState(demoState);
   return (
     <div>
       Home
       <div>
+        <div className="flex gap-4">
+          <div>{value}</div>
+          <button
+            onClick={() => {
+              setValue((prev) => prev + 1);
+            }}
+            className="text-3xl"
+          >
+            +
+          </button>
+          <button
+            onClick={() => {
+              setValue((prev) => prev - 1);
+            }}
+            className="text-3xl"
+          >
+            -
+          </button>
+        </div>
         <button
           onClick={() => {
             window.open("/");
