@@ -46,3 +46,9 @@ yarn dist:win32
 ```shell
 yarn dist:win64
 ```
+
+
+### 환경
+node: v18.16.0
+react: ^18.2.0
+electron: ^28.1.3
