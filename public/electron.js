@@ -10,7 +10,7 @@ const createWindow = () => {
     height: 800,
     // transparent: true,
     // frame: false,
-    // titleBarStyle: 'hidden',
+    // titleBarStyle: 'hiddenInset',
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
