@@ -12,6 +12,9 @@ const createWindow = () => {
     // frame: false,
     // titleBarStyle: 'hiddenInset',
     webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+      enableRemoteModule: true,
       preload: path.join(__dirname, "preload.js"),
     },
   });
