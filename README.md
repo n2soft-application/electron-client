@@ -4,6 +4,14 @@
 ##### Storybook
 - https://storybook.js.org/
 
+#### chromatic
+storybook 배포
+1. install
+- yarn add --dev chromatic
+
+2. deploy
+- npx chromatic --project-token=chpt_026f64c6f7d9d96
+
 ## 시작 방법
 
 1. clone

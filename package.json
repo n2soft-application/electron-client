@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "main": "electron.js",
-  "homepage": "./",
+  "homepage": "http://./",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
@@ -44,6 +44,7 @@
     "@storybook/react": "^7.6.14",
     "@storybook/react-webpack5": "^7.6.14",
     "@storybook/test": "^7.6.14",
+    "chromatic": "^10.9.4",
     "concurrently": "^8.2.2",
     "electron": "^28.1.3",
     "electron-builder": "^24.9.1",
@@ -69,7 +70,8 @@
     "build:package": "electron-forge package",
     "build:make": "electron-forge make",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=chpt_026f64c6f7d9d96"
   },
   "build": {
     "productName": "BONJIN",

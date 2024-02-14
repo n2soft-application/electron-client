@@ -26,3 +26,6 @@ yarn-error.log*
 # electron
 out
 dist
+
+# storybook
+build-storybook.log
