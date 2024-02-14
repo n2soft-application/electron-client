@@ -65,7 +65,7 @@
     "dist:mac64": "electron-builder -m --x64 --arm64 --publish always",
     "dist:win32": "electron-builder --win --ia32",
     "dist:win64": "electron-builder --win --x64",
-    "dist:win": "yarn deploy:win32 && yarn deploy:win64",
+    "dist:win": "electron-builder --win",
     "build:start": "electron-forge start",
     "build:package": "electron-forge package",
     "build:make": "electron-forge make",
