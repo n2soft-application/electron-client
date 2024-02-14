@@ -1,5 +1,26 @@
 # Electron
 
+##
+##### Storybook
+- https://storybook.js.org/
+
+#### chromatic
+- https://storybook.js.org/tutorials/intro-to-storybook/react/ko/deploy/
+
+storybook 배포
+1. install
+- yarn add --dev chromatic
+
+2. deploy
+- npx chromatic --project-token=chpt_026f64c6f7d9d96
+
+3. (option) github actions를 통핸 배포
+- github 저장소 Settings > Secrets and variables > Actions
+- New repository secret 버튼 클릭
+- CHROMATIC_PROJECT_TOKEN 이름에 chromatic에서 제공한 token 넣고 저장
+- .github/workflows/chromatic.yml 작성
+
+
 ## 시작 방법
 
 1. clone
@@ -46,3 +67,9 @@ yarn dist:win32
 ```shell
 yarn dist:win64
 ```
+
+
+### 환경
+node: v18.16.0
+react: ^18.2.0
+electron: ^28.1.3
