@@ -14,11 +14,13 @@ import { BsThreeDots } from "react-icons/bs";
 import React from "react";
 import { RiMoonFill, RiSunFill } from "react-icons/ri";
 import Switch from "../../components/switch";
+import Progress from "../../components/progress";
 
 function Home() {
   const [value, setValue] = useRecoilState(demoState);
   const [open, setOpen] = React.useState(false);
   const [darkmode, setDarkmode] = React.useState(false);
+  const [percent, setPercent] = React.useState(50);
 
   return (
     <div>
@@ -101,6 +103,36 @@ function Home() {
                 </div>
               }
             />
+          </div>
+        </div>
+        {/* Progress bar */}
+        <div className="flex items-center gap-6">
+          <p className="text-lg font-semibold">Progress bar</p>
+          <div>
+            <div className="flex items-center gap-2">
+              <Progress width="w-[108px] duration-200" value={percent} />
+              <p className="text-sm font-medium">{percent}%</p>
+            </div>
+            <div className="flex gap-1 text-xl">
+              <button
+                disabled={!(percent > 0)}
+                onClick={() => {
+                  percent > 0 && setPercent((prev) => prev - 10);
+                }}
+                className="flex items-center justify-center w-5 h-5 border rounded disabled:bg-gray-100 disabled:border-none disabled:text-gray-500"
+              >
+                -
+              </button>
+              <button
+                disabled={!(percent < 100)}
+                onClick={() => {
+                  percent < 100 && setPercent((prev) => prev + 10);
+                }}
+                className="flex items-center justify-center w-5 h-5 border rounded disabled:bg-gray-100 disabled:border-none disabled:text-gray-500"
+              >
+                +
+              </button>
+            </div>
           </div>
         </div>
       </Card>
