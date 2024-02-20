@@ -1,6 +1,6 @@
 import React from "react";
 import { FiAlignJustify } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsArrowBarUp } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
 import { RiMoonFill, RiSunFill } from "react-icons/ri";
@@ -15,6 +15,7 @@ const Navbar = (props: {
   brandText: string;
   secondary?: boolean | string;
 }) => {
+  const navigate = useNavigate();
   const { onOpenSidenav, brandText } = props;
   const [darkmode, setDarkmode] = React.useState(false);
 
@@ -211,8 +212,10 @@ const Navbar = (props: {
                   Newsletter Settings
                 </a>
                 <a
-                  href=" "
-                  className="mt-3 text-sm font-medium text-red-500 hover:text-red-500"
+                  onClick={() => {
+                    navigate("/auth");
+                  }}
+                  className="mt-3 text-sm font-medium text-red-500 cursor-pointer hover:text-red-500"
                 >
                   Log Out
                 </a>

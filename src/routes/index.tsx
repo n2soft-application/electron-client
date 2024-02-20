@@ -5,6 +5,7 @@ import TestPage1 from "../pages/test/TestPage1";
 import TestPage2 from "../pages/test/TestPage2";
 import TestPage3 from "../pages/test/TestPage3";
 import TestPage4 from "../pages/test/TestPage4";
+import SignIn from "../pages/auth/SignIn";
 
 const AppRouter = () => {
   return (
@@ -17,6 +18,7 @@ const AppRouter = () => {
         <Route path="/admin4" element={<TestPage4 />} />
         <Route path="*" element={<>404</>} />
       </Route>
+      <Route path="/auth" element={<SignIn />} />
     </Routes>
   );
 };
