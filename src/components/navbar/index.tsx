@@ -213,7 +213,7 @@ const Navbar = (props: {
                 </a>
                 <a
                   onClick={() => {
-                    navigate("/auth");
+                    navigate("/");
                   }}
                   className="mt-3 text-sm font-medium text-red-500 cursor-pointer hover:text-red-500"
                 >

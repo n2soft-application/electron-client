@@ -16,7 +16,7 @@ import {
 export const routes = [
   {
     name: "메인",
-    path: "",
+    path: "dashboard",
     icon: <MdHome className="w-6 h-6" />,
   },
   {
