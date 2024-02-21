@@ -25,7 +25,8 @@
     "react-scripts": "5.0.1",
     "recoil": "^0.7.7",
     "typescript": "^4.4.2",
-    "web-vitals": "^2.1.0"
+    "web-vitals": "^2.1.0",
+    "@tanstack/react-table": "^8.7.9"
   },
   "devDependencies": {
     "@electron-forge/cli": "^7.2.0",
@@ -65,7 +66,7 @@
     "dist:mac64": "electron-builder -m --x64 --arm64 --publish always",
     "dist:win32": "electron-builder --win --ia32",
     "dist:win64": "electron-builder --win --x64",
-    "dist:win": "yarn deploy:win32 && yarn deploy:win64",
+    "dist:win": "electron-builder --win",
     "build:start": "electron-forge start",
     "build:package": "electron-forge package",
     "build:make": "electron-forge make",
