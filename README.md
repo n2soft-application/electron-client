@@ -12,6 +12,27 @@ ssh-keygen -t rsa -b 4096 -C "계정"
 ssh-keygen -t rsa -b 4096 -C "bonjin.app@gmail.com"
 ```
 
+### # ssh key 확인
+```shell
+vi ~/.ssh/id_rsa.pub
+```
+
+### # github ssh key 등록
+1. Settings 메뉴 진입(프로필)
+2. Access 섹션의 SSH and GPG Keys 클릭
+3. New SSH Key 버튼 클릭
+4. Title 입력, Key 부분에 위에서 id_rsa.pub 내용 복사 붙여넣기
+5. Add SSH key 버튼 클릭
+
+### # gitlab ssh key 등록
+1. 프로필 클릭
+2. Edit profile 메뉴 클릭
+3. SSH Keys 메뉴 클릭
+4. Add new key 버튼 클릭
+5. Title 입력, Key 부분에 위에서 id_rsa.pub 내용 복사 붙여넣기
+- Expiration date 우측 x를 누르면 만료 일 없이 사용 가능
+6. Add key 버튼 클릭
+
 ### # config ssh key 연결
 파일생성
 - touch ~/.ssh/config
