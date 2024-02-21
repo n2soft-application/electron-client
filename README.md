@@ -1,6 +1,58 @@
 # Electron
 
-##
+
+## GitHub, GitLab 여러 계정 연결
+github, gitlab ssh key 등록
+- gitlab, github 계정이 다르면 2개 발급
+```shell
+ssh-keygen -t rsa -b 4096 -C "계정"
+```
+
+- github, gitlab 계정 동일하여 하나만 사용
+```shell
+ssh-keygen -t rsa -b 4096 -C "bonjin.app@gmail.com"
+```
+
+##### config ssh key 연결
+파일생성
+- touch ~/.ssh/config
+
+파일 수정
+```shell
+vi config
+```
+or
+```shell
+vim config
+```
+or
+```shell
+open config
+```
+
+```shell
+# github
+Host github.com
+Hostname github.com
+User git
+IdentityFile ~/.ssh/id_rsa
+
+# gitlab
+Host gitlab.com
+Hostname gitlab.com
+User git
+IdentityFile ~/.ssh/id_rsa
+```
+
+##### Permissions 0644 for id_rsa 권한 오류
+- chmod 400 ~/.ssh/id_rsa
+
+##### clone
+https가 아닌 ssh로 clone 끝!
+
+<hr/>
+
+
 ##### Storybook
 - https://storybook.js.org/
 
