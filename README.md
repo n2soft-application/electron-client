@@ -1,7 +1,7 @@
 # Electron
 
 ## GitHub, GitLab 여러 계정 연결
-github, gitlab ssh key 등록
+### # github, gitlab ssh key 등록
 - gitlab, github 계정이 다르면 2개 발급
 ```shell
 ssh-keygen -t rsa -b 4096 -C "계정"
@@ -12,7 +12,7 @@ ssh-keygen -t rsa -b 4096 -C "계정"
 ssh-keygen -t rsa -b 4096 -C "bonjin.app@gmail.com"
 ```
 
-##### config ssh key 연결
+### # config ssh key 연결
 파일생성
 - touch ~/.ssh/config
 
@@ -43,11 +43,18 @@ User git
 IdentityFile ~/.ssh/id_rsa
 ```
 
-##### Permissions 0644 for id_rsa 권한 오류
-- chmod 400 ~/.ssh/id_rsa
+위처럼 작성 후 저장
 
-##### clone
+
+
+### # clone
 https가 아닌 ssh로 clone 끝!
+
+### # Error
+- Permissions 0644 for id_rsa 권한 오류
+```shell
+chmod 400 ~/.ssh/id_rsa
+```
 
 <hr/>
 
