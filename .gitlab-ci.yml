@@ -11,7 +11,7 @@ build:
   script:
     - export VERSION=$(node -e "console.log(require('./package.json').version)")
     - echo "VERSION=$VERSION" >> variables.env
-    - export APPNAME=$(node -e "console.log(require('./package.json').name)")
+    - export APPNAME=$(node -e "console.log(require('./electron-builder.json').productName)")
     - echo "APPNAME=$APPNAME" >> variables.env
     - yarn dist:win
   artifacts:
