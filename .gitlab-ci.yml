@@ -8,7 +8,7 @@ build_app:
     - yarn install
     - react-scripts build
     - yarn install -g electron-builder
-    - electron-builder -c electron-builder.yml
+    - yarn dist:win
   artifacts:
     paths:
       - dist/
