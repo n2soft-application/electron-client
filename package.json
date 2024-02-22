@@ -2,7 +2,7 @@
   "name": "electron-client",
   "version": "0.1.0",
   "private": true,
-  "main": "electron.js",
+  "main": "public/electron.js",
   "homepage": "http://./",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
@@ -66,45 +66,13 @@
     "dist:mac64": "electron-builder -m --x64 --arm64 --publish always",
     "dist:win32": "electron-builder --win --ia32",
     "dist:win64": "electron-builder --win --x64",
-    "dist:win": "electron-builder --win",
+    "dist:win": "react-scripts build && electron-builder --win --config ./electron-builder.yml",
     "build:start": "electron-forge start",
     "build:package": "electron-forge package",
     "build:make": "electron-forge make",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "chromatic": "npx chromatic --project-token=chpt_026f64c6f7d9d96"
-  },
-  "build": {
-    "productName": "BONJIN",
-    "mac": {
-      "target": [
-        "default"
-      ]
-    },
-    "dmg": {
-      "title": "BONJIN"
-    },
-    "win": {
-      "target": [
-        {
-          "target": "nsis",
-          "arch": [
-            "x64",
-            "ia32"
-          ]
-        }
-      ]
-    },
-    "nsis": {
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": false,
-      "createDesktopShortcut": true
-    },
-    "directories": {
-      "buildResources": "./resources/installer/",
-      "output": "./dist/",
-      "app": "."
-    }
   },
   "eslintConfig": {
     "extends": [

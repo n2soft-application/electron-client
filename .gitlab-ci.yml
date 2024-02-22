@@ -1,0 +1,16 @@
+stages:
+  - build
+
+build_app:
+  stage: build
+  image: node:latest
+  script:
+    - yarn install
+    - react-scripts build
+    - yarn install -g electron-builder
+    - electron-builder -c electron-builder.yml
+  artifacts:
+    paths:
+      - dist/
+  only:
+    - main
