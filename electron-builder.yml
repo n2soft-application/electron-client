@@ -19,6 +19,7 @@ files:
 # Windows configuration
 win:
   target: "nsis"
+  artifactName: "${productName}-${version}.${ext}"
   icon: "build/icon.ico"
 
 # Config for the windows installer
