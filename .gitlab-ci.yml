@@ -7,7 +7,7 @@ build_app:
   script:
     - yarn install
     - yarn global add electron-builder
-    - CI=false yarn dist:win
+    - yarn dist:win
   artifacts:
     paths:
       - dist/

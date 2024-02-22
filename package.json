@@ -66,7 +66,7 @@
     "dist:mac64": "electron-builder -m --x64 --arm64 --publish always",
     "dist:win32": "electron-builder --win --ia32",
     "dist:win64": "electron-builder --win --x64",
-    "dist:win": "react-scripts build && electron-builder --win --config ./electron-builder.yml",
+    "dist:win": "CI=false react-scripts build && electron-builder --win --config ./electron-builder.yml",
     "build:start": "electron-forge start",
     "build:package": "electron-forge package",
     "build:make": "electron-forge make",
