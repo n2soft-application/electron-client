@@ -6,7 +6,7 @@ build_app:
   image: node:latest
   script:
     - yarn install
-    - yarn install -g electron-builder
+    - yarn global add electron-builder
     - yarn dist:win
   artifacts:
     paths:
