@@ -42,8 +42,6 @@ const createWindow = () => {
     // titleBarStyle: 'hiddenInset',
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false,
-      enableRemoteModule: true,
       preload: path.join(__dirname, "preload.js"),
     },
   });
@@ -53,7 +51,7 @@ const createWindow = () => {
     win.webContents.openDevTools();
   } else {
     // win.loadURL(`file://${path.join(__dirname, '../build/index.html')}`)
-    win.loadFile(`${path.join(__dirname, "./build/index.html")}`);
+    win.loadFile(path.join(__dirname, "../build/index.html"));
   }
 
   win.once("ready-to-show", () => win.show());
