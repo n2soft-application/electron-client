@@ -9,12 +9,12 @@ files:
   - "package.json"
 
 # Mac OS configuration
-mac:
+# mac:
   # icon: "./public/assets/icons/icon.png"
 
 # Config for OSX dmg
-dmg:
-  title: "Electron"
+# dmg:
+#   title: "Electron"
 
 # Windows configuration
 win:
