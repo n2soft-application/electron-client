@@ -20,7 +20,7 @@ files:
 win:
   target: "nsis"
   artifactName: "${productName}-${version}.${ext}"
-  icon: "build/icon.ico"
+  icon: "./src/assets/icons/icon.ico"
 
 # Config for the windows installer
 nsis:
