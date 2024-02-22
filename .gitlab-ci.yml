@@ -4,12 +4,24 @@ stages:
 build_app:
   stage: build
   image: electronuserland/builder:wine
-  script:
+  before_script:
     - yarn install
-    - yarn global add electron-builder
+  script:
+    - export VERSION=$(node -e "console.log(require('./package.json').version)")
+    - echo "VERSION=$VERSION" >> variables.env
+    - export APPNAME=$(node -e "console.log(require('./package.json').productName)")
+    - echo "APPNAME=$APPNAME" >> variables.env
     - yarn dist:win
   artifacts:
+    reports:
+      dotenv: variables.env
+    name: $CI_COMMIT_REF_SLUG
     paths:
-      - dist/
+      - $CI_PROJECT_DIR/dist/*.*
   only:
     - main
+
+variables:
+  WIN_BINARY: '${APPNAME}-${VERSION}.exe'
+  PACKAGE_REGISTRY_URL: '${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${APPNAME}/${VERSION}'
+  PACKAGE_REGISTRY_URL_YML: '${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${APPNAME}'
