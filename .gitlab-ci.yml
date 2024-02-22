@@ -6,7 +6,6 @@ build_app:
   image: node:latest
   script:
     - yarn install
-    - react-scripts build
     - yarn install -g electron-builder
     - yarn dist:win
   artifacts:
