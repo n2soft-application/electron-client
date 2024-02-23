@@ -29,4 +29,5 @@ nsis:
 
 publish:
   provider: "generic"
-  url: https://gitlab.com/bonjin/the_next/electron-client/-/releases/download/v${version}/
+  url: https://gitlab.com/bonjin/the_next/electron-client/-/releases
+  channel: "latest",
