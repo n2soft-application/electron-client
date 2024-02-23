@@ -40,8 +40,10 @@ upload:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH # Run this job when when commits are pushed to the default branch
   script:
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file "./dist/${WIN_BINARY}" "${PACKAGE_REGISTRY_URL}/${WIN_BINARY}"'
-    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file "./dist/latest.yml" "${PACKAGE_REGISTRY_URL_YML}/latest.yml"'
-    - echo "${PACKAGE_REGISTRY_URL_YML}/latest.yml"
+    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file "./dist/latest.yml" "${PACKAGE_REGISTRY_URL}/latest.yml"'
+    # - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file "./dist/latest.yml" "${PACKAGE_REGISTRY_URL_YML}/latest.yml"'
+    - echo "${PACKAGE_REGISTRY_URL}/latest.yml"
+    # - echo "${PACKAGE_REGISTRY_URL_YML}/latest.yml"
 
 auto-release-main:
   image: registry.gitlab.com/gitlab-org/release-cli
@@ -59,6 +61,6 @@ auto-release-main:
     - echo "Release $VERSION"
     - |
       release-cli create --name "Release $VERSION" --tag-name v$VERSION \
-      --description 'Created using the release-cli. ${CI_COMMIT_TITLE}' --ref $CI_COMMIT_SHA \
+      --description 'Created using the release-cli. $CI_COMMIT_TITLE' --ref $CI_COMMIT_SHA \
       --assets-link "{\"name\":\"${APPNAME}\",\"url\":\"${PACKAGE_REGISTRY_URL}/${WIN_BINARY}\"}" \
-      --assets-link "{\"name\":\"${APPNAME} Latest\",\"url\":\"${PACKAGE_REGISTRY_URL_YML}/latest.yml\"}"
+      --assets-link "{\"name\":\"${APPNAME} Latest\",\"url\":\"${PACKAGE_REGISTRY_URL}/latest.yml\"}"
