@@ -1,5 +1,5 @@
 appId: "kr.co.bonjin.electron"
-productName: "electron-client"
+productName: "The Next"
 directories:
   output: "dist"
 files:
