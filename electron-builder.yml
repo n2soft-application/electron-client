@@ -1,4 +1,5 @@
 appId: "kr.co.bonjin.electron"
+artifactName: "${productName}-${version}.${ext}"
 productName: "the-next"
 directories:
   output: "dist"
@@ -19,7 +20,7 @@ files:
 # Windows configuration
 win:
   target: "nsis"
-  artifactName: "${productName}-${version}.${ext}"
+  verifyUpdateCodeSignature: false
   icon: "./src/assets/icons/icon.ico"
 
 # Config for the windows installer
@@ -29,5 +30,4 @@ nsis:
 
 publish:
   provider: "generic"
-  url: https://gitlab.com/bonjin/the_next/electron-client/-/releases
-  channel: "latest"
+  url: https://gitlab.com/api/v4/projects/55138560/jobs/artifacts/main/raw/dist?job=build
