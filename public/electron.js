@@ -1,5 +1,6 @@
 const { app, BrowserWindow, dialog, ipcMain } = require("electron");
 const { autoUpdater } = require("electron-updater");
+const log = require("electron-log");
 const path = require("path");
 
 //-------------------------------------------------------------------
@@ -66,6 +67,10 @@ const createWindow = () => {
 ///////////////////
 autoUpdater.requestHeaders = { "PRIVATE-TOKEN": "glpat-Z5uzB67taSze-WLbV6DG" };
 autoUpdater.autoDownload = true;
+
+autoUpdater.setFeedURL(
+  "https://gitlab.com/api/v4/projects/55138560/jobs/artifacts/main/raw/dist?job=build"
+);
 
 autoUpdater.on("checking-for-update", () => {
   sendStatusToWindow("Checking for update...");
