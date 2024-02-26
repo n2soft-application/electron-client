@@ -60,6 +60,13 @@ const createWindow = () => {
   });
 };
 
+
+///////////////////
+// Auto upadater //
+///////////////////
+autoUpdater.requestHeaders = { "PRIVATE-TOKEN": "glpat-Z5uzB67taSze-WLbV6DG" };
+autoUpdater.autoDownload = true;
+
 autoUpdater.on("checking-for-update", () => {
   sendStatusToWindow("Checking for update...");
 });

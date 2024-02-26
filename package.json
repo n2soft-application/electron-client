@@ -4,6 +4,7 @@
   "private": true,
   "main": "public/electron.js",
   "homepage": "./",
+  "copyright": "Copyright ⓒ 2024. THE NEXT inc. all rights reserved.",
   "repository": {
     "type": "git",
     "url": "git+https://gitlab.com/bonjin/the_next/electron-client.git",
