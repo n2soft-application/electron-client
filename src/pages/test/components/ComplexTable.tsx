@@ -12,7 +12,7 @@ import {
 import Card from "../../../components/card";
 import CardMenu from "../../../components/card/CardMenu";
 import Progress from "../../../components/progress";
-import Checkbox from "../../../components/checkbox";
+import Checkbox from "../../../components/checkbox/Checkbox";
 
 type RowObj = {
   name: string;

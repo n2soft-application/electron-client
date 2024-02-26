@@ -9,7 +9,7 @@ import {
 } from "react-icons/md";
 import Card from "../../components/card";
 import Dropdown from "../../components/dropdown";
-import Checkbox from "../../components/checkbox";
+import Checkbox from "../../components/checkbox/Checkbox";
 import { BsThreeDots } from "react-icons/bs";
 import React from "react";
 import { RiMoonFill, RiSunFill } from "react-icons/ri";
