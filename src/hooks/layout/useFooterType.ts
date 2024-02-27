@@ -1,7 +1,7 @@
-import { useRecoilState } from "recoil";
-import { footerTypeState } from "../../state/layout/layoutAtom";
+import { SetterOrUpdater, useRecoilState } from "recoil";
+import { FooterType, footerTypeState } from "../../state/layout/layoutAtom";
 
-function useFooterType() {
+function useFooterType(): [FooterType, SetterOrUpdater<FooterType>] {
   const [footerType, setFooterType] = useRecoilState(footerTypeState);
   return [footerType, setFooterType];
 }

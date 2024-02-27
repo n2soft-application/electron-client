@@ -1,8 +1,20 @@
+import useMenuHidden from "../../../hooks/layout/useMenuHidden";
+import Switch from "../../form/Switch";
 
 function MenuHidden() {
+  const [menuHidden, setMenuHidden] = useMenuHidden();
   return (
-    <div>MenuHidden</div>
-  )
+    <div className="flex justify-between ">
+      <div className="text-base font-normal text-slate-600 dark:text-slate-300">
+        Menu Hidden
+      </div>
+      <Switch
+        value={menuHidden}
+        onChange={() => setMenuHidden(!menuHidden)}
+        id="semi_nav_tools3"
+      />
+    </div>
+  );
 }
 
-export default MenuHidden
+export default MenuHidden;

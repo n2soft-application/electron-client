@@ -8,14 +8,14 @@ export const sidebarState = atom<boolean>({
   default: false,
 });
 
-type NavbarType = "floating" | "sticky" | "static" | "hidden";
+export type NavbarType = "floating" | "sticky" | "static" | "hidden";
 export const navbarTypeState = atom<NavbarType>({
   key: "naverTypState",
   default: "sticky",
   effects_UNSTABLE: [persistAtom],
 });
 
-type SkinType = "default" | "bordered";
+export type SkinType = "default" | "bordered";
 export const skinState = atom<SkinType>({
   key: "skinState",
   default: "default",
@@ -29,14 +29,14 @@ export const rtlState = atom<RtlType>({
   effects_UNSTABLE: [persistAtom],
 });
 
-type Type = "vertical" | "horizontal";
+export type Type = "vertical" | "horizontal";
 export const typeState = atom<Type>({
   key: "typeState",
   default: "vertical",
   effects_UNSTABLE: [persistAtom],
 });
 
-type FooterType = "static" | "sticky" | "hidden";
+export type FooterType = "static" | "sticky" | "hidden";
 export const footerTypeState = atom<FooterType>({
   key: "footerTypeState",
   default: "static",
@@ -57,7 +57,7 @@ export const semiDarkModeState = atom<SemiDarkModeType>({
   effects_UNSTABLE: [persistAtom],
 });
 
-type ContentWidthType = "full" | "boxed";
+export type ContentWidthType = "full" | "boxed";
 export const contentWidthState = atom<ContentWidthType>({
   key: "contentWidthState",
   default: "full",

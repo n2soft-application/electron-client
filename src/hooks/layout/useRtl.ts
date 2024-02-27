@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useRecoilState } from "recoil";
+import { SetterOrUpdater, useRecoilState } from "recoil";
 import { rtlState } from "../../state/layout/layoutAtom";
 
-function useRtl() {
+function useRtl(): [boolean, SetterOrUpdater<boolean>] {
   const [isRtl, setRtl] = useRecoilState(rtlState);
 
   useEffect(() => {

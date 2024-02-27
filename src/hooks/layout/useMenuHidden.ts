@@ -1,7 +1,7 @@
 import { useRecoilState } from "recoil";
 import { menuTypeState } from "../../state/layout/layoutAtom";
 
-function useMenuHidden() {
+function useMenuHidden(): [boolean, (value: boolean) => void] {
   const [menuHidden, _setMenuHidden] = useRecoilState(menuTypeState);
 
   const setMenuHidden = (hidden: boolean) => {

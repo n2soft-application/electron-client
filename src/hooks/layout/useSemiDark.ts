@@ -1,7 +1,7 @@
-import { useRecoilState } from "recoil";
+import { SetterOrUpdater, useRecoilState } from "recoil";
 import { semiDarkModeState } from "../../state/layout/layoutAtom";
 
-function useSemiDark() {
+function useSemiDark(): [boolean, SetterOrUpdater<boolean>] {
   const [isSemiDark, setSemiDark] = useRecoilState(semiDarkModeState);
   return [isSemiDark, setSemiDark];
 }

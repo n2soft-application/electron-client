@@ -1,14 +1,14 @@
 import { ChangeEvent } from "react";
-import useFooterType from "../../../hooks/layout/useFooterType";
-import { FooterType } from "../../../state/layout/layoutAtom";
+import useNavbarType from "../../../hooks/layout/useNavbarType";
+import { NavbarType } from "../../../state/layout/layoutAtom";
 import Radio from "../../form/Radio";
 
-function FooType() {
-  const [footerType, setFooterType] = useFooterType();
+function NavbarTypeView() {
+  const [navbarType, setNavbarType] = useNavbarType();
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setFooterType(e.target.value as FooterType);
+    setNavbarType(e.target.value as NavbarType);
   };
-  const fotypes = [
+  const navTypes = [
     {
       label: "Sticky",
       value: "sticky",
@@ -17,7 +17,10 @@ function FooType() {
       label: "Static",
       value: "static",
     },
-
+    {
+      label: "Floating",
+      value: "floating",
+    },
     {
       label: "Hidden",
       value: "hidden",
@@ -27,16 +30,16 @@ function FooType() {
   return (
     <div>
       <h4 className="mb-2 text-base font-normal text-slate-600 dark:text-slate-300">
-        Footer Type
+        Navbar Type
       </h4>
       <div className="grid grid-cols-1 gap-3 md:grid-cols-4">
-        {fotypes?.map((item, index) => (
+        {navTypes?.map((item, index) => (
           <Radio
             key={index}
             label={item.label}
             name="navbarType"
             value={item.value}
-            checked={footerType === item.value}
+            checked={navbarType === item.value}
             onChange={handleChange}
             className="w-4 h-4"
           />
@@ -46,4 +49,4 @@ function FooType() {
   );
 }
 
-export default FooType;
+export default NavbarTypeView;
