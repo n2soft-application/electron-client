@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useRecoilState } from "recoil";
+import { SetterOrUpdater, useRecoilState } from "recoil";
 import { darkModeState } from "../../state/layout/layoutAtom";
 
-const useDarkMode = () => {
+const useDarkMode = (): [boolean, SetterOrUpdater<boolean>] => {
   const [isDark, setDarkMode] = useRecoilState(darkModeState);
 
   useEffect(() => {

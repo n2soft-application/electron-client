@@ -11,6 +11,7 @@ import HorizentalMenu from "./components/HorizentalMenu";
 import Language from "./components/Language";
 import Logo from "./components/Logo";
 import SearchModal from "./components/SearchModal";
+import SwitchDark from "./components/SwitchDark";
 
 type Props = {
   className?: string | undefined;
@@ -115,8 +116,8 @@ function Header({ className }: Props) {
           {/* Nav Tools  */}
           <div className="flex items-center space-x-3 nav-tools lg:space-x-6 rtl:space-x-reverse">
             <Language />
-            {/* <SwitchDark />
-            <MonoChrome />
+            <SwitchDark />
+            {/* <MonoChrome />
             <HeaderCart />
             {width >= breakpoints.md && <Message />}
             {width >= breakpoints.md && <Notification />}
