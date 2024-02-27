@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Badges from "../../../components/badges/Badges";
+import Badge from "../../../components/badge/Badge";
 
 const meta = {
-  title: "Componets/Badges",
-  component: Badges,
+  title: "Componets/Badge",
+  component: Badge,
   parameters: {
     layout: "centered",
     componentSubtitle: "뱃지",
@@ -18,22 +18,16 @@ const meta = {
     label: {
       description: "뱃지 텍스트",
     },
-    color: {
-      description: "배경색",
-    },
-    extra: {
-      description: "추가 스타일",
-    },
   },
-} satisfies Meta<typeof Badges>;
+} satisfies Meta<typeof Badge>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Checked: Story = {
+export const Default: Story = {
   args: {
     label: "badge",
-    color: "lime",
+    className: "text-white bg-danger-500",
   },
   parameters: {
     docs: {
