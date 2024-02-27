@@ -10,6 +10,8 @@ import { navbarTypeState } from "../../state/layout/layoutAtom";
 import HorizentalMenu from "./components/HorizentalMenu";
 import Language from "./components/Language";
 import Logo from "./components/Logo";
+import Message from "./components/Message";
+import MonoChrome from "./components/MonoChrome";
 import SearchModal from "./components/SearchModal";
 import SwitchDark from "./components/SwitchDark";
 
@@ -117,19 +119,19 @@ function Header({ className }: Props) {
           <div className="flex items-center space-x-3 nav-tools lg:space-x-6 rtl:space-x-reverse">
             <Language />
             <SwitchDark />
-            {/* <MonoChrome />
-            <HeaderCart />
+            <MonoChrome />
+            {/* <HeaderCart /> */}
             {width >= breakpoints.md && <Message />}
-            {width >= breakpoints.md && <Notification />}
-            {width >= breakpoints.md && <Profile />}
+            {/* {width >= breakpoints.md && <Notification />} */}
+            {/* {width >= breakpoints.md && <Profile />} */}
             {width <= breakpoints.md && (
               <div
                 className="text-2xl cursor-pointer text-slate-900 dark:text-white"
-                onClick={handleOpenMobileMenu}
+                onClick={() => setMobileMenu(!mobileMenu)}
               >
                 <Icon icon="heroicons-outline:menu-alt-3" />
               </div>
-            )} */}
+            )}
           </div>
         </div>
       </div>

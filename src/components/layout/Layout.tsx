@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
 import { Suspense } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import Breadcrumbs from "../\bbreadcrumbs/Breadcrumbs";
 import useContentWidth from "../../hooks/layout/useContentWidth";
 import useMenuHidden from "../../hooks/layout/useMenuHidden";
 import useMenuLayout from "../../hooks/layout/useMenuLayout";
 import useMobileMenu from "../../hooks/layout/useMobileMenu";
 import useSidebar from "../../hooks/layout/useSidebar";
 import useWidth from "../../hooks/layout/useWidth";
+import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
 import Loading from "../loading/Loading";
 import Sidebar from "../sidebar/Sidebar";
 import Footer from "./Footer";
