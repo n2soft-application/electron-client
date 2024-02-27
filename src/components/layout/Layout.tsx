@@ -9,6 +9,8 @@ import useSidebar from "../../hooks/layout/useSidebar";
 import useWidth from "../../hooks/layout/useWidth";
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
 import Loading from "../loading/Loading";
+import Setting from "../setting/Setting";
+import MobileMenu from "../sidebar/MobileMenu";
 import Sidebar from "../sidebar/Sidebar";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -39,13 +41,13 @@ function Layout() {
         <Sidebar />
       )}
 
-      {/* <MobileMenu
+      <MobileMenu
         className={`${
           width < breakpoints.xl && mobileMenu
             ? "left-0 visible opacity-100  z-[9999]"
             : "left-[-300px] invisible opacity-0  z-[-999] "
         }`}
-      /> */}
+      />
       {/* mobile menu overlay*/}
       {width < breakpoints.xl && mobileMenu && (
         <div
@@ -53,6 +55,8 @@ function Layout() {
           onClick={() => setMobileMenu(false)}
         ></div>
       )}
+
+      <Setting />
 
       <main
         className={`content-wrapper transition-all duration-150 ${
