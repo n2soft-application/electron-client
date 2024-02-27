@@ -7,6 +7,7 @@ import Loading from "../components/loading/Loading";
 // Pages
 const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
 const Login = lazy(() => import("../pages/auth/Login"));
+const ChangeLog = lazy(() => import("../pages/changelog/ChangeLog"));
 
 // Error pages
 const Error404 = lazy(() => import("../pages/error/Error404"));
@@ -19,6 +20,7 @@ const AppRouter = () => {
       </Route>
       <Route path="/*" element={<Layout />}>
         <Route path="dashboard" element={<Dashboard />} />
+        <Route path="changelog" element={<ChangeLog />} />
 
         <Route path="*" element={<Navigate replace={true} to="/404" />} />
       </Route>
