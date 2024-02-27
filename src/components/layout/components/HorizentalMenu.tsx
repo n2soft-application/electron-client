@@ -1,7 +1,6 @@
-import { Icon } from "@iconify/react";
-import { Link } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { topMenu } from "../../../constants/data";
+import Icon from "../../icons/Icon";
 
 function HorizentalMenu() {
   return (

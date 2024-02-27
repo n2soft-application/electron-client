@@ -1,8 +1,8 @@
 import { Menu } from "@headlessui/react";
-import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 import { notifications } from "../../../constants/data";
 import Dropdown from "../../dropdown";
+import Icon from "../../icons/Icon";
 
 const notifyLabel = () => {
   return (

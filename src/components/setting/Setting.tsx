@@ -1,11 +1,11 @@
 
 import { Transition } from "@headlessui/react";
-import { Icon } from "@iconify/react";
 import { Fragment } from "react";
 import { useRecoilState } from "recoil";
 import SimpleBar from "simplebar-react";
 import useWidth from "../../hooks/layout/useWidth";
 import { customizerTypeState } from "../../state/layout/layoutAtom";
+import Icon from "../icons/Icon";
 import ContentWidth from "./components/ContentWidth";
 import FooType from "./components/FooType";
 import MenuClose from "./components/MenuClose";

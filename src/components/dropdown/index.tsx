@@ -1,7 +1,7 @@
 import { Menu, Transition } from "@headlessui/react";
-import { Icon } from "@iconify/react";
 import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
+import Icon from "../icons/Icon";
 
 const Dropdown = ({
   label = "Dropdown",

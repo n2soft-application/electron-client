@@ -1,4 +1,3 @@
-import { Icon } from "@iconify/react";
 import { useRecoilValue } from "recoil";
 import useMenuLayout from "../../hooks/layout/useMenuLayout";
 import useMobileMenu from "../../hooks/layout/useMobileMenu";
@@ -7,6 +6,7 @@ import useSidebar from "../../hooks/layout/useSidebar";
 import useSkin from "../../hooks/layout/useSkin";
 import useWidth from "../../hooks/layout/useWidth";
 import { navbarTypeState } from "../../state/layout/layoutAtom";
+import Icon from "../icons/Icon";
 import HorizentalMenu from "./components/HorizentalMenu";
 import Language from "./components/Language";
 import Logo from "./components/Logo";

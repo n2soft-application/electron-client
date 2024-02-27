@@ -1,8 +1,8 @@
 import { Menu } from "@headlessui/react";
-import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
 import UserAvatar from "../../../assets/images/all-img/user.png";
 import Dropdown from "../../dropdown";
+import Icon from "../../icons/Icon";
 
 const profileLabel = () => {
   return (

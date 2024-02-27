@@ -1,5 +1,5 @@
-import { Icon } from "@iconify/react";
 import { ChangeEvent } from "react";
+import Icon from "../icons/Icon";
 
 type Props = {
   label?: string | undefined;
