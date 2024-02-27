@@ -13,10 +13,12 @@ const Error404 = lazy(() => import("../pages/error/Error404"));
 const AppRouter = () => {
   return (
     <Routes>
-      <Route path="/" element={<Dashboard />} />
       {/* <Route path="/" element={<AuthLayout />}>
         <Route path="/" element={<Login />} />
       </Route> */}
+      <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Dashboard />} />
+      </Route>
 
       <Route path="/*" element={<Layout />}>
         <Route path="dashboard" element={<Dashboard />} />
