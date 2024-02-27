@@ -1,5 +1,6 @@
 import { Suspense, lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+import AuthLayout from "../components/layout/AuthLayout";
 import Layout from "../components/layout/Layout";
 import Loading from "../components/loading/Loading";
 
@@ -13,13 +14,9 @@ const Error404 = lazy(() => import("../pages/error/Error404"));
 const AppRouter = () => {
   return (
     <Routes>
-      {/* <Route path="/" element={<AuthLayout />}>
+      <Route path="/" element={<AuthLayout />}>
         <Route path="/" element={<Login />} />
-      </Route> */}
-      <Route path="/" element={<Layout />}>
-        <Route path="/" element={<Dashboard />} />
       </Route>
-
       <Route path="/*" element={<Layout />}>
         <Route path="dashboard" element={<Dashboard />} />
 

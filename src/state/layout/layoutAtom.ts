@@ -31,7 +31,7 @@ export const rtlState = atom<RtlType>({
 
 type Type = "vertical" | "horizontal";
 export const typeState = atom<Type>({
-  key: "menuTypeState",
+  key: "typeState",
   default: "vertical",
   effects_UNSTABLE: [persistAtom],
 });
