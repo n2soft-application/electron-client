@@ -1,9 +1,7 @@
 import { Suspense, lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Layout from "../components/layout/Layout";
-import AuthLayout from "../components/layout/AuthLayout";
 import Loading from "../components/loading/Loading";
-import PrivateRoute from "./PrivateRoute";
 
 // Pages
 const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
@@ -15,14 +13,13 @@ const Error404 = lazy(() => import("../pages/error/Error404"));
 const AppRouter = () => {
   return (
     <Routes>
-      <Route path="/" element={<AuthLayout />}>
+      <Route path="/" element={<Dashboard />} />
+      {/* <Route path="/" element={<AuthLayout />}>
         <Route path="/" element={<Login />} />
-      </Route>
+      </Route> */}
 
       <Route path="/*" element={<Layout />}>
-        <Route element={<PrivateRoute />}>
-          <Route path="dashboard" element={<Dashboard />} />
-        </Route>
+        <Route path="dashboard" element={<Dashboard />} />
 
         <Route path="*" element={<Navigate to="/404" />} />
       </Route>

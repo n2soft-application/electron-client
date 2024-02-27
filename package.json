@@ -11,6 +11,7 @@
     "release": "latest"
   },
   "dependencies": {
+    "@iconify/types": "^2.0.0",
     "@tanstack/react-table": "^8.7.9",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
@@ -26,6 +27,7 @@
     "electron-log": "^5.1.1",
     "electron-squirrel-startup": "^1.0.0",
     "electron-updater": "^6.1.7",
+    "framer-motion": "^11.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
@@ -42,6 +44,7 @@
     "@electron-forge/maker-squirrel": "^7.2.0",
     "@electron-forge/maker-zip": "^7.2.0",
     "@electron-forge/plugin-auto-unpack-natives": "^7.2.0",
+    "@iconify/react": "^4.1.1",
     "@storybook/addon-essentials": "^7.6.14",
     "@storybook/addon-interactions": "^7.6.14",
     "@storybook/addon-links": "^7.6.14",
