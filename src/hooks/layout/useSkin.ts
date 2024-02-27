@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { skinState } from "../state/layout/layoutAtom";
+import { skinState } from "../../state/layout/layoutAtom";
 
 function useSkin() {
   const [skin, setSkin] = useRecoilState(skinState);

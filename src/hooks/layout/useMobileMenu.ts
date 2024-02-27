@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import { mobileMenuTypeState } from "../state/layout/layoutAtom";
+import { mobileMenuTypeState } from "../../state/layout/layoutAtom";
 
 function useMobileMenu() {
   const [mobileMenu, setMobileMenu] = useRecoilState(mobileMenuTypeState);

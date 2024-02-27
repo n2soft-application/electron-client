@@ -1,8 +1,8 @@
 import { useRecoilValue } from "recoil";
-import useRtl from "../../hooks/useRtl";
-import useSidebar from "../../hooks/useSidebar";
-import useSkin from "../../hooks/useSkin";
-import useWidth from "../../hooks/useWidth";
+import useRtl from "../../hooks/layout/useRtl";
+import useSidebar from "../../hooks/layout/useSidebar";
+import useSkin from "../../hooks/layout/useSkin";
+import useWidth from "../../hooks/layout/useWidth";
 import { navbarTypeState } from "../../state/layout/layoutAtom";
 
 type Props = {

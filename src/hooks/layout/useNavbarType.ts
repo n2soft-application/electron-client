@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import { navbarTypeState } from "../state/layout/layoutAtom";
+import { navbarTypeState } from "../../state/layout/layoutAtom";
 
 function useNavbarType() {
   const [navbarType, setNavbarType] = useRecoilState(navbarTypeState);

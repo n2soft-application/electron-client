@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { monoChromeState } from "../state/layout/layoutAtom";
+import { monoChromeState } from "../../state/layout/layoutAtom";
 
 function useMonoChrome() {
   const [isMonoChrome, setMonoChrome] = useRecoilState(monoChromeState);

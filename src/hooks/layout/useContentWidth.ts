@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import { contentWidthState } from "../state/layout/layoutAtom";
+import { contentWidthState } from "../../state/layout/layoutAtom";
 
 function useContentWidth() {
   const [contentWidth, setContentWidth] = useRecoilState(contentWidthState);

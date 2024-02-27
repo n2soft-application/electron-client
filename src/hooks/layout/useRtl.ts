@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { rtlState } from "../state/layout/layoutAtom";
+import { rtlState } from "../../state/layout/layoutAtom";
 
 function useRtl() {
   const [isRtl, setRtl] = useRecoilState(rtlState);

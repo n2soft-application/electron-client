@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import { menuTypeState } from "../state/layout/layoutAtom";
+import { menuTypeState } from "../../state/layout/layoutAtom";
 
 function useMenuHidden() {
   const [menuHidden, _setMenuHidden] = useRecoilState(menuTypeState);

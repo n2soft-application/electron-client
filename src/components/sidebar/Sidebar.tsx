@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import useSidebar from "../../hooks/useSidebar";
+import useSidebar from "../../hooks/layout/useSidebar";
 
 function Sidebar() {
   const scrollableNodeRef = useRef<HTMLDivElement | null>(null);
