@@ -12,6 +12,9 @@ const ChangeLog = lazy(() => import("../pages/changelog/ChangeLog"));
 // Error pages
 const Error404 = lazy(() => import("../pages/error/Error404"));
 
+// Example Pages
+const IconsPage = lazy(() => import("../pages/example/icon/IconsPage"));
+
 const AppRouter = () => {
   return (
     <Routes>
@@ -21,6 +24,9 @@ const AppRouter = () => {
       <Route path="/*" element={<Layout />}>
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="changelog" element={<ChangeLog />} />
+
+        {/* Example */}
+        <Route path="icons" element={<IconsPage />} />
 
         <Route path="*" element={<Navigate replace={true} to="/404" />} />
       </Route>

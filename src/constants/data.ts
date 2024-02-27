@@ -537,7 +537,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "Multi Level",
     icon: "heroicons:share",
-    link: "#",
+    link: "#null",
     child: [
       {
         childtitle: "Level 1.1",
