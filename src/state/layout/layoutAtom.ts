@@ -36,7 +36,7 @@ export const typeState = atom<Type>({
   effects_UNSTABLE: [persistAtom],
 });
 
-type FooterType = "static";
+type FooterType = "static" | "sticky" | "hidden";
 export const footerTypeState = atom<FooterType>({
   key: "footerTypeState",
   default: "static",
@@ -57,7 +57,7 @@ export const semiDarkModeState = atom<SemiDarkModeType>({
   effects_UNSTABLE: [persistAtom],
 });
 
-type ContentWidthType = "full";
+type ContentWidthType = "full" | "boxed";
 export const contentWidthState = atom<ContentWidthType>({
   key: "contentWidthState",
   default: "full",
