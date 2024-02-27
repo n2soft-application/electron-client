@@ -1,8 +1,8 @@
-import { useRecoilState } from "recoil";
-import { sidebarState } from "../../state/sidebar/sidebarAtom";
+import { SetterOrUpdater, useRecoilState } from "recoil";
+import { sidebarState } from "../../state/layout/layoutAtom";
 
-const useSidebar = () => {
-  const [collapsed, setCollapsed] = useRecoilState(sidebarState);
+const useSidebar = (): [boolean, SetterOrUpdater<boolean>] => {
+  const [collapsed, setCollapsed] = useRecoilState<boolean>(sidebarState);
 
   return [collapsed, setCollapsed];
 };

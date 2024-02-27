@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Suspense } from "react";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Breadcrumbs from "../\bbreadcrumbs/Breadcrumbs";
 import Loading from "../loading/Loading";
 import Sidebar from "../sidebar/Sidebar";
@@ -9,7 +9,6 @@ import Header from "./Header";
 
 function Layout() {
   const location = useLocation()
-  const navigate = useNavigate();
 
   return (
     <div className="">

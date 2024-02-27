@@ -1,7 +1,7 @@
-import { useRecoilState } from "recoil";
+import { SetterOrUpdater, useRecoilState } from "recoil";
 import { mobileMenuTypeState } from "../../state/layout/layoutAtom";
 
-function useMobileMenu() {
+function useMobileMenu(): [boolean, SetterOrUpdater<boolean>] {
   const [mobileMenu, setMobileMenu] = useRecoilState(mobileMenuTypeState);
   return [mobileMenu, setMobileMenu];
 }

@@ -3,6 +3,11 @@ import { recoilPersist } from "../persist";
 
 const { persistAtom } = recoilPersist();
 
+export const sidebarState = atom<boolean>({
+  key: "sidebarState",
+  default: false,
+});
+
 type NavbarType = "floating" | "sticky" | "static" | "hidden";
 export const navbarTypeState = atom<NavbarType>({
   key: "naverTypState",

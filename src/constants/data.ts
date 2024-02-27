@@ -1,4 +1,4 @@
-export const menuItems: {
+export type MenuItemType = {
   isHeadr?: boolean;
   title: string;
   icon?: string;
@@ -6,16 +6,22 @@ export const menuItems: {
   badge?: string;
   isOpen?: boolean;
   isHide?: boolean;
-  child?: {
-    childtitle?: string;
-    childlink?: string;
-    multi_menu?: {
-      multiTitle: string;
-      multiLink: string;
-      badge?: string;
-    }[];
-  }[];
-}[] = [
+  child?: MenuItemChildType[];
+};
+
+export type MenuItemChildType = {
+  childtitle?: string;
+  childlink?: string;
+  multi_menu?: MenuItemChildMultiType[];
+};
+
+export type MenuItemChildMultiType = {
+  multiTitle: string;
+  multiLink: string;
+  badge?: string;
+};
+
+export const menuItems: MenuItemType[] = [
   {
     isHeadr: true,
     title: "menu",
@@ -1032,8 +1038,8 @@ import file3Img from "../assets/images/icon/zip-1.svg";
 import meetsImage3 from "../assets/images/svg/dc.svg";
 import meetsImage2 from "../assets/images/svg/path.svg";
 import {
-    default as meetsImage1,
-    default as meetsImage4,
+  default as meetsImage1,
+  default as meetsImage4,
 } from "../assets/images/svg/sk.svg";
 
 export const meets = [
