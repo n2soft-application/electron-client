@@ -28,7 +28,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Checked: Story = {
-  args: {},
+  args: {
+    color: "lime",
+  },
   parameters: {
     docs: {
       description: {
