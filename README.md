@@ -3,11 +3,13 @@
 ## GitHub, GitLab 여러 계정 연결
 ### # github, gitlab ssh key 등록
 - gitlab, github 계정이 다르면 2개 발급
+- github로 예시 hub, lab 자유롭게 파일명 지정
 ```shell
-ssh-keygen -t rsa -b 4096 -C "계정"
+ssh-keygen -t rsa -b 4096 -C "계정" -f ~/.ssh/id_rsa_hub
 ```
 
 - github, gitlab 계정 동일하여 하나만 사용
+- id_rsa 이름으로 생성됨
 ```shell
 ssh-keygen -t rsa -b 4096 -C "bonjin.app@gmail.com"
 ```
@@ -49,7 +51,9 @@ or
 ```shell
 open config
 ```
+<br/>
 
+##### 계정이 동일할 때
 ```shell
 # github
 Host github.com
@@ -64,9 +68,22 @@ User git
 IdentityFile ~/.ssh/id_rsa
 ```
 
+##### 계정이 각각 다를 때
+```shell
+# github
+Host github.com
+Hostname github.com
+User git
+IdentityFile ~/.ssh/id_rsa_hub
+
+# gitlab
+Host gitlab.com
+Hostname gitlab.com
+User git
+IdentityFile ~/.ssh/id_rsa_lab
+```
+
 위처럼 작성 후 저장
-
-
 
 ### # clone
 https가 아닌 ssh로 clone 끝!
