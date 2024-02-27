@@ -69,7 +69,7 @@ function NavMenu({ menus }: Props) {
         });
       }
     });
-    document.title = `Dashcode  | ${locationName}`;
+    document.title = `THE NEXT  | ${locationName}`;
 
     setActiveSubmenu(submenuIndex);
     setMultiMenu(multiMenuIndex);

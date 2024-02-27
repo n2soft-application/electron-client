@@ -1,6 +1,6 @@
 const themeConfig = {
   app: {
-    name: "Dashcode React",
+    name: "THE NEXT Electron",
   },
   // layout
   layout: {

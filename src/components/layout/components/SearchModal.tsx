@@ -16,7 +16,7 @@ function SearchModal() {
   const searchList = [
     {
       id: 1,
-      name: "What is Dashcode ?",
+      name: "What is THE NEXT ?",
     },
     {
       id: 2,

@@ -50,7 +50,7 @@ function Login() {
               <div className="mb-4 text-center 2xl:mb-10">
                 <h4 className="font-medium">Sign in</h4>
                 <div className="text-base text-slate-500">
-                  Sign in to your account to start using Dashcode
+                  Sign in to your account to start using THE NEXT
                 </div>
               </div>
               {/* <LoginForm /> */}
@@ -73,7 +73,7 @@ function Login() {
               </div>
             </div>
             <div className="text-center auth-footer">
-              Copyright 2021, Dashcode All Rights Reserved.
+              Copyright 2024, THE NEXT All Rights Reserved.
             </div>
           </div>
         </div>
