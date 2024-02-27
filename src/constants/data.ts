@@ -1,3 +1,44 @@
+import User1 from "../assets/images/all-img/user.png";
+import User2 from "../assets/images/all-img/user2.png";
+import User3 from "../assets/images/all-img/user3.png";
+import User4 from "../assets/images/all-img/user4.png";
+import blackTshirt from "../assets/images/e-commerce/product-card/black-t-shirt.png";
+import checkShirt from "../assets/images/e-commerce/product-card/check-shirt.png";
+import blackJumper from "../assets/images/e-commerce/product-card/classical-black-tshirt.png";
+import grayJumper from "../assets/images/e-commerce/product-card/gray-jumper.png";
+import grayTshirt from "../assets/images/e-commerce/product-card/gray-t-shirt.png";
+import pinkBlazer from "../assets/images/e-commerce/product-card/pink-blazer.png";
+import redTshirt from "../assets/images/e-commerce/product-card/red-t-shirt.png";
+import yellowFrok from "../assets/images/e-commerce/product-card/yellow-frok.png";
+import yellowJumper from "../assets/images/e-commerce/product-card/yellow-jumper.png";
+import file1Img from "../assets/images/icon/file-1.svg";
+import file2Img from "../assets/images/icon/pdf-1.svg";
+import file4Img from "../assets/images/icon/pdf-2.svg";
+import file5Img from "../assets/images/icon/scr-1.svg";
+import file3Img from "../assets/images/icon/zip-1.svg";
+import meetsImage3 from "../assets/images/svg/dc.svg";
+import meetsImage2 from "../assets/images/svg/path.svg";
+import {
+  default as meetsImage1,
+  default as meetsImage4,
+} from "../assets/images/svg/sk.svg";
+
+import bkash from "../assets/images/e-commerce/cart-icon/bkash.png";
+import fatoorah from "../assets/images/e-commerce/cart-icon/fatoorah.png";
+import instamojo from "../assets/images/e-commerce/cart-icon/instamojo.png";
+import iyzco from "../assets/images/e-commerce/cart-icon/iyzco.png";
+import nagad from "../assets/images/e-commerce/cart-icon/nagad.png";
+import ngenious from "../assets/images/e-commerce/cart-icon/ngenious.png";
+import payfast from "../assets/images/e-commerce/cart-icon/payfast.png";
+import payku from "../assets/images/e-commerce/cart-icon/payku.png";
+import paypal from "../assets/images/e-commerce/cart-icon/paypal.png";
+import paytm from "../assets/images/e-commerce/cart-icon/paytm.png";
+import razorpay from "../assets/images/e-commerce/cart-icon/razorpay.png";
+import ssl from "../assets/images/e-commerce/cart-icon/ssl.png";
+import stripe from "../assets/images/e-commerce/cart-icon/stripe.png";
+import truck from "../assets/images/e-commerce/cart-icon/truck.png";
+import vougepay from "../assets/images/e-commerce/cart-icon/vougepay.png";
+
 export type MenuItemType = {
   isHeadr?: boolean;
   title: string;
@@ -847,10 +888,6 @@ export const topMenu = [
   },
 ];
 
-import User1 from "../assets/images/all-img/user.png";
-import User2 from "../assets/images/all-img/user2.png";
-import User3 from "../assets/images/all-img/user3.png";
-import User4 from "../assets/images/all-img/user4.png";
 export const notifications = [
   {
     title: "Your order is placed",
@@ -1030,17 +1067,6 @@ export const bottomFilterLists = [
   },
 ];
 
-import file1Img from "../assets/images/icon/file-1.svg";
-import file2Img from "../assets/images/icon/pdf-1.svg";
-import file4Img from "../assets/images/icon/pdf-2.svg";
-import file5Img from "../assets/images/icon/scr-1.svg";
-import file3Img from "../assets/images/icon/zip-1.svg";
-import meetsImage3 from "../assets/images/svg/dc.svg";
-import meetsImage2 from "../assets/images/svg/path.svg";
-import {
-  default as meetsImage1,
-  default as meetsImage4,
-} from "../assets/images/svg/sk.svg";
 
 export const meets = [
   {
@@ -1099,15 +1125,6 @@ export const files = [
 
 // ecommarce data
 
-import blackTshirt from "../assets/images/e-commerce/product-card/black-t-shirt.png";
-import checkShirt from "../assets/images/e-commerce/product-card/check-shirt.png";
-import blackJumper from "../assets/images/e-commerce/product-card/classical-black-tshirt.png";
-import grayJumper from "../assets/images/e-commerce/product-card/gray-jumper.png";
-import grayTshirt from "../assets/images/e-commerce/product-card/gray-t-shirt.png";
-import pinkBlazer from "../assets/images/e-commerce/product-card/pink-blazer.png";
-import redTshirt from "../assets/images/e-commerce/product-card/red-t-shirt.png";
-import yellowFrok from "../assets/images/e-commerce/product-card/yellow-frok.png";
-import yellowJumper from "../assets/images/e-commerce/product-card/yellow-jumper.png";
 
 export const products = [
   {
@@ -1318,22 +1335,6 @@ export const selectCategory = [
     label: "Option 3",
   },
 ];
-
-import bkash from "../assets/images/e-commerce/cart-icon/bkash.png";
-import fatoorah from "../assets/images/e-commerce/cart-icon/fatoorah.png";
-import instamojo from "../assets/images/e-commerce/cart-icon/instamojo.png";
-import iyzco from "../assets/images/e-commerce/cart-icon/iyzco.png";
-import nagad from "../assets/images/e-commerce/cart-icon/nagad.png";
-import ngenious from "../assets/images/e-commerce/cart-icon/ngenious.png";
-import payfast from "../assets/images/e-commerce/cart-icon/payfast.png";
-import payku from "../assets/images/e-commerce/cart-icon/payku.png";
-import paypal from "../assets/images/e-commerce/cart-icon/paypal.png";
-import paytm from "../assets/images/e-commerce/cart-icon/paytm.png";
-import razorpay from "../assets/images/e-commerce/cart-icon/razorpay.png";
-import ssl from "../assets/images/e-commerce/cart-icon/ssl.png";
-import stripe from "../assets/images/e-commerce/cart-icon/stripe.png";
-import truck from "../assets/images/e-commerce/cart-icon/truck.png";
-import vougepay from "../assets/images/e-commerce/cart-icon/vougepay.png";
 
 export const payments = [
   {
