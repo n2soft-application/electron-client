@@ -561,7 +561,17 @@ export const menuItems: MenuItemType[] = [
   },
 ];
 
-export const topMenu = [
+export const topMenu: {
+  title: string;
+  icon: string;
+  link?: string;
+  child?: { childtitle: string; childlink: string; childicon: string }[];
+  megamenu?: {
+    megamenutitle: string;
+    megamenuicon: string;
+    singleMegamenu: { m_childtitle: string; m_childlink: string }[];
+  }[];
+}[] = [
   {
     title: "Dashboard",
     icon: "heroicons-outline:home",
@@ -1067,7 +1077,6 @@ export const bottomFilterLists = [
   },
 ];
 
-
 export const meets = [
   {
     img: meetsImage1,
@@ -1124,7 +1133,6 @@ export const files = [
 ];
 
 // ecommarce data
-
 
 export const products = [
   {
