@@ -28,11 +28,11 @@ function Footer({ className = "custom-class" }: Props) {
           <div className="text-sm text-center ltr:md:text-right rtl:md:text-end">
             Hand-crafted & Made by{" "}
             <a
-              href="#null"
+              href="#"
               target="_blank"
               className="font-semibold text-primary-500"
             >
-              Codeshaper
+              THE NEXT
             </a>
           </div>
         </div>
