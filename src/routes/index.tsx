@@ -20,7 +20,7 @@ const AppRouter = () => {
       <Route path="/*" element={<Layout />}>
         <Route path="dashboard" element={<Dashboard />} />
 
-        <Route path="*" element={<Navigate to="/404" />} />
+        <Route path="*" element={<Navigate replace={true} to="/404" />} />
       </Route>
       <Route
         path="/404"
