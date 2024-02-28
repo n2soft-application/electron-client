@@ -31,4 +31,5 @@ nsis:
 publish:
   provider: "generic"
   url: https://gitlab.com/api/v4/projects/55138560/jobs/artifacts/main/raw/dist?job=build
-  token: "glpat-Z5uzB67taSze-WLbV6DG"
+  channel: "latest"
+  publishAutoUpdate: true
