@@ -45,7 +45,7 @@ const preview: Preview = {
           "Components",
           ["Button", "Checkbox"],
           "Layout",
-          ["Header"],
+          ["Header", "Footer"],
           "Example",
           ["Button", "Page", "Header"],
           "*",
