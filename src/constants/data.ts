@@ -85,7 +85,7 @@ export const menuItems: MenuItemType[] = [
     child: [
       {
         childtitle: "공통코드",
-        childlink: "dashboard",
+        childlink: "code/common",
       },
     ],
   },
