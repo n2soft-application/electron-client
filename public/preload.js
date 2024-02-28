@@ -5,6 +5,7 @@ process.once("loaded", () => {
 });
 
 contextBridge.exposeInMainWorld("electron", {
+  isMac: process.platform === "darwin",
   ipcRenderer: {
     sendMessage(channel, args) {
       ipcRenderer.send(channel, args);
