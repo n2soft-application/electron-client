@@ -3,8 +3,6 @@ stages:
   - Upload
   - Release
 
-
-
 # BUILD Production
 build_to_production:
   stage: Build
@@ -91,7 +89,7 @@ auto-release-production:
   needs:
     - job: build_to_production
       artifacts: true
-    - job: upload_production
+    - job: upload_to_production
       artifacts: true
   stage: Release
   rules:
