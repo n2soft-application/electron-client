@@ -81,12 +81,13 @@ autoUpdater.autoDownload = true;
 autoUpdater.logger = log;
 autoUpdater.logger.transports.file.level = "info";
 
+// 업데이트가 시작되었는지 확인할 때 발생합니다.
 autoUpdater.on("checking-for-update", () => {
   log.info("checking-for-updatee...");
   sendStatusToWindow("checking-for-update...");
 });
 
-// 업데이트가 가능할 때
+// 사용 가능한 업데이트가 있을 때 발생, 업데이트가 자동으로 다운로드
 autoUpdater.on("update-available", (info) => {
   log.info("update-available...");
   dialog
@@ -104,10 +105,13 @@ autoUpdater.on("update-available", (info) => {
 
   sendStatusToWindow("Update available.");
 });
+// 사용 가능한 업데이트가 없을 때 발생
 autoUpdater.on("update-not-available", (info) => {
   log.info("update-not-available...");
   sendStatusToWindow("Update not available.");
 });
+
+// 업데이트하는 동안 오류가 발생하면 발생
 autoUpdater.on("error", (err) => {
   log.info("error...");
   sendStatusToWindow("Error in auto-updater. " + err);
