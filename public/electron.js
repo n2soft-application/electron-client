@@ -11,9 +11,9 @@ const path = require("path");
 // This logging setup is not required for auto-updates to work,
 // but it sure makes debugging easier :)
 //-------------------------------------------------------------------
-// autoUpdater.logger = log;
-// autoUpdater.logger.transports.file.level = "info";
-// log.info("App starting...");
+autoUpdater.logger = log;
+autoUpdater.logger.transports.file.level = "info";
+log.info("App starting...");
 
 //-------------------------------------------------------------------
 // Open a window that displays the version
@@ -40,7 +40,7 @@ const createWindow = () => {
     height: 1000,
     // transparent: true,
     // frame: false,
-    autoHideMenuBar: true,
+    // autoHideMenuBar: true,
     // show: false,
     // titleBarStyle: 'hiddenInset',
     webPreferences: {
@@ -78,6 +78,17 @@ autoUpdater.on("checking-for-update", () => {
   sendStatusToWindow("Checking for update...");
 });
 autoUpdater.on("update-available", (info) => {
+  dialog.showMessageBox({
+    type: 'info',
+    title: '업데이트 가능',
+    message: '새로운 버전이 있습니다. 다운로드하시겠습니까?',
+    buttons: ['업데이트', '나중에']
+  }).then(result => {
+    if (result.response === 0) {
+      autoUpdater.downloadUpdate();
+    }
+  });
+
   sendStatusToWindow("Update available.");
 });
 autoUpdater.on("update-not-available", (info) => {
@@ -99,6 +110,15 @@ autoUpdater.on("download-progress", (progressObj) => {
   sendStatusToWindow(log_message);
 });
 autoUpdater.on("update-downloaded", (info) => {
+  dialog.showMessageBox({
+    title: '업데이트 설치',
+    message: '업데이트가 다운로드되었습니다. 앱을 재시작하여 업데이트를 적용하시겠습니까?'
+  }).then(result => {
+    if (result.response === 0) {
+      autoUpdater.quitAndInstall();
+    }
+  });
+
   sendStatusToWindow("Update downloaded");
 });
 
@@ -138,6 +158,11 @@ app.whenReady().then(() => {
    */
 
   autoUpdater.checkForUpdatesAndNotify();
+
+  if (process.env.NODE_ENV === 'development') {
+    autoUpdater.checkForUpdates(); // 개발 모드에서 업데이트 검사 강제 실행
+  }
+
 
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) {

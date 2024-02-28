@@ -28,8 +28,11 @@ nsis:
   oneClick: false
   allowToChangeInstallationDirectory: true
 
-publish:
+# publish:
+#   provider: "generic"
+#   url: https://gitlab.com/api/v4/projects/55138560/jobs/artifacts/main/raw/dist?job=build_to_development
+#   channel: "latest"
+
+publich:
   provider: "generic"
-  url: https://gitlab.com/api/v4/projects/55138560/jobs/artifacts/main/raw/dist?job=build
-  channel: "latest"
-  publishAutoUpdate: true
+  url: https://bonjin.co.kr/bonjin/electron/updates
