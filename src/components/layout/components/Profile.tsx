@@ -89,7 +89,9 @@ function Profile() {
     {
       label: "Logout",
       icon: "heroicons-outline:login",
-      action: () => {},
+      action: () => {
+        
+      },
     },
   ];
   return (

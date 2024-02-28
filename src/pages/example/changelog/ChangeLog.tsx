@@ -1,7 +1,7 @@
 import { Disclosure } from "@headlessui/react";
-import Badge from "../../components/badge/Badge";
-import Card from "../../components/card/Card";
-import Icon from "../../components/icons/Icon";
+import Badge from "../../../components/badge/Badge";
+import Card from "../../../components/card/Card";
+import Icon from "../../../components/icons/Icon";
 
 const items: {
   version: string;

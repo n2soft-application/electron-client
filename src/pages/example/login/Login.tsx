@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import useDarkMode from "../../hooks/layout/useDarkMode";
+import useDarkMode from "../../../hooks/layout/useDarkMode";
 
-import Illustration from "../../assets/images/auth/ils1.svg";
-import LogoWhite from "../../assets/images/logo/logo-white.svg";
-import Logo from "../../assets/images/logo/logo.svg";
+import Illustration from "../../../assets/images/auth/ils1.svg";
+import LogoWhite from "../../../assets/images/logo/logo-white.svg";
+import Logo from "../../../assets/images/logo/logo.svg";
 import Social from "./components/Social";
 
 function Login() {

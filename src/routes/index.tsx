@@ -6,14 +6,15 @@ import Loading from "../components/loading/Loading";
 
 // Pages
 const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
-const Login = lazy(() => import("../pages/auth/Login"));
-const ChangeLog = lazy(() => import("../pages/changelog/ChangeLog"));
+const Login = lazy(() => import("../pages/example/login/Login"));
+const ChangeLog = lazy(() => import("../pages/example/changelog/ChangeLog"));
 
 // Error pages
 const Error404 = lazy(() => import("../pages/error/Error404"));
 
 // Example Pages
 const IconsPage = lazy(() => import("../pages/example/icon/IconsPage"));
+const ChatPage = lazy(() => import("../pages/example/chat/ChatPage"));
 
 const AppRouter = () => {
   return (
@@ -27,6 +28,7 @@ const AppRouter = () => {
 
         {/* Example */}
         <Route path="icons" element={<IconsPage />} />
+        <Route path="chat" element={<ChatPage />} />
 
         <Route path="*" element={<Navigate replace={true} to="/404" />} />
       </Route>

@@ -4,6 +4,14 @@ process.once("loaded", () => {
   window.ipcRenderer = ipcRenderer;
 });
 
+contextBridge.exposeInMainWorld("electron", {
+  ipcRenderer: {
+    sendMessage(channel, args) {
+      ipcRenderer.send(channel, args);
+    },
+  },
+});
+
 contextBridge.exposeInMainWorld("versions", {
   node: () => process.versions.node,
   chrome: () => process.versions.chrome,

@@ -1,8 +1,8 @@
 
-import FaceBook from "../../../assets/images/icon/fb.svg";
-import Google from "../../../assets/images/icon/gp.svg";
-import LinkedIn from "../../../assets/images/icon/in.svg";
-import Twitter from "../../../assets/images/icon/tw.svg";
+import FaceBook from "../../../../assets/images/icon/fb.svg";
+import Google from "../../../../assets/images/icon/gp.svg";
+import LinkedIn from "../../../../assets/images/icon/in.svg";
+import Twitter from "../../../../assets/images/icon/tw.svg";
 
 function Social() {
     return (

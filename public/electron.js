@@ -40,9 +40,12 @@ const createWindow = () => {
     height: 1000,
     // transparent: true,
     // frame: false,
+    autoHideMenuBar: true,
+    // show: false,
     // titleBarStyle: 'hiddenInset',
     webPreferences: {
       nodeIntegration: true,
+      contextIsolation: true, // 이 옵션을 true로 유지하는 것이 좋습니다.
       preload: path.join(__dirname, "preload.js"),
     },
   });
@@ -60,7 +63,6 @@ const createWindow = () => {
     win = null;
   });
 };
-
 
 ///////////////////
 // Auto upadater //
@@ -111,9 +113,29 @@ autoUpdater.on("update-downloaded", (info) => {
 // app quits.
 //-------------------------------------------------------------------
 app.whenReady().then(() => {
+  createWindow();
+
   ipcMain.handle("ping", () => "pong");
 
-  createWindow();
+  /**
+   * TitleBar Event [START]
+   */
+  ipcMain.on("minimizeApp", () => {
+    win?.minimize();
+  });
+  ipcMain.on("maximizeApp", () => {
+    if (win?.isMaximized()) {
+      win?.unmaximize();
+    } else {
+      win?.maximize();
+    }
+  });
+  ipcMain.on("closeApp", () => {
+    win?.close();
+  });
+  /**
+   * TitleBar Event [END]
+   */
 
   autoUpdater.checkForUpdatesAndNotify();
 
