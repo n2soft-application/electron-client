@@ -65,6 +65,48 @@ export type MenuItemChildMultiType = {
 export const menuItems: MenuItemType[] = [
   {
     isHeadr: true,
+    title: "시스템",
+  },
+  {
+    title: "메뉴관리",
+    icon: "heroicons-outline:bars-4",
+    isHide: true,
+    child: [
+      {
+        childtitle: "메뉴관리",
+        childlink: "dashboard",
+      },
+    ],
+  },
+  {
+    title: "코드관리",
+    icon: "heroicons:chevron-up-down",
+    isHide: true,
+    child: [
+      {
+        childtitle: "공통코드",
+        childlink: "dashboard",
+      },
+    ],
+  },
+  {
+    title: "사용자관리",
+    icon: "heroicons-outline:user",
+    isHide: true,
+    child: [
+      {
+        childtitle: "팀(파트)",
+        childlink: "dashboard",
+      },
+      {
+        childtitle: "사용자",
+        childlink: "dashboard",
+      },
+    ],
+  },
+
+  {
+    isHeadr: true,
     title: "menu",
   },
 
