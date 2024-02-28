@@ -41,8 +41,8 @@ const createWindow = () => {
     show: false,
     minWidth: 1200,
     minHeight: 800,
-    width: 1800,
-    height: 1000,
+    width: 1200,
+    height: 800,
     // transparent: true,
     // frame: false,
     autoHideMenuBar: true,
@@ -77,7 +77,7 @@ autoUpdater.requestHeaders = {
   "PRIVATE-TOKEN": "glpat-Z5uzB67taSze-WLbV6DG",
   "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
 };
-autoUpdater.autoDownload = true;
+autoUpdater.autoDownload = false;
 autoUpdater.logger = log;
 autoUpdater.logger.transports.file.level = "info";
 
