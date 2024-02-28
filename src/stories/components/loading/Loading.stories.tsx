@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Checkbox from "../../../components/checkbox/Checkbox";
 import Loading from "../../../components/loading/Loading";
 import { RecoilRoot } from "recoil";
 
@@ -23,7 +22,7 @@ const meta = {
       </RecoilRoot>
     ),
   ],
-} satisfies Meta<typeof Checkbox>;
+} satisfies Meta<typeof Loading>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
