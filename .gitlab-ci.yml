@@ -54,7 +54,7 @@ variables:
   PACKAGE_REGISTRY_URL: '${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${APPNAME}/${VERSION}'
   PACKAGE_REGISTRY_URL_YML: '${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${APPNAME}'
 
-upload_production:
+upload_to_production:
   stage: Upload
   needs:
     - job: build_to_production
@@ -70,7 +70,7 @@ upload_production:
     - echo "${PACKAGE_REGISTRY_URL}/latest.yml"
     # - echo "${PACKAGE_REGISTRY_URL_YML}/latest.yml"
 
-upload_development:
+upload_to_development:
   stage: Upload
   needs:
     - job: build_to_development
@@ -89,7 +89,7 @@ upload_development:
 auto-release-production:
   image: registry.gitlab.com/gitlab-org/release-cli
   needs:
-    - job: build_production
+    - job: build_to_production
       artifacts: true
     - job: upload_production
       artifacts: true
@@ -109,9 +109,9 @@ auto-release-production:
 auto-release-development:
   image: registry.gitlab.com/gitlab-org/release-cli
   needs:
-    - job: build_development
+    - job: build_to_development
       artifacts: true
-    - job: upload_development
+    - job: upload_to_development
       artifacts: true
   stage: Release
   rules:
