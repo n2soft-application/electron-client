@@ -74,7 +74,7 @@ export const menuItems: MenuItemType[] = [
     child: [
       {
         childtitle: "메뉴관리",
-        childlink: "dashboard",
+        childlink: "menu/default",
       },
     ],
   },
@@ -96,11 +96,11 @@ export const menuItems: MenuItemType[] = [
     child: [
       {
         childtitle: "팀(파트)",
-        childlink: "dashboard",
+        childlink: "person/team",
       },
       {
         childtitle: "사용자",
-        childlink: "dashboard",
+        childlink: "person/default",
       },
     ],
   },
