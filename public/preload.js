@@ -10,6 +10,11 @@ contextBridge.exposeInMainWorld("electron", {
     sendMessage(channel, args) {
       ipcRenderer.send(channel, args);
     },
+    on(channel, func) {
+      const subscription = (event, ...args) => func(...args);
+      ipcRenderer.on(channel, subscription);
+      return () => ipcRenderer.removeListener(channel, subscription);
+    },
   },
 });
 

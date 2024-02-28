@@ -75,7 +75,8 @@ const createWindow = () => {
 app.commandLine.appendSwitch("disable-http2");
 autoUpdater.requestHeaders = {
   "PRIVATE-TOKEN": "glpat-Z5uzB67taSze-WLbV6DG",
-  "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
+  "Cache-Control":
+    "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
 };
 autoUpdater.autoDownload = false;
 autoUpdater.logger = log;
@@ -148,6 +149,35 @@ autoUpdater.on("update-downloaded", (info) => {
   sendStatusToWindow("Update downloaded");
 });
 
+/**
+ * TitleBar Event [START]
+ */
+ipcMain.on("minimizeApp", () => {
+  win?.minimize();
+});
+ipcMain.on("maximizeApp", () => {
+  if (win?.isMaximized()) {
+    win?.unmaximize();
+  } else {
+    win?.maximize();
+  }
+});
+ipcMain.on("closeApp", () => {
+  win?.close();
+});
+/**
+ * TitleBar Event [END]
+ */
+
+/**
+ * AppVersion [START]
+ */
+ipcMain.on("app-version", async (event) => {
+  event.reply("app-version", app.getVersion());
+});
+/**
+ * AppVersion [END]
+ */
 //
 // CHOOSE one of the following options for Auto updates
 //
@@ -162,26 +192,6 @@ app.whenReady().then(() => {
   createWindow();
 
   ipcMain.handle("ping", () => "pong");
-
-  /**
-   * TitleBar Event [START]
-   */
-  ipcMain.on("minimizeApp", () => {
-    win?.minimize();
-  });
-  ipcMain.on("maximizeApp", () => {
-    if (win?.isMaximized()) {
-      win?.unmaximize();
-    } else {
-      win?.maximize();
-    }
-  });
-  ipcMain.on("closeApp", () => {
-    win?.close();
-  });
-  /**
-   * TitleBar Event [END]
-   */
 
   autoUpdater.checkForUpdatesAndNotify();
 
