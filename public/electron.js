@@ -3,6 +3,13 @@ const { autoUpdater } = require("electron-updater");
 const log = require("electron-log");
 const path = require("path");
 
+// Local Update TEST
+Object.defineProperty(app, "isPackaged", {
+  get() {
+    return true;
+  },
+});
+
 //-------------------------------------------------------------------
 // Logging
 //
@@ -11,8 +18,7 @@ const path = require("path");
 // This logging setup is not required for auto-updates to work,
 // but it sure makes debugging easier :)
 //-------------------------------------------------------------------
-autoUpdater.logger = log;
-autoUpdater.logger.transports.file.level = "info";
+
 log.info("App starting...");
 
 //-------------------------------------------------------------------
@@ -67,27 +73,31 @@ const createWindow = () => {
 ///////////////////
 // Auto upadater //
 ///////////////////
-autoUpdater.requestHeaders = { "PRIVATE-TOKEN": "glpat-Z5uzB67taSze-WLbV6DG" };
+app.commandLine.appendSwitch("disable-http2");
+autoUpdater.requestHeaders = {
+  "PRIVATE-TOKEN": "glpat-Z5uzB67taSze-WLbV6DG",
+  "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
+};
 autoUpdater.autoDownload = true;
-
-autoUpdater.setFeedURL(
-  "https://gitlab.com/api/v4/projects/55138560/jobs/artifacts/main/raw/dist?job=build"
-);
+autoUpdater.logger = log;
+autoUpdater.logger.transports.file.level = "info";
 
 autoUpdater.on("checking-for-update", () => {
   sendStatusToWindow("Checking for update...");
 });
 autoUpdater.on("update-available", (info) => {
-  dialog.showMessageBox({
-    type: 'info',
-    title: '업데이트 가능',
-    message: '새로운 버전이 있습니다. 다운로드하시겠습니까?',
-    buttons: ['업데이트', '나중에']
-  }).then(result => {
-    if (result.response === 0) {
-      autoUpdater.downloadUpdate();
-    }
-  });
+  dialog
+    .showMessageBox({
+      type: "info",
+      title: "업데이트 가능",
+      message: "새로운 버전이 있습니다. 다운로드하시겠습니까?",
+      buttons: ["업데이트", "나중에"],
+    })
+    .then((result) => {
+      if (result.response === 0) {
+        autoUpdater.downloadUpdate();
+      }
+    });
 
   sendStatusToWindow("Update available.");
 });
@@ -110,14 +120,17 @@ autoUpdater.on("download-progress", (progressObj) => {
   sendStatusToWindow(log_message);
 });
 autoUpdater.on("update-downloaded", (info) => {
-  dialog.showMessageBox({
-    title: '업데이트 설치',
-    message: '업데이트가 다운로드되었습니다. 앱을 재시작하여 업데이트를 적용하시겠습니까?'
-  }).then(result => {
-    if (result.response === 0) {
-      autoUpdater.quitAndInstall();
-    }
-  });
+  dialog
+    .showMessageBox({
+      title: "업데이트 설치",
+      message:
+        "업데이트가 다운로드되었습니다. 앱을 재시작하여 업데이트를 적용하시겠습니까?",
+    })
+    .then((result) => {
+      if (result.response === 0) {
+        autoUpdater.quitAndInstall();
+      }
+    });
 
   sendStatusToWindow("Update downloaded");
 });
@@ -159,10 +172,9 @@ app.whenReady().then(() => {
 
   autoUpdater.checkForUpdatesAndNotify();
 
-  if (process.env.NODE_ENV === 'development') {
-    autoUpdater.checkForUpdates(); // 개발 모드에서 업데이트 검사 강제 실행
+  if (process.env.NODE_ENV === "development") {
+    // autoUpdater.checkForUpdates(); // 개발 모드에서 업데이트 검사 강제 실행
   }
-
 
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) {
