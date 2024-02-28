@@ -18,7 +18,6 @@ Object.defineProperty(app, "isPackaged", {
 // This logging setup is not required for auto-updates to work,
 // but it sure makes debugging easier :)
 //-------------------------------------------------------------------
-
 log.info("App starting...");
 
 //-------------------------------------------------------------------
@@ -76,16 +75,20 @@ const createWindow = () => {
 app.commandLine.appendSwitch("disable-http2");
 autoUpdater.requestHeaders = {
   "PRIVATE-TOKEN": "glpat-Z5uzB67taSze-WLbV6DG",
-  "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
+  // "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
 };
 autoUpdater.autoDownload = true;
 autoUpdater.logger = log;
 autoUpdater.logger.transports.file.level = "info";
 
 autoUpdater.on("checking-for-update", () => {
-  sendStatusToWindow("Checking for update...");
+  log.info("checking-for-updatee...");
+  sendStatusToWindow("checking-for-update...");
 });
+
+// 업데이트가 가능할 때
 autoUpdater.on("update-available", (info) => {
+  log.info("update-available...");
   dialog
     .showMessageBox({
       type: "info",
@@ -102,12 +105,15 @@ autoUpdater.on("update-available", (info) => {
   sendStatusToWindow("Update available.");
 });
 autoUpdater.on("update-not-available", (info) => {
+  log.info("update-not-available...");
   sendStatusToWindow("Update not available.");
 });
 autoUpdater.on("error", (err) => {
+  log.info("error...");
   sendStatusToWindow("Error in auto-updater. " + err);
 });
 autoUpdater.on("download-progress", (progressObj) => {
+  log.info("download-progress...");
   let log_message = "Download speed: " + progressObj.bytesPerSecond;
   log_message = log_message + " - Downloaded " + progressObj.percent + "%";
   log_message =
@@ -119,7 +125,10 @@ autoUpdater.on("download-progress", (progressObj) => {
     ")";
   sendStatusToWindow(log_message);
 });
+
+// 업데이트 다운로드 완료
 autoUpdater.on("update-downloaded", (info) => {
+  log.info("update-downloaded...");
   dialog
     .showMessageBox({
       title: "업데이트 설치",
