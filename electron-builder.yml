@@ -25,8 +25,14 @@ win:
 
 # Config for the windows installer
 nsis:
+  # 원클릭 설치 여부
   oneClick: false
+  # 모든 사용자용 설치 여부
+  perMachine: false
+  # 실치 경로 변경 여부
   allowToChangeInstallationDirectory: true
+  # 바탕화면에 바로가기 아이콘 생성
+  createDesktopShortcut: true
 
 publish:
   provider: "generic"

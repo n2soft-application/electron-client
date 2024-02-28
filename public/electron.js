@@ -45,7 +45,7 @@ const createWindow = () => {
     height: 1000,
     // transparent: true,
     // frame: false,
-    // autoHideMenuBar: true,
+    autoHideMenuBar: true,
     // show: false,
     // titleBarStyle: 'hiddenInset',
     webPreferences: {
