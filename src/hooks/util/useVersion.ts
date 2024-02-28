@@ -4,7 +4,7 @@ function useVersion() {
   const [appVersion, setAppVersion] = useState("0.0.0");
 
   useEffect(() => {
-    window.electron?.ipcRenderer.once("app-version", (arg) => {
+    window.electron?.ipcRenderer.on("app-version", (arg) => {
       setAppVersion(arg as string);
     });
 

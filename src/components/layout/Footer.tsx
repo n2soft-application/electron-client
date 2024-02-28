@@ -1,10 +1,12 @@
 import useFooterType from "../../hooks/layout/useFooterType";
+import useVersion from "../../hooks/util/useVersion";
 
 type Props = {
   className?: string | undefined;
 };
 
 function Footer({ className = "custom-class" }: Props) {
+  const [appVersion] = useVersion();
   const [footerType] = useFooterType();
 
   const footerclassName = () => {
@@ -32,8 +34,9 @@ function Footer({ className = "custom-class" }: Props) {
               target="_blank"
               className="font-semibold text-primary-500"
             >
-              THE NEXT
+             THE NEXT
             </a>
+            <span>{" v"}{appVersion}</span>
           </div>
         </div>
       </div>

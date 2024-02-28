@@ -3,6 +3,8 @@ const { autoUpdater } = require("electron-updater");
 const log = require("electron-log");
 const path = require("path");
 
+
+
 // Local Update TEST
 Object.defineProperty(app, "isPackaged", {
   get() {
@@ -149,6 +151,24 @@ autoUpdater.on("update-downloaded", (info) => {
   sendStatusToWindow("Update downloaded");
 });
 
+// Check for an update 10sec after Program Starts
+setTimeout(function () {
+  sendStatusToWindow('We are checking for updates and notifying user...')
+  autoUpdater.checkForUpdatesAndNotify()
+}, 10000)
+
+// Check for an update every 2min.
+setInterval(function () {
+  sendStatusToWindow('We are checking for updates and notifying user...')
+  autoUpdater.checkForUpdatesAndNotify()
+}, 120000)
+
+
+ipcMain.on('restart_app', () => {
+  sendStatusToWindow('In onRestart_App')
+  autoUpdater.quitAndInstall()
+})
+
 /**
  * TitleBar Event [START]
  */
@@ -238,4 +258,13 @@ app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
     app.quit();
   }
+});
+
+
+/**
+ * 전역 예외 핸들러 설정
+ */
+process.on('uncaughtException', (error) => {
+  console.error('전역 예외 발생:', error);
+  // 필요한 오류 처리 로직을 여기에 추가
 });

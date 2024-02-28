@@ -11,7 +11,7 @@ files:
 
 # Mac OS configuration
 # mac:
-  # icon: "./public/assets/icons/icon.png"
+# icon: "./public/assets/icons/icon.png"
 
 # Config for OSX dmg
 # dmg:
@@ -28,11 +28,15 @@ nsis:
   # 원클릭 설치 여부
   oneClick: false
   # 모든 사용자용 설치 여부
-  perMachine: false
+  perMachine: true
   # 실치 경로 변경 여부
   allowToChangeInstallationDirectory: true
-  # 바탕화면에 바로가기 아이콘 생성
+  # 바탕화면 바로가기 아이콘 생성
   createDesktopShortcut: true
+  # 바탕화면 바로가기 아이콘 이름
+  shortcutName: "THE NEXT"
+  # 인스톨러 언어
+  language: 1042
 
 publish:
   provider: "generic"
