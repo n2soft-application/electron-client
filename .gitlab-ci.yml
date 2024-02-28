@@ -3,6 +3,12 @@ stages:
   - Upload
   - Release
 
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - .yarn/cache
+    - node_modules/
+
 # BUILD Production
 build_to_production:
   stage: Build
