@@ -67,6 +67,26 @@
     "wait-on": "^7.2.0",
     "webpack": "^5.90.1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/bonjin/the_next/electron-client.git",
+    "release": "latest"
+  },
+  "build": {
+    "appId": "kr.co.bonjin.electron",
+    "artifactName": "${productName}-${version}.${ext}",
+    "publish": {
+      "provider": "generic",
+      "url": "https://gitlab.com/api/v4/projects/55138560/jobs/artifacts/develop/raw/dist?job=build_to_development",
+      "channel": "latest"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "verifyUpdateCodeSignature": false
+    }
+  },
   "scripts": {
     "start": "concurrently \"npm run react:start\" \"npm run electron:start\"",
     "electron:start": "wait-on tcp:127.0.0.1:3000 && mode=dev electron .",
@@ -77,7 +97,7 @@
     "dist:mac64": "electron-builder -m --x64 --arm64 --publish always",
     "dist:win32": "electron-builder --win --ia32",
     "dist:win64": "electron-builder --win --x64",
-    "dist:win": "CI=false react-scripts build && electron-builder --win --config ./electron-builder.yml",
+    "dist:win": "CI=false react-scripts build && electron-builder --win --publish always",
     "build:start": "electron-forge start",
     "build:package": "electron-forge package",
     "build:make": "electron-forge make",

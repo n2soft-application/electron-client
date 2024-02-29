@@ -3,8 +3,6 @@ const { autoUpdater } = require("electron-updater");
 const log = require("electron-log");
 const path = require("path");
 
-
-
 // Local Update TEST
 Object.defineProperty(app, "isPackaged", {
   get() {
@@ -80,7 +78,7 @@ autoUpdater.requestHeaders = {
   "Cache-Control":
     "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
 };
-autoUpdater.autoDownload = false;
+autoUpdater.autoDownload = true;
 autoUpdater.logger = log;
 autoUpdater.logger.transports.file.level = "info";
 
@@ -94,7 +92,7 @@ autoUpdater.on("checking-for-update", () => {
 autoUpdater.on("update-available", (info) => {
   log.info("update-available...");
   dialog
-    .showMessageBox({
+    .showMessageBox(win, {
       type: "info",
       title: "업데이트 가능",
       message: "새로운 버전이 있습니다. 다운로드하시겠습니까?",
@@ -112,6 +110,12 @@ autoUpdater.on("update-available", (info) => {
 autoUpdater.on("update-not-available", (info) => {
   log.info("update-not-available...");
   sendStatusToWindow("Update not available.");
+
+  dialog.showMessageBox(win, {
+    type: "info",
+    buttons: ["확인"],
+    message: "현재 사용 가능한 업데이트가 없습니다.",
+  });
 });
 
 // 업데이트하는 동안 오류가 발생하면 발생
@@ -130,44 +134,52 @@ autoUpdater.on("download-progress", (progressObj) => {
     "/" +
     progressObj.total +
     ")";
+  og.info("download-progress...", log_message);
   sendStatusToWindow(log_message);
 });
 
 // 업데이트 다운로드 완료
 autoUpdater.on("update-downloaded", (info) => {
   log.info("update-downloaded...");
+  sendStatusToWindow("Update downloaded");
+
   dialog
-    .showMessageBox({
+    .showMessageBox(win, {
+      type: "question",
       title: "업데이트 설치",
+      defaultId: 0,
       message:
         "업데이트가 다운로드되었습니다. 앱을 재시작하여 업데이트를 적용하시겠습니까?",
     })
     .then((result) => {
       if (result.response === 0) {
+        sendStatusToWindow("Installing update...");
         autoUpdater.quitAndInstall();
+      } else {
+        sendStatusToWindow("Update postponed.");
       }
+    })
+    .catch((err) => {
+      sendStatusToWindow("Update error: " + err.message);
     });
-
-  sendStatusToWindow("Update downloaded");
 });
 
 // Check for an update 10sec after Program Starts
-setTimeout(function () {
-  sendStatusToWindow('We are checking for updates and notifying user...')
-  autoUpdater.checkForUpdatesAndNotify()
-}, 10000)
+// setTimeout(function () {
+//   sendStatusToWindow("We are checking for updates and notifying user...");
+//   autoUpdater.checkForUpdatesAndNotify();
+// }, 10000);
 
 // Check for an update every 2min.
-setInterval(function () {
-  sendStatusToWindow('We are checking for updates and notifying user...')
-  autoUpdater.checkForUpdatesAndNotify()
-}, 120000)
+// setInterval(function () {
+//   sendStatusToWindow("We are checking for updates and notifying user...");
+//   autoUpdater.checkForUpdatesAndNotify();
+// }, 120000);
 
-
-ipcMain.on('restart_app', () => {
-  sendStatusToWindow('In onRestart_App')
-  autoUpdater.quitAndInstall()
-})
+ipcMain.on("restart_app", () => {
+  sendStatusToWindow("In onRestart_App");
+  autoUpdater.quitAndInstall();
+});
 
 /**
  * TitleBar Event [START]
@@ -192,16 +204,16 @@ ipcMain.on("closeApp", () => {
 /**
  * AppVersion [START]
  */
-ipcMain.on("app-version", async (event) => {
+ipcMain.on("app-version", (event) => {
   event.reply("app-version", app.getVersion());
 });
 /**
  * AppVersion [END]
  */
+
 //
 // CHOOSE one of the following options for Auto updates
 //
-
 //-------------------------------------------------------------------
 // Auto updates - Option 1 - Simplest version
 //
@@ -213,7 +225,8 @@ app.whenReady().then(() => {
 
   ipcMain.handle("ping", () => "pong");
 
-  autoUpdater.checkForUpdatesAndNotify();
+  // autoUpdater.checkForUpdatesAndNotify();
+  autoUpdater.checkForUpdates();
 
   if (process.env.NODE_ENV === "development") {
     // autoUpdater.checkForUpdates(); // 개발 모드에서 업데이트 검사 강제 실행
@@ -260,11 +273,10 @@ app.on("window-all-closed", () => {
   }
 });
 
-
 /**
  * 전역 예외 핸들러 설정
  */
-process.on('uncaughtException', (error) => {
-  console.error('전역 예외 발생:', error);
+process.on("uncaughtException", (error) => {
+  console.error("전역 예외 발생:", error);
   // 필요한 오류 처리 로직을 여기에 추가
 });

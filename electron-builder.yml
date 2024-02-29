@@ -1,6 +1,5 @@
 appId: "kr.co.bonjin.electron"
 artifactName: "${productName}-${version}.${ext}"
-productName: "the-next"
 directories:
   output: "dist"
 files:
