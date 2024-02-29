@@ -5,6 +5,7 @@
   "main": "public/electron.js",
   "homepage": "./",
   "copyright": "Copyright ⓒ 2024. THE NEXT inc. all rights reserved.",
+  "author": "THE NEXT TEAM",
   "dependencies": {
     "@headlessui/react": "^1.7.18",
     "@iconify/types": "^2.0.0",
@@ -86,6 +87,14 @@
       "node_modules/**/*",
       "package.json"
     ],
+    "mac": {
+      "target": [
+        "default"
+      ]
+    },
+    "dmg": {
+      "title": "THE NEXT"
+    },
     "win": {
       "target": [
         "nsis"
