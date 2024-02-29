@@ -11,6 +11,14 @@ jobs:
         os: [windows-latest]
 
     steps:
+      - name: Context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
+      - name: Verify Upload Url
+        run: echo ${{ github.event.client_payload }}
+
       - name: Checkout git repo
         uses: actions/checkout@v3
 
@@ -34,4 +42,4 @@ jobs:
           # This is used for uploading release assets to github
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          yarn exec electron-builder -- --publish always --win
+          yarn dist:win
