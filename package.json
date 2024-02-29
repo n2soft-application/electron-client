@@ -87,8 +87,9 @@
       "verifyUpdateCodeSignature": false
     },
     "nsis": {
-      "onClick": false,
-      "perMachine": true
+      "oneClick": false,
+      "perMachine": true,
+      "shortcutName": "THE NEXT"
     }
   },
   "scripts": {
