@@ -79,9 +79,6 @@
     "publish": {
       "provider": "github"
     },
-    "directories": {
-      "output": "dist"
-    },
     "files": [
       "dist/**/*",
       "node_modules/**/*",
@@ -90,10 +87,12 @@
     "mac": {
       "target": [
         "default"
-      ]
+      ],
+      "icon": "./src/assets/icons/icon.ico"
     },
     "dmg": {
-      "title": "THE NEXT"
+      "title": "THE NEXT",
+      "icon": "./src/assets/icons/icon.ico"
     },
     "win": {
       "target": [
@@ -106,6 +105,19 @@
       "oneClick": false,
       "perMachine": true,
       "shortcutName": "THE NEXT"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm",
+        "zip",
+        "tar.gz"
+      ],
+      "icon": "./resources/linuxicon"
+    },
+    "directories": {
+      "output": "dist"
     }
   },
   "scripts": {
