@@ -45,7 +45,7 @@ const preview: Preview = {
           "Components",
           ["Badge", "Checkbox", "Loading", "Tooltip", "Dropdown", "Card"],
           "Layout",
-          ["Header", "Footer"],
+          ["Header", "Footer", "Sidebar"],
           "Example",
           ["Button", "Page", "Header"],
           "*",
