@@ -41,6 +41,8 @@ jobs:
           yarn install
 
       - name: Publish releases
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           $env:CI = "false"
           yarn react-scripts build
