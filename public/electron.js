@@ -60,8 +60,7 @@ const createWindow = () => {
     win.webContents.openDevTools();
   } else {
     // win.loadURL(`file://${path.join(__dirname, '../build/index.html')}`)
-    // win.loadFile(path.join(__dirname, "../build/index.html"));
-    win.loadFile(path.join(__dirname, "../build/version.html"));
+    win.loadFile(path.join(__dirname, "../build/index.html"));
   }
 
   win.once("ready-to-show", () => win.show());
@@ -83,16 +82,39 @@ autoUpdater.autoDownload = true;
 autoUpdater.logger = log;
 autoUpdater.logger.transports.file.level = "info";
 
-sendStatusToWindow(autoUpdater)
+// 사용 가능한 업데이트가 있을 때 발생, 업데이트가 자동으로 다운로드
+autoUpdater.on("update-available", (info) => {
+  log.info("update-available...");
+  dialog
+    .showMessageBox(win, {
+      type: "info",
+      title: "업데이트 가능",
+      message: "새로운 버전이 있습니다. 다운로드하시겠습니까?",
+      buttons: ["업데이트", "나중에"],
+    })
+    .then((result) => {
+      if (result.response === 0) {
+        autoUpdater.downloadUpdate();
+      }
+    });
 
-autoUpdater.on('update-available', () => {
-  sendStatusToWindow('An Update is available....')
-  mainWindow.webContents.send('update_available')
-})
+  sendStatusToWindow("Update available.");
+});
 
 autoUpdater.on('update-downloaded', () => {
+  log.info("update-downloaded...");
   sendStatusToWindow('Update has been downloaded....')
-  mainWindow.webContents.send('update_downloaded')
+
+  dialog
+    .showMessageBox({
+      title: "업데이트 설치",
+      message: "업데이트가 다운로드되었습니다. 앱을 재시작하여 업데이트를 적용하시겠습니까?",
+    })
+    .then((result) => {
+      if (result.response === 0) {
+        autoUpdater.quitAndInstall();
+      }
+    });
 })
 
 ipcMain.on('restart_app', () => {
@@ -100,18 +122,35 @@ ipcMain.on('restart_app', () => {
   autoUpdater.quitAndInstall()
 })
 
-autoUpdater.on('checking-for-update', function () {
-  sendStatusToWindow('Checking for update...')
-})
+// 업데이트가 시작되었는지 확인할 때 발생합니다.
+autoUpdater.on("checking-for-update", () => {
+  log.info("checking-for-updatee...");
+  sendStatusToWindow("checking-for-update...");
+});
 
-autoUpdater.on('update-not-available', function (info) {
-  sendStatusToWindow('Update not available.')
-})
+// 사용 가능한 업데이트가 없을 때 발생
+autoUpdater.on("update-not-available", (info) => {
+  log.info("update-not-available...");
+  sendStatusToWindow("Update not available.");
 
-autoUpdater.on('error', function (err) {
-  sendStatusToWindow('We have an error in auto-updater: ')
-  sendStatusToWindow(String(err))
-})
+  dialog.showMessageBox(win, {
+    type: "info",
+    buttons: ["확인"],
+    message: "현재 사용 가능한 업데이트가 없습니다.",
+  });
+});
+
+// 업데이트하는 동안 오류가 발생하면 발생
+autoUpdater.on("error", (err) => {
+  log.info("error...");
+  sendStatusToWindow("Error in auto-updater. " + err);
+
+  dialog.showMessageBox(win, {
+    type: "error",
+    buttons: ["확인"],
+    message: "Error in auto-updater. " + err,
+  });
+});
 
 autoUpdater.on('download-progress', function (progressObj) {
   let log_message = 'Download speed: ' + progressObj.bytesPerSecond
@@ -123,16 +162,16 @@ autoUpdater.on('download-progress', function (progressObj) {
 })
 
 // Check for an update 10sec after Program Starts
-setTimeout(function () {
-  sendStatusToWindow('We are checking for updates and notifying user...')
-  autoUpdater.checkForUpdatesAndNotify()
-}, 10000)
+// setTimeout(function () {
+//   sendStatusToWindow('We are checking for updates and notifying user...')
+//   autoUpdater.checkForUpdatesAndNotify()
+// }, 10000)
 
 // Check for an update every 2min.
-setInterval(function () {
-  sendStatusToWindow('We are checking for updates and notifying user...')
-  autoUpdater.checkForUpdatesAndNotify()
-}, 120000)
+// setInterval(function () {
+//   sendStatusToWindow('We are checking for updates and notifying user...')
+//   autoUpdater.checkForUpdatesAndNotify()
+// }, 120000)
 
 function sendStatusToWindow(message) {
   log.info(message)
