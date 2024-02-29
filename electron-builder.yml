@@ -20,6 +20,7 @@ files:
 win:
   target: "nsis"
   verifyUpdateCodeSignature: false
+  icon: "./src/assets/icons/icon.ico"
 
 # Config for the windows installer
 nsis:

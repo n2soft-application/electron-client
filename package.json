@@ -87,16 +87,19 @@
     "mac": {
       "target": [
         "default"
-      ]
+      ],
+      "icon": "./src/assets/icons/icon.ico"
     },
     "dmg": {
-      "title": "THE NEXT"
+      "title": "THE NEXT",
+      "icon": "./src/assets/icons/icon.ico"
     },
     "win": {
       "target": [
         "nsis"
       ],
-      "verifyUpdateCodeSignature": false
+      "verifyUpdateCodeSignature": false,
+      "icon": "./src/assets/icons/icon.ico"
     },
     "nsis": {
       "oneClick": false,
