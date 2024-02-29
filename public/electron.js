@@ -78,7 +78,7 @@ autoUpdater.requestHeaders = {
   "Cache-Control":
     "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
 };
-autoUpdater.autoDownload = true;
+autoUpdater.autoDownload = false;
 autoUpdater.logger = log;
 autoUpdater.logger.transports.file.level = "info";
 
