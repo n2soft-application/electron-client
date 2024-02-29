@@ -45,7 +45,7 @@ const createWindow = () => {
     height: 800,
     // transparent: true,
     // frame: false,
-    autoHideMenuBar: true,
+    // autoHideMenuBar: true,
     // show: false,
     // titleBarStyle: 'hiddenInset',
     webPreferences: {
@@ -83,117 +83,60 @@ autoUpdater.autoDownload = true;
 autoUpdater.logger = log;
 autoUpdater.logger.transports.file.level = "info";
 
-// 업데이트가 시작되었는지 확인할 때 발생합니다.
-autoUpdater.on("checking-for-update", () => {
-  log.info("checking-for-updatee...");
-  sendStatusToWindow("checking-for-update...");
-});
+sendStatusToWindow(autoUpdater)
 
-// 사용 가능한 업데이트가 있을 때 발생, 업데이트가 자동으로 다운로드
-autoUpdater.on("update-available", (info) => {
-  log.info("update-available...");
-  dialog
-    .showMessageBox(win, {
-      type: "info",
-      title: "업데이트 가능",
-      message: "새로운 버전이 있습니다. 다운로드하시겠습니까?",
-      buttons: ["업데이트", "나중에"],
-    })
-    .then((result) => {
-      if (result.response === 0) {
-        autoUpdater.downloadUpdate();
-      }
-    });
+autoUpdater.on('update-available', () => {
+  sendStatusToWindow('An Update is available....')
+  mainWindow.webContents.send('update_available')
+})
 
-  sendStatusToWindow("Update available.");
-});
-// 사용 가능한 업데이트가 없을 때 발생
-autoUpdater.on("update-not-available", (info) => {
-  log.info("update-not-available...");
-  sendStatusToWindow("Update not available.");
+autoUpdater.on('update-downloaded', () => {
+  sendStatusToWindow('Update has been downloaded....')
+  mainWindow.webContents.send('update_downloaded')
+})
 
-  dialog.showMessageBox(win, {
-    type: "info",
-    buttons: ["확인"],
-    message: "현재 사용 가능한 업데이트가 없습니다.",
-  });
-});
+ipcMain.on('restart_app', () => {
+  sendStatusToWindow('In onRestart_App')
+  autoUpdater.quitAndInstall()
+})
 
-// 업데이트하는 동안 오류가 발생하면 발생
-autoUpdater.on("error", (err) => {
-  log.info("error...");
-  sendStatusToWindow("Error in auto-updater. " + err);
+autoUpdater.on('checking-for-update', function () {
+  sendStatusToWindow('Checking for update...')
+})
 
-  dialog.showMessageBox(win, {
-    type: "error",
-    buttons: ["확인"],
-    message: "Error in auto-updater. " + err,
-  });
-});
-autoUpdater.on("download-progress", (progressObj) => {
-  log.info("download-progress...");
+autoUpdater.on('update-not-available', function (info) {
+  sendStatusToWindow('Update not available.')
+})
 
-  dialog.showMessageBox(win, {
-    type: "info",
-    buttons: ["확인"],
-    message: "다운로드 시작...",
-  });
+autoUpdater.on('error', function (err) {
+  sendStatusToWindow('We have an error in auto-updater: ')
+  sendStatusToWindow(String(err))
+})
 
-  let log_message = "Download speed: " + progressObj.bytesPerSecond;
-  log_message = log_message + " - Downloaded " + progressObj.percent + "%";
+autoUpdater.on('download-progress', function (progressObj) {
+  let log_message = 'Download speed: ' + progressObj.bytesPerSecond
   log_message =
-    log_message +
-    " (" +
-    progressObj.transferred +
-    "/" +
-    progressObj.total +
-    ")";
-  og.info("download-progress...", log_message);
-  sendStatusToWindow(log_message);
-});
-
-// 업데이트 다운로드 완료
-autoUpdater.on("update-downloaded", (info) => {
-  log.info("update-downloaded...");
-  sendStatusToWindow("Update downloaded");
-
-  dialog
-    .showMessageBox(win, {
-      type: "question",
-      title: "업데이트 설치",
-      defaultId: 0,
-      message:
-        "업데이트가 다운로드되었습니다. 앱을 재시작하여 업데이트를 적용하시겠습니까?",
-    })
-    .then((result) => {
-      if (result.response === 0) {
-        sendStatusToWindow("Installing update...");
-        autoUpdater.quitAndInstall();
-      } else {
-        sendStatusToWindow("Update postponed.");
-      }
-    })
-    .catch((err) => {
-      sendStatusToWindow("Update error: " + err.message);
-    });
-});
+    log_message + ' - Downloaded ' + parseInt(progressObj.percent) + '%'
+  log_message =
+    log_message + ' (' + progressObj.transferred + '/' + progressObj.total + ')'
+  sendStatusToWindow(log_message)
+})
 
 // Check for an update 10sec after Program Starts
-// setTimeout(function () {
-//   sendStatusToWindow("We are checking for updates and notifying user...");
-//   autoUpdater.checkForUpdatesAndNotify();
-// }, 10000);
+setTimeout(function () {
+  sendStatusToWindow('We are checking for updates and notifying user...')
+  autoUpdater.checkForUpdatesAndNotify()
+}, 10000)
 
 // Check for an update every 2min.
-// setInterval(function () {
-//   sendStatusToWindow("We are checking for updates and notifying user...");
-//   autoUpdater.checkForUpdatesAndNotify();
-// }, 120000);
+setInterval(function () {
+  sendStatusToWindow('We are checking for updates and notifying user...')
+  autoUpdater.checkForUpdatesAndNotify()
+}, 120000)
 
-ipcMain.on("restart_app", () => {
-  sendStatusToWindow("In onRestart_App");
-  autoUpdater.quitAndInstall();
-});
+function sendStatusToWindow(message) {
+  log.info(message)
+}
 
 /**
  * TitleBar Event [START]

@@ -1,6 +1,6 @@
 {
   "name": "the-next",
-  "version": "0.0.4",
+  "version": "0.0.1",
   "private": true,
   "main": "public/electron.js",
   "homepage": "./",
@@ -84,7 +84,8 @@
       "target": [
         "nsis"
       ],
-      "verifyUpdateCodeSignature": false
+      "verifyUpdateCodeSignature": false,
+      "icon": "./src/assets/icons/icon.ico"
     },
     "nsis": {
       "oneClick": false,
