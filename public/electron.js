@@ -78,7 +78,7 @@ autoUpdater.requestHeaders = {
   "Cache-Control":
     "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
 };
-autoUpdater.autoDownload = true;
+autoUpdater.autoDownload = false;
 autoUpdater.logger = log;
 autoUpdater.logger.transports.file.level = "info";
 
@@ -89,12 +89,13 @@ autoUpdater.on("update-available", (info) => {
     .showMessageBox(win, {
       type: "info",
       title: "업데이트 가능",
-      message: "새로운 버전이 있습니다.",
+      message: "새로운 버전이 있습니다. 다운로드하시겠습니까?",
+      buttons: ["업데이트", "나중에"],
     })
     .then((result) => {
-      // if (result.response === 0) {
-      //   autoUpdater.downloadUpdate();
-      // }
+      if (result.response === 0) {
+        autoUpdater.downloadUpdate();
+      }
     });
 
   sendStatusToWindow("Update available.");
