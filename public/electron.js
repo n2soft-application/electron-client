@@ -123,9 +123,22 @@ autoUpdater.on("update-not-available", (info) => {
 autoUpdater.on("error", (err) => {
   log.info("error...");
   sendStatusToWindow("Error in auto-updater. " + err);
+
+  dialog.showMessageBox(win, {
+    type: "error",
+    buttons: ["확인"],
+    message: "Error in auto-updater. " + err,
+  });
 });
 autoUpdater.on("download-progress", (progressObj) => {
   log.info("download-progress...");
+
+  dialog.showMessageBox(win, {
+    type: "info",
+    buttons: ["확인"],
+    message: "다운로드 시작...",
+  });
+
   let log_message = "Download speed: " + progressObj.bytesPerSecond;
   log_message = log_message + " - Downloaded " + progressObj.percent + "%";
   log_message =
