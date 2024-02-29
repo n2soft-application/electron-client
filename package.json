@@ -69,7 +69,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/bonjin/the_next/electron-client.git",
+    "url": "git+git@github.com:n2soft-application/electron-client.git",
     "release": "latest"
   },
   "build": {

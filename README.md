@@ -127,6 +127,11 @@ chmod 400 ~/.ssh/id_rsa
 ```json
 package.json
 
+"repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/bonjin/the_next/electron-client.git",
+    "release": "latest"
+},
 "build": {
     ...
     "publish": {
