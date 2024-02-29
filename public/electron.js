@@ -41,8 +41,8 @@ const createWindow = () => {
     show: false,
     minWidth: 1200,
     minHeight: 800,
-    width: 1200,
-    height: 800,
+    width: 1280,
+    height: 1280,
     // transparent: true,
     // frame: false,
     // autoHideMenuBar: true,
@@ -78,7 +78,7 @@ autoUpdater.requestHeaders = {
   "Cache-Control":
     "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
 };
-autoUpdater.autoDownload = false;
+autoUpdater.autoDownload = true;
 autoUpdater.logger = log;
 autoUpdater.logger.transports.file.level = "info";
 
@@ -89,13 +89,12 @@ autoUpdater.on("update-available", (info) => {
     .showMessageBox(win, {
       type: "info",
       title: "업데이트 가능",
-      message: "새로운 버전이 있습니다. 다운로드하시겠습니까?",
-      buttons: ["업데이트", "나중에"],
+      message: "새로운 버전이 있습니다.",
     })
     .then((result) => {
-      if (result.response === 0) {
-        autoUpdater.downloadUpdate();
-      }
+      // if (result.response === 0) {
+      //   autoUpdater.downloadUpdate();
+      // }
     });
 
   sendStatusToWindow("Update available.");
