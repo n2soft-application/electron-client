@@ -60,7 +60,8 @@ const createWindow = () => {
     win.webContents.openDevTools();
   } else {
     // win.loadURL(`file://${path.join(__dirname, '../build/index.html')}`)
-    win.loadFile(path.join(__dirname, "../build/index.html"));
+    // win.loadFile(path.join(__dirname, "../build/index.html"));
+    win.loadFile(path.join(__dirname, "../build/version.html"));
   }
 
   win.once("ready-to-show", () => win.show());
