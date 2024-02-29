@@ -24,9 +24,6 @@ yarn-error.log*
 
 
 ### Custom Ignore
-# yarn
-yarn.lock
-
 # electron
 out
 dist
