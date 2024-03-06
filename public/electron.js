@@ -29,12 +29,28 @@ log.info("App starting...");
 // for the app to show a window than to have to click "About" to see
 // that updates are working.
 //-------------------------------------------------------------------
+let updateWindow;
 let win;
 
 function sendStatusToWindow(text) {
   log.info(text);
   win.webContents.send("message", text);
 }
+
+const createUpdateWindow = () => {
+  updateWindow = new BrowserWindow({
+    show: false,
+    width: 360,
+    height: 360,
+    frame: false,
+    webPreferences: {
+      nodeIntegration: true,
+    },
+  });
+
+  updateWindow.webContents.openDevTools({ mode: "detach" });
+  updateWindow.loadFile(path.join(__dirname, "../build/version.html"));
+};
 
 const createWindow = () => {
   win = new BrowserWindow({
@@ -55,9 +71,9 @@ const createWindow = () => {
     },
   });
 
-  if (process.env.mode === "dev") {
+  if (process.env.mode !== "dev") {
     win.loadURL("http://localhost:3000");
-    win.webContents.openDevTools();
+    win.webContents.openDevTools({ mode: "detach" });
   } else {
     // win.loadURL(`file://${path.join(__dirname, '../build/index.html')}`)
     win.loadFile(path.join(__dirname, "../build/index.html"));
@@ -101,30 +117,31 @@ autoUpdater.on("update-available", (info) => {
   sendStatusToWindow("Update available.");
 });
 
-autoUpdater.on('update-downloaded', () => {
+autoUpdater.on("update-downloaded", () => {
   log.info("update-downloaded...");
-  sendStatusToWindow('Update has been downloaded....')
+  sendStatusToWindow("Update has been downloaded....");
 
   dialog
     .showMessageBox({
       title: "업데이트 설치",
-      message: "업데이트가 다운로드되었습니다. 앱을 재시작하여 업데이트를 적용하시겠습니까?",
+      message:
+        "업데이트가 다운로드되었습니다. 앱을 재시작하여 업데이트를 적용하시겠습니까?",
     })
     .then((result) => {
       if (result.response === 0) {
         autoUpdater.quitAndInstall();
       }
     });
-})
+});
 
-ipcMain.on('restart_app', () => {
-  sendStatusToWindow('In onRestart_App')
-  autoUpdater.quitAndInstall()
-})
+ipcMain.on("restart_app", () => {
+  sendStatusToWindow("In onRestart_App");
+  autoUpdater.quitAndInstall();
+});
 
 // 업데이트가 시작되었는지 확인할 때 발생합니다.
 autoUpdater.on("checking-for-update", () => {
-  log.info("checking-for-updatee...");
+  log.info("checking-for-update...");
   sendStatusToWindow("checking-for-update...");
 });
 
@@ -133,11 +150,14 @@ autoUpdater.on("update-not-available", (info) => {
   log.info("update-not-available...");
   sendStatusToWindow("Update not available.");
 
-  dialog.showMessageBox(win, {
-    type: "info",
-    buttons: ["확인"],
-    message: "현재 사용 가능한 업데이트가 없습니다.",
-  });
+  updateWindow.close();
+  createWindow();
+
+  // dialog.showMessageBox(win, {
+  //   type: "info",
+  //   buttons: ["확인"],
+  //   message: "현재 사용 가능한 업데이트가 없습니다.",
+  // });
 });
 
 // 업데이트하는 동안 오류가 발생하면 발생
@@ -145,21 +165,29 @@ autoUpdater.on("error", (err) => {
   log.info("error...");
   sendStatusToWindow("Error in auto-updater. " + err);
 
-  dialog.showMessageBox(win, {
-    type: "error",
-    buttons: ["확인"],
-    message: "Error in auto-updater. " + err,
-  });
+  updateWindow.close();
+  createWindow();
+
+  // dialog.showMessageBox(win, {
+  //   type: "error",
+  //   buttons: ["확인"],
+  //   message: "Error in auto-updater. " + err,
+  // });
 });
 
-autoUpdater.on('download-progress', function (progressObj) {
-  let log_message = 'Download speed: ' + progressObj.bytesPerSecond
+autoUpdater.on("download-progress", function (progressObj) {
+  let log_message = "Download speed: " + progressObj.bytesPerSecond;
   log_message =
-    log_message + ' - Downloaded ' + parseInt(progressObj.percent) + '%'
+    log_message + " - Downloaded " + parseInt(progressObj.percent) + "%";
   log_message =
-    log_message + ' (' + progressObj.transferred + '/' + progressObj.total + ')'
-  sendStatusToWindow(log_message)
-})
+    log_message +
+    " (" +
+    progressObj.transferred +
+    "/" +
+    progressObj.total +
+    ")";
+  sendStatusToWindow(log_message);
+});
 
 // Check for an update 10sec after Program Starts
 // setTimeout(function () {
@@ -174,7 +202,7 @@ autoUpdater.on('download-progress', function (progressObj) {
 // }, 120000)
 
 function sendStatusToWindow(message) {
-  log.info(message)
+  log.info(message);
 }
 
 /**
@@ -217,7 +245,7 @@ ipcMain.on("app-version", (event) => {
 // app quits.
 //-------------------------------------------------------------------
 app.whenReady().then(() => {
-  createWindow();
+  createUpdateWindow();
 
   ipcMain.handle("ping", () => "pong");
 
