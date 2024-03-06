@@ -37,7 +37,7 @@ let win;
 
 function sendStatusToWindow(text) {
   log.info(text);
-  win.webContents.send("message", text);
+  win?.webContents.send("message", text);
 }
 
 const createUpdateWindow = () => {
@@ -51,8 +51,8 @@ const createUpdateWindow = () => {
     },
   });
 
-  updateWindow.webContents.openDevTools({ mode: "detach" });
   updateWindow.loadFile(path.join(__dirname, "../build/version.html"));
+  updateWindow.webContents.openDevTools({ mode: "detach" });
 };
 
 const createWindow = () => {
@@ -75,15 +75,15 @@ const createWindow = () => {
   });
 
   if (process.env.mode !== "dev") {
-    win.loadURL("http://localhost:3000");
-    win.webContents.openDevTools({ mode: "detach" });
+    win?.loadURL("http://localhost:3000");
+    win?.webContents.openDevTools({ mode: "detach" });
   } else {
     // win.loadURL(`file://${path.join(__dirname, '../build/index.html')}`)
-    win.loadFile(path.join(__dirname, "../build/index.html"));
+    win?.loadFile(path.join(__dirname, "../build/index.html"));
   }
 
-  win.once("ready-to-show", () => win.show());
-  win.on("closed", () => {
+  win?.once("ready-to-show", () => win?.show());
+  win?.on("closed", () => {
     win = null;
   });
 };
@@ -180,8 +180,7 @@ autoUpdater.on("error", (err) => {
 
 autoUpdater.on("download-progress", function (progressObj) {
   let log_message = "Download speed: " + progressObj.bytesPerSecond;
-  log_message =
-    log_message + " - Downloaded " + progressObj.percent + "%";
+  log_message = log_message + " - Downloaded " + progressObj.percent + "%";
   log_message =
     log_message +
     " (" +
