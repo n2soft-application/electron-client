@@ -171,13 +171,19 @@ storybook 배포
 - CHROMATIC_PROJECT_TOKEN 이름에 chromatic에서 제공한 token 넣고 저장
 - .github/workflows/chromatic.yml 작성
 
+
+</br>
+
 ## 시작 방법
 
 1. clone
 
+
 ```shell
 git clone https://github.com/n2soft-application/electron-client.git
 ```
+
+</br>
 
 2. yarn 설치
 
@@ -185,14 +191,26 @@ git clone https://github.com/n2soft-application/electron-client.git
 brew install yarn
 ```
 
-3. electron 시작
+</br>
 
+3. typescript 설치
+- tsc 명령어를 사용하기 위해 필요합니다.
+
+```shell
+yarn global add typescript
+```
+
+</br>
+
+4. electron 시작
 - :3000 포트를 바라보도록 되어있습니다.
 - 개발 환경에서는 react가 실행된 후 electron으로 실행됩니다.
 
 ```shell
 yarn start
 ```
+
+</br>
 
 ### Builder
 
