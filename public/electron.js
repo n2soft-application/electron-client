@@ -10,6 +10,9 @@ Object.defineProperty(app, "isPackaged", {
   },
 });
 
+//
+log.transports.file.level = "info";
+
 //-------------------------------------------------------------------
 // Logging
 //
@@ -178,7 +181,7 @@ autoUpdater.on("error", (err) => {
 autoUpdater.on("download-progress", function (progressObj) {
   let log_message = "Download speed: " + progressObj.bytesPerSecond;
   log_message =
-    log_message + " - Downloaded " + parseInt(progressObj.percent) + "%";
+    log_message + " - Downloaded " + progressObj.percent + "%";
   log_message =
     log_message +
     " (" +
@@ -200,10 +203,6 @@ autoUpdater.on("download-progress", function (progressObj) {
 //   sendStatusToWindow('We are checking for updates and notifying user...')
 //   autoUpdater.checkForUpdatesAndNotify()
 // }, 120000)
-
-function sendStatusToWindow(message) {
-  log.info(message);
-}
 
 /**
  * TitleBar Event [START]
