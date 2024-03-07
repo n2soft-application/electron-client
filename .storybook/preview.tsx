@@ -43,7 +43,17 @@ const preview: Preview = {
         includeNames: true,
         order: [
           "Components",
-          ["Badge", "Checkbox", "Loading", "Tooltip", "Dropdown", "Card"],
+          [
+            "Typography",
+            "Colors",
+            "Badge",
+            "Checkbox",
+            "Loading",
+            "Tooltip",
+            "Radio",
+            "Dropdown",
+            "Card",
+          ],
           "Layout",
           ["Header", "Footer", "Sidebar"],
           "Example",
