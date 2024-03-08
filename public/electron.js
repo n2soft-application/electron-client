@@ -74,7 +74,7 @@ const createWindow = () => {
     },
   });
 
-  if (process.env.mode !== "dev") {
+  if (process.env.mode === "dev") {
     win?.loadURL("http://localhost:3000");
     win?.webContents.openDevTools({ mode: "detach" });
   } else {
