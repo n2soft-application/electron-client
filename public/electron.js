@@ -43,8 +43,8 @@ function sendStatusToWindow(text) {
 const createUpdateWindow = () => {
   updateWindow = new BrowserWindow({
     show: false,
-    width: 360,
-    height: 360,
+    width: 300,
+    height: 300,
     frame: false,
     webPreferences: {
       nodeIntegration: true,
