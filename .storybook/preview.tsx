@@ -1,13 +1,5 @@
 import React from "react";
 import type { Preview } from "@storybook/react";
-import {
-  Title,
-  Subtitle,
-  Description,
-  Primary,
-  Controls,
-  Stories,
-} from "@storybook/blocks";
 import DocumentationTemplate from "./DocumentationTemplate.mdx";
 import "../src/index.css";
 
@@ -25,16 +17,6 @@ const preview: Preview = {
       controls: {
         sort: "requiredFirst", // 정렬
       },
-      //   page: () => (
-      //     <>
-      //       <Title />
-      //       <Subtitle />
-      //       <Description />
-      //       <Primary />
-      //       <Controls />
-      //       <Stories />
-      //     </>
-      //   ),
       page: DocumentationTemplate,
     },
     options: {
@@ -52,7 +34,9 @@ const preview: Preview = {
             "Tooltip",
             "Radio",
             "Dropdown",
+            "Switch",
             "Card",
+            "Input",
           ],
           "Layout",
           ["Header", "Footer", "Sidebar"],

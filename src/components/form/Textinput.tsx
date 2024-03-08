@@ -1,8 +1,10 @@
+type Props = {
+  value?: string;
+  placeholder?: string;
+};
 
-function Textinput() {
-  return (
-    <div>Textinput</div>
-  )
+function Textinput({ ...props }: Props) {
+  return <input type="text" className="px-1 border rounded" {...props} />;
 }
 
-export default Textinput
+export default Textinput;
