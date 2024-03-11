@@ -6,7 +6,6 @@ import useSkin from "../../hooks/layout/useSkin";
 import NavMenu from "./NavMenu";
 import SidebarLogo from "./SidebarLogo";
 
-import svgRabitImage from "../../assets/images/svg/rabit.svg";
 import { menuItems } from "../../constants/data";
 
 function Sidebar() {
@@ -63,7 +62,7 @@ function Sidebar() {
           scrollableNodeProps={{ ref: scrollableNodeRef }}
         >
           <NavMenu menus={menuItems} />
-          {!collapsed && (
+          {/* {!collapsed && (
             <div className="relative p-4 mt-24 mb-16 text-center text-white bg-slate-900 rounded-2xl">
               <img
                 src={svgRabitImage}
@@ -82,7 +81,7 @@ function Sidebar() {
                 </button>
               </div>
             </div>
-          )}
+          )} */}
         </SimpleBar>
       </div>
     </div>
