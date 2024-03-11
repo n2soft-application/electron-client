@@ -10,16 +10,16 @@ function FooType() {
   };
   const fotypes = [
     {
-      label: "Sticky",
+      label: "고정",
       value: "sticky",
     },
     {
-      label: "Static",
+      label: "정적",
       value: "static",
     },
 
     {
-      label: "Hidden",
+      label: "숨김",
       value: "hidden",
     },
   ];
@@ -27,7 +27,7 @@ function FooType() {
   return (
     <div>
       <h4 className="mb-2 text-base font-normal text-slate-600 dark:text-slate-300">
-        Footer Type
+        하단바 타입
       </h4>
       <div className="grid grid-cols-1 gap-3 md:grid-cols-4">
         {fotypes?.map((item, index) => (

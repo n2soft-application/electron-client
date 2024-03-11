@@ -1,4 +1,3 @@
-
 import { Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { useRecoilState } from "recoil";
@@ -25,7 +24,7 @@ function Setting() {
     <div>
       {!isOpen && (
         <span
-          className="fixed ltr:md:right-[-32px] ltr:right-0 rtl:left-0 rtl:md:left-[-32px] top-1/2 z-[888] translate-y-1/2 bg-slate-800 text-slate-50 dark:bg-slate-700 dark:text-slate-300 cursor-pointer transform rotate-90 flex items-center text-sm font-medium px-2 py-2 shadow-deep ltr:rounded-b rtl:rounded-t"
+          className="fixed ltr:md:right-[-16px] ltr:right-0 rtl:left-0 rtl:md:left-[-16px] top-1/2 z-[888] translate-y-1/2 bg-slate-800 text-slate-50 dark:bg-slate-700 dark:text-slate-300 cursor-pointer transform rotate-90 flex items-center text-sm font-medium px-2 py-2 shadow-deep ltr:rounded-b rtl:rounded-t"
           onClick={() => setCustomizer(true)}
         >
           <Icon
@@ -33,7 +32,7 @@ function Setting() {
             className="text-lg text-slate-50 animate-spin"
           />
           <span className="hidden md:inline-block ltr:ml-2 rtl:mr-2">
-            Settings
+            설정
           </span>
         </span>
       )}
@@ -54,10 +53,10 @@ function Setting() {
           <header className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 -mx-6 px-6 py-[15px] mb-6">
             <div>
               <span className="block text-xl text-slate-900 font-medium dark:text-[#eee]">
-                Theme customizer
+                테마 사용자 정의
               </span>
               <span className="block text-sm font-light text-[#68768A] dark:text-[#eee]">
-                Customize & Preview in Real Time
+                사용자 정의 & 실시간 미리보기
               </span>
             </div>
             <div

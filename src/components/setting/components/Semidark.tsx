@@ -6,7 +6,7 @@ function Semidark() {
     return (
       <div className="flex justify-between ">
         <div className="text-base font-normal text-slate-600 dark:text-slate-300">
-          Semi Dark
+          세미 다크
         </div>
         <Switch
           value={isSemiDark}

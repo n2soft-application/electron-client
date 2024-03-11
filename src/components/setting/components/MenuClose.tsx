@@ -6,7 +6,7 @@ function MenuClose() {
   return (
     <div className="flex justify-between ">
       <div className="text-base font-normal text-slate-600 dark:text-slate-300">
-        Menu Collapsed
+        메뉴 확장
       </div>
       <Switch
         value={collapsed}
