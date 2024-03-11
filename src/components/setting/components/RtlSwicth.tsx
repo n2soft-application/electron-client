@@ -5,7 +5,7 @@ function RtlSwicth() {
   const [isRtl, setRtl] = useRtl();
   return (
     <div className="flex justify-between">
-      <div className="text-base text-slate-600 dark:text-slate-300">왼쪽에서 오른쪽으로</div>
+      <div className="text-base text-slate-600 dark:text-slate-300">좌우반전</div>
       <Switch
         value={isRtl}
         onChange={() => setRtl(!isRtl)}
