@@ -8,7 +8,6 @@ import useWidth from "../../hooks/layout/useWidth";
 import { navbarTypeState } from "../../state/layout/layoutAtom";
 import Icon from "../icons/Icon";
 import HorizentalMenu from "./components/HorizentalMenu";
-import Language from "./components/Language";
 import Logo from "./components/Logo";
 import Message from "./components/Message";
 import MonoChrome from "./components/MonoChrome";
@@ -119,7 +118,7 @@ function Header({ className }: Props) {
           ) : null}
           {/* Nav Tools  */}
           <div className="flex items-center space-x-3 nav-tools lg:space-x-6 rtl:space-x-reverse">
-            <Language />
+            {/* <Language /> */}
             <SwitchDark />
             <MonoChrome />
             {/* <HeaderCart /> */}
