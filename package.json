@@ -87,12 +87,16 @@
     ],
     "mac": {
       "target": [
-        "default"
+        {
+          "target": "dmg",
+          "arch": ["x64", "arm64"]
+        }
       ],
-      "icon": "./src/assets/icons/icon.ico"
+      "identity": null
     },
     "dmg": {
       "title": "THE NEXT",
+      "sign": false,
       "icon": "./src/assets/icons/icon.ico"
     },
     "win": {
@@ -105,7 +109,9 @@
     "nsis": {
       "oneClick": false,
       "perMachine": true,
-      "shortcutName": "THE NEXT"
+      "language": 1042,
+      "shortcutName": "THE NEXT",
+      "allowToChangeInstallationDirectory": true
     },
     "linux": {
       "target": [
