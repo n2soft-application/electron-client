@@ -75,7 +75,9 @@ function Profile() {
     {
       label: "로그아웃",
       icon: "heroicons-outline:login",
-      action: () => {},
+      action: () => {
+        navigate("/");
+      },
     },
   ];
   return (
