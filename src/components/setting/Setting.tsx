@@ -5,7 +5,6 @@ import SimpleBar from "simplebar-react";
 import useWidth from "../../hooks/layout/useWidth";
 import { customizerTypeState } from "../../state/layout/layoutAtom";
 import Icon from "../icons/Icon";
-import FooType from "./components/FooType";
 import MenuClose from "./components/MenuClose";
 import MenuHidden from "./components/MenuHidden";
 import Menulayout from "./components/Menulayout";
@@ -82,9 +81,9 @@ function Setting() {
             <div className="pt-2">
               <MenuHidden />
             </div>
-            <hr className="-mx-6 border-slate-200 dark:border-slate-700" />
+            {/* <hr className="-mx-6 border-slate-200 dark:border-slate-700" /> */}
             {/* <NavbarTypeView /> */}
-            <FooType />
+            {/* <FooType /> */}
           </div>
         </SimpleBar>
       </div>

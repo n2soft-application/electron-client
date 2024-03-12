@@ -39,7 +39,7 @@ export const typeState = atom<Type>({
 export type FooterType = "static" | "sticky" | "hidden";
 export const footerTypeState = atom<FooterType>({
   key: "footerTypeState",
-  default: "static",
+  default: "hidden",
   effects_UNSTABLE: [persistAtom],
 });
 
