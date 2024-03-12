@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import useDarkMode from "../../../hooks/layout/useDarkMode";
 
 import Illustration from "../../../assets/images/auth/ils1.svg";
-import LogoWhite from "../../../assets/images/logo/logo-white.svg";
-import Logo from "../../../assets/images/logo/logo.svg";
+import LogoWhite from "../../../assets/images/logo/logo-white.png";
+import Logo from "../../../assets/images/logo/logo.png";
 import Social from "./components/Social";
 
 function Login() {
@@ -18,7 +18,25 @@ function Login() {
               <img src={isDark ? LogoWhite : Logo} alt="" className="mb-10" />
             </Link> */}
             <Link to="/dashboard">
-              <img src={isDark ? LogoWhite : Logo} alt="" className="mb-10" />
+              <div className="flex items-center space-x-4">
+                <div className="logo-icon">
+                  {!isDark ? (
+                    <img className="border rounded shadow" src={Logo} alt="" />
+                  ) : (
+                    <img
+                      className="border rounded shadow"
+                      src={LogoWhite}
+                      alt=""
+                    />
+                  )}
+                </div>
+
+                <div>
+                  <h1 className="text-base font-semibold text-slate-900 dark:text-slate-100">
+                    스마트 엔트리 시스템
+                  </h1>
+                </div>
+              </div>
             </Link>
             <h4>
               Unlock your Project
@@ -40,11 +58,29 @@ function Login() {
             <div className="flex flex-col justify-center h-full auth-box">
               <div className="block mb-6 text-center mobile-logo lg:hidden">
                 <Link to="/">
-                  <img
-                    src={isDark ? LogoWhite : Logo}
-                    alt=""
-                    className="mx-auto"
-                  />
+                  <div className="flex items-center justify-center space-x-4">
+                    <div className="logo-icon">
+                      {!isDark ? (
+                        <img
+                          className="border rounded shadow"
+                          src={Logo}
+                          alt=""
+                        />
+                      ) : (
+                        <img
+                          className="border rounded shadow"
+                          src={LogoWhite}
+                          alt=""
+                        />
+                      )}
+                    </div>
+
+                    <div>
+                      <h1 className="text-base font-semibold text-slate-900 dark:text-slate-100">
+                        스마트 엔트리 시스템
+                      </h1>
+                    </div>
+                  </div>
                 </Link>
               </div>
               <div className="mb-4 text-center 2xl:mb-10">
