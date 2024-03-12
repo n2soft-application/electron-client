@@ -4,8 +4,8 @@ import useSemiDark from "../../hooks/layout/useSemiDark";
 import useSidebar from "../../hooks/layout/useSidebar";
 import useSkin from "../../hooks/layout/useSkin";
 
-import MobileLogoWhite from "../../assets/images/logo/logo-c-white.svg";
-import MobileLogo from "../../assets/images/logo/logo-c.svg";
+import MobileLogoWhite from "../../assets/images/logo/logo-white.png";
+import MobileLogo from "../../assets/images/logo/logo.png";
 
 type Props = {
   menuHover: boolean;
@@ -33,15 +33,15 @@ function SidebarLogo({ menuHover }: Props) {
         <div className="flex items-center space-x-4">
           <div className="logo-icon">
             {!isDark && !isSemiDark ? (
-              <img src={MobileLogo} alt="" />
+              <img className="border rounded shadow" src={MobileLogo} alt="" />
             ) : (
-              <img src={MobileLogoWhite} alt="" />
+              <img className="border rounded shadow" src={MobileLogoWhite} alt="" />
             )}
           </div>
 
           {(!collapsed || menuHover) && (
             <div>
-              <h1 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
+              <h1 className="text-base font-semibold text-slate-900 dark:text-slate-100">
               스마트 엔트리 시스템
               </h1>
             </div>

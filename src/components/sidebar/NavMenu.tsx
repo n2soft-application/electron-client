@@ -69,7 +69,7 @@ function NavMenu({ menus }: Props) {
         });
       }
     });
-    document.title = `THE NEXT  | ${locationName}`;
+    document.title = `스마트 엔트리 시스템 | ${locationName}`;
 
     setActiveSubmenu(submenuIndex);
     setMultiMenu(multiMenuIndex);
