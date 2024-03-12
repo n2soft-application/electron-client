@@ -5,13 +5,9 @@ import SimpleBar from "simplebar-react";
 import useWidth from "../../hooks/layout/useWidth";
 import { customizerTypeState } from "../../state/layout/layoutAtom";
 import Icon from "../icons/Icon";
-import ContentWidth from "./components/ContentWidth";
-import FooType from "./components/FooType";
 import MenuClose from "./components/MenuClose";
 import MenuHidden from "./components/MenuHidden";
 import Menulayout from "./components/Menulayout";
-import NavbarTypeView from "./components/NavbarTypeView";
-import RtlSwicth from "./components/RtlSwicth";
 import Semidark from "./components/Semidark";
 import Skin from "./components/Skin";
 import Theme from "./components/Theme";
@@ -72,11 +68,11 @@ function Setting() {
             <Semidark />
             <hr className="-mx-6 border-slate-200 dark:border-slate-700" />
 
-            <div>
-              <RtlSwicth />
-            </div>
-            <hr className="-mx-6 border-slate-200 dark:border-slate-700" />
-            <ContentWidth />
+            {/* <div> */}
+              {/* <RtlSwicth /> */}
+            {/* </div> */}
+            {/* <hr className="-mx-6 border-slate-200 dark:border-slate-700" /> */}
+            {/* <ContentWidth /> */}
             {width >= breakpoints.xl && <Menulayout />}
 
             <div className="pt-4">
@@ -85,9 +81,9 @@ function Setting() {
             <div className="pt-2">
               <MenuHidden />
             </div>
-            <hr className="-mx-6 border-slate-200 dark:border-slate-700" />
-            <NavbarTypeView />
-            <FooType />
+            {/* <hr className="-mx-6 border-slate-200 dark:border-slate-700" /> */}
+            {/* <NavbarTypeView /> */}
+            {/* <FooType /> */}
           </div>
         </SimpleBar>
       </div>
