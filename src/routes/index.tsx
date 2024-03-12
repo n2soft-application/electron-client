@@ -6,8 +6,9 @@ import Loading from "../components/loading/Loading";
 
 // Pages
 const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
-const CommonCodePage = lazy(() => import("../pages/preferences/code/common/CommonCodePage"));
-
+const CommonCodePage = lazy(
+  () => import("../pages/preferences/code/common/CommonCodePage")
+);
 
 // Error pages
 const Error404 = lazy(() => import("../pages/error/Error404"));
@@ -17,6 +18,9 @@ const IconsPage = lazy(() => import("../pages/example/icon/IconsPage"));
 const ChatPage = lazy(() => import("../pages/example/chat/ChatPage"));
 const ChangeLog = lazy(() => import("../pages/example/changelog/ChangeLog"));
 const Login = lazy(() => import("../pages/example/login/Login"));
+const AppexChartPage = lazy(
+  () => import("../pages/example/chart/appex-chart/AppexChartPage")
+);
 
 const AppRouter = () => {
   return (
@@ -28,10 +32,10 @@ const AppRouter = () => {
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="code/common" element={<CommonCodePage />} />
 
-
         {/* Example */}
         <Route path="icons" element={<IconsPage />} />
         <Route path="chat" element={<ChatPage />} />
+        <Route path="appex-chart" element={<AppexChartPage />} />
         <Route path="changelog" element={<ChangeLog />} />
 
         <Route path="*" element={<Navigate replace={true} to="/404" />} />

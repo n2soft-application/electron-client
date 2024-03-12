@@ -50,7 +50,7 @@ function Login() {
               <div className="mb-4 text-center 2xl:mb-10">
                 <h4 className="font-medium">Sign in</h4>
                 <div className="text-base text-slate-500">
-                  Sign in to your account to start using THE NEXT
+                  Sign in to your account to start using 스마트 엔트리 시스템
                 </div>
               </div>
               {/* <LoginForm /> */}
@@ -73,7 +73,7 @@ function Login() {
               </div>
             </div>
             <div className="text-center auth-footer">
-              Copyright 2024, THE NEXT All Rights Reserved.
+              Copyright 2024, 스마트 엔트리 시스템 All Rights Reserved.
             </div>
           </div>
         </div>
