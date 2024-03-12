@@ -1,6 +1,6 @@
 const themeConfig = {
   app: {
-    name: "THE NEXT Electron",
+    name: "스마트 엔트리 시스템",
   },
   // layout
   layout: {

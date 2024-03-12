@@ -42,7 +42,7 @@ function SidebarLogo({ menuHover }: Props) {
           {(!collapsed || menuHover) && (
             <div>
               <h1 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
-              THE NEXT
+              스마트 엔트리 시스템
               </h1>
             </div>
           )}
