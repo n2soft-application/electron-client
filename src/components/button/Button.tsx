@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Icon from "../icons/Icon";
 
 type Props = {
-  text: string;
+  text?: string | undefined;
   type?: "submit" | "reset" | "button" | undefined;
   isLoading?: boolean;
   disabled?: boolean;
