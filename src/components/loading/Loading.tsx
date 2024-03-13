@@ -1,6 +1,6 @@
 import { useState } from "react";
 import LogoWhite from "../../assets/images/logo/logo-white.svg";
-import Logo from "../../assets/images/logo/logo.svg";
+import Logo from "../../assets/images/logo/logo.png";
 import useDarkMode from "../../hooks/layout/useDarkMode";
 
 function Loading() {
