@@ -29,6 +29,7 @@ const AppexChartPage = lazy(
 const Typography = lazy(
   () => import("../pages/example/components/typography/Typography")
 );
+const Colors = lazy(() => import("../pages/example/components/colors/Colors"));
 
 const AppRouter = () => {
   return (
@@ -51,6 +52,7 @@ const AppRouter = () => {
 
         {/* Components */}
         <Route path="typography" element={<Typography />} />
+        <Route path="colors" element={<Colors />} />
 
         <Route path="*" element={<Navigate replace={true} to="/404" />} />
       </Route>
