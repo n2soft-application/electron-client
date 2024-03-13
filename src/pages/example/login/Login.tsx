@@ -17,7 +17,7 @@ function Login() {
             {/* <Link to="/">
               <img src={isDark ? LogoWhite : Logo} alt="" className="mb-10" />
             </Link> */}
-            <Link to="/dashboard">
+            <Link to="/home/dashboard">
               <div className="flex items-center space-x-4">
                 <div className="logo-icon">
                   {!isDark ? (
