@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import AuthLayout from "../components/layout/AuthLayout";
 import Layout from "../components/layout/Layout";
 import Loading from "../components/loading/Loading";
+import BasicTablePage from "../pages/table/table-basic";
 
 // Pages
 const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
@@ -37,6 +38,7 @@ const AppRouter = () => {
         <Route path="chat" element={<ChatPage />} />
         <Route path="appex-chart" element={<AppexChartPage />} />
         <Route path="changelog" element={<ChangeLog />} />
+        <Route path="table-basic" element={<BasicTablePage />} />
 
         <Route path="*" element={<Navigate replace={true} to="/404" />} />
       </Route>
