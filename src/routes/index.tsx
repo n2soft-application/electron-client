@@ -4,6 +4,7 @@ import AuthLayout from "../components/layout/AuthLayout";
 import Layout from "../components/layout/Layout";
 import Loading from "../components/loading/Loading";
 import BasicTablePage from "../pages/table/table-basic";
+import BankingPage from "../pages/example/dashboard/banking";
 
 // Pages
 const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
@@ -34,6 +35,7 @@ const AppRouter = () => {
         <Route path="code/common" element={<CommonCodePage />} />
 
         {/* Example */}
+        <Route path="banking" element={<BankingPage />} />
         <Route path="icons" element={<IconsPage />} />
         <Route path="chat" element={<ChatPage />} />
         <Route path="appex-chart" element={<AppexChartPage />} />
