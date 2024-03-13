@@ -33,7 +33,7 @@ nsis:
   # 바탕화면 바로가기 아이콘 생성
   createDesktopShortcut: true
   # 바탕화면 바로가기 아이콘 이름
-  shortcutName: "스마트 엔트리 시스템"
+  shortcutName: "리테일 금융 시스템"
   # 인스톨러 언어
   language: 1042
 

@@ -102,7 +102,7 @@
       "identity": null
     },
     "dmg": {
-      "title": "스마트 엔트리 시스템",
+      "title": "리테일 금융 시스템",
       "sign": false,
       "icon": "./src/assets/icons/icon.ico"
     },
@@ -117,7 +117,7 @@
       "oneClick": false,
       "perMachine": true,
       "language": 1042,
-      "shortcutName": "스마트 엔트리 시스템",
+      "shortcutName": "리테일 금융 시스템",
       "allowToChangeInstallationDirectory": true
     },
     "linux": {

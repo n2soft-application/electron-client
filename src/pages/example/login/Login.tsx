@@ -33,7 +33,7 @@ function Login() {
 
                 <div>
                   <h1 className="text-base font-semibold text-slate-900 dark:text-slate-100">
-                    스마트 엔트리 시스템
+                  리테일 금융 시스템
                   </h1>
                 </div>
               </div>
@@ -77,7 +77,7 @@ function Login() {
 
                     <div>
                       <h1 className="text-base font-semibold text-slate-900 dark:text-slate-100">
-                        스마트 엔트리 시스템
+                      리테일 금융 시스템
                       </h1>
                     </div>
                   </div>
@@ -86,7 +86,7 @@ function Login() {
               <div className="mb-4 text-center 2xl:mb-10">
                 <h4 className="font-medium">Sign in</h4>
                 <div className="text-base text-slate-500">
-                  Sign in to your account to start using 스마트 엔트리 시스템
+                  Sign in to your account to start using 리테일 금융 시스템
                 </div>
               </div>
               {/* <LoginForm /> */}
@@ -109,7 +109,7 @@ function Login() {
               </div>
             </div>
             <div className="text-center auth-footer">
-              Copyright 2024, 스마트 엔트리 시스템 All Rights Reserved.
+              Copyright 2024, 리테일 금융 시스템 All Rights Reserved.
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 const themeConfig = {
   app: {
-    name: "스마트 엔트리 시스템",
+    name: "리테일 금융 시스템",
   },
   // layout
   layout: {
