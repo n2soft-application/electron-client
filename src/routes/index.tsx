@@ -32,6 +32,7 @@ const Typography = lazy(
 const Colors = lazy(() => import("../pages/example/components/colors/Colors"));
 const ButtonPage = lazy(() => import("../pages/example/components/button/ButtonPage"));
 const CardPage = lazy(() => import("../pages/example/components/card/CardPage"));
+const ImagePage = lazy(() => import("../pages/example/components/image/ImagePage"));
 
 const AppRouter = () => {
   return (
@@ -57,6 +58,7 @@ const AppRouter = () => {
         <Route path="colors" element={<Colors />} />
         <Route path="button" element={<ButtonPage />} />
         <Route path="card" element={<CardPage />} />
+        <Route path="image" element={<ImagePage />} />
 
         <Route path="*" element={<Navigate replace={true} to="/404" />} />
       </Route>
