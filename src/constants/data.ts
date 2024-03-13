@@ -569,11 +569,11 @@ export const menuItems: MenuItemType[] = [
   {
     title: "메인",
     icon: "heroicons-outline:home",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "대시보드",
-        childlink: "home/default",
+        childlink: "home/dashboard",
       },
     ],
   },
@@ -584,7 +584,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "신용심사",
     icon: "heroicons-outline:building-library",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "심사진행목록",
@@ -615,7 +615,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "심사완료",
     icon: "heroicons-outline:building-office-2",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "대출완료목록",
@@ -630,7 +630,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "현황조회",
     icon: "heroicons-outline:building-office",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "대외플랫폼접수현황",
@@ -657,7 +657,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "기준관리(심사)",
     icon: "heroicons-outline:building-storefront",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "사전거절(PreScreen)대상",
@@ -684,7 +684,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "채권현황",
     icon: "heroicons-outline:document-chart-bar",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "채권현황목록",
@@ -715,7 +715,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "사고채권",
     icon: "heroicons-outline:document-minus",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "개인회생목록",
@@ -746,7 +746,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "특수채권",
     icon: "heroicons-outline:document-text",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "특수채권현황",
@@ -761,7 +761,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "조기경보",
     icon: "heroicons-outline:exclamation-circle",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "CIS신용도판단및공공정보",
@@ -796,7 +796,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "배정관리",
     icon: "heroicons-outline:user-plus",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "채권담당자배덩Rule관리",
@@ -815,7 +815,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "기준관리(채권)",
     icon: "heroicons-outline:view-columns",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "DM양식관리",
@@ -830,7 +830,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "회계관리",
     icon: "heroicons-outline:chart-pie",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "가상계좌발급",
@@ -865,7 +865,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "사후관리",
     icon: "heroicons-outline:cube",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "민원내역",
@@ -904,7 +904,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "고객관리",
     icon: "heroicons-outline:face-smile",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "본인인증내역",
@@ -951,7 +951,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "경영정보",
     icon: "heroicons-outline:globe-alt",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "일일현황",
@@ -974,7 +974,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "자산건전성",
     icon: "heroicons-outline:home-modern",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "자산건전성분류계산",
@@ -997,7 +997,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "UMS",
     icon: "heroicons-outline:hashtag",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "UMS개별발송",
@@ -1020,7 +1020,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "기준관리(업무)",
     icon: "heroicons-outline:home-modern",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "탬플릿 관리",
@@ -1051,7 +1051,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "QUPID",
     icon: "heroicons-outline:truck",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "서식 정보설정",
@@ -1082,7 +1082,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "기준채권",
     icon: "heroicons-outline:swatch",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "상품관리",
@@ -1093,7 +1093,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "매입",
     icon: "heroicons-outline:table-cells",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "매입채권등록",
@@ -1112,7 +1112,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "채권",
     icon: "heroicons-outline:rectangle-stack",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "채권명세",
@@ -1123,7 +1123,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "상환",
     icon: "heroicons-outline:newspaper",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "입금이력",
@@ -1138,7 +1138,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "통계",
     icon: "heroicons-outline:scale",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "일마감현황",
@@ -1161,7 +1161,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "코드관리",
     icon: "heroicons-outline:list-bullet",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "공통코드",
@@ -1172,7 +1172,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "기준관리(중앙회)",
     icon: "heroicons-outline:inbox",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "",
@@ -1183,7 +1183,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "기준관리",
     icon: "heroicons-outline:inbox-stack",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "",
@@ -1194,7 +1194,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "신용평가",
     icon: "heroicons-outline:identification",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "",
@@ -1205,7 +1205,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "메뉴권한",
     icon: "heroicons-outline:bars-4",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "메뉴관리",
@@ -1216,7 +1216,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "사용자",
     icon: "heroicons-outline:users",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "팀(파트)",
@@ -1231,7 +1231,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "이력조회",
     icon: "heroicons-outline:queue-list",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "",
@@ -1242,7 +1242,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "전문관리",
     icon: "heroicons-outline:folder-open",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "",
@@ -1253,7 +1253,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "배치관리",
     icon: "heroicons-outline:cog",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "",
@@ -1264,7 +1264,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "개인정보파기관리",
     icon: "heroicons-outline:document-minus",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "",
@@ -1275,7 +1275,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "공공마이데이터",
     icon: "heroicons-outline:eye",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "",
@@ -1291,7 +1291,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "고객목록",
     icon: "heroicons-outline:user-group",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "온투업",
@@ -1300,13 +1300,13 @@ export const menuItems: MenuItemType[] = [
     ],
   },
   {
-    isHeadr: true,
+    isHeadr: false,
     title: "기업금융",
   },
   {
     title: "홈",
     icon: "heroicons-outline:home",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "공지사항",
@@ -1321,7 +1321,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "고객관리",
     icon: "heroicons-outline:user-group",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "고객목록",
@@ -1332,7 +1332,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "사업관리",
     icon: "heroicons-outline:squares-2x2",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "사업목록",
@@ -1347,7 +1347,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "신청관리",
     icon: "heroicons-outline:clipboard-document",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "신청목록",
@@ -1386,7 +1386,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "계정관리",
     icon: "heroicons-outline:cog-6-tooth",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "대출계좌목록",
@@ -1401,7 +1401,7 @@ export const menuItems: MenuItemType[] = [
   {
     title: "DB정보관리",
     icon: "heroicons-outline:circle-stack",
-    isHide: true,
+    isHide: false,
     child: [
       {
         childtitle: "원장조회(여신)",
@@ -1874,6 +1874,27 @@ export const message = [
     hasnotifaction: false,
     image: User4,
     link: "#",
+  },
+];
+
+export const favorite = [
+  {
+    title: "심사진행목록",
+  },
+  {
+    title: "결재대기목록",
+  },
+  {
+    title: "채권현황목록",
+  },
+  {
+    title: "대출완제목록",
+  },
+  {
+    title: "초본열람대상명세",
+  },
+  {
+    title: "상담원심사현황",
   },
 ];
 

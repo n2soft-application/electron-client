@@ -29,7 +29,7 @@ const AppRouter = () => {
         <Route path="/" element={<Login />} />
       </Route>
       <Route path="/*" element={<Layout />}>
-        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="home/dashboard" element={<Dashboard />} />
         <Route path="code/common" element={<CommonCodePage />} />
 
         {/* Example */}
