@@ -34,6 +34,7 @@ const ButtonPage = lazy(() => import("../pages/example/components/button/ButtonP
 const CardPage = lazy(() => import("../pages/example/components/card/CardPage"));
 const ImagePage = lazy(() => import("../pages/example/components/image/ImagePage"));
 const BadgePage = lazy(() => import("../pages/example/components/badge/BadgePage"));
+const AlertPage = lazy(() => import("../pages/example/components/alert/AlertPage"));
 
 const AppRouter = () => {
   return (
@@ -61,6 +62,7 @@ const AppRouter = () => {
         <Route path="card" element={<CardPage />} />
         <Route path="image" element={<ImagePage />} />
         <Route path="badges" element={<BadgePage />} />
+        <Route path="alert" element={<AlertPage />} />
 
         <Route path="*" element={<Navigate replace={true} to="/404" />} />
       </Route>
