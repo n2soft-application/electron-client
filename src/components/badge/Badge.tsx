@@ -2,7 +2,7 @@ import Icon from "../icons/Icon";
 
 type Props = {
   className?: string | undefined;
-  label?: string;
+  label?: string | null;
   icon?: string;
   children?: React.ReactNode;
 };
