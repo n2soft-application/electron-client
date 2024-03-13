@@ -7,6 +7,7 @@ import useSkin from "../../hooks/layout/useSkin";
 import useWidth from "../../hooks/layout/useWidth";
 import { navbarTypeState } from "../../state/layout/layoutAtom";
 import Icon from "../icons/Icon";
+import Favorite from "./components/Favorite";
 import HorizentalMenu from "./components/HorizentalMenu";
 import Logo from "./components/Logo";
 import Message from "./components/Message";
@@ -122,6 +123,7 @@ function Header({ className }: Props) {
             <SwitchDark />
             <MonoChrome />
             {/* <HeaderCart /> */}
+            {width >= breakpoints.md && <Favorite />}
             {width >= breakpoints.md && <Message />}
             {width >= breakpoints.md && <Notification />}
             {width >= breakpoints.md && <Profile />}
