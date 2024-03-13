@@ -10,9 +10,7 @@ import Icon from "../icons/Icon";
 import Favorite from "./components/Favorite";
 import HorizentalMenu from "./components/HorizentalMenu";
 import Logo from "./components/Logo";
-import Message from "./components/Message";
 import MonoChrome from "./components/MonoChrome";
-import Notification from "./components/Notification";
 import Profile from "./components/Profile";
 import SearchModal from "./components/SearchModal";
 import SwitchDark from "./components/SwitchDark";
@@ -124,8 +122,8 @@ function Header({ className }: Props) {
             <MonoChrome />
             {/* <HeaderCart /> */}
             {width >= breakpoints.md && <Favorite />}
-            {width >= breakpoints.md && <Message />}
-            {width >= breakpoints.md && <Notification />}
+            {/* {width >= breakpoints.md && <Message />} */}
+            {/* {width >= breakpoints.md && <Notification />} */}
             {width >= breakpoints.md && <Profile />}
             {width <= breakpoints.md && (
               <div
