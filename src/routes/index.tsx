@@ -25,6 +25,11 @@ const AppexChartPage = lazy(
   () => import("../pages/example/chart/appex-chart/AppexChartPage")
 );
 
+// Components
+const Typography = lazy(
+  () => import("../pages/example/components/typography/Typography")
+);
+
 const AppRouter = () => {
   return (
     <Routes>
@@ -43,6 +48,9 @@ const AppRouter = () => {
         <Route path="changelog" element={<ChangeLog />} />
         <Route path="table-basic" element={<BasicTablePage />} />
         <Route path="basic" element={<BasicWidget />} />
+
+        {/* Components */}
+        <Route path="typography" element={<Typography />} />
 
         <Route path="*" element={<Navigate replace={true} to="/404" />} />
       </Route>
