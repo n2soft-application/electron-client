@@ -10,21 +10,31 @@ function Breadcrumbs() {
 
   const [isHide, setIsHide] = useState<boolean | undefined>(false);
   const [groupTitle, setGroupTitle] = useState("");
+  const [title, setTitle] = useState(locationName);
 
   useEffect(() => {
-    const currentMenuItem = menuItems.find(
+    const currentMenuGroup = menuItems.find(
       (item) => item.link === locationName
     );
 
-    const currentChild = menuItems.find((item) =>
+    const currentMenu = menuItems.find((item) =>
       item.child?.find((e) => e.childlink === locationName)
     );
 
-    if (currentMenuItem) {
-      setIsHide(currentMenuItem.isHide);
-    } else if (currentChild) {
-      setIsHide(currentChild?.isHide || false);
-      setGroupTitle(currentChild?.title);
+    if (currentMenuGroup) {
+      setIsHide(currentMenuGroup.isHide);
+    } else if (currentMenu) {
+      const menus = menuItems.filter((item) =>
+        item.child?.find((e) => e.childlink === locationName)
+      );
+      if(!!menus.length) {
+        const menu = menus[0]
+        const child = menu.child && menu.child[0]
+        setTitle(child?.childtitle ?? locationName)
+      }
+
+      setIsHide(currentMenu?.isHide || false);
+      setGroupTitle(currentMenu?.title);
     }
   }, [location, locationName]);
 
@@ -52,7 +62,11 @@ function Breadcrumbs() {
               </li>
             )}
             <li className="capitalize text-slate-500 dark:text-slate-400">
-              {locationName}
+              {title}
+
+              <span className="relative lg:h-[32px] lg:w-[32px] lg:bg-slate-100 lg:dark:bg-slate-900 dark:text-white text-slate-400 cursor-pointer rounded-full text-[20px] flex flex-col items-center justify-center">
+                <Icon icon="heroicons-outline:star" />
+              </span>
             </li>
           </ul>
         </div>
