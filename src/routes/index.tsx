@@ -40,6 +40,7 @@ const ProgressPage = lazy(() => import("../pages/example/components/progress/Pro
 const PlaceholderPage = lazy(() => import("../pages/example/components/placeholder/PlaceholderPage"));
 const TooltipPage = lazy(() => import("../pages/example/components/tooltip/TooltipPage"));
 const VideoPage = lazy(() => import("../pages/example/components/video/VideoPage"));
+const AccordionPage = lazy(() => import("../pages/example/components/accordion/AccordionPage"));
 
 const AppRouter = () => {
   return (
@@ -73,6 +74,7 @@ const AppRouter = () => {
         <Route path="placeholder" element={<PlaceholderPage />} />
         <Route path="tooltip-popover" element={<TooltipPage />} />
         <Route path="video" element={<VideoPage />} />
+        <Route path="tab-accordion" element={<AccordionPage />} />
 
         <Route path="*" element={<Navigate replace={true} to="/404" />} />
       </Route>
