@@ -12,6 +12,8 @@ function Breadcrumbs() {
   const [groupTitle, setGroupTitle] = useState("");
   const [title, setTitle] = useState(locationName);
 
+  const [fav, setFav] = useState(false);
+
   useEffect(() => {
     const currentMenuGroup = menuItems.find(
       (item) => item.link === locationName
@@ -27,10 +29,10 @@ function Breadcrumbs() {
       const menus = menuItems.filter((item) =>
         item.child?.find((e) => e.childlink === locationName)
       );
-      if(!!menus.length) {
-        const menu = menus[0]
-        const child = menu.child && menu.child[0]
-        setTitle(child?.childtitle ?? locationName)
+      if (!!menus.length) {
+        const menu = menus[0];
+        const child = menu.child && menu.child[0];
+        setTitle(child?.childtitle ?? locationName);
       }
 
       setIsHide(currentMenu?.isHide || false);
@@ -64,8 +66,21 @@ function Breadcrumbs() {
             <li className="capitalize text-slate-500 dark:text-slate-400">
               {title}
 
-              <span className="relative lg:h-[32px] lg:w-[32px] lg:bg-slate-100 lg:dark:bg-slate-900 dark:text-white text-slate-400 cursor-pointer rounded-full text-[20px] flex flex-col items-center justify-center">
-                <Icon icon="heroicons-outline:star" />
+              <span
+                className="relative lg:h-[32px] lg:w-[32px] lg:dark:bg-slate-900 dark:text-white text-slate-400 cursor-pointer rounded-full text-[20px] flex flex-col items-center justify-center"
+                onClick={() => setFav(!fav)}
+              >
+                {fav ? (
+                  <Icon
+                    icon="heroicons:star-20-solid"
+                    className="text-xl leading-[1] cursor-pointer text-[#FFCE30]"
+                  />
+                ) : (
+                  <Icon
+                    icon="heroicons:star"
+                    className="text-xl leading-[1] cursor-pointer opacity-40 dark:text-white"
+                  />
+                )}
               </span>
             </li>
           </ul>
