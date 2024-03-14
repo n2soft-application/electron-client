@@ -38,6 +38,7 @@ const AlertPage = lazy(() => import("../pages/example/components/alert/AlertPage
 const ModalPage = lazy(() => import("../pages/example/components/modal/ModalPage"));
 const ProgressPage = lazy(() => import("../pages/example/components/progress/ProgressPage"));
 const PlaceholderPage = lazy(() => import("../pages/example/components/placeholder/PlaceholderPage"));
+const TooltipPage = lazy(() => import("../pages/example/components/tooltip/TooltipPage"));
 
 const AppRouter = () => {
   return (
@@ -69,6 +70,7 @@ const AppRouter = () => {
         <Route path="modal" element={<ModalPage />} />
         <Route path="progress-bar" element={<ProgressPage />} />
         <Route path="placeholder" element={<PlaceholderPage />} />
+        <Route path="tooltip-popover" element={<TooltipPage />} />
 
         <Route path="*" element={<Navigate replace={true} to="/404" />} />
       </Route>

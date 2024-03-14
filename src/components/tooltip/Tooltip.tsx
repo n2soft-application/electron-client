@@ -17,7 +17,7 @@ import "tippy.js/themes/light.css";
 
 type Props = {
   children?: React.ReactElement<any>;
-  content?: string | undefined;
+  content?: any;
   title?: string | undefined;
   className?: string | undefined;
   trigger?: string | undefined;
@@ -27,7 +27,7 @@ type Props = {
   arrow?: boolean;
   allowHTML?: boolean;
   interactive?: boolean;
-  maxWidth?: number;
+  maxWidth?: number | string;
   duration?: number;
 };
 
