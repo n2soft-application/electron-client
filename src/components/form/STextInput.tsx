@@ -55,7 +55,6 @@ const STextinput = ({
   options,
   onFocus,
   defaultValue,
-
   ...rest
 }: Props) => {
   const [open, setOpen] = useState(false);
@@ -83,7 +82,7 @@ const STextinput = ({
         {name && !isMask && (
           <input
             type={type === "password" && open === true ? "text" : type}
-            {...register(name)}
+            // {...register(name)}
             {...rest}
             className={`${
               error ? " has-error" : " "
@@ -110,7 +109,7 @@ const STextinput = ({
         )}
         {name && isMask && (
           <Cleave
-            {...register(name)}
+            // {...register(name)}
             {...rest}
             placeholder={placeholder}
             options={options}

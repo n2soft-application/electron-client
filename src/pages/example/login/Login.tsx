@@ -4,6 +4,7 @@ import useDarkMode from "../../../hooks/layout/useDarkMode";
 import Illustration from "../../../assets/images/auth/ils1.svg";
 import LogoWhite from "../../../assets/images/logo/logo-white.png";
 import Logo from "../../../assets/images/logo/logo.png";
+import LoginForm from "./components/LoginForm";
 import Social from "./components/Social";
 
 function Login() {
@@ -14,30 +15,25 @@ function Login() {
       <div className="lg-inner-column">
         <div className="left-column relative z-[1]">
           <div className="max-w-[520px] pt-20 ltr:pl-20 rtl:pr-20">
-            {/* <Link to="/">
-              <img src={isDark ? LogoWhite : Logo} alt="" className="mb-10" />
-            </Link> */}
-            <Link to="/home/dashboard">
-              <div className="flex items-center space-x-4">
-                <div className="logo-icon">
-                  {!isDark ? (
-                    <img className="border rounded shadow" src={Logo} alt="" />
-                  ) : (
-                    <img
-                      className="border rounded shadow"
-                      src={LogoWhite}
-                      alt=""
-                    />
-                  )}
-                </div>
-
-                <div>
-                  <h1 className="text-base font-semibold text-slate-900 dark:text-slate-100">
-                  리테일 금융 시스템
-                  </h1>
-                </div>
+            <div className="flex items-center space-x-4">
+              <div className="logo-icon">
+                {!isDark ? (
+                  <img className="border rounded shadow" src={Logo} alt="" />
+                ) : (
+                  <img
+                    className="border rounded shadow"
+                    src={LogoWhite}
+                    alt=""
+                  />
+                )}
               </div>
-            </Link>
+
+              <div>
+                <h1 className="text-base font-semibold text-slate-900 dark:text-slate-100">
+                  리테일 금융 시스템
+                </h1>
+              </div>
+            </div>
             <h4>
               Unlock your Project
               <span className="font-bold text-slate-800 dark:text-slate-400">
@@ -77,19 +73,19 @@ function Login() {
 
                     <div>
                       <h1 className="text-base font-semibold text-slate-900 dark:text-slate-100">
-                      리테일 금융 시스템
+                        리테일 금융 시스템
                       </h1>
                     </div>
                   </div>
                 </Link>
               </div>
               <div className="mb-4 text-center 2xl:mb-10">
-                <h4 className="font-medium">Sign in</h4>
+                <h4 className="font-medium">로그인</h4>
                 <div className="text-base text-slate-500">
                   Sign in to your account to start using 리테일 금융 시스템
                 </div>
               </div>
-              {/* <LoginForm /> */}
+              <LoginForm />
               <div className="relative border-b-[#9AA2AF] border-opacity-[16%] border-b pt-6">
                 <div className="absolute inline-block px-4 text-sm font-normal transform -translate-x-1/2 bg-white dark:bg-slate-800 dark:text-slate-400 left-1/2 top-1/2 min-w-max text-slate-500">
                   Or continue with
