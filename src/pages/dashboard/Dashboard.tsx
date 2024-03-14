@@ -2,6 +2,11 @@ import { Disclosure } from "@headlessui/react";
 import Badge from "../../components/badge/Badge";
 import Card from "../../components/card/Card";
 import Icon from "../../components/icons/Icon";
+import GroupChart3 from "../../components/partials/widget/chart/group-chart-3";
+import HistoryChart from "../../components/partials/widget/chart/history-chart";
+import SelectMonth from "../../components/partials/SelectMonth";
+import AccountReceivable from "../../components/partials/widget/chart/account-receivable";
+import BasicArea from "../example/chart/appex-chart/BasicArea";
 
 const items: {
   version: string;
@@ -86,44 +91,63 @@ const items: {
 
 function Dashboard() {
   return (
-    <div className="grid grid-cols-12 gap-5">
-      <div className="col-span-12 lg:col-span-8">
-        <Card title="Version's">
-          <div>
-            <Badge label="new " className="text-white bg-primary-500" />
-          </div>
-          <div className="mt-6 space-y-5">
-            {items.map((item, i) => (
-              <div key={i} className="mb-3">
-                <Disclosure>
-                  {({ open }) => (
-                    <>
-                      <Disclosure.Button className="flex justify-between w-full px-8 py-4 text-base font-medium transition duration-150 cursor-pointer bg-slate-50 dark:bg-slate-700 dark:bg-opacity-60 rounded-t-md text-start text-slate-600 dark:text-slate-300">
-                        <span>
-                          {item.version}
-                          <span className="text-xs font-semibold text-slate-400">
-                            - Published on {item.date}
+    <div className="space-y-5">
+      <Card>
+        <div className="grid col-span-1 gap-3 xl:grid-cols-4 lg:grid-cols-2">
+          <GroupChart3 />
+        </div>
+      </Card>
+      <Card title="History" headerslot={<SelectMonth />}>
+        <div className="legend-ring4">
+          <HistoryChart />
+        </div>
+      </Card>
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+        <Card title="Account Receivable" headerslot={<SelectMonth />}>
+          <AccountReceivable />
+        </Card>
+        <Card title="Deal distribution by stage" headerslot={<SelectMonth />}>
+          <BasicArea height={310} />
+        </Card>
+      </div>
+      <div className="grid grid-cols-12 gap-5">
+        <div className="col-span-12 lg:col-span-8">
+          <Card title="Version's">
+            <div>
+              <Badge label="new" className="text-white bg-primary-500" />
+            </div>
+            <div className="mt-6 space-y-5">
+              {items.map((item, i) => (
+                <div key={i} className="mb-3">
+                  <Disclosure>
+                    {({ open }) => (
+                      <>
+                        <Disclosure.Button className="flex justify-between w-full px-8 py-4 text-base font-medium transition duration-150 cursor-pointer bg-slate-50 dark:bg-slate-700 dark:bg-opacity-60 rounded-t-md text-start text-slate-600 dark:text-slate-300">
+                          <span>
+                            {item.version}
+                            <span className="text-xs font-semibold text-slate-400">
+                              - Published on {item.date}
+                            </span>
                           </span>
-                        </span>
-                        <span
-                          className={` ${
-                            open && "rotate-180 transform"
-                          }  transition-all duration-150 text-xl`}
-                        >
-                          <Icon icon="heroicons:chevron-down-solid" />
-                        </span>
-                      </Disclosure.Button>
-                      <Disclosure.Panel>
-                        <div className="text-sm font-normal bg-white border border-t-0 text-slate-600 dark:bg-slate-900 dark:text-slate-300 rounded-b-md dark:border dark:border-slate-700 dark:border-t-0 border-slate-100">
-                          <div className="px-8 py-4">
-                            {item.changes.map((data, j) => (
-                              <div key={j}>
-                                <div className="flex items-center mt-2 space-x-3 text-sm text-slate-600 dark:text-slate-300">
-                                  <span className="w-2 h-2 rounded-full bg-primary-500"></span>
-                                  <span>{data.name}</span>
+                          <span
+                            className={` ${
+                              open && "rotate-180 transform"
+                            }  transition-all duration-150 text-xl`}
+                          >
+                            <Icon icon="heroicons:chevron-down-solid" />
+                          </span>
+                        </Disclosure.Button>
+                        <Disclosure.Panel>
+                          <div className="text-sm font-normal bg-white border border-t-0 text-slate-600 dark:bg-slate-900 dark:text-slate-300 rounded-b-md dark:border dark:border-slate-700 dark:border-t-0 border-slate-100">
+                            <div className="px-8 py-4">
+                              {item.changes.map((data, j) => (
+                                <div key={j}>
+                                  <div className="flex items-center mt-2 space-x-3 text-sm text-slate-600 dark:text-slate-300">
+                                    <span className="w-2 h-2 rounded-full bg-primary-500"></span>
+                                    <span>{data.name}</span>
 
-                                  <span
-                                    className={` px-2 rounded-full text-xs capitalize
+                                    <span
+                                      className={` px-2 rounded-full text-xs capitalize
                                         ${
                                           data.tag === "added"
                                             ? "bg-indigo-100 text-indigo-500"
@@ -134,38 +158,39 @@ function Dashboard() {
                                             : ""
                                         }
                                         `}
-                                  >
-                                    {data.tag}
-                                  </span>
+                                    >
+                                      {data.tag}
+                                    </span>
+                                  </div>
                                 </div>
-                              </div>
-                            ))}
+                              ))}
+                            </div>
                           </div>
-                        </div>
-                      </Disclosure.Panel>
-                    </>
-                  )}
-                </Disclosure>
-              </div>
-            ))}
-          </div>
-        </Card>
-      </div>
-      <div className="col-span-12 lg:col-span-4">
-        <Card title="CHANGELOG">
-          <h5 className="text-xs font-medium">VERSION HISTORY</h5>
-          <ul className="mt-6 space-y-3 divide-y dark:divide-slate-700 divide-slate-100">
-            {items.map((item, i) => (
-              <li
-                className="flex items-center justify-between pt-3 text-xs text-slate-600 dark:text-slate-300"
-                key={i}
-              >
-                <span>{item.version} </span>
-                <span>{item.date}</span>
-              </li>
-            ))}
-          </ul>
-        </Card>
+                        </Disclosure.Panel>
+                      </>
+                    )}
+                  </Disclosure>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </div>
+        <div className="col-span-12 lg:col-span-4">
+          <Card title="CHANGELOG">
+            <h5 className="text-xs font-medium">VERSION HISTORY</h5>
+            <ul className="mt-6 space-y-3 divide-y dark:divide-slate-700 divide-slate-100">
+              {items.map((item, i) => (
+                <li
+                  className="flex items-center justify-between pt-3 text-xs text-slate-600 dark:text-slate-300"
+                  key={i}
+                >
+                  <span>{item.version} </span>
+                  <span>{item.date}</span>
+                </li>
+              ))}
+            </ul>
+          </Card>
+        </div>
       </div>
     </div>
   );
