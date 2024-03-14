@@ -39,6 +39,7 @@ const ModalPage = lazy(() => import("../pages/example/components/modal/ModalPage
 const ProgressPage = lazy(() => import("../pages/example/components/progress/ProgressPage"));
 const PlaceholderPage = lazy(() => import("../pages/example/components/placeholder/PlaceholderPage"));
 const TooltipPage = lazy(() => import("../pages/example/components/tooltip/TooltipPage"));
+const VideoPage = lazy(() => import("../pages/example/components/video/VideoPage"));
 
 const AppRouter = () => {
   return (
@@ -71,6 +72,7 @@ const AppRouter = () => {
         <Route path="progress-bar" element={<ProgressPage />} />
         <Route path="placeholder" element={<PlaceholderPage />} />
         <Route path="tooltip-popover" element={<TooltipPage />} />
+        <Route path="video" element={<VideoPage />} />
 
         <Route path="*" element={<Navigate replace={true} to="/404" />} />
       </Route>
