@@ -1,30 +1,31 @@
 import { Menu, Transition } from "@headlessui/react";
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import Icon from "../icons/Icon";
 
 type Props = {
-  label: React.ReactNode;
-  wrapperClass?: string | undefined;
-  labelClass?: string | undefined;
-  children?: React.ReactNode;
-  classMenuItems: string;
   items?: {
     label: string;
     link: string;
     hasDivider?: boolean;
-    icon?: string;
+    icon?: string | undefined;
   }[];
+  children?: React.ReactNode;
+  label?: string | undefined;
+  wrapperClass?: string | undefined;
+  labelClass?: string | undefined;
+  classMenuItems?: string | undefined;
+  splitIcon?: string | undefined;
   classItem?: string | undefined;
-  className?: string | undefined;
 };
 
-const Dropdown = ({
+const SplitDropdown = ({
   label = "Dropdown",
   wrapperClass = "inline-block",
-  labelClass = "label-class-custom",
+  labelClass = "",
   children,
   classMenuItems = "mt-2 w-[220px]",
+  splitIcon = "heroicons-outline:chevron-down",
   items = [
     {
       label: "Action",
@@ -40,14 +41,18 @@ const Dropdown = ({
     },
   ],
   classItem = "px-4 py-2",
-  className = "",
 }: Props) => {
   return (
     <div className={`relative ${wrapperClass}`}>
-      <Menu as="div" className={`block w-full ${className}`}>
-        <Menu.Button className="block w-full">
-          <div className={labelClass}>{label}</div>
-        </Menu.Button>
+      <Menu as="div" className="block w-full">
+        <div className="flex split-btngroup">
+          <button type="button" className={`btn flex-1 ${labelClass}`}>
+            {label}
+          </button>
+          <Menu.Button className={`flex-0 px-3 ${labelClass}`}>
+            <Icon icon={splitIcon} />
+          </Menu.Button>
+        </div>
 
         <Transition
           as={Fragment}
@@ -133,4 +138,4 @@ const Dropdown = ({
   );
 };
 
-export default Dropdown;
+export default SplitDropdown;
