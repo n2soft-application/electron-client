@@ -43,6 +43,7 @@ const VideoPage = lazy(() => import("../pages/example/components/video/VideoPage
 const AccordionPage = lazy(() => import("../pages/example/components/accordion/AccordionPage"));
 const DropdownPage = lazy(() => import("../pages/example/components/dropdown/DropdownPage"));
 const PaginationPage = lazy(() => import("../pages/example/components/pagination/PaginationPage"));
+const CarouselPage = lazy(() => import("../pages/example/components/carousel/CarouselPage"));
 
 const AppRouter = () => {
   return (
@@ -79,6 +80,7 @@ const AppRouter = () => {
         <Route path="tab-accordion" element={<AccordionPage />} />
         <Route path="dropdown" element={<DropdownPage />} />
         <Route path="paginations" element={<PaginationPage />} />
+        <Route path="carousel" element={<CarouselPage />} />
 
         <Route path="*" element={<Navigate replace={true} to="/404" />} />
       </Route>
