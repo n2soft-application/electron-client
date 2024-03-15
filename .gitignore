@@ -30,3 +30,4 @@ dist
 
 # storybook
 build-storybook.log
+storybook-static
