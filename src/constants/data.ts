@@ -1300,7 +1300,7 @@ export const menuItems: MenuItemType[] = [
     ],
   },
   {
-    isHeadr: false,
+    isHeadr: true,
     title: "기업금융",
   },
   {
