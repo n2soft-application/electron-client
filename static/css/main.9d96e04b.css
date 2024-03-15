@@ -5165,6 +5165,10 @@ ol.custom-list ol li:where([dir="rtl"], [dir="rtl"] *),
   padding-left: 0.25rem;
   padding-right: 0.25rem;
 }
+.px-16 {
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -6054,6 +6058,10 @@ ol.custom-list ol li:where([dir="rtl"], [dir="rtl"] *),
 .hover\:bg-sky-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(2 132 199 / var(--tw-bg-opacity));
+}
+.hover\:bg-slate-100:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 245 249 / var(--tw-bg-opacity));
 }
 .hover\:bg-slate-200:hover {
   --tw-bg-opacity: 1;
@@ -7458,4 +7466,4 @@ ol.custom-list ol li:where([dir="rtl"], [dir="rtl"] *),
   }
 }
 
-/*# sourceMappingURL=main.c5467894.css.map*/
+/*# sourceMappingURL=main.9d96e04b.css.map*/
