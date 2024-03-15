@@ -8,7 +8,6 @@ const meta = {
     layout: "centered",
     componentSubtitle: "라디오 버튼",
     docs: {
-      canvas: { sourceState: "shown" },
       description: {
         component: "",
       },
@@ -29,38 +28,33 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = (args: any) => (
-  <>
-    <Radio
-      label="radio1"
-      id="radio1"
-      name="radio"
-      value="radio1"
-      checked={true}
-      onChange={() => {}}
-      {...args}
-    />
-    <Radio
-      label="radio2"
-      id="radio2"
-      name="radio"
-      value="radio2"
-      checked={false}
-      onChange={() => {}}
-      {...args}
-    />
-  </>
-);
-
-Default.args = {
-  ...Default.args,
+export const Default: Story = {
+  name: "Default",
+  storyName: "",
+  args: {
+    id: "radio",
+    label: "Label",
+    name: "radio",
+    checked: true,
+  },
 };
 
-Default.parameters = {
+export const allTypes: Story = () => (
+  <div className="flex flex-col">
+    <Radio onChange={() => {}} {...Default.args} />
+    <Radio onChange={() => {}} {...Default.args} checked={false} />
+    <Radio disabled onChange={() => {}} {...Default.args} />
+  </div>
+);
+
+allTypes.args = {
+  ...allTypes.args,
+};
+
+allTypes.parameters = {
   docs: {
-    canvas: { sourceState: "shown" },
     description: {
-      story: "기본 라디오 버튼입니다",
+      story: "기본 라디오입니다",
     },
   },
 };

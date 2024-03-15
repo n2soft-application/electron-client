@@ -19,38 +19,10 @@ const meta = {
       description: "설명",
     },
   },
-  //   decorators: [
-  //     (Story: any) => (
-  //       <div style={{ margin: "3em" }}>
-  //         <Story />
-  //       </div>
-  //     ),
-  //   ],
 } satisfies Meta<typeof Checkbox>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-// const Hooks = () => {
-//   const [isChecked, setIsChecked] = useState(false);
-
-//   const handleOnChange = () => {
-//     setIsChecked((prev) => !prev);
-//   };
-//   return (
-//     <div>
-//       <Checkbox
-//         label="Button"
-//         color="red"
-//         defaultChecked={isChecked}
-//         onChange={() => {
-//           handleOnChange();
-//         }}
-//       />
-//       {isChecked ? "선택" : "미선택"}
-//     </div>
-//   );
-// };
 
 export const Default: Story = {
   name: "Default", // 사이드바에 보이는 이름
@@ -59,14 +31,6 @@ export const Default: Story = {
     id: "defaultCheckbox",
     label: "체크박스입니다.",
     value: true,
-  },
-  parameters: {
-    docs: {
-      canvas: { sourceState: "shown" }, // 코드 보여짐 기본 상태
-      description: {
-        story: "기본 체크박스입니다",
-      },
-    },
   },
 };
 
@@ -85,7 +49,7 @@ allTypes.args = {
 allTypes.parameters = {
   docs: {
     description: {
-      story: "기본 셀렉트입니다",
+      story: "기본 체크박스입니다",
     },
   },
 };

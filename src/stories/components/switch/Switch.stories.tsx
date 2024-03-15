@@ -21,20 +21,36 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const Default: Story = {
   name: "Default",
   storyName: "",
   args: {
+    label: "primary",
+    activeClass: "bg-primary-500",
     value: true,
     onChange: () => {},
   },
 };
 
 export const allTypes: Story = () => (
-  <>
-    <Switch value={true} onChange={() => {}} />
-    <Switch value={false} onChange={() => {}} />
-  </>
+  <div className="flex flex-col gap-2">
+    <Switch {...Default.args} label="primary" activeClass="bg-primary-500" />
+    <Switch
+      {...Default.args}
+      label="primary disabled"
+      activeClass="bg-primary-500"
+      disabled
+    />
+    <Switch
+      {...Default.args}
+      label="secondary"
+      activeClass="bg-secondary-500"
+    />
+    <Switch {...Default.args} label="success" activeClass="bg-success-500" />
+    <Switch {...Default.args} label="danger" activeClass="bg-danger-500" />
+    <Switch {...Default.args} label="warning" activeClass="bg-warning-500" />
+    <Switch {...Default.args} label="info" activeClass="bg-info-500" />
+  </div>
 );
 
 allTypes.args = {

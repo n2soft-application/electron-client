@@ -52,9 +52,9 @@ const Switch = ({
           disabled={disabled}
         />
         <div
-          className={`relative inline-flex h-6 w-[46px] ltr:mr-3 rtl:ml-3 items-center rounded-full transition-all duration-150
-            ${value ? activeClass : "bg-secondary-500"}
-            `}
+          className={`relative inline-flex h-6 w-[46px] mr-3 rtl:ml-3 items-center rounded-full transition-all duration-150
+			  ${value ? activeClass : "bg-secondary-500"}
+			  `}
         >
           {badge && value && (
             <span className="absolute leading-[1px] left-1 top-1/2 -translate-y-1/2 capitalize font-bold text-white tracking-[1px]">
@@ -76,13 +76,13 @@ const Switch = ({
           )}
 
           <span
-            className={`inline-block h-5 w-5 transform rounded-full bg-white transition-all duration-150
-            ${
-              value
-                ? "ltr:translate-x-6 rtl:-translate-x-6"
-                : "ltr:translate-x-[2px] rtl:-translate-x-[2px]"
-            }
-            `}
+            className={`inline-block h-5 w-5 transform rounded-full bg-white transition-all duration-150 
+			  ${
+          value
+            ? "ltr:translate-x-6 rtl:-translate-x-6"
+            : "ltr:translate-x-[2px] rtl:-translate-x-[2px]"
+        }
+			  `}
           />
         </div>
         {label && <span className={labelClass}>{label}</span>}

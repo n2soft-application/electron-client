@@ -33,7 +33,6 @@ export const Default: Story = {
   args: {},
   parameters: {
     docs: {
-      canvas: { sourceState: "shown" },
       description: {
         story: "기본 로딩입니다",
       },
