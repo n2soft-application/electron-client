@@ -15,7 +15,7 @@ function Login() {
       <div className="lg-inner-column">
         <div className="left-column relative z-[1]">
           <div className="max-w-[520px] pt-20 ltr:pl-20 rtl:pr-20">
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center mb-6 space-x-4">
               <div className="logo-icon">
                 {!isDark ? (
                   <img className="border rounded shadow" src={Logo} alt="" />
@@ -27,15 +27,12 @@ function Login() {
                   />
                 )}
               </div>
-
-              <div>
-                <h1 className="text-base font-semibold text-slate-900 dark:text-slate-100">
-                  리테일 금융 시스템
-                </h1>
-              </div>
+              <h1 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
+                리테일 금융 시스템
+              </h1>
             </div>
             <h4>
-              Unlock your Project
+              Unlock your Project{" "}
               <span className="font-bold text-slate-800 dark:text-slate-400">
                 performance
               </span>
