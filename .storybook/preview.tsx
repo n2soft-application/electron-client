@@ -26,7 +26,7 @@ const preview: Preview = {
         order: [
           "Components",
           [
-            "Typography",
+            "Typography1",
             "Colors",
             "Badge",
             "Checkbox",
