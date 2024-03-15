@@ -82,25 +82,25 @@ function Login() {
               <div className="mb-4 text-center 2xl:mb-10">
                 <h4 className="font-medium">로그인</h4>
                 <div className="text-base text-slate-500">
-                  Sign in to your account to start using 리테일 금융 시스템
+                  지금 로그인하고 리테일 금융 시스템을 시작하세요
                 </div>
               </div>
               <LoginForm />
               <div className="relative border-b-[#9AA2AF] border-opacity-[16%] border-b pt-6">
                 <div className="absolute inline-block px-4 text-sm font-normal transform -translate-x-1/2 bg-white dark:bg-slate-800 dark:text-slate-400 left-1/2 top-1/2 min-w-max text-slate-500">
-                  Or continue with
+                  소셜로 로그인
                 </div>
               </div>
               <div className="max-w-[242px] mx-auto mt-8 w-full">
                 <Social />
               </div>
               <div className="md:max-w-[345px] mx-auto font-normal text-slate-500 dark:text-slate-400 mt-12 uppercase text-sm">
-                Don’t have an account?{" "}
+                계정이 없으신가요?{" "}
                 <Link
-                  to="/register"
+                  to="#"
                   className="font-medium text-slate-900 dark:text-white hover:underline"
                 >
-                  Sign up
+                  가입하기
                 </Link>
               </div>
             </div>

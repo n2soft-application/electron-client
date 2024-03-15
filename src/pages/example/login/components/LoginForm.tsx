@@ -48,7 +48,7 @@ function LoginForm() {
           label="아이디 저장"
         />
         <Link
-          to="/forgot-password"
+          to="#"
           className="text-sm font-medium leading-6 text-slate-800 dark:text-slate-400"
         >
           로그인 정보를 잊으셨나요?
