@@ -23,7 +23,7 @@ function LoginForm() {
     <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
       <STextinput
         name="email"
-        label="email"
+        label="이메일"
         defaultValue="email@gmail.com"
         type="email"
         register={register}
@@ -32,7 +32,7 @@ function LoginForm() {
       />
       <STextinput
         name="password"
-        label="passwrod"
+        label="비밀번호"
         type="password"
         defaultValue="password"
         register={register}
@@ -42,22 +42,23 @@ function LoginForm() {
 
       <div className="flex justify-between">
         <Checkbox
+          id="loginCheckbox"
           value={checked}
           onChange={() => setChecked(!checked)}
-          label="Keep me signed in"
+          label="아이디 저장"
         />
         <Link
           to="/forgot-password"
           className="text-sm font-medium leading-6 text-slate-800 dark:text-slate-400"
         >
-          Forgot Password?{" "}
+          로그인 정보를 잊으셨나요?
         </Link>
       </div>
 
       <Button
         type="submit"
         text="로그인"
-        className="block w-full text-center btn btn-dark "
+        className="block w-full text-center btn btn-dark"
       />
     </form>
   );

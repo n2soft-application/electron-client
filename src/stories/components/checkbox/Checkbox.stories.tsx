@@ -15,11 +15,8 @@ const meta = {
   },
   tags: ["autodocs"],
   argTypes: {
-    color: {
-      description: "배경색",
-    },
-    extra: {
-      description: "추가 스타일",
+    label: {
+      description: "설명",
     },
   },
   //   decorators: [
@@ -59,7 +56,9 @@ export const Default: Story = {
   name: "Default", // 사이드바에 보이는 이름
   storyName: "",
   args: {
-    color: "amber",
+    id: "defaultCheckbox",
+    label: "체크박스입니다.",
+    value: true,
   },
   parameters: {
     docs: {
@@ -71,9 +70,22 @@ export const Default: Story = {
   },
 };
 
-// export const Default2: Story = {
-//   args: {
-//     ...Default.args, // 인수사용
-//   },
-//   render: () => <Hooks />,
-// };
+export const allTypes: Story = () => (
+  <div className="flex flex-col gap-6">
+    <Checkbox {...Default.args} value={false} />
+    <Checkbox {...Default.args} />
+    <Checkbox disabled {...Default.args} />
+  </div>
+);
+
+allTypes.args = {
+  ...allTypes.args,
+};
+
+allTypes.parameters = {
+  docs: {
+    description: {
+      story: "기본 셀렉트입니다",
+    },
+  },
+};
