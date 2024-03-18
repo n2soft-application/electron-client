@@ -1,196 +1,73 @@
-import { Disclosure } from "@headlessui/react";
-import Badge from "../../components/badge/Badge";
 import Card from "../../components/card/Card";
-import Icon from "../../components/icons/Icon";
 import GroupChart3 from "../../components/partials/widget/chart/group-chart-3";
-import HistoryChart from "../../components/partials/widget/chart/history-chart";
-import SelectMonth from "../../components/partials/SelectMonth";
-import AccountReceivable from "../../components/partials/widget/chart/account-receivable";
-import BasicArea from "../example/chart/appex-chart/BasicArea";
-
-const items: {
-  version: string;
-  date: string;
-  changes: {
-    name: string;
-    tag?: string;
-  }[];
-}[] = [
-  {
-    version: "Version 2.0.1",
-    date: "1 February 2023",
-    changes: [
-      {
-        name: "Monochrome mode",
-        tag: "added",
-      },
-      {
-        name: "Axios configuration",
-        tag: "fixed",
-      },
-      {
-        name: "Other minor issues",
-        tag: "fixed",
-      },
-    ],
-  },
-  {
-    version: "Version 2.0.0",
-    date: "24 January 2023",
-    changes: [
-      {
-        name: "Change log page added.",
-        tag: "added",
-      },
-      {
-        name: "Badge added in sidebar.",
-        tag: "added",
-      },
-      {
-        name: "Vuex replaced with pinia",
-        tag: "update",
-      },
-      {
-        name: "Webpack replaced with Vite.",
-        tag: "update",
-      },
-      {
-        name: "Other minor issues",
-        tag: "fixed",
-      },
-    ],
-  },
-  {
-    version: "Version 1.0.1 ",
-    date: "3 January 2023",
-    changes: [
-      {
-        name: "RTL version added.",
-        tag: "added",
-      },
-      {
-        name: "Sidebar updated.",
-        tag: "update",
-      },
-      {
-        name: "Other minor issues",
-        tag: "fixed",
-      },
-    ],
-  },
-  {
-    version: "Version 1.0.0 ",
-    date: "29 December 2022",
-    changes: [
-      {
-        name: "Initial Release",
-      },
-    ],
-  },
-];
+import CalendarView from "../../components/partials/widget/CalendarView";
+import TaskLists from "../../components/partials/widget/task-list";
+import RecentActivity from "../../components/partials/widget/recent-activity";
+import Profile from "../../components/partials/widget/profile";
+import LoanPerformanceChart from "./components/chart/LoanPerformanceChart";
+import LoanAmountChart from "./components/chart/LoanAmountChart";
+import BalanceDelayChart from "./components/chart/BalanceDelayChart";
+import ProfitAndLossStatusChart from "./components/chart/ProfitAndLossStatusChart";
+import MonthlyBalanceChart from "./components/chart/MonthlyBalanceChart";
+import { Link } from "react-router-dom";
 
 function Dashboard() {
   return (
-    <div className="space-y-5">
-      <Card>
-        <div className="grid col-span-1 gap-3 xl:grid-cols-4 lg:grid-cols-2">
-          <GroupChart3 />
-        </div>
-      </Card>
-      <Card title="History" headerslot={<SelectMonth />}>
-        <div className="legend-ring4">
-          <HistoryChart />
-        </div>
-      </Card>
-      <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
-        <Card title="Account Receivable" headerslot={<SelectMonth />}>
-          <AccountReceivable />
+    <div className="flex items-start gap-5">
+      <div className="flex flex-col gap-5 w-96">
+        <Profile />
+        <Card
+          title="TO-DO List"
+          headerslot={
+            <div className="text-sm text-slate-800 dark:text-slate-200">
+              <Link to="/notifications" className="underline">
+                상세보기
+              </Link>
+            </div>
+          }
+        >
+          <div className="pb-4">
+            <CalendarView />
+          </div>
+          <hr className="pb-4 -mx-6" />
+          <TaskLists />
         </Card>
-        <Card title="Deal distribution by stage" headerslot={<SelectMonth />}>
-          <BasicArea height={310} />
+        <Card
+          title="공지사항"
+          headerslot={
+            <div className="text-sm text-slate-800 dark:text-slate-200">
+              <Link to="/notifications" className="underline">
+                더보기
+              </Link>
+            </div>
+          }
+        >
+          <RecentActivity />
         </Card>
       </div>
-      <div className="grid grid-cols-12 gap-5">
-        <div className="col-span-12 lg:col-span-8">
-          <Card title="Version's">
-            <div>
-              <Badge label="new" className="text-white bg-primary-500" />
-            </div>
-            <div className="mt-6 space-y-5">
-              {items.map((item, i) => (
-                <div key={i} className="mb-3">
-                  <Disclosure>
-                    {({ open }) => (
-                      <>
-                        <Disclosure.Button className="flex justify-between w-full px-8 py-4 text-base font-medium transition duration-150 cursor-pointer bg-slate-50 dark:bg-slate-700 dark:bg-opacity-60 rounded-t-md text-start text-slate-600 dark:text-slate-300">
-                          <span>
-                            {item.version}
-                            <span className="text-xs font-semibold text-slate-400">
-                              - Published on {item.date}
-                            </span>
-                          </span>
-                          <span
-                            className={` ${
-                              open && "rotate-180 transform"
-                            }  transition-all duration-150 text-xl`}
-                          >
-                            <Icon icon="heroicons:chevron-down-solid" />
-                          </span>
-                        </Disclosure.Button>
-                        <Disclosure.Panel>
-                          <div className="text-sm font-normal bg-white border border-t-0 text-slate-600 dark:bg-slate-900 dark:text-slate-300 rounded-b-md dark:border dark:border-slate-700 dark:border-t-0 border-slate-100">
-                            <div className="px-8 py-4">
-                              {item.changes.map((data, j) => (
-                                <div key={j}>
-                                  <div className="flex items-center mt-2 space-x-3 text-sm text-slate-600 dark:text-slate-300">
-                                    <span className="w-2 h-2 rounded-full bg-primary-500"></span>
-                                    <span>{data.name}</span>
-
-                                    <span
-                                      className={` px-2 rounded-full text-xs capitalize
-                                        ${
-                                          data.tag === "added"
-                                            ? "bg-indigo-100 text-indigo-500"
-                                            : data.tag === "update"
-                                            ? "bg-yellow-100 text-yellow-500"
-                                            : data.tag === "fixed"
-                                            ? "bg-red-100 text-red-500"
-                                            : ""
-                                        }
-                                        `}
-                                    >
-                                      {data.tag}
-                                    </span>
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        </Disclosure.Panel>
-                      </>
-                    )}
-                  </Disclosure>
-                </div>
-              ))}
-            </div>
+      <div className="flex flex-col gap-5">
+        <Card title="리테일금융 실적현황">
+          <div className="grid col-span-1 gap-3 xl:grid-cols-4 lg:grid-cols-2">
+            <GroupChart3 />
+          </div>
+        </Card>
+        <Card title="채널별 대출실적">
+          <LoanPerformanceChart />
+        </Card>
+        <Card title="기간별 대출금액 현황">
+          <LoanAmountChart />
+        </Card>
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+          <Card title="채널별 잔액/연체 분표도">
+            <BalanceDelayChart />
+          </Card>
+          <Card title="손익현황">
+            <ProfitAndLossStatusChart />
           </Card>
         </div>
-        <div className="col-span-12 lg:col-span-4">
-          <Card title="CHANGELOG">
-            <h5 className="text-xs font-medium">VERSION HISTORY</h5>
-            <ul className="mt-6 space-y-3 divide-y dark:divide-slate-700 divide-slate-100">
-              {items.map((item, i) => (
-                <li
-                  className="flex items-center justify-between pt-3 text-xs text-slate-600 dark:text-slate-300"
-                  key={i}
-                >
-                  <span>{item.version} </span>
-                  <span>{item.date}</span>
-                </li>
-              ))}
-            </ul>
-          </Card>
-        </div>
+        <Card title="여.수신월별잔액">
+          <MonthlyBalanceChart />
+        </Card>
       </div>
     </div>
   );

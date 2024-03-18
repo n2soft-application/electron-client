@@ -5,47 +5,143 @@ import shade1 from "../../../../assets/images/all-img/shade-1.png";
 import shade2 from "../../../../assets/images/all-img/shade-2.png";
 import shade3 from "../../../../assets/images/all-img/shade-3.png";
 import shade4 from "../../../../assets/images/all-img/shade-4.png";
+import PerformanceStatusChart from "../../../../pages/dashboard/components/chart/PerformanceStatusChart";
 const statistics = [
   {
-    title: "Sales",
-    count: "354",
+    title: "대출금액",
+    count: "12,870",
     bg: "bg-warning-500",
-    text: "text-primary-500",
-    percent: "25.67% ",
+    text: "text-danger-500",
+    percent: "4.58% ",
     icon: "heroicons:arrow-trending-up",
     img: shade1,
-    percentClass: "text-primary-500",
+    percentClass: "text-danger-500",
+    chart: (
+      <PerformanceStatusChart
+        series={[14, 5, 5, 5, 4, 4, 4, 3, 3, 2, 1, 1, 1, 1, 1, 1, 1]}
+        labels={[
+          "채움",
+          "파라마운트파이넌스",
+          "메디맨톤",
+          "캐시플로우",
+          "온포유",
+          "서민금융진흥원",
+          "(주)형제론컨설팅",
+          "2S코퍼레이션",
+          "(주)참벗",
+          "에이플",
+          "(주)알에스티",
+          "이노클라우드",
+          "어니스트파이낸셜",
+          "제이씨에스솔루션",
+          "(주)인베스트",
+          "(주)희망플랜",
+          "(주)론데이",
+        ]}
+      />
+    ),
   },
   {
-    title: "Revenue ",
-    count: "$86,954",
-
+    title: "대출잔액",
+    count: "6,919",
     bg: "bg-info-500",
-    text: "text-primary-500",
-    percent: "8.67%",
+    text: "text-danger-500",
+    percent: "3.07%",
     icon: "heroicons:arrow-trending-up",
     img: shade2,
-    percentClass: "text-primary-500",
+    percentClass: "text-danger-500",
+    chart: (
+      <PerformanceStatusChart
+        series={[14, 5, 5, 5, 4, 4, 4, 3, 3, 2, 1, 1, 1, 1, 1, 1, 1]}
+        labels={[
+          "채움",
+          "파라마운트파이넌스",
+          "메디맨톤",
+          "캐시플로우",
+          "온포유",
+          "서민금융진흥원",
+          "(주)형제론컨설팅",
+          "2S코퍼레이션",
+          "(주)참벗",
+          "에이플",
+          "(주)알에스티",
+          "이노클라우드",
+          "어니스트파이낸셜",
+          "제이씨에스솔루션",
+          "(주)인베스트",
+          "(주)희망플랜",
+          "(주)론데이",
+        ]}
+      />
+    ),
   },
   {
-    title: "Conversion",
-    count: "15%",
+    title: "당월대출금액",
+    count: "563",
     bg: "bg-primary-500",
-    text: "text-danger-500",
-    percent: "1.67%  ",
+    text: "text-primary-500",
+    percent: "7.15%  ",
     icon: "heroicons:arrow-trending-down",
     img: shade3,
-    percentClass: "text-danger-500",
+    percentClass: "text-primary-500",
+    chart: (
+      <PerformanceStatusChart
+        series={[14, 5, 5, 5, 4, 4, 4, 3, 3, 2, 1, 1, 1, 1, 1, 1, 1]}
+        labels={[
+          "채움",
+          "파라마운트파이넌스",
+          "메디맨톤",
+          "캐시플로우",
+          "온포유",
+          "서민금융진흥원",
+          "(주)형제론컨설팅",
+          "2S코퍼레이션",
+          "(주)참벗",
+          "에이플",
+          "(주)알에스티",
+          "이노클라우드",
+          "어니스트파이낸셜",
+          "제이씨에스솔루션",
+          "(주)인베스트",
+          "(주)희망플랜",
+          "(주)론데이",
+        ]}
+      />
+    ),
   },
   {
-    title: "Leads",
-    count: "654",
+    title: "연체금액",
+    count: "364",
     bg: "bg-success-500",
-    text: "text-primary-500",
-    percent: "11.67%  ",
+    text: "text-danger-500",
+    percent: "4.75%  ",
     icon: "heroicons:arrow-trending-up",
     img: shade4,
-    percentClass: "text-primary-500",
+    percentClass: "text-danger-500",
+    chart: (
+      <PerformanceStatusChart
+        series={[14, 5, 5, 5, 4, 4, 4, 3, 3, 2, 1, 1, 1, 1, 1, 1, 1]}
+        labels={[
+          "채움",
+          "파라마운트파이넌스",
+          "메디맨톤",
+          "캐시플로우",
+          "온포유",
+          "서민금융진흥원",
+          "(주)형제론컨설팅",
+          "2S코퍼레이션",
+          "(주)참벗",
+          "에이플",
+          "(주)알에스티",
+          "이노클라우드",
+          "어니스트파이낸셜",
+          "제이씨에스솔루션",
+          "(주)인베스트",
+          "(주)희망플랜",
+          "(주)론데이",
+        ]}
+      />
+    ),
   },
 ];
 const GroupChart3 = () => {
@@ -64,10 +160,10 @@ const GroupChart3 = () => {
               className="object-contain w-full h-full"
             />
           </div>
-          <span className="block mb-6 text-sm font-medium text-slate-900 dark:text-white">
+          <span className="block mb-2 text-sm font-medium text-slate-900 dark:text-white">
             {item.title}
           </span>
-          <span className="block mb-6 text-2xl font-medium mb- text-slate-900 dark:text-white">
+          <span className="block mb-2 text-2xl font-medium mb- text-slate-900 dark:text-white">
             {item.count}
           </span>
           <div className="flex space-x-2 rtl:space-x-reverse">
@@ -79,10 +175,11 @@ const GroupChart3 = () => {
                 {item.percent}
               </span>
               <span className="block mb-1 text-slate-600 dark:text-slate-300">
-                From last week
+                전월 대비 증감율
               </span>
             </div>
           </div>
+          {item.chart}
         </div>
       ))}
     </>
