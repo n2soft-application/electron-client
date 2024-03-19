@@ -7,12 +7,12 @@ const ProfitAndLossStatusChart = () => {
   const [isDark] = useDarkMode();
   const series = [
     {
-      name: "2019 손익",
+      name: "2023 손익",
       data: [4, 37, 37, 115, 202, 290, 397, 462, 573, 641, 717, 789],
     },
     {
-      name: "2020 손익",
-      data: [-36, 73, 184, 219, 388, 0, 0, 0, 0, 0, 0, 0],
+      name: "2024 손익",
+      data: [-36, 73, 184, 229, 0, 0, 0, 0, 0, 0, 0, 0],
     },
   ];
   const options: ApexOptions = {
