@@ -4,7 +4,6 @@ import AuthLayout from "../components/layout/AuthLayout";
 import Layout from "../components/layout/Layout";
 import Loading from "../components/loading/Loading";
 import BankingPage from "../pages/example/dashboard/banking";
-import BasicTablePage from "../pages/table/table-basic";
 
 // Pages
 const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
@@ -20,6 +19,7 @@ const ChangeLog = lazy(() => import("../pages/example/changelog/ChangeLog"));
 const Login = lazy(() => import("../pages/example/login/Login"));
 const BasicWidget = lazy(() => import("../pages/example/widget/BasicWidget"));
 const AppexChartPage = lazy(() => import("../pages/example/chart/appex-chart/AppexChartPage"));
+const BasicTablePage = lazy(() => import("../pages/example/table/BasicTablePage"));
 const MapPage = lazy(() => import("../pages/example/map/MapPage"));
 
 // Components
