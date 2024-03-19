@@ -3,14 +3,14 @@ import React, { useState } from "react";
 import Mainuser from "../../../assets/images/all-img/main-user.png";
 import Card from "../../../components/card/Card";
 import HomeBredCurbs from "./HomeBredCurbs";
-import GroupChart5 from "../../../components/partials/widget/chart/group-chart5";
 import { Link } from "react-router-dom";
 import SimpleBar from "simplebar-react";
 import Textinput from "../../../components/form/Textinput";
 import SelectMonth from "../../../components/partials/SelectMonth";
-import AccountReceivable from "../../../components/partials/widget/chart/account-receivable";
-import AccountPayable from "../../../components/partials/widget/chart/account-payable";
-import HistoryChart from "../../../components/partials/widget/chart/history-chart";
+import GroupChart5 from "../../../components/chart/GroupChart5";
+import HistoryChart from "../../../components/chart/HistoryChart";
+import AccountReceivable from "../../../components/chart/AccountReceivable";
+import AccountPayable from "../../../components/chart/AccountPayable";
 const users = [
   {
     name: "Ab",

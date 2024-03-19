@@ -1,5 +1,5 @@
 import Card from "../../components/card/Card";
-import GroupChart3 from "../../components/partials/widget/chart/group-chart-3";
+import GroupChart3 from "./components/chart/group-chart-3";
 import CalendarView from "../../components/partials/widget/CalendarView";
 import TaskLists from "../../components/partials/widget/task-list";
 import RecentActivity from "../../components/partials/widget/recent-activity";
