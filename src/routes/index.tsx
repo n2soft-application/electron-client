@@ -18,6 +18,7 @@ const ChatPage = lazy(() => import("../pages/example/chat/ChatPage"));
 const ChangeLog = lazy(() => import("../pages/example/changelog/ChangeLog"));
 const Login = lazy(() => import("../pages/example/login/Login"));
 const BasicWidget = lazy(() => import("../pages/example/widget/BasicWidget"));
+const StatisticWidget = lazy(() => import("../pages/example/widget/StatisticWidget"));
 const AppexChartPage = lazy(() => import("../pages/example/chart/appex-chart/AppexChartPage"));
 const BasicTablePage = lazy(() => import("../pages/example/table/BasicTablePage"));
 const MapPage = lazy(() => import("../pages/example/map/MapPage"));
@@ -58,6 +59,7 @@ const AppRouter = () => {
         <Route path="changelog" element={<ChangeLog />} />
         <Route path="table-basic" element={<BasicTablePage />} />
         <Route path="basic" element={<BasicWidget />} />
+        <Route path="statistic" element={<StatisticWidget />} />
         <Route path="map" element={<MapPage />} />
 
         {/* Components */}
