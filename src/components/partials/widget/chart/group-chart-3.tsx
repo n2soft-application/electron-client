@@ -174,7 +174,7 @@ const GroupChart3 = () => {
                   {item.percent}
                 </span>
               </div>
-              <span className="block text-[11px] text-slate-600 dark:text-slate-300">
+              <span className="block text-[10px] text-slate-600 dark:text-slate-300">
                 전월 대비 증감율
               </span>
             </div>

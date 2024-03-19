@@ -13,9 +13,18 @@ const PerformanceStatusChart = ({
   const options: ApexOptions = {
     labels: labels,
     dataLabels: {
+      background: {
+        borderWidth: 0,
+        enabled: true,
+      },
+      style: {
+        fontSize: "11px",
+        colors: [isDark ? "#CBD5E1" : "#475569"],
+      },
       enabled: true,
-      formatter: function (val: number) {
-        return Math.round(val) + "%";
+      formatter: function (val: number, opts: any) {
+        const name = opts.w.globals.labels[opts.seriesIndex];
+        return `${name} ${Math.round(val)}%`;
       },
     },
     colors: ["#4669fa", "#FA916B", "#50C793", "#F1595C"],
@@ -27,6 +36,11 @@ const PerformanceStatusChart = ({
     },
     plotOptions: {
       pie: {
+        customScale: 1,
+        dataLabels: {
+          offset: 10,
+          //   minAngleToShowLabel: 0,
+        },
         donut: {
           size: "65%",
         },
@@ -48,7 +62,7 @@ const PerformanceStatusChart = ({
   };
   return (
     <div className={`${className}`}>
-      <Chart type="donut" height="200" options={options} series={series} />
+      <Chart type="donut" height="250" options={options} series={series} />
     </div>
   );
 };
