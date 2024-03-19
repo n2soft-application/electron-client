@@ -8,9 +8,7 @@ import BasicTablePage from "../pages/table/table-basic";
 
 // Pages
 const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
-const CommonCodePage = lazy(
-  () => import("../pages/preferences/code/common/CommonCodePage")
-);
+const CommonCodePage = lazy(() => import("../pages/preferences/code/common/CommonCodePage"));
 
 // Error pages
 const Error404 = lazy(() => import("../pages/error/Error404"));
@@ -21,14 +19,11 @@ const ChatPage = lazy(() => import("../pages/example/chat/ChatPage"));
 const ChangeLog = lazy(() => import("../pages/example/changelog/ChangeLog"));
 const Login = lazy(() => import("../pages/example/login/Login"));
 const BasicWidget = lazy(() => import("../pages/example/widget/BasicWidget"));
-const AppexChartPage = lazy(
-  () => import("../pages/example/chart/appex-chart/AppexChartPage")
-);
+const AppexChartPage = lazy(() => import("../pages/example/chart/appex-chart/AppexChartPage"));
+const MapPage = lazy(() => import("../pages/example/map/MapPage"));
 
 // Components
-const Typography = lazy(
-  () => import("../pages/example/components/typography/Typography")
-);
+const Typography = lazy(() => import("../pages/example/components/typography/Typography"));
 const Colors = lazy(() => import("../pages/example/components/colors/Colors"));
 const ButtonPage = lazy(() => import("../pages/example/components/button/ButtonPage"));
 const CardPage = lazy(() => import("../pages/example/components/card/CardPage"));
@@ -63,6 +58,7 @@ const AppRouter = () => {
         <Route path="changelog" element={<ChangeLog />} />
         <Route path="table-basic" element={<BasicTablePage />} />
         <Route path="basic" element={<BasicWidget />} />
+        <Route path="map" element={<MapPage />} />
 
         {/* Components */}
         <Route path="typography" element={<Typography />} />
