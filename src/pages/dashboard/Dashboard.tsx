@@ -51,12 +51,14 @@ function Dashboard() {
             <GroupChart3 />
           </div>
         </Card>
-        <Card title="채널별 대출실적">
-          <LoanPerformanceChart />
-        </Card>
-        <Card title="기간별 대출금액 현황">
-          <LoanAmountChart />
-        </Card>
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+          <Card title="채널별 대출실적">
+            <LoanPerformanceChart />
+          </Card>
+          <Card title="기간별 대출금액 현황">
+            <LoanAmountChart />
+          </Card>
+        </div>
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
           <Card title="채널별 잔액/연체 분표도">
             <BalanceDelayChart />
