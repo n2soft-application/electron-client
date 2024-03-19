@@ -163,18 +163,18 @@ const GroupChart3 = () => {
           <span className="block mb-2 text-sm font-medium text-slate-900 dark:text-white">
             {item.title}
           </span>
-          <span className="block mb-2 text-2xl font-medium mb- text-slate-900 dark:text-white">
-            {item.count}
-          </span>
-          <div className="flex space-x-2 rtl:space-x-reverse">
-            <div className={` flex-none text-xl  ${item.text} `}>
-              <Icon icon={item.icon} />
-            </div>
-            <div className="flex-1 text-sm">
-              <span className={` block mb-[2px] ${item.percentClass} `}>
-                {item.percent}
-              </span>
-              <span className="block mb-1 text-slate-600 dark:text-slate-300">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="block text-3xl font-medium text-slate-900 dark:text-white">
+              {item.count}
+            </span>
+            <div>
+              <div className="flex gap-1">
+                <Icon icon={item.icon} className={`text-xl ${item.text}`} />
+                <span className={`text-sm block ${item.percentClass} `}>
+                  {item.percent}
+                </span>
+              </div>
+              <span className="block text-[11px] text-slate-600 dark:text-slate-300">
                 전월 대비 증감율
               </span>
             </div>

@@ -47,7 +47,7 @@ function Dashboard() {
       </div>
       <div className="flex flex-col gap-5">
         <Card title="리테일금융 실적현황">
-          <div className="grid col-span-1 gap-3 xl:grid-cols-4 lg:grid-cols-2">
+          <div className="grid col-span-1 gap-3 2xl:grid-cols-4 xl:grid-cols-2">
             <GroupChart3 />
           </div>
         </Card>

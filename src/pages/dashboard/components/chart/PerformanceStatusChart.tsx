@@ -6,7 +6,7 @@ import useDarkMode from "../../../../hooks/layout/useDarkMode";
 const PerformanceStatusChart = ({
   labels = ["success", "Return"],
   series = [44, 55],
-  className = "px-4 py-3",
+  className = "",
 }) => {
   const [isDark] = useDarkMode();
 
