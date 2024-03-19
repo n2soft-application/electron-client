@@ -28,7 +28,7 @@ function Login() {
                 )}
               </div>
               <h1 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
-                리테일 금융 시스템
+              리테일금융시스템
               </h1>
             </div>
             <h4>
@@ -70,7 +70,7 @@ function Login() {
 
                     <div>
                       <h1 className="text-base font-semibold text-slate-900 dark:text-slate-100">
-                        리테일 금융 시스템
+                      리테일금융시스템
                       </h1>
                     </div>
                   </div>
@@ -79,7 +79,7 @@ function Login() {
               <div className="mb-4 text-center 2xl:mb-10">
                 <h4 className="font-medium">로그인</h4>
                 <div className="text-base text-slate-500">
-                  지금 로그인하고 리테일 금융 시스템을 시작하세요
+                  지금 로그인하고 리테일금융시스템을 시작하세요
                 </div>
               </div>
               <LoginForm />
@@ -102,7 +102,7 @@ function Login() {
               </div>
             </div>
             <div className="text-center auth-footer">
-              Copyright 2024, 리테일 금융 시스템 All Rights Reserved.
+              Copyright 2024, 리테일금융시스템 All Rights Reserved.
             </div>
           </div>
         </div>

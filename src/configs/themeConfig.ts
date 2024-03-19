@@ -1,6 +1,6 @@
 const themeConfig = {
   app: {
-    name: "리테일 금융 시스템",
+    name: "리테일금융시스템",
   },
   // layout
   layout: {

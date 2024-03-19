@@ -1,3 +1,3 @@
 export const Constants = {
-  title: "리테일 금융 시스템",
+  title: "리테일금융시스템",
 };

@@ -69,7 +69,7 @@ function NavMenu({ menus }: Props) {
         });
       }
     });
-    document.title = `리테일 금융 시스템 | ${locationName}`;
+    document.title = `리테일금융시스템 | ${locationName}`;
 
     setActiveSubmenu(submenuIndex);
     setMultiMenu(multiMenuIndex);
