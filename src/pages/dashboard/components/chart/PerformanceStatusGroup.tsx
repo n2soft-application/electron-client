@@ -144,7 +144,7 @@ const statistics = [
     ),
   },
 ];
-const GroupChart3 = () => {
+const PerformanceStatusGroup = () => {
   return (
     <>
       {statistics.map((item, i) => (
@@ -186,4 +186,4 @@ const GroupChart3 = () => {
   );
 };
 
-export default GroupChart3;
+export default PerformanceStatusGroup;

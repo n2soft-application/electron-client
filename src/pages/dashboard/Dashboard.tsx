@@ -1,5 +1,4 @@
 import Card from "../../components/card/Card";
-import GroupChart3 from "./components/chart/group-chart-3";
 import CalendarView from "../../components/partials/widget/CalendarView";
 import TaskLists from "../../components/partials/widget/task-list";
 import RecentActivity from "../../components/partials/widget/recent-activity";
@@ -10,6 +9,7 @@ import BalanceDelayChart from "./components/chart/BalanceDelayChart";
 import ProfitAndLossStatusChart from "./components/chart/ProfitAndLossStatusChart";
 import MonthlyBalanceChart from "./components/chart/MonthlyBalanceChart";
 import { Link } from "react-router-dom";
+import PerformanceStatusGroup from "./components/chart/PerformanceStatusGroup";
 
 function Dashboard() {
   return (
@@ -48,7 +48,7 @@ function Dashboard() {
       <div className="flex flex-col gap-5">
         <Card title="리테일금융 실적현황">
           <div className="grid col-span-1 gap-3 2xl:grid-cols-4 xl:grid-cols-2">
-            <GroupChart3 />
+            <PerformanceStatusGroup />
           </div>
         </Card>
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
