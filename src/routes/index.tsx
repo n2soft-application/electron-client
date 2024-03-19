@@ -22,6 +22,7 @@ const StatisticWidget = lazy(() => import("../pages/example/widget/StatisticWidg
 const AppexChartPage = lazy(() => import("../pages/example/chart/appex-chart/AppexChartPage"));
 const BasicTablePage = lazy(() => import("../pages/example/table/BasicTablePage"));
 const MapPage = lazy(() => import("../pages/example/map/MapPage"));
+const TodoPage = lazy(() => import("../pages/example/todo/TodoPage"));
 
 // Components
 const Typography = lazy(() => import("../pages/example/components/typography/Typography"));
@@ -61,6 +62,7 @@ const AppRouter = () => {
         <Route path="basic" element={<BasicWidget />} />
         <Route path="statistic" element={<StatisticWidget />} />
         <Route path="map" element={<MapPage />} />
+        <Route path="todo" element={<TodoPage />} />
 
         {/* Components */}
         <Route path="typography" element={<Typography />} />
