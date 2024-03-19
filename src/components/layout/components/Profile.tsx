@@ -1,5 +1,6 @@
 import { Menu } from "@headlessui/react";
 import { useNavigate } from "react-router-dom";
+import ProfileImage from "../../../assets/images/users/user-1.jpg";
 import UserAvatar from "../../../assets/images/all-img/user.png";
 import Dropdown from "../../dropdown";
 import Icon from "../../icons/Icon";
@@ -10,15 +11,15 @@ const profileLabel = () => {
       <div className="flex-1 ltr:mr-[10px] rtl:ml-[10px]">
         <div className="rounded-full lg:h-8 lg:w-8 h-7 w-7">
           <img
-            src={UserAvatar}
+            src={ProfileImage}
             alt=""
             className="block object-cover w-full h-full rounded-full"
           />
         </div>
       </div>
       <div className="items-center flex-none hidden overflow-hidden text-sm font-normal text-slate-600 dark:text-white lg:flex text-ellipsis whitespace-nowrap">
-        <span className="overflow-hidden text-ellipsis whitespace-nowrap w-[85px] block">
-          스마트 사원
+        <span className="block px-2 overflow-hidden text-ellipsis whitespace-nowrap">
+          홍길동
         </span>
         <span className="text-base inline-block ltr:ml-[10px] rtl:mr-[10px]">
           <Icon icon="heroicons-outline:chevron-down"></Icon>
