@@ -1,10 +1,9 @@
-import React from "react";
 import CheckImage from "../../assets/images/icon/ck-white.svg";
 
 type Props = {
-  id: string;
+  id?: string;
   disabled?: boolean;
-  label: string;
+  label?: string;
   value: boolean;
   name?: string;
   onChange?: () => void;
@@ -37,7 +36,7 @@ const Checkbox = ({
         disabled={disabled}
       />
       <span
-        className={`h-4 w-4 border flex-none border-slate-100 dark:border-slate-800 rounded 
+        className={`h-4 w-4 border flex-none border-slate-100 dark:border-slate-800 rounded
         inline-flex mr-3 rtl:ml-3 relative transition-all duration-150
         ${
           value
