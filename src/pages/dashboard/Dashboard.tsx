@@ -20,7 +20,7 @@ function Dashboard() {
           title="TO-DO List"
           headerslot={
             <div className="text-sm text-slate-800 dark:text-slate-200">
-              <Link to="/notifications" className="underline">
+              <Link to="/todo" className="underline">
                 상세보기
               </Link>
             </div>
@@ -36,7 +36,7 @@ function Dashboard() {
           title="공지사항"
           headerslot={
             <div className="text-sm text-slate-800 dark:text-slate-200">
-              <Link to="/notifications" className="underline">
+              <Link to="#" className="underline">
                 더보기
               </Link>
             </div>
