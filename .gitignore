@@ -31,3 +31,6 @@ dist
 # storybook
 build-storybook.log
 storybook-static
+
+# firebase
+.firebase

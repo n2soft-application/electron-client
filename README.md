@@ -1,5 +1,17 @@
 # Electron
 
+## Firebase Hodting
+
+### init
+
+1. firebase init hosting
+
+### deploy
+
+1. yarn react:build
+
+2. firebase deploy --only hosting
+
 ## GitHub, GitLab 여러 계정 연결
 
 ### # github, gitlab ssh key 등록
