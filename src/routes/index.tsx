@@ -51,6 +51,10 @@ const InputMaskPage = lazy(() => import("../pages/example/form/InputMaskPage"));
 const InputLayoutPage = lazy(() => import("../pages/example/form/InputLayoutPage"));
 const InputGroupPage = lazy(() => import("../pages/example/form/InputGroupPage"));
 const InputPage = lazy(() => import("../pages/example/form/InputPage"));
+const FormRepeaterPage = lazy(() => import("../pages/example/form/FormRepeaterPage"));
+const FormValidationPage = lazy(() => import("../pages/example/form/validation/FormValidationPage"));
+const FormWizardPage = lazy(() => import("../pages/example/form/wizard/FormWizardPage"));
+const FileInputPage = lazy(() => import("../pages/example/form/file/FileInputPage"));
 
 const AppRouter = () => {
   return (
@@ -101,6 +105,10 @@ const AppRouter = () => {
         <Route path="input-mask" element={<InputMaskPage />} />
         <Route path="input-layout" element={<InputLayoutPage />} />
         <Route path="input-group" element={<InputGroupPage />} />
+        <Route path="form-validation" element={<FormValidationPage />} />
+        <Route path="form-wizard" element={<FormWizardPage />} />
+        <Route path="file-input" element={<FileInputPage />} />
+        <Route path="form-repeater" element={<FormRepeaterPage />} />
 
         <Route path="*" element={<Navigate replace={true} to="/404" />} />
       </Route>
