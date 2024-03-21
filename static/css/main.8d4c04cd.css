@@ -424,6 +424,14 @@ video {
   margin-bottom: 0.5rem;
   margin-right: 0.5rem;
 }
+  .space-xy-6 > div,
+  .space-xy-6 > button,
+  .space-xy-6 > a,
+  .space-xy-6 label,
+  .space-xy-6 > * {
+  margin-bottom: 0.5rem;
+  margin-right: 1rem;
+}
 
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
@@ -7691,4 +7699,4 @@ ol.custom-list ol li:where([dir="rtl"], [dir="rtl"] *),
   }
 }
 
-/*# sourceMappingURL=main.eb3765a2.css.map*/
+/*# sourceMappingURL=main.8d4c04cd.css.map*/
