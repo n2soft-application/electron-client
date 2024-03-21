@@ -30,7 +30,7 @@ type Props = {
   defaultValue?: string | number | readonly string[] | undefined;
 };
 
-const STextinput = ({
+const TextInput = ({
   type,
   label,
   placeholder = "Add placeholder",
@@ -195,4 +195,4 @@ const STextinput = ({
   );
 };
 
-export default STextinput;
+export default TextInput;

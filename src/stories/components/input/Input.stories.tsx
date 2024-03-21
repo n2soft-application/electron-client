@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import STextinput from "../../../components/form/STextInput";
+import TextInput from "../../../components/form/TextInput";
 
 const meta = {
   title: "Components/Input",
-  component: STextinput,
+  component: TextInput,
   parameters: {
     layout: "centered",
     componentSubtitle: "인풋",
@@ -16,7 +16,7 @@ const meta = {
   tags: ["autodocs"],
   argTypes: {},
   decorators: [(Story: any) => <Story />],
-} satisfies Meta<typeof STextinput>;
+} satisfies Meta<typeof TextInput>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -29,14 +29,14 @@ export const Default: Story = {
 
 export const allTypes: Story = () => (
   <div className="flex flex-col gap-2">
-    <STextinput {...Default.args} label="라벨" />
-    <STextinput
+    <TextInput {...Default.args} label="라벨" />
+    <TextInput
       {...Default.args}
       description="설명입니다."
       defaultValue="입력되었습니다."
     />
-    <STextinput {...Default.args} defaultValue="입력되었습니다." readonly />
-    <STextinput {...Default.args} defaultValue="입력되었습니다." disabled />
+    <TextInput {...Default.args} defaultValue="입력되었습니다." readonly />
+    <TextInput {...Default.args} defaultValue="입력되었습니다." disabled />
   </div>
 );
 

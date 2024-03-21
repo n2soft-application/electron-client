@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../../../components/button/Button";
 import Checkbox from "../../../../components/checkbox/Checkbox";
-import STextinput from "../../../../components/form/STextInput";
+import TextInput from "../../../../components/form/TextInput";
 
 function LoginForm() {
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ function LoginForm() {
 
   return (
     <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
-      <STextinput
+      <TextInput
         name="email"
         label="이메일"
         defaultValue="email@gmail.com"
@@ -30,7 +30,7 @@ function LoginForm() {
         error={errors.email}
         className="h-[48px]"
       />
-      <STextinput
+      <TextInput
         name="password"
         label="비밀번호"
         type="password"

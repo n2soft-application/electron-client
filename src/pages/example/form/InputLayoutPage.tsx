@@ -3,8 +3,8 @@ import Button from "../../../components/button/Button";
 import Card from "../../../components/card/Card";
 import Checkbox from "../../../components/checkbox/Checkbox";
 import InputGroup from "../../../components/form/InputGroup";
-import STextinput from "../../../components/form/STextInput";
 import Icon from "../../../components/icons/Icon";
+import TextInput from "../../../components/form/TextInput";
 
 const InputLayoutPage = () => {
   const [checked, setChecked] = useState(true);
@@ -13,28 +13,28 @@ const InputLayoutPage = () => {
     <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
       <Card title="Horizontal Form">
         <div className="space-y-4">
-          <STextinput
+          <TextInput
             label="Full name"
             id="h_Fullname"
             type="text"
             placeholder="Full name"
             horizontal
           />
-          <STextinput
+          <TextInput
             label="Email"
             id="h_email"
             type="email"
             placeholder="Type your email"
             horizontal
           />
-          <STextinput
+          <TextInput
             label="Phone"
             id="h_phone"
             type="phone"
             placeholder="Type your email"
             horizontal
           />
-          <STextinput
+          <TextInput
             label="Password"
             id="h_password"
             type="Password"
@@ -101,25 +101,25 @@ const InputLayoutPage = () => {
       </Card>
       <Card title="Vertical Form">
         <div className="space-y-4">
-          <STextinput
+          <TextInput
             label="Full name"
             id="h_Fullname2"
             type="text"
             placeholder="Full name"
           />
-          <STextinput
+          <TextInput
             label="Email"
             id="h_email2"
             type="email"
             placeholder="Type your email"
           />
-          <STextinput
+          <TextInput
             label="Phone"
             id="h_phone2"
             type="phone"
             placeholder="Type your email"
           />
-          <STextinput
+          <TextInput
             label="Password"
             id="h_password2"
             type="Password"

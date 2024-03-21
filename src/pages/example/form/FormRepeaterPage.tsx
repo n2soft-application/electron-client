@@ -1,8 +1,8 @@
 import { useFieldArray, useForm } from "react-hook-form";
 import Button from "../../../components/button/Button";
 import Card from "../../../components/card/Card";
-import STextinput from "../../../components/form/STextInput";
 import Icon from "../../../components/icons/Icon";
+import TextInput from "../../../components/form/TextInput";
 
 function FormRepeaterPage() {
   const { register, control, handleSubmit, reset, trigger, setError } = useForm(
@@ -27,9 +27,7 @@ function FormRepeaterPage() {
             text="Add new"
             icon="heroicons-outline:plus"
             className="btn-dark"
-            onClick={() =>
-              append({ firstName: "", lastName: "", phone: "" })
-            }
+            onClick={() => append({ firstName: "", lastName: "", phone: "" })}
           />
         }
       >
@@ -39,7 +37,7 @@ function FormRepeaterPage() {
               className="grid grid-cols-1 gap-5 mb-5 lg:grid-cols-3 md:grid-cols-2 last:mb-0"
               key={index}
             >
-              <STextinput
+              <TextInput
                 label="First Name"
                 type="text"
                 id={`name${index}`}
@@ -48,7 +46,7 @@ function FormRepeaterPage() {
                 name={`test[${index}].firstName`}
               />
 
-              <STextinput
+              <TextInput
                 label="last Name"
                 type="text"
                 id={`name2${index}`}
@@ -59,7 +57,7 @@ function FormRepeaterPage() {
 
               <div className="flex items-end justify-between space-x-5">
                 <div className="flex-1">
-                  <STextinput
+                  <TextInput
                     label="Phone"
                     type="text"
                     id={`name3${index}`}

@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import Card from "../../../../components/card/Card";
 import Modal from "../../../../components/modal/Modal";
 import Button from "../../../../components/button/Button";
-import STextinput from "../../../../components/form/STextInput";
+import TextInput from "../../../../components/form/TextInput";
 
 const ModalPage = () => {
   return (
@@ -426,12 +426,12 @@ const ModalPage = () => {
             }
           >
             <div className="text-base text-slate-600 dark:text-slate-300">
-              <STextinput
+              <TextInput
                 label="Email"
                 type="email"
                 placeholder="Type your email"
               />
-              <STextinput
+              <TextInput
                 label="Password"
                 type="password"
                 placeholder="8+ characters, 1 capitat letter "
