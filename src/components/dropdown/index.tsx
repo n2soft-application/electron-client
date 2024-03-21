@@ -8,7 +8,7 @@ type Props = {
   wrapperClass?: string | undefined;
   labelClass?: string | undefined;
   children?: React.ReactNode;
-  classMenuItems: string;
+  classMenuItems?: string;
   items?: {
     label: string;
     link: string;
