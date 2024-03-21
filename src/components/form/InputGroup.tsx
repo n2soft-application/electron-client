@@ -3,12 +3,13 @@ import { ForwardedRef, forwardRef, useState } from "react";
 import Icon from "../icons/Icon";
 
 type Props = {
-  label?: string | undefined;
+  label?: any | undefined;
   classLabel?: string | undefined;
   classGroup?: string | undefined;
   placeholder?: string | undefined;
   description?: string | undefined;
   icon?: string | undefined;
+  type?: string | undefined;
   horizontal?: boolean | undefined;
   validate?: string | undefined;
   append?: any | undefined;
@@ -24,8 +25,6 @@ type Props = {
 
 const InputGroup = (
   {
-    type,
-    label,
     placeholder,
     classLabel = "form-label",
     className = "",
@@ -50,6 +49,8 @@ const InputGroup = (
     prepend,
     options,
     onFocus,
+    label,
+    type,
     ...rest
   }: Props,
   ref: ForwardedRef<HTMLInputElement>

@@ -105,8 +105,9 @@ const RadioButtonPage = () => {
       </Card>
       <Card title="Theme Color">
         <div className="flex flex-wrap space-xy-5">
-          {colors.map((color) => (
+          {colors.map((color, index) => (
             <Radio
+              key={index}
               label={color.label}
               name="color"
               value={color.value}
@@ -120,8 +121,9 @@ const RadioButtonPage = () => {
 
       <Card title="Radio Group Options Array">
         <div className="flex flex-wrap space-xy-5">
-          {options.map((option) => (
+          {options.map((option, index) => (
             <Radio
+              key={index}
               label={option.label}
               name="option"
               value={option.value}
