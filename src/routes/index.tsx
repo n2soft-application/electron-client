@@ -44,6 +44,8 @@ const CarouselPage = lazy(() => import("../pages/example/components/carousel/Car
 const CheckboxPage = lazy(() => import("../pages/example/form/CheckboxPage"));
 const TextareaPage = lazy(() => import("../pages/example/form/TextareaPage"));
 const RadioButtonPage = lazy(() => import("../pages/example/form/RadioButtonPage"));
+const SwitchPage = lazy(() => import("../pages/example/form/SwitchPage"));
+const DateTimePickerPage = lazy(() => import("../pages/example/form/DateTimePickerPage"));
 
 const AppRouter = () => {
   return (
@@ -87,6 +89,8 @@ const AppRouter = () => {
         <Route path="checkbox" element={<CheckboxPage />} />
         <Route path="textarea" element={<TextareaPage />} />
         <Route path="radio-button" element={<RadioButtonPage />} />
+        <Route path="switch" element={<SwitchPage />} />
+        <Route path="date-time-picker" element={<DateTimePickerPage />} />
 
         <Route path="*" element={<Navigate replace={true} to="/404" />} />
       </Route>

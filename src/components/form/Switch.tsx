@@ -6,7 +6,7 @@ type Props = {
   id?: string | undefined;
   prevIcon?: string | undefined;
   nextIcon?: string | undefined;
-  badge?: string | undefined;
+  badge?: boolean | undefined;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   className?: string | undefined;
   activeClass?: string | undefined;
@@ -76,7 +76,7 @@ const Switch = ({
           )}
 
           <span
-            className={`inline-block h-5 w-5 transform rounded-full bg-white transition-all duration-150 
+            className={`inline-block h-5 w-5 transform rounded-full bg-white transition-all duration-150
 			  ${
           value
             ? "ltr:translate-x-6 rtl:-translate-x-6"
