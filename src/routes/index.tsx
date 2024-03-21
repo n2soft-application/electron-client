@@ -41,6 +41,7 @@ const AccordionPage = lazy(() => import("../pages/example/components/accordion/A
 const DropdownPage = lazy(() => import("../pages/example/components/dropdown/DropdownPage"));
 const PaginationPage = lazy(() => import("../pages/example/components/pagination/PaginationPage"));
 const CarouselPage = lazy(() => import("../pages/example/components/carousel/CarouselPage"));
+const CheckboxPage = lazy(() => import("../pages/example/form/CheckboxPage"));
 
 const AppRouter = () => {
   return (
@@ -81,6 +82,7 @@ const AppRouter = () => {
         <Route path="dropdown" element={<DropdownPage />} />
         <Route path="paginations" element={<PaginationPage />} />
         <Route path="carousel" element={<CarouselPage />} />
+        <Route path="checkbox" element={<CheckboxPage />} />
 
         <Route path="*" element={<Navigate replace={true} to="/404" />} />
       </Route>
