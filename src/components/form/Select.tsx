@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import React, { Fragment } from "react";
+import { ChangeEvent, Fragment } from "react";
 
 type Props = {
   label?: string;
@@ -19,7 +19,7 @@ type Props = {
   validate?: string;
   msgTooltip?: string;
   description?: string;
-  onChange?: () => void;
+  onChange?: (event: ChangeEvent<HTMLSelectElement>) => void;
   options?: any[];
   defaultValue?: string;
   size?: number;
