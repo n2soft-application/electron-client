@@ -5,12 +5,12 @@ import Card from "../../../components/card/Card";
 import HomeBredCurbs from "./HomeBredCurbs";
 import { Link } from "react-router-dom";
 import SimpleBar from "simplebar-react";
-import Textinput from "../../../components/form/Textinput";
 import SelectMonth from "../../../components/partials/SelectMonth";
 import GroupChart5 from "../../../components/chart/GroupChart5";
 import HistoryChart from "../../../components/chart/HistoryChart";
 import AccountReceivable from "../../../components/chart/AccountReceivable";
 import AccountPayable from "../../../components/chart/AccountPayable";
+import STextinput from "../../../components/form/STextInput";
 const users = [
   {
     name: "Ab",
@@ -107,7 +107,7 @@ const BankingPage = () => {
                 >
                   Amount
                 </label>
-                <Textinput
+                <STextinput
                   placeholder="$6547"
                   id="cdp"
                   className="h-auto p-0 text-sm font-medium bg-transparent border-none focus:ring-0 focus:border-none text-slate-900 dark:text-white placeholder:text-slate-400 placeholder:font-medium"
@@ -121,7 +121,7 @@ const BankingPage = () => {
                   Recipient account number
                 </label>
 
-                <Textinput
+                <STextinput
                   placeholder="3458-3548-6548-3244"
                   id="cd"
                   className="h-auto p-0 text-sm font-medium bg-transparent border-none focus:ring-0 focus:border-none text-slate-900 dark:text-white placeholder:text-slate-400 placeholder:font-medium"
