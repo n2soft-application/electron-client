@@ -43,6 +43,7 @@ const PaginationPage = lazy(() => import("../pages/example/components/pagination
 const CarouselPage = lazy(() => import("../pages/example/components/carousel/CarouselPage"));
 const CheckboxPage = lazy(() => import("../pages/example/form/CheckboxPage"));
 const TextareaPage = lazy(() => import("../pages/example/form/TextareaPage"));
+const RadioButtonPage = lazy(() => import("../pages/example/form/RadioButtonPage"));
 
 const AppRouter = () => {
   return (
@@ -85,6 +86,7 @@ const AppRouter = () => {
         <Route path="carousel" element={<CarouselPage />} />
         <Route path="checkbox" element={<CheckboxPage />} />
         <Route path="textarea" element={<TextareaPage />} />
+        <Route path="radio-button" element={<RadioButtonPage />} />
 
         <Route path="*" element={<Navigate replace={true} to="/404" />} />
       </Route>
