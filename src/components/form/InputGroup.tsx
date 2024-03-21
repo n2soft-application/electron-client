@@ -12,8 +12,8 @@ type Props = {
   horizontal?: boolean | undefined;
   validate?: string | undefined;
   append?: string | undefined;
-  prepend?: string | undefined;
-  merged?: string | undefined;
+  prepend?: any | undefined;
+  merged?: boolean | undefined;
   msgTooltip?: boolean | undefined;
   isMask?: boolean | undefined;
   hasicon?: boolean | undefined;

@@ -48,6 +48,7 @@ const SwitchPage = lazy(() => import("../pages/example/form/SwitchPage"));
 const DateTimePickerPage = lazy(() => import("../pages/example/form/DateTimePickerPage"));
 const SelectPage = lazy(() => import("../pages/example/form/select/SelectPage"));
 const InputMaskPage = lazy(() => import("../pages/example/form/InputMaskPage"));
+const InputLayoutPage = lazy(() => import("../pages/example/form/InputLayoutPage"));
 
 const AppRouter = () => {
   return (
@@ -95,6 +96,7 @@ const AppRouter = () => {
         <Route path="date-time-picker" element={<DateTimePickerPage />} />
         <Route path="select" element={<SelectPage />} />
         <Route path="input-mask" element={<InputMaskPage />} />
+        <Route path="input-layout" element={<InputLayoutPage />} />
 
         <Route path="*" element={<Navigate replace={true} to="/404" />} />
       </Route>
