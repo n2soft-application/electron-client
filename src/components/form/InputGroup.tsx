@@ -11,7 +11,7 @@ type Props = {
   icon?: string | undefined;
   horizontal?: boolean | undefined;
   validate?: string | undefined;
-  append?: string | undefined;
+  append?: any | undefined;
   prepend?: any | undefined;
   merged?: boolean | undefined;
   msgTooltip?: boolean | undefined;
