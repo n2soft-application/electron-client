@@ -23,7 +23,17 @@ const preview: Preview = {
       storySort: {
         method: "alphabetical",
         includeNames: true,
-        order: ["Foundations", "Components", "Layout", "Example", "*"],
+        order: [
+          "Foundations",
+          ["*", ["Docs", "Default", "AllTypes"]],
+          "Components",
+          ["*", ["Docs", "Default", "AllTypes"]],
+          "Layout",
+          ["*", ["Docs", "Default", "AllTypes"]],
+          "Example",
+          ["*", ["Docs", "*"]],
+          "*",
+        ],
       },
     },
   },
