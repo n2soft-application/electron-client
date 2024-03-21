@@ -16,7 +16,7 @@ type Props = {
   description?: string | undefined;
   readonly?: boolean;
   disabled?: boolean;
-  validate?: boolean;
+  validate?: string | undefined;
   horizontal?: boolean;
   isMask?: boolean;
   msgTooltip?: boolean;
