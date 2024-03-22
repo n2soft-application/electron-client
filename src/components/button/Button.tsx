@@ -55,8 +55,8 @@ function Button({
               {icon && (
                 <span
                   className={`
-          ${iconPosition === "right" ? "order-1 ltr:ml-2 rtl:mr-2" : " "}
-          ${text && iconPosition === "left" ? "ltr:mr-2 rtl:ml-2" : ""}
+          ${iconPosition === "right" ? "order-1 ml-2 rtl:mr-2" : " "}
+          ${text && iconPosition === "left" ? "mr-2 rtl:ml-2" : ""}
 
           ${iconClass}
 
@@ -73,7 +73,7 @@ function Button({
           {isLoading && (
             <>
               <svg
-                className={`animate-spin ltr:-ml-1 ltr:mr-3 rtl:-mr-1 rtl:ml-3 h-5 w-5 ${loadingClass}`}
+                className={`animate-spin -ml-1 mr-3 rtl:-mr-1 rtl:ml-3 h-5 w-5 ${loadingClass}`}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -116,8 +116,8 @@ function Button({
               {icon && (
                 <span
                   className={`
-          ${iconPosition === "right" ? "order-1 ltr:ml-2 rtl:mr-2" : " "}
-          ${text && iconPosition === "left" ? "ltr:mr-2 rtl:ml-2" : ""}
+          ${iconPosition === "right" ? "order-1 ml-2 rtl:mr-2" : " "}
+          ${text && iconPosition === "left" ? "mr-2 rtl:ml-2" : ""}
 
           ${iconClass}
 
@@ -134,7 +134,7 @@ function Button({
           {isLoading && (
             <>
               <svg
-                className={`animate-spin ltr:-ml-1 ltr:mr-3 rtl:-mr-1 rtl:ml-3 h-5 w-5 ${loadingClass}`}
+                className={`animate-spin -ml-1 mr-3 rtl:-mr-1 rtl:ml-3 h-5 w-5 ${loadingClass}`}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -177,8 +177,8 @@ function Button({
               {icon && (
                 <span
                   className={`
-          ${iconPosition === "right" ? "order-1 ltr:ml-2 rtl:mr-2" : " "}
-          ${text && iconPosition === "left" ? "ltr:mr-2 rtl:ml-2" : ""}
+          ${iconPosition === "right" ? "order-1 ml-2 rtl:mr-2" : " "}
+          ${text && iconPosition === "left" ? "mr-2 rtl:ml-2" : ""}
 
           ${iconClass}
 
@@ -195,7 +195,7 @@ function Button({
           {isLoading && (
             <>
               <svg
-                className={`animate-spin ltr:-ml-1 ltr:mr-3 rtl:-mr-1 rtl:ml-3 h-5 w-5 ${loadingClass}`}
+                className={`animate-spin -ml-1 mr-3 rtl:-mr-1 rtl:ml-3 h-5 w-5 ${loadingClass}`}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
