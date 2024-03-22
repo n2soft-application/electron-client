@@ -35,6 +35,12 @@ const LoanPerformanceChart = ({ height = 300 }) => {
         enabled: false,
       },
     },
+    subtitle: {
+      offsetY: 0,
+      offsetX: 0,
+      align: "right",
+      text: "(단위: 백만원)",
+    },
     plotOptions: {
       bar: {
         horizontal: false,
@@ -51,6 +57,9 @@ const LoanPerformanceChart = ({ height = 300 }) => {
       enabled: true,
       offsetY: -6,
       style: { colors: [isDark ? "#CBD5E1" : "#475569"], fontWeight: 400 },
+      formatter: function (val: number) {
+        return `${Intl.NumberFormat().format(val)}`;
+      },
     },
     stroke: {
       curve: "straight",
@@ -80,10 +89,16 @@ const LoanPerformanceChart = ({ height = 300 }) => {
       position: "back",
     },
     yaxis: {
+      title: {
+        text: "대출잔액",
+      },
       labels: {
         style: {
           colors: isDark ? "#CBD5E1" : "#475569",
           fontFamily: "Inter",
+        },
+        formatter: function (val: number) {
+          return `${Intl.NumberFormat().format(val)}`;
         },
       },
     },

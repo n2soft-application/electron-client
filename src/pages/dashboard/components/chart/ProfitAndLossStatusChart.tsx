@@ -21,6 +21,12 @@ const ProfitAndLossStatusChart = () => {
         show: false,
       },
     },
+    subtitle: {
+      offsetY: 10,
+      offsetX: 0,
+      align: "right",
+      text: "(단위: 백만원)",
+    },
     plotOptions: {
       bar: {
         horizontal: false,
@@ -33,6 +39,9 @@ const ProfitAndLossStatusChart = () => {
       enabled: true,
       offsetY: -18,
       style: { colors: [isDark ? "#CBD5E1" : "#475569"], fontWeight: 400 },
+      formatter: function (val: number) {
+        return `${Intl.NumberFormat().format(val)}`;
+      },
     },
     legend: {
       labels: {
@@ -73,10 +82,16 @@ const ProfitAndLossStatusChart = () => {
       },
     },
     yaxis: {
+      title: {
+        text: "손익금액",
+      },
       labels: {
         style: {
           colors: isDark ? "#CBD5E1" : "#475569",
           fontFamily: "Inter",
+        },
+        formatter: function (val: number) {
+          return `${Intl.NumberFormat().format(val)}`;
         },
       },
     },

@@ -32,6 +32,12 @@ const MonthlyBalanceChart = () => {
         show: false,
       },
     },
+    subtitle: {
+      offsetY: 10,
+      offsetX: 0,
+      align: "right",
+      text: "(단위: 백만원)",
+    },
     stroke: {
       width: [0, 2, 4],
       curve: "smooth",
@@ -89,6 +95,9 @@ const MonthlyBalanceChart = () => {
       },
     },
     yaxis: {
+      title: {
+        text: "대출잔액",
+      },
       min: 0,
       labels: {
         style: {

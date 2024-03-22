@@ -84,6 +84,12 @@ const BalanceDelayChart = () => {
         show: false,
       },
     },
+    subtitle: {
+      offsetY: 10,
+      offsetX: 0,
+      align: "right",
+      text: "(단위: 백만원)",
+    },
     grid: {
       xaxis: {
         lines: {
@@ -110,6 +116,10 @@ const BalanceDelayChart = () => {
       axisTicks: {
         show: false,
       },
+      title: {
+        offsetY: -10,
+        text: "대출잔액",
+      },
       labels: {
         style: {
           colors: isDark ? "#CBD5E1" : "#475569",
@@ -122,6 +132,9 @@ const BalanceDelayChart = () => {
     },
     yaxis: {
       min: -20,
+      title: {
+        text: "연체액",
+      },
       labels: {
         style: {
           colors: isDark ? "#CBD5E1" : "#475569",
