@@ -13,7 +13,7 @@ const Pagination = ({
   totalPages,
   currentPage,
   handlePageChange,
-  text,
+  text = false,
   className = "custom-class",
 }: Props) => {
   const [pages, setPages] = useState<number[]>([]);
