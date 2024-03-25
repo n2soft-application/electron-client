@@ -1,4 +1,3 @@
-
 type Props = {
   value?: number;
   className?: string | undefined;
@@ -8,11 +7,9 @@ type Props = {
 };
 
 const Bar = ({ value, className, showValue, striped, animate }: Props) => {
-  // striped style
-
   return (
     <div
-      className={`flex flex-col text-center whitespace-nowrap justify-center h-full progress-bar  ${className} ${
+      className={`flex flex-col text-center whitespace-nowrap justify-center h-full progress-bar ${className} ${
         striped ? "stripes" : ""
       }
       ${animate ? "animate-stripes" : ""}

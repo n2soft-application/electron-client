@@ -1,5 +1,5 @@
 import Card from "../../../../components/card/Card";
-import ProgressBar from "../../../../components/pregress";
+import ProgressBar from "../../../../components/pregress/ProgressBar";
 import Bar from "../../../../components/pregress/Bar";
 import Step from "./Step";
 
