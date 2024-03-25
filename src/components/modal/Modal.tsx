@@ -20,18 +20,18 @@ type Props = {
 };
 
 const Modal = ({
-  activeModal,
+  activeModal = false,
   onClose,
-  noFade,
-  disableBackdrop,
+  noFade = false,
+  disableBackdrop = false,
   className = "max-w-xl",
   children,
   footerContent,
-  centered,
-  scrollContent,
+  centered = false,
+  scrollContent = false,
   themeClass = "bg-slate-900 dark:bg-slate-800 dark:border-b dark:border-slate-700",
   title = "Basic Modal",
-  uncontrol,
+  uncontrol = false,
   label = "Basic Modal",
   labelClass,
 }: Props) => {
