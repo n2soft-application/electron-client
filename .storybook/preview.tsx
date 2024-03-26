@@ -28,6 +28,8 @@ const preview: Preview = {
           ["*", ["Docs", "Default", "AllTypes"]],
           "Components",
           ["*", ["Docs", "Default", "AllTypes"]],
+          "Forms",
+          ["*", ["Docs", "Default", "AllTypes"]],
           "Layout",
           ["*", ["Docs", "Default", "AllTypes"]],
           "Example",
