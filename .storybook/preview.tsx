@@ -24,6 +24,7 @@ const preview: Preview = {
         method: "alphabetical",
         includeNames: true,
         order: [
+          "가이드",
           "Foundations",
           ["*", ["Docs", "Default", "AllTypes"]],
           "Components",
