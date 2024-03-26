@@ -47,6 +47,7 @@ export type MenuItemType = {
   badge?: string;
   isOpen?: boolean;
   isHide?: boolean;
+  isMultiple?: boolean;
   child?: MenuItemChildType[];
 };
 
@@ -566,10 +567,16 @@ export const menuItems: MenuItemType[] = [
     title: "메인",
     icon: "heroicons-outline:home",
     isHide: false,
+    isMultiple: true,
     child: [
       {
         childtitle: "대시보드",
-        childlink: "home/dashboard",
+        multi_menu: [
+          {
+            multiTitle: "실적현황",
+            multiLink: "home/dashboard",
+          },
+        ],
       },
     ],
   },
@@ -672,6 +679,7 @@ export const menuItems: MenuItemType[] = [
     title: "채권관리",
     icon: "heroicons-outline:document-chart-bar",
     isHide: false,
+    isMultiple: true,
     child: [
       {
         childtitle: "채권현황",
@@ -809,6 +817,7 @@ export const menuItems: MenuItemType[] = [
     title: "업무지원",
     icon: "heroicons-outline:chart-pie",
     isHide: false,
+    isMultiple: true,
     child: [
       {
         childtitle: "회계관리",
@@ -1049,6 +1058,7 @@ export const menuItems: MenuItemType[] = [
     title: "NPL채권",
     icon: "heroicons-outline:swatch",
     isHide: false,
+    isMultiple: true,
     child: [
       {
         childtitle: "기준채권",
@@ -1121,6 +1131,7 @@ export const menuItems: MenuItemType[] = [
     title: "시스템",
     icon: "heroicons-outline:cog",
     isHide: false,
+    isMultiple: true,
     child: [
       {
         childtitle: "코드관리",
@@ -1204,6 +1215,7 @@ export const menuItems: MenuItemType[] = [
     title: "기업금융",
     icon: "heroicons-outline:home",
     isHide: false,
+    isMultiple: true,
     child: [
       {
         childtitle: "홈",
