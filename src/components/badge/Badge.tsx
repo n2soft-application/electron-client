@@ -18,7 +18,7 @@ const Badge = ({
       {!children && (
         <span className="inline-flex items-center">
           {icon && (
-            <span className="inline-block ltr:mr-1 rtl:ml-1">
+            <span className="inline-block mr-1 rtl:ml-1">
               <Icon icon={icon} />
             </span>
           )}
