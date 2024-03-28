@@ -12,35 +12,46 @@ const meta = {
     docs: {
       description: {
         component:
-          "추가적인 아이콘은 https://icon-sets.iconify.design/ 에서 찾아볼 수 있습니다.",
+          "사용자에게 간결하고 직관적으로 정보를 전달하거나 작업을 시각적으로 구분하고 표시할 때 사용됩니다.",
       },
     },
   },
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    width: {
+      description: "너비",
+    },
+    rotate: {
+      description: "회전",
+    },
+    hFlip: {
+      description: "좌우 반전",
+    },
+    icon: {
+      description: "아이콘",
+    },
+    className: {
+      description: "스타일",
+    },
+    vFlip: {
+      description: "상하 반전",
+    },
+  },
 } satisfies Meta<typeof Icon>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  name: "Default",
-  storyName: "",
   args: {
-    icon: "heroicons:user-circle",
+    icon: "heroicons:academic-cap",
     className: "text-4xl",
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: "기본 아이콘입니다",
-      },
-    },
+    rotate: 0,
   },
 };
 
 export const allTypes: Story = () => (
-  <div className="flex flex-wrap gap-6">
+  <div className="flex flex-wrap justify-center gap-4">
     {icons.map((item, i) => (
       <div key={i}>
         <Tooltip placement="top" arrow content={item.name}>
@@ -62,7 +73,8 @@ allTypes.args = {
 allTypes.parameters = {
   docs: {
     description: {
-      story: "현재 프로젝트에서 사용 중인 아이콘 목록입니다.",
+      story:
+        "추가적인 아이콘은 https://icon-sets.iconify.design/ 에서 찾아볼 수 있습니다.",
     },
   },
 };
