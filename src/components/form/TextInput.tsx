@@ -39,18 +39,18 @@ const TextInput = ({
   classGroup = "",
   register,
   name,
-  readonly,
+  readonly = false,
   value,
   error,
   icon,
-  disabled,
+  disabled = false,
   id,
-  horizontal,
+  horizontal = false,
   validate,
-  isMask,
-  msgTooltip,
+  isMask = false,
+  msgTooltip = false,
   description,
-  hasicon,
+  hasicon = false,
   onChange,
   options,
   onFocus,
@@ -138,7 +138,7 @@ const TextInput = ({
           />
         )}
         {/* icon */}
-        <div className="flex text-xl absolute ltr:right-[14px] rtl:left-[14px] top-1/2 -translate-y-1/2  space-x-1 rtl:space-x-reverse">
+        <div className="flex text-xl absolute right-[14px] rtl:left-[14px] top-1/2 -translate-y-1/2  space-x-1 rtl:space-x-reverse">
           {hasicon && (
             <span
               className="cursor-pointer text-secondary-500"
