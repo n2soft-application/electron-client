@@ -1,6 +1,6 @@
 import React from "react";
 import { Menu } from "@headlessui/react";
-import Dropdown from "../dropdown";
+import Dropdown from "../dropdown/Dropdown";
 import { Icon } from "@iconify/react";
 const actions = [
   {

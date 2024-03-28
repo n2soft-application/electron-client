@@ -1,6 +1,6 @@
 import { Menu } from "@headlessui/react";
 import { ChangeEvent } from "react";
-import Dropdown from "../../../../components/dropdown";
+import Dropdown from "../../../../components/dropdown/Dropdown";
 import Icon from "../../../../components/icons/Icon";
 import useWidth from "../../../../hooks/layout/useWidth";
 

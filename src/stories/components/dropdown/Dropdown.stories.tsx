@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Dropdown from "../../../components/dropdown";
+import Dropdown from "../../../components/dropdown/Dropdown";
 import Button from "../../../components/button/Button";
 import { HashRouter } from "react-router-dom";
 

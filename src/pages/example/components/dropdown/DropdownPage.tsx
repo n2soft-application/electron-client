@@ -1,6 +1,6 @@
 import Button from "../../../../components/button/Button";
 import Card from "../../../../components/card/Card";
-import Dropdown from "../../../../components/dropdown";
+import Dropdown from "../../../../components/dropdown/Dropdown";
 import SplitDropdown from "../../../../components/dropdown/SplitDropdown";
 
 const DropdownPage = () => {

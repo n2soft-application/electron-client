@@ -1,7 +1,7 @@
 import { Menu } from "@headlessui/react";
 import { Link } from "react-router-dom";
 import { message } from "../../../constants/data";
-import Dropdown from "../../dropdown";
+import Dropdown from "../../dropdown/Dropdown";
 import Icon from "../../icons/Icon";
 
 const messagelabel = () => {

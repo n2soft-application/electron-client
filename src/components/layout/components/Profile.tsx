@@ -2,7 +2,7 @@ import { Menu } from "@headlessui/react";
 import { useNavigate } from "react-router-dom";
 import ProfileImage from "../../../assets/images/users/user-1.jpg";
 import UserAvatar from "../../../assets/images/all-img/user.png";
-import Dropdown from "../../dropdown";
+import Dropdown from "../../dropdown/Dropdown";
 import Icon from "../../icons/Icon";
 
 const profileLabel = () => {

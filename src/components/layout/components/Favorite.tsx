@@ -1,6 +1,6 @@
 import { Menu } from "@headlessui/react";
 import { favorite } from "../../../constants/data";
-import Dropdown from "../../dropdown";
+import Dropdown from "../../dropdown/Dropdown";
 import Icon from "../../icons/Icon";
 
 const favoritelabel = () => {
