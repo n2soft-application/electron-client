@@ -11,7 +11,7 @@ type Props = {
   children?: React.ReactNode;
   icon?: string | undefined;
   loadingClass?: string | undefined;
-  iconPosition?: string | undefined;
+  iconPosition?: "left" | "right";
   iconClass?: string | undefined;
   link?: string | undefined;
   onClick?: () => void;
@@ -21,8 +21,8 @@ type Props = {
 function Button({
   text,
   type = "button",
-  isLoading,
-  disabled,
+  isLoading = false,
+  disabled = false,
   className = "text-white bg-primary-500",
   children,
   icon,
@@ -31,7 +31,7 @@ function Button({
   iconClass = "text-[20px]",
   link,
   onClick,
-  div,
+  div = false,
 }: Props) {
   return (
     <>
