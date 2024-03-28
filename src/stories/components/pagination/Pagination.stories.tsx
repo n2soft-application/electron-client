@@ -48,21 +48,30 @@ export const Default: Story = {
   },
 };
 
-export const allTypes: Story = () => (
-  <div className="flex flex-col items-center gap-6">
-    <Pagination {...Default.args} handlePageChange={() => {}} />
-    <Pagination {...Default.args} handlePageChange={() => {}} text />
-  </div>
+// Basic Pagination
+export const Basic: Story = () => (
+  <Pagination {...Default.args} handlePageChange={() => {}} />
 );
-
-allTypes.args = {
-  ...allTypes.args,
+Basic.args = {
+  ...Basic.args,
 };
 
-allTypes.parameters = {
-  docs: {
-    description: {
-      story: "아래는 페이지네이션 사용 예시입니다.",
-    },
-  },
+// Pagination With Background
+export const WithBackground: Story = () => (
+  <Pagination
+    className="px-3 py-2 mx-auto rounded bg-slate-100 dark:bg-slate-500 w-fit"
+    {...Default.args}
+    handlePageChange={() => {}}
+  />
+);
+WithBackground.args = {
+  ...WithBackground.args,
+};
+
+// Pagination With Text
+export const WithText: Story = () => (
+  <Pagination text {...Default.args} handlePageChange={() => {}} />
+);
+WithText.args = {
+  ...WithText.args,
 };
