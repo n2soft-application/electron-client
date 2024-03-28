@@ -20,9 +20,9 @@ const ProgressBar = ({
   backClass = "rounded-full",
   className = "bg-slate-900 dark:bg-slate-900",
   titleClass = "text-base font-normal",
-  striped,
-  animate,
-  showValue,
+  striped = false,
+  animate = false,
+  showValue = false,
 }: Props) => {
   return (
     <div className="relative">
