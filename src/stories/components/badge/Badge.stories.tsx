@@ -193,7 +193,7 @@ export const Default: Story = {
 
 // Basic Badges
 export const BasicBadges: Story = () => (
-  <div className="flex gap-2 mt-2">
+  <div className="flex gap-2">
     <Badge label="primary" className="text-white bg-primary-500" />
     <Badge label="secondary" className="text-white bg-secondary-500" />
     <Badge label="danger" className="text-white bg-danger-500" />
@@ -209,7 +209,7 @@ BasicBadges.args = {
 
 // Pill Badges
 export const PillBadges: Story = () => (
-  <div className="flex gap-2 mt-2">
+  <div className="flex gap-2">
     <Badge label="primary" className="text-white bg-primary-500 pill" />
     <Badge label="secondary" className="text-white bg-secondary-500 pill" />
     <Badge label="danger" className="text-white bg-danger-500 pill" />
@@ -228,7 +228,7 @@ PillBadges.args = {
 
 // Soft Badges
 export const SoftBadges: Story = () => (
-  <div className="flex gap-2 mt-2">
+  <div className="flex gap-2">
     <Badge
       label="primary"
       className="bg-primary-500 text-primary-500 bg-opacity-[0.12]"
@@ -265,7 +265,7 @@ SoftBadges.args = {
 
 // Soft Pill Badges
 export const SoftPillBadges: Story = () => (
-  <div className="flex gap-2 mt-2">
+  <div className="flex gap-2">
     <Badge
       label="primary"
       className="bg-primary-500 text-primary-500 bg-opacity-[0.12]"
@@ -302,7 +302,7 @@ SoftPillBadges.args = {
 
 // Badges With Icon
 export const BadgesWithIcon: Story = () => (
-  <div className="flex gap-2 mt-2">
+  <div className="flex gap-2">
     <Badge
       label="primary"
       className="text-white bg-primary-500 "
