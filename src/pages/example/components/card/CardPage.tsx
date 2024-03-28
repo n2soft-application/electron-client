@@ -14,7 +14,7 @@ import Button from "../../../../components/button/Button";
 import Card from "../../../../components/card/Card";
 import Icon from "../../../../components/icons/Icon";
 
-const cardsColor1 = [
+export const cardsColor1 = [
   {
     title: "Primary Card",
     bg: "bg-primary-500",
@@ -46,7 +46,7 @@ const cardsColor1 = [
     color: "text-info-500",
   },
 ];
-const cardsColor2 = [
+export const cardsColor2 = [
   {
     title: "Primary Card",
     ring: "ring-primary-500",
@@ -72,7 +72,7 @@ const cardsColor2 = [
     ring: "ring-info-500",
   },
 ];
-const cards = [
+export const cards = [
   {
     title: "Primary Card",
     border: "border-primary-500",

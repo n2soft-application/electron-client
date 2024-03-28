@@ -12,10 +12,10 @@ type Props = {
 };
 
 function Card({
-  className = "custom-class",
+  className = "bg-white custom-class dark:bg-slate-800",
   title,
   subtitle,
-  noborder,
+  noborder = false,
   headerslot,
   titleClass = "custom-class",
   children,
@@ -25,15 +25,11 @@ function Card({
 
   return (
     <div
-      className={`
-        card rounded-md bg-white dark:bg-slate-800   ${
-          skin === "bordered"
-            ? " border border-slate-200 dark:border-slate-700"
-            : "shadow-base"
-        }
-
-    ${className}
-        `}
+      className={`${className} card rounded-md ${
+        skin === "bordered"
+          ? " border border-slate-200 dark:border-slate-700"
+          : "shadow-base"
+      }`}
     >
       {(title || subtitle) && (
         <header className={`card-header ${noborder ? "no-border" : ""}`}>
