@@ -10,7 +10,8 @@ const meta = {
     componentSubtitle: "로딩",
     docs: {
       description: {
-        component: "",
+        component:
+          "사용자가 어떤 작업이 진행 중임을 알리거나 기다릴 때 사용됩니다.",
       },
     },
   },
@@ -28,14 +29,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  name: "Default",
-  storyName: "",
   args: {},
-  parameters: {
-    docs: {
-      description: {
-        story: "기본 로딩입니다",
-      },
-    },
-  },
 };
