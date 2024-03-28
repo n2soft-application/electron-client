@@ -12,9 +12,9 @@ type Props = {
 
 const Checkbox = ({
   id,
-  disabled,
+  disabled = false,
   label,
-  value,
+  value = false,
   name,
   onChange,
   activeClass = "ring-black-500  bg-slate-900 dark:bg-slate-700 dark:ring-slate-700 ",
