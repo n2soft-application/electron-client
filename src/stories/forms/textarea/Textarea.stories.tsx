@@ -80,38 +80,87 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  name: "Default",
-  storyName: "",
   args: {
-    cols: 50,
-    label: "Textarea",
-    id: "Textarea",
-    placeholder: "입력해 주세요.",
+    placeholder: "Add placeholder",
   },
 };
 
-export const allTypes: Story = () => (
-  <div className="flex flex-col items-center gap-4">
-    <Textarea {...Default.args} horizontal />
-    <Textarea {...Default.args} description="설명입니다." disabled />
-    <Textarea {...Default.args} validate="이 상태는 유효합니다." msgTooltip />
+// Displayed Rows
+export const DisplayedRows: Story = () => (
+  <Textarea label="Textarea" id="pn4" placeholder="Textarea" rows={5} />
+);
+DisplayedRows.args = {
+  ...DisplayedRows.args,
+};
+
+// Horizontal Sizing
+export const HorizontalSizing: Story = () => (
+  <div className="flex flex-col gap-6">
     <Textarea
-      {...Default.args}
-      error={{
-        message: "잘못된 상태입니다.",
-      }}
+      label="Large"
+      id="largesize2"
+      placeholder="Large Input"
+      rows={4}
+      horizontal
+    />
+    <Textarea label="Default" id="df" placeholder="Default Input" horizontal />
+    <Textarea
+      label="Small"
+      id="smallsize2"
+      placeholder="Small Input"
+      rows={2}
+      horizontal
     />
   </div>
 );
-
-allTypes.args = {
-  ...allTypes.args,
+HorizontalSizing.args = {
+  ...HorizontalSizing.args,
 };
 
-allTypes.parameters = {
-  docs: {
-    description: {
-      story: "사용 예시입니다.",
-    },
-  },
+// States
+export const States: Story = () => (
+  <div className="flex flex-col gap-6">
+    <Textarea
+      label="Valid State"
+      id="ValidState"
+      placeholder="Valid"
+      validate="This is valid state."
+    />
+    <Textarea
+      label="Invalid State"
+      id="InvalidState"
+      placeholder="Invalid"
+      error={{
+        message: "This is invalid state",
+      }}
+    />{" "}
+  </div>
+);
+States.args = {
+  ...States.args,
+};
+
+// States With Tootltips
+export const StatesWithTootltips: Story = () => (
+  <div className="flex flex-col gap-6">
+    <Textarea
+      label="Valid State"
+      id="ValidState"
+      placeholder="Valid"
+      validate="This is valid state."
+      msgTooltip
+    />
+    <Textarea
+      label="Invalid State"
+      id="InvalidState"
+      placeholder="Invalid"
+      error={{
+        message: "This is invalid state",
+      }}
+      msgTooltip
+    />
+  </div>
+);
+StatesWithTootltips.args = {
+  ...StatesWithTootltips.args,
 };
