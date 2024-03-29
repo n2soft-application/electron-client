@@ -18,13 +18,13 @@ const Radio = ({
   label,
   id,
   name,
-  disabled,
+  disabled = false,
   value,
   onChange,
   activeClass = "ring-slate-500 dark:ring-slate-400",
   wrapperClass = " ",
   labelClass = "text-slate-500 dark:text-slate-400 text-sm leading-6",
-  checked,
+  checked = false,
   className = "h-[18px] w-[18px]",
 }: Props) => {
   return (
