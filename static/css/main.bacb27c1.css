@@ -4028,6 +4028,9 @@ ol.custom-list ol li:where([dir="rtl"], [dir="rtl"] *),
 .ml-auto {
   margin-left: auto;
 }
+.mr-1 {
+  margin-right: 0.25rem;
+}
 .mr-2 {
   margin-right: 0.5rem;
 }
@@ -8013,4 +8016,4 @@ ol.custom-list ol li:where([dir="rtl"], [dir="rtl"] *),
   }
 }
 
-/*# sourceMappingURL=main.38627a4e.css.map*/
+/*# sourceMappingURL=main.bacb27c1.css.map*/
