@@ -23,13 +23,13 @@ const Switch = ({
   nextIcon,
   label,
   id,
-  disabled,
-  value,
+  disabled = false,
+  value = false,
   onChange,
   activeClass = "bg-slate-900 dark:bg-slate-900",
   wrapperClass = " ",
   labelClass = "text-slate-500 dark:text-slate-400 text-sm leading-6",
-  badge,
+  badge = false,
 }: Props) => {
   return (
     <div>
@@ -79,8 +79,8 @@ const Switch = ({
             className={`inline-block h-5 w-5 transform rounded-full bg-white transition-all duration-150
 			  ${
           value
-            ? "ltr:translate-x-6 rtl:-translate-x-6"
-            : "ltr:translate-x-[2px] rtl:-translate-x-[2px]"
+            ? "translate-x-6 rtl:-translate-x-6"
+            : "translate-x-[2px] rtl:-translate-x-[2px]"
         }
 			  `}
           />
