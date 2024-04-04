@@ -68,11 +68,10 @@ const sampleMenuItems: MenuItemType[] = [
     isHeadr: true,
     title: "menu",
   },
-
   {
     title: "Dashboard",
     icon: "heroicons-outline:home",
-    isOpen: true,
+    link: "#",
     isHide: true,
     child: [
       {
@@ -566,17 +565,12 @@ export const menuItems: MenuItemType[] = [
   {
     title: "메인",
     icon: "heroicons-outline:home",
-    isHide: false,
-    isMultiple: true,
+    isOpen: true,
+    isHide: true,
     child: [
       {
         childtitle: "대시보드",
-        multi_menu: [
-          {
-            multiTitle: "실적현황",
-            multiLink: "home/dashboard",
-          },
-        ],
+        childlink: "home/dashboard",
       },
     ],
   },
