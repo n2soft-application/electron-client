@@ -90,6 +90,40 @@ function Layout() {
               contentWidth === "boxed" ? "container mx-auto" : "container-fluid"
             }
           >
+            <div className="overflow-x-auto bg-white dark:bg-slate-800">
+              <div className="flex h-10 border-r divide-x w-fit border-slate-200 dark:border-slate-700 dark:divide-slate-700">
+                {tabMenu.map((tab, index) => (
+                  <NavLink key={index} to={tab.href ?? ""}>
+                    {({ isActive }) => (
+                      <div
+                        className={`flex items-center h-full gap-2 px-4 ${
+                          isActive
+                            ? "bg-slate-100 dark:bg-secondary-900 border-b-0"
+                            : "bg-transparent hover:bg-slate-100 dark:hover:bg-secondary-900 border-b border-slate-200 dark:border-slate-700"
+                        }`}
+                      >
+                        <p className="whitespace-nowrap">{tab.name}</p>
+                        {tab.href !== "home/dashboard" && (
+                          <div
+                            className="p-0.5 rounded-full"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              handleTabClose(tab);
+                            }}
+                          >
+                            <Icon
+                              icon="heroicons:x-mark-16-solid"
+                              width="20px"
+                            />
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </NavLink>
+                ))}
+              </div>
+            </div>
             <Suspense fallback={<Loading />}>
               <motion.div
                 key={location.pathname}
@@ -117,40 +151,6 @@ function Layout() {
                 }}
               >
                 {/* <Breadcrumbs /> */}
-                <div className="overflow-x-auto bg-white dark:bg-slate-800">
-                  <div className="flex h-10 border-r divide-x w-fit border-slate-200 dark:border-slate-700 dark:divide-slate-700">
-                    {tabMenu.map((tab, index) => (
-                      <NavLink key={index} to={tab.href ?? ""}>
-                        {({ isActive }) => (
-                          <div
-                            className={`flex items-center h-full gap-2 px-4 ${
-                              isActive
-                                ? "bg-slate-100 dark:bg-secondary-900 border-b-0"
-                                : "bg-transparent hover:bg-slate-100 dark:hover:bg-secondary-900 border-b border-slate-200 dark:border-slate-700"
-                            }`}
-                          >
-                            <p className="whitespace-nowrap">{tab.name}</p>
-                            {tab.href !== "home/dashboard" && (
-                              <div
-                                className="p-0.5 rounded-full"
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  e.stopPropagation();
-                                  handleTabClose(tab);
-                                }}
-                              >
-                                <Icon
-                                  icon="heroicons:x-mark-16-solid"
-                                  width="20px"
-                                />
-                              </div>
-                            )}
-                          </div>
-                        )}
-                      </NavLink>
-                    ))}
-                  </div>
-                </div>
                 <div className="p-6">{<Outlet />}</div>
               </motion.div>
             </Suspense>
