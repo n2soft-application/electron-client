@@ -97,3 +97,10 @@ export const customizerTypeState = atom<CustomizerType>({
   default: false,
   effects_UNSTABLE: [persistAtom],
 });
+
+type TabMenuType = Array<{ name: string; href: string }>;
+export const tabMenuTypeState = atom<TabMenuType>({
+  key: "tabMenuTypeState",
+  default: [],
+  effects_UNSTABLE: [persistAtom],
+});
