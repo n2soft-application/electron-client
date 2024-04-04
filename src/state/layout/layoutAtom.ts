@@ -101,6 +101,6 @@ export const customizerTypeState = atom<CustomizerType>({
 type TabMenuType = Array<{ name: string; href: string }>;
 export const tabMenuTypeState = atom<TabMenuType>({
   key: "tabMenuTypeState",
-  default: [],
+  default: [{ name: "대시보드", href: "home/dashboard" }],
   effects_UNSTABLE: [persistAtom],
 });
