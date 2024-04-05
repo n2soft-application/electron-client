@@ -4,15 +4,14 @@ import { MenuItemType } from "../../constants/data";
 import useMobileMenu from "../../hooks/layout/useMobileMenu";
 import Icon from "../icons/Icon";
 import SubMenu from "./SubMenu";
-import { useRecoilState } from "recoil";
-import { tabMenuTypeState } from "../../state/layout/layoutAtom";
+import useTabMenu from "../../hooks/layout/useTabMenu";
 
 type Props = {
   menus: MenuItemType[];
 };
 
 function NavMenu({ menus }: Props) {
-  const navigate = useNavigate();
+  const { handleTabOpen } = useTabMenu();
   const [activeSubmenu, setActiveSubmenu] = useState<number | null>(null);
 
   const toggleSubmenu = (index: number) => {
@@ -82,14 +81,6 @@ function NavMenu({ menus }: Props) {
     }
   }, [location]);
 
-  const [tabMenu, setTabMenu] = useRecoilState(tabMenuTypeState);
-
-  const handleTabClick = (name: string, href: string) => {
-    if (tabMenu.every((i) => i.href !== href)) {
-      setTabMenu(() => [...tabMenu, { name: name, href: href }]);
-    }
-  };
-
   return (
     <ul>
       {menus.map((item, i) => (
@@ -105,7 +96,7 @@ function NavMenu({ menus }: Props) {
             <NavLink
               className="menu-link"
               to={item.link ?? ""}
-              onClick={() => handleTabClick(item.title, item.link ?? "")}
+              onClick={() => handleTabOpen(item.title, item.link ?? "")}
             >
               <span className="flex-grow-0 menu-icon">
                 <Icon icon={item.icon ?? ""} />
@@ -152,7 +143,6 @@ function NavMenu({ menus }: Props) {
             index={i}
             toggleMultiMenu={toggleMultiMenu}
             activeMultiMenu={activeMultiMenu}
-            handleTabClick={handleTabClick}
           />
         </li>
       ))}

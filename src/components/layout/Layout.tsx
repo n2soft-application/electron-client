@@ -14,10 +14,9 @@ import MobileMenu from "../sidebar/MobileMenu";
 import Sidebar from "../sidebar/Sidebar";
 import Footer from "./Footer";
 import Header from "./Header";
-import { useRecoilState } from "recoil";
-import { tabMenuTypeState } from "../../state/layout/layoutAtom";
 import { NavLink } from "react-router-dom";
 import Icon from "../icons/Icon";
+import useTabMenu from "../../hooks/layout/useTabMenu";
 
 function Layout() {
   const { width, breakpoints } = useWidth();
@@ -28,7 +27,7 @@ function Layout() {
   const [menuType] = useMenuLayout();
   const [menuHidden] = useMenuHidden();
   const [mobileMenu, setMobileMenu] = useMobileMenu();
-  const [tabMenu, setTabMenu] = useRecoilState(tabMenuTypeState);
+  const { tabMenu, handleTabClose } = useTabMenu();
 
   const switchHeaderClass = () => {
     if (menuType === "horizontal" || menuHidden) {
@@ -38,21 +37,6 @@ function Layout() {
     } else {
       return "ltr:ml-[248px] rtl:mr-[248px]";
     }
-  };
-
-  // 탭 닫기
-  const handleTabClose = (tab: { name: string; href: string }) => {
-    let updatedTabs = tabMenu;
-    if ("/" + tab.href === location.pathname) {
-      const currentIndex = updatedTabs.findIndex((t) => t.href === tab.href);
-      if (updatedTabs[currentIndex + 1]) {
-        navigate("/" + updatedTabs[currentIndex + 1].href);
-      } else if (updatedTabs[updatedTabs.length - 2]) {
-        navigate("/" + updatedTabs[updatedTabs.length - 2].href);
-      }
-    }
-    updatedTabs = updatedTabs.filter((t) => t.href !== tab.href);
-    setTabMenu(updatedTabs);
   };
 
   return (

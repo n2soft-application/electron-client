@@ -3,6 +3,7 @@ import { MenuItemType } from "../../constants/data";
 import { NavLink } from "react-router-dom";
 import Icon from "../icons/Icon";
 import Multilevel from "./Multilevel";
+import useTabMenu from "../../hooks/layout/useTabMenu";
 
 type Props = {
   activeSubmenu: number | null;
@@ -10,7 +11,6 @@ type Props = {
   index: number;
   toggleMultiMenu: (index: number) => void;
   activeMultiMenu: number | null;
-  handleTabClick: (name: string, href: string) => void;
 };
 
 function SubMenu({
@@ -19,8 +19,9 @@ function SubMenu({
   index,
   toggleMultiMenu,
   activeMultiMenu,
-  handleTabClick,
 }: Props) {
+  const { handleTabOpen } = useTabMenu();
+
   return (
     <Collapse isOpened={activeSubmenu === index}>
       <ul className="space-y-4 sub-menu">
@@ -58,14 +59,13 @@ function SubMenu({
                   activeMultiMenu={activeMultiMenu}
                   j={j}
                   subItem={subItem}
-                  handleTabClick={handleTabClick}
                 />
               </div>
             ) : (
               <NavLink
                 to={subItem.childlink ?? ""}
                 onClick={() =>
-                  handleTabClick(
+                  handleTabOpen(
                     subItem.childtitle ?? "",
                     subItem.childlink ?? ""
                   )
