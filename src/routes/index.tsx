@@ -4,10 +4,13 @@ import AuthLayout from "../components/layout/AuthLayout";
 import Layout from "../components/layout/Layout";
 import Loading from "../components/loading/Loading";
 import BankingPage from "../pages/example/dashboard/banking";
+import TeamPart from "../pages/teampart/TeamPart";
 
 // Pages
 const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
-const CommonCodePage = lazy(() => import("../pages/preferences/code/common/CommonCodePage"));
+const CommonCodePage = lazy(
+  () => import("../pages/preferences/code/common/CommonCodePage")
+);
 
 // Error pages
 const Error404 = lazy(() => import("../pages/error/Error404"));
@@ -18,43 +21,97 @@ const ChatPage = lazy(() => import("../pages/example/chat/ChatPage"));
 const ChangeLog = lazy(() => import("../pages/example/changelog/ChangeLog"));
 const Login = lazy(() => import("../pages/example/login/Login"));
 const BasicWidget = lazy(() => import("../pages/example/widget/BasicWidget"));
-const StatisticWidget = lazy(() => import("../pages/example/widget/StatisticWidget"));
-const AppexChartPage = lazy(() => import("../pages/example/chart/appex-chart/AppexChartPage"));
-const BasicTablePage = lazy(() => import("../pages/example/table/BasicTablePage"));
+const StatisticWidget = lazy(
+  () => import("../pages/example/widget/StatisticWidget")
+);
+const AppexChartPage = lazy(
+  () => import("../pages/example/chart/appex-chart/AppexChartPage")
+);
+const BasicTablePage = lazy(
+  () => import("../pages/example/table/BasicTablePage")
+);
 const MapPage = lazy(() => import("../pages/example/map/MapPage"));
 const TodoPage = lazy(() => import("../pages/example/todo/TodoPage"));
 
 // Components
-const Typography = lazy(() => import("../pages/example/components/typography/Typography"));
+const Typography = lazy(
+  () => import("../pages/example/components/typography/Typography")
+);
 const Colors = lazy(() => import("../pages/example/components/colors/Colors"));
-const ButtonPage = lazy(() => import("../pages/example/components/button/ButtonPage"));
-const CardPage = lazy(() => import("../pages/example/components/card/CardPage"));
-const ImagePage = lazy(() => import("../pages/example/components/image/ImagePage"));
-const BadgePage = lazy(() => import("../pages/example/components/badge/BadgePage"));
-const AlertPage = lazy(() => import("../pages/example/components/alert/AlertPage"));
-const ModalPage = lazy(() => import("../pages/example/components/modal/ModalPage"));
-const ProgressPage = lazy(() => import("../pages/example/components/progress/ProgressPage"));
-const PlaceholderPage = lazy(() => import("../pages/example/components/placeholder/PlaceholderPage"));
-const TooltipPage = lazy(() => import("../pages/example/components/tooltip/TooltipPage"));
-const VideoPage = lazy(() => import("../pages/example/components/video/VideoPage"));
-const AccordionPage = lazy(() => import("../pages/example/components/accordion/AccordionPage"));
-const DropdownPage = lazy(() => import("../pages/example/components/dropdown/DropdownPage"));
-const PaginationPage = lazy(() => import("../pages/example/components/pagination/PaginationPage"));
-const CarouselPage = lazy(() => import("../pages/example/components/carousel/CarouselPage"));
+const ButtonPage = lazy(
+  () => import("../pages/example/components/button/ButtonPage")
+);
+const CardPage = lazy(
+  () => import("../pages/example/components/card/CardPage")
+);
+const ImagePage = lazy(
+  () => import("../pages/example/components/image/ImagePage")
+);
+const BadgePage = lazy(
+  () => import("../pages/example/components/badge/BadgePage")
+);
+const AlertPage = lazy(
+  () => import("../pages/example/components/alert/AlertPage")
+);
+const ModalPage = lazy(
+  () => import("../pages/example/components/modal/ModalPage")
+);
+const ProgressPage = lazy(
+  () => import("../pages/example/components/progress/ProgressPage")
+);
+const PlaceholderPage = lazy(
+  () => import("../pages/example/components/placeholder/PlaceholderPage")
+);
+const TooltipPage = lazy(
+  () => import("../pages/example/components/tooltip/TooltipPage")
+);
+const VideoPage = lazy(
+  () => import("../pages/example/components/video/VideoPage")
+);
+const AccordionPage = lazy(
+  () => import("../pages/example/components/accordion/AccordionPage")
+);
+const DropdownPage = lazy(
+  () => import("../pages/example/components/dropdown/DropdownPage")
+);
+const PaginationPage = lazy(
+  () => import("../pages/example/components/pagination/PaginationPage")
+);
+const CarouselPage = lazy(
+  () => import("../pages/example/components/carousel/CarouselPage")
+);
 const CheckboxPage = lazy(() => import("../pages/example/form/CheckboxPage"));
 const TextareaPage = lazy(() => import("../pages/example/form/TextareaPage"));
-const RadioButtonPage = lazy(() => import("../pages/example/form/RadioButtonPage"));
+const RadioButtonPage = lazy(
+  () => import("../pages/example/form/RadioButtonPage")
+);
 const SwitchPage = lazy(() => import("../pages/example/form/SwitchPage"));
-const DateTimePickerPage = lazy(() => import("../pages/example/form/DateTimePickerPage"));
-const SelectPage = lazy(() => import("../pages/example/form/select/SelectPage"));
+const DateTimePickerPage = lazy(
+  () => import("../pages/example/form/DateTimePickerPage")
+);
+const SelectPage = lazy(
+  () => import("../pages/example/form/select/SelectPage")
+);
 const InputMaskPage = lazy(() => import("../pages/example/form/InputMaskPage"));
-const InputLayoutPage = lazy(() => import("../pages/example/form/InputLayoutPage"));
-const InputGroupPage = lazy(() => import("../pages/example/form/InputGroupPage"));
+const InputLayoutPage = lazy(
+  () => import("../pages/example/form/InputLayoutPage")
+);
+const InputGroupPage = lazy(
+  () => import("../pages/example/form/InputGroupPage")
+);
 const InputPage = lazy(() => import("../pages/example/form/InputPage"));
-const FormRepeaterPage = lazy(() => import("../pages/example/form/FormRepeaterPage"));
-const FormValidationPage = lazy(() => import("../pages/example/form/validation/FormValidationPage"));
-const FormWizardPage = lazy(() => import("../pages/example/form/wizard/FormWizardPage"));
-const FileInputPage = lazy(() => import("../pages/example/form/file/FileInputPage"));
+const FormRepeaterPage = lazy(
+  () => import("../pages/example/form/FormRepeaterPage")
+);
+const FormValidationPage = lazy(
+  () => import("../pages/example/form/validation/FormValidationPage")
+);
+const FormWizardPage = lazy(
+  () => import("../pages/example/form/wizard/FormWizardPage")
+);
+const FileInputPage = lazy(
+  () => import("../pages/example/form/file/FileInputPage")
+);
 
 const AppRouter = () => {
   return (
@@ -65,6 +122,7 @@ const AppRouter = () => {
       <Route path="/*" element={<Layout />}>
         <Route path="home/dashboard" element={<Dashboard />} />
         <Route path="code/common" element={<CommonCodePage />} />
+        <Route path="system/teampart" element={<TeamPart />} />
 
         {/* Example */}
         <Route path="banking" element={<BankingPage />} />

@@ -1156,7 +1156,7 @@ export const menuItems: MenuItemType[] = [
         multi_menu: [
           {
             multiTitle: "팀(파트)",
-            multiLink: "",
+            multiLink: "system/teampart",
           },
           {
             multiTitle: "사용자",
