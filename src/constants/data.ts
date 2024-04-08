@@ -1147,7 +1147,7 @@ export const menuItems: MenuItemType[] = [
         multi_menu: [
           {
             multiTitle: "메뉴관리",
-            multiLink: "",
+            multiLink: "system/menumanagement",
           },
         ],
       },
