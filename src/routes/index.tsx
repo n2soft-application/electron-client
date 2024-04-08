@@ -121,7 +121,7 @@ const AppRouter = () => {
       </Route>
       <Route path="/*" element={<Layout />}>
         <Route path="home/dashboard" element={<Dashboard />} />
-        <Route path="code/common" element={<CommonCodePage />} />
+        <Route path="system/commoncode" element={<CommonCodePage />} />
         <Route path="system/teampart" element={<TeamPart />} />
 
         {/* Example */}

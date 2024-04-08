@@ -1138,7 +1138,7 @@ export const menuItems: MenuItemType[] = [
         multi_menu: [
           {
             multiTitle: "공통코드",
-            multiLink: "",
+            multiLink: "system/commoncode",
           },
         ],
       },
