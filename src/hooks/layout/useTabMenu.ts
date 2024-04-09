@@ -1,8 +1,6 @@
 import { useRecoilState } from "recoil";
 import { TabMenuType, tabMenuTypeState } from "../../state/layout/layoutAtom";
-import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { menuItems } from "../../constants/data";
 
 function useTabMenu() {
   const [tabMenu, setTabMenu] = useRecoilState<TabMenuType>(tabMenuTypeState);
@@ -10,36 +8,18 @@ function useTabMenu() {
   const navigate = useNavigate();
   const locationName = location.pathname.replace("/", "");
 
-  useEffect(() => {
-    handleTabOpen(findTitle(locationName), locationName);
-  }, [location]);
-
-  const findTitle = (link: string) => {
-    let title = "";
-    menuItems.map((item) => {
-      if (item.child) {
-        item.child.map((i) => {
-          if (i.multi_menu) {
-            i.multi_menu.map((m) => {
-              if (m.multiLink === link) {
-                title = m.multiTitle;
-              }
-            });
-          } else if (i.childlink === link) {
-            title = i.childtitle ?? "";
-          }
-        });
-      } else if (item.link === link) {
-        title = item.title;
-      }
-    });
-    return title;
-  };
-
   // 탭 열기
-  const handleTabOpen = (name: string, href: string) => {
+  const handleTabOpen = (name: string, href: string, e?: any) => {
     if (tabMenu.every((t) => t.href !== href)) {
-      setTabMenu(() => [...tabMenu, { name: name, href: href }]);
+      // 탭메뉴에 없는 새로운 메뉴라면
+      if (tabMenu.length >= 10) {
+        // 10개 넘으면 추가 X
+        alert("탭은 최대 10개까지 추가 가능합니다.");
+        e.preventDefault();
+      } else {
+        // 10개 안넘으면 추가 O
+        setTabMenu(() => [...tabMenu, { name: name, href: href }]);
+      }
     }
   };
 

@@ -63,13 +63,15 @@ function SubMenu({
               </div>
             ) : (
               <NavLink
+                replace
                 to={subItem.childlink ?? ""}
-                onClick={() =>
+                onClick={(e) => {
                   handleTabOpen(
                     subItem.childtitle ?? "",
-                    subItem.childlink ?? ""
-                  )
-                }
+                    subItem.childlink ?? "",
+                    e
+                  );
+                }}
               >
                 {({ isActive }) => (
                   <span

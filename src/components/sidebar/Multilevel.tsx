@@ -39,7 +39,13 @@ const LockLink = ({
           </span>
         </span>
       ) : (
-        <NavLink to={to} onClick={() => handleTabOpen(multiTitle, multiLink)}>
+        <NavLink
+          replace
+          to={to}
+          onClick={(e) => {
+            handleTabOpen(multiTitle, multiLink, e);
+          }}
+        >
           {children}
         </NavLink>
       )}

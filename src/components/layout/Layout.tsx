@@ -77,7 +77,7 @@ function Layout() {
             <div className="overflow-x-auto bg-white dark:bg-slate-800">
               <div className="flex h-10 border-r divide-x w-fit border-slate-200 dark:border-slate-700 dark:divide-slate-700">
                 {tabMenu.map((tab, index) => (
-                  <NavLink key={index} to={tab.href ?? ""}>
+                  <NavLink key={index} to={tab.href ?? ""} replace>
                     {({ isActive }) => (
                       <div
                         className={`flex items-center h-full gap-2 px-4 ${

@@ -94,9 +94,12 @@ function NavMenu({ menus }: Props) {
           {/* single menu with no childred*/}
           {!item.child && !item.isHeadr && (
             <NavLink
+              replace
               className="menu-link"
               to={item.link ?? ""}
-              onClick={() => handleTabOpen(item.title, item.link ?? "")}
+              onClick={(e) => {
+                handleTabOpen(item.title, item.link ?? "", e);
+              }}
             >
               <span className="flex-grow-0 menu-icon">
                 <Icon icon={item.icon ?? ""} />
