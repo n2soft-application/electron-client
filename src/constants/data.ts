@@ -1149,6 +1149,10 @@ export const menuItems: MenuItemType[] = [
             multiTitle: "메뉴관리",
             multiLink: "system/menumanagement",
           },
+          {
+            multiTitle: "화면관리",
+            multiLink: "system/screenmanagement",
+          },
         ],
       },
       {
