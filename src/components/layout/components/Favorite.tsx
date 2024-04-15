@@ -2,6 +2,11 @@ import { Menu } from "@headlessui/react";
 import { favorite } from "../../../constants/data";
 import Dropdown from "../../dropdown/Dropdown";
 import Icon from "../../icons/Icon";
+import {
+  FavMenuType,
+  favMenuTypeState,
+} from "../../../state/layout/layoutAtom";
+import { useRecoilValue } from "recoil";
 
 const favoritelabel = () => {
   return (
@@ -13,6 +18,8 @@ const favoritelabel = () => {
 const newFavorite = favorite;
 
 function Favorite() {
+  const favMenu = useRecoilValue<FavMenuType>(favMenuTypeState);
+
   return (
     <Dropdown
       classMenuItems="md:w-[200px] w-min top-[58px]"
@@ -24,7 +31,7 @@ function Favorite() {
         </div>
       </div>
       <div className="divide-y divide-slate-100 dark:divide-slate-800">
-        {newFavorite?.map((item, i) => (
+        {favMenu?.map((item, i) => (
           <Menu.Item key={i}>
             {({ active }) => (
               <div
@@ -37,7 +44,7 @@ function Favorite() {
                 <div className="flex space-x-3 ltr:text-left rtl:text-right rtl:space-x-reverse">
                   <div className="flex-1">
                     <div className="text-slate-800 dark:text-slate-300 text-sm font-medium mb-1`">
-                      {item.title}
+                      {item.name}
                     </div>
                   </div>
                 </div>

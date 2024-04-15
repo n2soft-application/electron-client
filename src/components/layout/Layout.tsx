@@ -162,8 +162,10 @@ function Layout() {
                   duration: 0.5,
                 }}
               >
-                {/* <Breadcrumbs /> */}
-                <div className="p-6">{<Outlet />}</div>
+                <div className="p-6">
+                  <Breadcrumbs />
+                  <Outlet />
+                </div>
               </motion.div>
             </Suspense>
           </div>

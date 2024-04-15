@@ -3,16 +3,17 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { NavLink } from "react-router-dom";
 import { menuItems } from "../../constants/data";
+import { useRecoilState } from "recoil";
+import { FavMenuType, favMenuTypeState } from "../../state/layout/layoutAtom";
 
 function Breadcrumbs() {
   const location = useLocation();
   const locationName = location.pathname.replace("/", "");
+  const [favMenu, setFavMenu] = useRecoilState<FavMenuType>(favMenuTypeState);
 
   const [isHide, setIsHide] = useState<boolean | undefined>(false);
   const [groupTitle, setGroupTitle] = useState("");
   const [title, setTitle] = useState(locationName);
-
-  const [fav, setFav] = useState(false);
 
   useEffect(() => {
     const currentMenuGroup = menuItems.find(
@@ -46,7 +47,7 @@ function Breadcrumbs() {
         <div className="flex mb-4 space-x-3 md:mb-6 rtl:space-x-reverse">
           <ul className="breadcrumbs">
             <li className="text-primary-500">
-              <NavLink to="/dashboard" className="text-lg">
+              <NavLink to="/home/dashboard" className="text-lg">
                 <Icon icon="heroicons-outline:home" />
               </NavLink>
               <span className="breadcrumbs-icon rtl:transform rtl:rotate-180">
@@ -65,12 +66,25 @@ function Breadcrumbs() {
             )}
             <li className="capitalize text-slate-500 dark:text-slate-400">
               {title}
-
               <span
                 className="relative lg:h-[32px] lg:w-[32px] lg:dark:bg-slate-900 dark:text-white text-slate-400 cursor-pointer rounded-full text-[20px] flex flex-col items-center justify-center"
-                onClick={() => setFav(!fav)}
+                onClick={() => {
+                  if (favMenu.every((f) => f.href !== locationName)) {
+                    // 즐겨찾기 추가
+                    setFavMenu(() => [
+                      ...favMenu,
+                      { name: title, href: locationName },
+                    ]);
+                  } else {
+                    // 즐겨찾기 삭제
+                    const newFavs = favMenu.filter(
+                      (f) => f.href !== locationName
+                    );
+                    setFavMenu(newFavs);
+                  }
+                }}
               >
-                {fav ? (
+                {favMenu.find((item) => item.href === locationName) ? (
                   <Icon
                     icon="heroicons:star-20-solid"
                     className="text-xl leading-[1] cursor-pointer text-[#FFCE30]"
