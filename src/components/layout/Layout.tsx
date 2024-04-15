@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import useContentWidth from "../../hooks/layout/useContentWidth";
 import useMenuHidden from "../../hooks/layout/useMenuHidden";
@@ -17,6 +17,7 @@ import Header from "./Header";
 import { NavLink } from "react-router-dom";
 import Icon from "../icons/Icon";
 import useTabMenu from "../../hooks/layout/useTabMenu";
+import { menuItems } from "../../constants/data";
 
 function Layout() {
   const { width, breakpoints } = useWidth();
@@ -27,7 +28,34 @@ function Layout() {
   const [menuType] = useMenuLayout();
   const [menuHidden] = useMenuHidden();
   const [mobileMenu, setMobileMenu] = useMobileMenu();
-  const { tabMenu, handleTabClose } = useTabMenu();
+  const { tabMenu, handleTabOpen, handleTabClose } = useTabMenu();
+  const locationName = location.pathname.replace("/", "");
+
+  useEffect(() => {
+    handleTabOpen(findTitle(locationName), locationName);
+  }, [location.pathname]);
+
+  const findTitle = (link: string) => {
+    let title = "";
+    menuItems.map((item) => {
+      if (item.child) {
+        item.child.map((i) => {
+          if (i.multi_menu) {
+            i.multi_menu.map((m) => {
+              if (m.multiLink === link) {
+                title = m.multiTitle;
+              }
+            });
+          } else if (i.childlink === link) {
+            title = i.childtitle ?? "";
+          }
+        });
+      } else if (item.link === link) {
+        title = item.title;
+      }
+    });
+    return title;
+  };
 
   const switchHeaderClass = () => {
     if (menuType === "horizontal" || menuHidden) {
