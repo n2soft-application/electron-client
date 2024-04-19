@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import Card from "../../../../components/card/Card";
+import { CodeService, ICode } from "../../../../api/services/codeService";
 
 export const tableData = [
   {
@@ -63,6 +65,38 @@ const secondcolumns = [
 ];
 
 function CommonCodePage() {
+  const [selected, setSelected] = useState<string>(""); // 선택된 코드
+  const [codeGroup1, setCodeGroup1] = useState<ICode[]>([]); // 대분류
+  const [codeGroup2, setCodeGroup2] = useState<ICode[]>([]); // 소분류
+
+  useEffect(() => {
+    findAll();
+  }, []);
+
+  useEffect(() => {
+    if (selected) {
+      findByKind(selected);
+    }
+  }, [selected]);
+
+  const findAll = async () => {
+    try {
+      const response = await CodeService.getCode();
+      if (response.status === "OK") {
+        setCodeGroup1(response.data);
+      }
+    } catch (errer) {}
+  };
+
+  const findByKind = async (kind: string) => {
+    try {
+      const response = await CodeService.getCodeByKind(kind);
+      if (response.status === "OK") {
+        setCodeGroup2(response.data);
+      }
+    } catch (errer) {}
+  };
+
   return (
     <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
       <Card title="대분류 코드" noborder>
@@ -73,24 +107,32 @@ function CommonCodePage() {
                 <thead className="bg-slate-200 dark:bg-slate-700">
                   <tr>
                     {firstcolumns.map((column, i) => (
-                      <th key={i} scope="col" className="table-th text-center">
+                      <th key={i} scope="col" className="text-center table-th">
                         {column.label}
                       </th>
                     ))}
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
-                  <tr className="hover:bg-slate-200 dark:hover:bg-slate-700 text-center">
-                    <td className="table-td">19</td>
-                    <td className="table-td">ADC</td>
-                    <td className="table-td text-left">
-                      광고종류2 (통계에서 사용)
-                    </td>
-                    <td className="table-td">Y</td>
-                    <td className="table-td">Y</td>
-                    <td className="table-td">N</td>
-                    <td className="table-td">2022-04-01</td>
-                  </tr>
+                  {codeGroup1.map((code, i) => (
+                    <tr
+                      key={i}
+                      className={`text-center ${
+                        selected === code.kind
+                          ? "bg-slate-200 dark:bg-slate-700"
+                          : "hover:bg-slate-200 dark:hover:bg-slate-700"
+                      }`}
+                      onClick={() => setSelected(code.kind)}
+                    >
+                      <td className="table-td">-</td>
+                      <td className="table-td">{code.kind}</td>
+                      <td className="text-left table-td">{code.name}</td>
+                      <td className="table-td">-</td>
+                      <td className="table-td">-</td>
+                      <td className="table-td">-</td>
+                      <td className="table-td">-</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
@@ -105,22 +147,27 @@ function CommonCodePage() {
                 <thead className="bg-slate-200 dark:bg-slate-700">
                   <tr>
                     {secondcolumns.map((column, i) => (
-                      <th key={i} scope="col" className="table-th text-center">
+                      <th key={i} scope="col" className="text-center table-th">
                         {column.label}
                       </th>
                     ))}
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
-                  <tr className="hover:bg-slate-200 dark:hover:bg-slate-700 text-center">
-                    <td className="table-td">1</td>
-                    <td className="table-td">00</td>
-                    <td className="table-td text-left">NICE 신용졍보</td>
-                    <td className="table-td">1</td>
-                    <td className="table-td">Y</td>
-                    <td className="table-td">2022-04-01</td>
-                    <td className="table-td">2022-04-01</td>
-                  </tr>
+                  {codeGroup2.map((code, i) => (
+                    <tr
+                      key={i}
+                      className="text-center hover:bg-slate-200 dark:hover:bg-slate-700"
+                    >
+                      <td className="table-td">-</td>
+                      <td className="table-td">{code.kind}</td>
+                      <td className="text-left table-td">{code.name}</td>
+                      <td className="table-td">-</td>
+                      <td className="table-td">-</td>
+                      <td className="table-td">-</td>
+                      <td className="table-td">-</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
