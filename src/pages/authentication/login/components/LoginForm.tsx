@@ -1,22 +1,49 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import { UserService } from "../../../../api/services/userService";
 import Button from "../../../../components/button/Button";
 import Checkbox from "../../../../components/checkbox/Checkbox";
 import TextInput from "../../../../components/form/TextInput";
+import { storageKey } from "../../../../constants/constants";
+import useLoading from "../../../../hooks/useLoading";
+import { userState } from "../../../../state/user/userAtom";
 
 function LoginForm() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { showLoading, hideLoading } = useLoading();
+  const setUserState = useSetRecoilState(userState);
   const [checked, setChecked] = useState(false);
 
   const {
     register,
+    setError,
     formState: { errors },
     handleSubmit,
   } = useForm({});
 
   const onSubmit = async (data: any) => {
-    navigate("/home/dashboard");
+    try {
+      showLoading();
+      const response = await UserService.login({
+        email: data.email,
+        password: data.password,
+      });
+      hideLoading();
+      localStorage.setItem(storageKey.user, JSON.stringify(response.data));
+      setUserState(response.data);
+
+      const { from } = location.state || { from: { pathname: "/home/dashboard" } };
+      navigate(from);
+    } catch (error) {
+      hideLoading();
+      setError("fail", {
+        type: "custom",
+        message: "이메일 또는 비밀번호가 올바르지 않아요.",
+      });
+    }
   };
 
   return (
