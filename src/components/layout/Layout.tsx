@@ -1,23 +1,22 @@
 import { motion } from "framer-motion";
 import { Suspense, useEffect } from "react";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { menuItems } from "../../constants/data";
 import useContentWidth from "../../hooks/layout/useContentWidth";
 import useMenuHidden from "../../hooks/layout/useMenuHidden";
 import useMenuLayout from "../../hooks/layout/useMenuLayout";
 import useMobileMenu from "../../hooks/layout/useMobileMenu";
 import useSidebar from "../../hooks/layout/useSidebar";
+import useTabMenu from "../../hooks/layout/useTabMenu";
 import useWidth from "../../hooks/layout/useWidth";
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
+import Icon from "../icons/Icon";
 import Loading from "../loading/Loading";
 import Setting from "../setting/Setting";
 import MobileMenu from "../sidebar/MobileMenu";
 import Sidebar from "../sidebar/Sidebar";
 import Footer from "./Footer";
 import Header from "./Header";
-import { NavLink } from "react-router-dom";
-import Icon from "../icons/Icon";
-import useTabMenu from "../../hooks/layout/useTabMenu";
-import { menuItems } from "../../constants/data";
 
 function Layout() {
   const { width, breakpoints } = useWidth();
@@ -103,18 +102,18 @@ function Layout() {
             }
           >
             <div className="overflow-x-auto bg-white dark:bg-slate-800">
-              <div className="flex h-10 border-r divide-x w-fit border-slate-200 dark:border-slate-700 dark:divide-slate-700">
+              <div className="flex border-r divide-x w-fit border-slate-200 dark:border-slate-700 dark:divide-slate-700">
                 {tabMenu.map((tab, index) => (
                   <NavLink key={index} to={tab.href ?? ""} replace>
                     {({ isActive }) => (
                       <div
-                        className={`flex items-center h-full gap-2 px-4 ${
+                        className={`flex items-center h-full gap-2 px-2 ${
                           isActive
                             ? "bg-slate-100 dark:bg-secondary-900 border-b-0"
                             : "bg-transparent hover:bg-slate-100 dark:hover:bg-secondary-900 border-b border-slate-200 dark:border-slate-700"
                         }`}
                       >
-                        <p className="whitespace-nowrap">{tab.name}</p>
+                        <p className="text-sm whitespace-nowrap">{tab.name}</p>
                         {tab.href !== "home/dashboard" && (
                           <div
                             className="p-0.5 rounded-full"
