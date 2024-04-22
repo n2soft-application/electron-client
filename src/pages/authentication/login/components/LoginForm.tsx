@@ -28,20 +28,24 @@ function LoginForm() {
     try {
       showLoading();
       const response = await UserService.login({
-        email: data.email,
+        username: data.username,
         password: data.password,
       });
       hideLoading();
-      localStorage.setItem(storageKey.user, JSON.stringify(response.data));
-      setUserState(response.data);
 
-      const { from } = location.state || { from: { pathname: "/home/dashboard" } };
-      navigate(from);
+      if(response.status === 'OK') {
+        localStorage.setItem(storageKey.user, JSON.stringify(response.data));
+        setUserState(response.data);
+
+        const { from } = location.state || { from: { pathname: "/home/dashboard" } };
+        navigate(from);
+      }
+
     } catch (error) {
       hideLoading();
       setError("fail", {
         type: "custom",
-        message: "이메일 또는 비밀번호가 올바르지 않아요.",
+        message: "아이디 또는 비밀번호가 올바르지 않아요.",
       });
     }
   };
@@ -49,10 +53,10 @@ function LoginForm() {
   return (
     <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
       <TextInput
-        name="email"
-        label="이메일"
-        defaultValue="email@gmail.com"
-        type="email"
+        name="username"
+        label="아이디"
+        defaultValue="nTree"
+        type="text"
         register={register}
         error={errors.email}
         className="h-[48px]"
@@ -61,7 +65,7 @@ function LoginForm() {
         name="password"
         label="비밀번호"
         type="password"
-        defaultValue="password"
+        defaultValue="1"
         register={register}
         error={errors.password}
         className="h-[48px]"

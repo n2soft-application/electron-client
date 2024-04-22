@@ -1,9 +1,9 @@
 import axios, {
-    AxiosError,
-    AxiosInstance,
-    AxiosRequestConfig,
-    AxiosResponse,
-    InternalAxiosRequestConfig,
+  AxiosError,
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+  InternalAxiosRequestConfig,
 } from "axios";
 import { storageKey } from "../constants/constants";
 import Logger from "../utils/logger";
