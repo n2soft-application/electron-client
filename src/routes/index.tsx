@@ -6,7 +6,7 @@ import Loading from "../components/loading/Loading";
 import BankingPage from "../pages/example/dashboard/banking";
 import MenuManagement from "../pages/menumanagement/MenuManagement";
 import ScreenManagement from "../pages/screenmanagement/ScreenManagement";
-import Team from "../pages/teampart/Team";
+import Team from "../pages/preferences/team/Team";
 
 // Pages
 const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
