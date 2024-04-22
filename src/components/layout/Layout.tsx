@@ -161,7 +161,7 @@ function Layout() {
                   duration: 0.5,
                 }}
               >
-                <div className="p-6">
+                <div className="p-4">
                   <Breadcrumbs />
                   <Outlet />
                 </div>

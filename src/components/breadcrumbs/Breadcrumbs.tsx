@@ -2,8 +2,8 @@ import { Icon } from "@iconify/react";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { NavLink } from "react-router-dom";
-import { menuItems } from "../../constants/data";
 import { useRecoilState } from "recoil";
+import { menuItems } from "../../constants/data";
 import { FavMenuType, favMenuTypeState } from "../../state/layout/layoutAtom";
 
 function Breadcrumbs() {
@@ -44,7 +44,7 @@ function Breadcrumbs() {
   return (
     <>
       {!isHide ? (
-        <div className="flex mb-4 space-x-3 md:mb-6 rtl:space-x-reverse">
+        <div className="flex mb-2 space-x-3 md:mb-2 rtl:space-x-reverse">
           <ul className="breadcrumbs">
             <li className="text-primary-500">
               <NavLink to="/home/dashboard" className="text-lg">
