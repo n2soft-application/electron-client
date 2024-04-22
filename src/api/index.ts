@@ -64,7 +64,6 @@ const onRequest = (
 
 const onResponse = (response: AxiosResponse): AxiosResponse => {
   Logger.debug("interceptors response.data", response.data);
-  console.log(response.data);
 
   if (response.headers["access-token"]) {
     localStorage.setItem(
