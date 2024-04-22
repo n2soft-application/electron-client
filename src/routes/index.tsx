@@ -4,9 +4,9 @@ import AuthLayout from "../components/layout/AuthLayout";
 import Layout from "../components/layout/Layout";
 import Loading from "../components/loading/Loading";
 import BankingPage from "../pages/example/dashboard/banking";
-import TeamPart from "../pages/teampart/TeamPart";
 import MenuManagement from "../pages/menumanagement/MenuManagement";
 import ScreenManagement from "../pages/screenmanagement/ScreenManagement";
+import TeamPart from "../pages/teampart/TeamPart";
 
 // Pages
 const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
@@ -21,7 +21,7 @@ const Error404 = lazy(() => import("../pages/error/Error404"));
 const IconsPage = lazy(() => import("../pages/example/icon/IconsPage"));
 const ChatPage = lazy(() => import("../pages/example/chat/ChatPage"));
 const ChangeLog = lazy(() => import("../pages/example/changelog/ChangeLog"));
-const Login = lazy(() => import("../pages/example/login/Login"));
+const Login = lazy(() => import("../pages/authentication/login/Login"));
 const BasicWidget = lazy(() => import("../pages/example/widget/BasicWidget"));
 const StatisticWidget = lazy(
   () => import("../pages/example/widget/StatisticWidget")
