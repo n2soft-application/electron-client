@@ -1,9 +1,9 @@
 import { Collapse } from "react-collapse";
-import { MenuItemType } from "../../constants/data";
 import { NavLink } from "react-router-dom";
+import { MenuItemType } from "../../constants/data";
+import useTabMenu from "../../hooks/layout/useTabMenu";
 import Icon from "../icons/Icon";
 import Multilevel from "./Multilevel";
-import useTabMenu from "../../hooks/layout/useTabMenu";
 
 type Props = {
   activeSubmenu: number | null;
@@ -24,9 +24,9 @@ function SubMenu({
 
   return (
     <Collapse isOpened={activeSubmenu === index}>
-      <ul className="space-y-4 sub-menu">
+      <ul className="space-y-2 sub-menu">
         {item.child?.map((subItem, j) => (
-          <li key={j} className="block pl-4 pr-1 first:pt-4 last:pb-4">
+          <li key={j} className="block pl-4 pr-1 first:pt-2 last:pb-2">
             {subItem?.multi_menu ? (
               <div>
                 <div

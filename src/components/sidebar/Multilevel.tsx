@@ -4,8 +4,8 @@ import {
   MenuItemChildMultiType,
   MenuItemChildType,
 } from "../../constants/data";
-import Badge from "../badge/Badge";
 import useTabMenu from "../../hooks/layout/useTabMenu";
+import Badge from "../badge/Badge";
 
 const LockLink = ({
   to,
@@ -64,9 +64,9 @@ const Multilevel = ({
 }) => {
   return (
     <Collapse isOpened={activeMultiMenu === j}>
-      <ul className="space-y-[14px] pl-4">
+      <ul className="pl-4 space-y-2">
         {subItem?.multi_menu?.map((item, i) => (
-          <li key={i} className=" first:pt-[14px]">
+          <li key={i} className=" first:pt-2">
             <LockLink to={item.multiLink} item={item}>
               {({ isActive }: { isActive: boolean }) => (
                 <span
