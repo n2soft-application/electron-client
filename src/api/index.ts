@@ -1,9 +1,9 @@
 import axios, {
-    AxiosError,
-    AxiosInstance,
-    AxiosRequestConfig,
-    AxiosResponse,
-    InternalAxiosRequestConfig,
+  AxiosError,
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+  InternalAxiosRequestConfig,
 } from "axios";
 import { storageKey } from "../constants/constants";
 import Logger from "../utils/logger";
@@ -64,6 +64,7 @@ const onRequest = (
 
 const onResponse = (response: AxiosResponse): AxiosResponse => {
   Logger.debug("interceptors response.data", response.data);
+  console.log(response.data);
 
   if (response.headers["access-token"]) {
     localStorage.setItem(
