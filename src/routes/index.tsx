@@ -6,7 +6,7 @@ import Loading from "../components/loading/Loading";
 import BankingPage from "../pages/example/dashboard/banking";
 import MenuManagement from "../pages/menumanagement/MenuManagement";
 import ScreenManagement from "../pages/screenmanagement/ScreenManagement";
-import TeamPart from "../pages/teampart/TeamPart";
+import Team from "../pages/teampart/Team";
 
 // Pages
 const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
@@ -124,7 +124,7 @@ const AppRouter = () => {
       <Route path="/*" element={<Layout />}>
         <Route path="home/dashboard" element={<Dashboard />} />
         <Route path="system/commoncode" element={<CommonCodePage />} />
-        <Route path="system/teampart" element={<TeamPart />} />
+        <Route path="system/teampart" element={<Team />} />
         <Route path="system/menumanagement" element={<MenuManagement />} />
         <Route path="system/screenmanagement" element={<ScreenManagement />} />
 
