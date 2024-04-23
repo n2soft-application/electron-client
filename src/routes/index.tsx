@@ -7,6 +7,7 @@ import BankingPage from "../pages/example/dashboard/banking";
 import MenuManagement from "../pages/menumanagement/MenuManagement";
 import ScreenManagement from "../pages/screenmanagement/ScreenManagement";
 import Team from "../pages/preferences/team/Team";
+import User from "../pages/preferences/user/User";
 
 // Pages
 const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
@@ -127,6 +128,7 @@ const AppRouter = () => {
         <Route path="system/teampart" element={<Team />} />
         <Route path="system/menumanagement" element={<MenuManagement />} />
         <Route path="system/screenmanagement" element={<ScreenManagement />} />
+        <Route path="system/user" element={<User />} />
 
         {/* Example */}
         <Route path="banking" element={<BankingPage />} />

@@ -1158,7 +1158,7 @@ export const menuItems: MenuItemType[] = [
           },
           {
             multiTitle: "사용자",
-            multiLink: "",
+            multiLink: "system/user",
           },
         ],
       },
