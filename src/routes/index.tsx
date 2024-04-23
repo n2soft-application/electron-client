@@ -125,7 +125,7 @@ const AppRouter = () => {
       <Route path="/*" element={<Layout />}>
         <Route path="home/dashboard" element={<Dashboard />} />
         <Route path="system/commoncode" element={<CommonCodePage />} />
-        <Route path="system/teampart" element={<Team />} />
+        <Route path="system/team" element={<Team />} />
         <Route path="system/menumanagement" element={<MenuManagement />} />
         <Route path="system/screenmanagement" element={<ScreenManagement />} />
         <Route path="system/user" element={<User />} />
