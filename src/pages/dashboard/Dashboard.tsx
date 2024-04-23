@@ -51,7 +51,7 @@ function Dashboard() {
 
     const left = window.screenX + (window.outerWidth - width) / 2;
     const top = window.screenY + (window.outerHeight - height) / 2;
-    const windowFeatures = `width=${width},height=${height},left=${left},top=${top},resizable=${false}`;
+    const windowFeatures = `width=${width},height=${height},left=${left},top=${top}`;
 
     const newPopup = window.open(link, "_blank", windowFeatures);
     setPopup(newPopup);
