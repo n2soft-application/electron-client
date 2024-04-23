@@ -171,7 +171,7 @@ function CommonCodePage() {
                       className="text-center hover:bg-slate-100 dark:hover:bg-slate-700"
                     >
                       <td className="w-11 table-td">{i + 1}</td>
-                      <td className="w-14 table-td">-</td>
+                      <td className="w-14 table-td">{code.code}</td>
                       <td className="text-left w-72 table-td">{code.name}</td>
                       <td className="w-16 table-td">{code.priority}</td>
                       <td className="w-16 table-td">{code.useYn}</td>

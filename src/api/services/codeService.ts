@@ -13,7 +13,7 @@ export interface ICode {
 }
 
 export interface ICodeItem {
-  kind: string;
+  code: string;
   name: string;
   description: string | null;
   useYn: string; //사용여부 추가
