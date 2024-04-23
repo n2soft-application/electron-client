@@ -141,7 +141,7 @@ function Team() {
                   <tr>
                     {firstColumns.map((column, i) => (
                       <th
-                        key="i"
+                        key={i}
                         className="bg-slate-200 dark:bg-slate-700 text-center table-th text-[14px] w-[130px]"
                       >
                         {column.label}
@@ -153,7 +153,7 @@ function Team() {
                         <td className="w-[150px] pl-2">{row.부서지점}</td>
                         {secondColumns.map((column, i) => (
                           <th
-                            key="i"
+                            key={i}
                             className="bg-slate-200 dark:bg-slate-700 text-center table-th text-[14px] w-[130px]"
                           >
                             {column.label}
