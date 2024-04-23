@@ -8,6 +8,7 @@ import MenuManagement from "../pages/menumanagement/MenuManagement";
 import ScreenManagement from "../pages/screenmanagement/ScreenManagement";
 import Team from "../pages/preferences/team/Team";
 import User from "../pages/preferences/user/User";
+import Popup from "../components/popup/Popup";
 
 // Pages
 const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
@@ -176,6 +177,7 @@ const AppRouter = () => {
 
         <Route path="*" element={<Navigate replace={true} to="/404" />} />
       </Route>
+      <Route path="popup" element={<Popup />} />
       <Route
         path="/404"
         element={
