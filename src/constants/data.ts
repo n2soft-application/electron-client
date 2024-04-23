@@ -1284,11 +1284,11 @@ export const menuItems: MenuItemType[] = [
         multi_menu: [
           {
             multiTitle: "팀(파트)",
-            multiLink: "system/teampart",
+            multiLink: "system/team",
           },
           {
             multiTitle: "사용자",
-            multiLink: "",
+            multiLink: "system/user",
           },
         ],
       },
