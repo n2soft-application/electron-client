@@ -7,6 +7,8 @@ import NavMenu from "./NavMenu";
 import SidebarLogo from "./SidebarLogo";
 
 import { menuItems } from "../../constants/data";
+import { MenuService } from "../../api/services/menuService";
+import { storageKey } from "../../constants/constants";
 
 function Sidebar() {
   const scrollableNodeRef = useRef<HTMLDivElement | null>(null);
@@ -29,6 +31,36 @@ function Sidebar() {
     };
     scrollableNodeRef.current?.addEventListener("scroll", handleScroll);
   }, [scrollableNodeRef]);
+
+  // 메뉴 조회
+  useEffect(() => {
+    getMenuItems();
+    // getMenuItemByCode("bc");
+  }, []);
+
+  const getMenuItems = async () => {
+    if (!localStorage.getItem(storageKey.menu)) {
+      try {
+        const response = await MenuService.getMenu();
+        if (response.status === "OK") {
+          console.log(response.data);
+          localStorage.setItem(storageKey.menu, JSON.stringify(response.data));
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const getMenuItemByCode = async (code: string) => {
+    try {
+      const response = await MenuService.getMenuByCode(code);
+      if (response.status === "OK") {
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className={isSemiDark ? "dark" : ""}>
@@ -61,7 +93,10 @@ function Sidebar() {
           className="sidebar-menu px-4 h-[calc(100%-80px)]"
           scrollableNodeProps={{ ref: scrollableNodeRef }}
         >
-          <NavMenu menus={menuItems} />
+          <NavMenu
+            // menus={JSON.parse(localStorage.getItem(storageKey.menu) ?? "{}")}
+            menus={menuItems}
+          />
           {/* {!collapsed && (
             <div className="relative p-4 mt-24 mb-16 text-center text-white bg-slate-900 rounded-2xl">
               <img
