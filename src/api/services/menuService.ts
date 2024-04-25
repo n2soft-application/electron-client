@@ -10,7 +10,6 @@ export interface IMenu1Depth {
 }
 
 export interface IMenu2Depth {
-  code: string;
   name: string;
   priority: number;
   description: string | null;
@@ -29,7 +28,7 @@ export const MenuService = {
   getMenu: async (): Promise<ApiResponse<IMenu1Depth[]>> => {
     return Get("/api/common/menu");
   },
-  getMenuByCode: async (code: string): Promise<ApiResponse<IMenu2Depth>> => {
+  getMenuByCode: async (code: string): Promise<ApiResponse<IMenu2Depth[]>> => {
     return Get(`/api/common/menu/${code}`);
   },
 };
