@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Suspense, useEffect } from "react";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import useContentWidth from "../../hooks/layout/useContentWidth";
 import useMenuHidden from "../../hooks/layout/useMenuHidden";
 import useMenuLayout from "../../hooks/layout/useMenuLayout";
@@ -14,26 +13,25 @@ import MobileMenu from "../sidebar/MobileMenu";
 import Sidebar from "../sidebar/Sidebar";
 import Footer from "./Footer";
 import Header from "./Header";
-import { NavLink } from "react-router-dom";
 import Icon from "../icons/Icon";
 import useTabMenu from "../../hooks/layout/useTabMenu";
 import { menuItems } from "../../constants/data";
+import { activeTabTypeState } from "../../state/layout/layoutAtom";
+import { useRecoilState } from "recoil";
 
 function Layout() {
   const { width, breakpoints } = useWidth();
   const [collapsed] = useSidebar();
-  const location = useLocation();
-  const navigate = useNavigate();
   const [contentWidth] = useContentWidth();
   const [menuType] = useMenuLayout();
   const [menuHidden] = useMenuHidden();
   const [mobileMenu, setMobileMenu] = useMobileMenu();
   const { tabMenu, handleTabOpen, handleTabClose } = useTabMenu();
-  const locationName = location.pathname.replace("/", "");
+  const [activeTab, setActiveTab] = useRecoilState(activeTabTypeState);
 
   useEffect(() => {
-    handleTabOpen(findTitle(locationName), locationName);
-  }, [location.pathname]);
+    handleTabOpen(findTitle(activeTab), activeTab, findElement(activeTab));
+  }, [activeTab]);
 
   const findTitle = (link: string) => {
     let title = "";
@@ -55,6 +53,28 @@ function Layout() {
       }
     });
     return title;
+  };
+
+  const findElement = (link: string) => {
+    let element = null;
+    menuItems.map((item) => {
+      if (item.child) {
+        item.child.map((i) => {
+          if (i.multi_menu) {
+            i.multi_menu.map((m) => {
+              if (m.multiLink === link) {
+                element = m.multiElement;
+              }
+            });
+          } else if (i.childlink === link) {
+            element = i.childElement;
+          }
+        });
+      } else if (item.link === link) {
+        element = item.element;
+      }
+    });
+    return element;
   };
 
   const switchHeaderClass = () => {
@@ -105,40 +125,35 @@ function Layout() {
             <div className="overflow-x-auto bg-white dark:bg-slate-800">
               <div className="flex h-10 border-r divide-x w-fit border-slate-200 dark:border-slate-700 dark:divide-slate-700">
                 {tabMenu.map((tab, index) => (
-                  <NavLink key={index} to={tab.href ?? ""} replace>
-                    {({ isActive }) => (
-                      <div
-                        className={`flex items-center h-full gap-2 px-4 ${
-                          isActive
-                            ? "bg-slate-100 dark:bg-secondary-900 border-b-0"
-                            : "bg-transparent hover:bg-slate-100 dark:hover:bg-secondary-900 border-b border-slate-200 dark:border-slate-700"
-                        }`}
-                      >
-                        <p className="whitespace-nowrap">{tab.name}</p>
-                        {tab.href !== "home/dashboard" && (
-                          <div
-                            className="p-0.5 rounded-full"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              e.stopPropagation();
-                              handleTabClose(tab);
-                            }}
-                          >
-                            <Icon
-                              icon="heroicons:x-mark-16-solid"
-                              width="20px"
-                            />
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </NavLink>
+                  <button key={index} onClick={() => setActiveTab(tab.href)}>
+                    <div
+                      className={`flex items-center h-full gap-2 px-4 ${
+                        tab.href === activeTab
+                          ? "bg-slate-100 dark:bg-secondary-900 border-b-0"
+                          : "bg-transparent hover:bg-slate-100 dark:hover:bg-secondary-900 border-b border-slate-200 dark:border-slate-700"
+                      }`}
+                    >
+                      <p className="whitespace-nowrap">{tab.name}</p>
+                      {tab.href !== "home/dashboard" && (
+                        <div
+                          className="p-0.5 rounded-full"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            handleTabClose(tab);
+                          }}
+                        >
+                          <Icon icon="heroicons:x-mark-16-solid" width="20px" />
+                        </div>
+                      )}
+                    </div>
+                  </button>
                 ))}
               </div>
             </div>
             <Suspense fallback={<Loading />}>
               <motion.div
-                key={location.pathname}
+                key={activeTab}
                 initial="pageInitial"
                 animate="pageAnimate"
                 exit="pageExit"
@@ -163,8 +178,17 @@ function Layout() {
                 }}
               >
                 <div className="p-6">
-                  <Breadcrumbs />
-                  <Outlet />
+                  {/* <Breadcrumbs /> */}
+                  {tabMenu.map((tab, i) => (
+                    <div
+                      key={i}
+                      style={{
+                        display: activeTab === tab.href ? "block" : "none",
+                      }}
+                    >
+                      {tab.component ? <tab.component /> : <>none</>}
+                    </div>
+                  ))}
                 </div>
               </motion.div>
             </Suspense>

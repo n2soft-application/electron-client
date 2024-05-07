@@ -4,10 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "../../../../components/button/Button";
 import Checkbox from "../../../../components/checkbox/Checkbox";
 import TextInput from "../../../../components/form/TextInput";
+import { useRecoilState } from "recoil";
+import { activeTabTypeState } from "../../../../state/layout/layoutAtom";
 
 function LoginForm() {
   const navigate = useNavigate();
   const [checked, setChecked] = useState(false);
+  const [activeTab, setActiveTab] = useRecoilState(activeTabTypeState);
 
   const {
     register,
@@ -16,7 +19,8 @@ function LoginForm() {
   } = useForm({});
 
   const onSubmit = async (data: any) => {
-    navigate("/home/dashboard");
+    navigate("/main/");
+    setActiveTab("home/dashboard");
   };
 
   return (

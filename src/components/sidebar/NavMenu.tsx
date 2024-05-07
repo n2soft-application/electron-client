@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { MenuItemType } from "../../constants/data";
 import useMobileMenu from "../../hooks/layout/useMobileMenu";
 import Icon from "../icons/Icon";
 import SubMenu from "./SubMenu";
 import useTabMenu from "../../hooks/layout/useTabMenu";
+import { useRecoilState } from "recoil";
+import { activeTabTypeState } from "../../state/layout/layoutAtom";
 
 type Props = {
   menus: MenuItemType[];
@@ -21,9 +22,7 @@ function NavMenu({ menus }: Props) {
       setActiveSubmenu(index);
     }
   };
-
-  const location = useLocation();
-  const locationName = location.pathname.replace("/", "");
+  const [activeTab, setActiveTab] = useRecoilState(activeTabTypeState);
   const [mobileMenu, setMobileMenu] = useMobileMenu();
   const [activeMultiMenu, setMultiMenu] = useState<number | null>(null);
 
@@ -38,48 +37,48 @@ function NavMenu({ menus }: Props) {
   const isLocationMatch = (targetLocation: string | undefined) => {
     if (targetLocation) {
       return (
-        locationName === targetLocation ||
-        locationName.startsWith(`${targetLocation}/`)
+        activeTab === targetLocation ||
+        activeTab.startsWith(`${targetLocation}/`)
       );
     }
 
     return false;
   };
 
-  useEffect(() => {
-    let submenuIndex = null;
-    let multiMenuIndex = null;
-    menus.forEach((item, i) => {
-      if (isLocationMatch(item.link)) {
-        submenuIndex = i;
-      }
+  //   useEffect(() => {
+  //     let submenuIndex = null;
+  //     let multiMenuIndex = null;
+  //     menus.forEach((item, i) => {
+  //       if (isLocationMatch(item.link)) {
+  //         submenuIndex = i;
+  //       }
 
-      if (item.child) {
-        item.child.forEach((childItem, j) => {
-          if (isLocationMatch(childItem.childlink)) {
-            submenuIndex = i;
-          }
+  //       if (item.child) {
+  //         item.child.forEach((childItem, j) => {
+  //           if (isLocationMatch(childItem.childlink)) {
+  //             submenuIndex = i;
+  //           }
 
-          if (childItem.multi_menu) {
-            childItem.multi_menu.forEach((nestedItem) => {
-              if (isLocationMatch(nestedItem.multiLink)) {
-                submenuIndex = i;
-                multiMenuIndex = j;
-              }
-            });
-          }
-        });
-      }
-    });
-    document.title = `리테일금융시스템 | ${locationName}`;
+  //           if (childItem.multi_menu) {
+  //             childItem.multi_menu.forEach((nestedItem) => {
+  //               if (isLocationMatch(nestedItem.multiLink)) {
+  //                 submenuIndex = i;
+  //                 multiMenuIndex = j;
+  //               }
+  //             });
+  //           }
+  //         });
+  //       }
+  //     });
+  //     document.title = `리테일금융시스템 | ${activeTab}`;
 
-    setActiveSubmenu(submenuIndex);
-    setMultiMenu(multiMenuIndex);
-    // dispatch(toggleActiveChat(false));
-    if (mobileMenu) {
-      setMobileMenu(false);
-    }
-  }, [location]);
+  //     setActiveSubmenu(submenuIndex);
+  //     setMultiMenu(multiMenuIndex);
+  //     // dispatch(toggleActiveChat(false));
+  //     if (mobileMenu) {
+  //       setMobileMenu(false);
+  //     }
+  //   }, [activeTab]);
 
   return (
     <ul>
@@ -89,16 +88,20 @@ function NavMenu({ menus }: Props) {
           className={` single-sidebar-menu
         ${item.child ? "item-has-children" : ""}
         ${activeSubmenu === i ? "open" : ""}
-        ${locationName === item.link ? "menu-item-active" : ""}`}
+        ${activeTab === item.link ? "menu-item-active" : ""}`}
         >
           {/* single menu with no childred*/}
           {!item.child && !item.isHeadr && (
-            <NavLink
-              replace
+            <div
               className="menu-link"
-              to={item.link ?? ""}
               onClick={(e) => {
-                handleTabOpen(item.title, item.link ?? "", e);
+                setActiveTab(item.link ?? "");
+                handleTabOpen(
+                  item.title,
+                  item.link ?? "",
+                  item.element ?? null,
+                  e
+                );
               }}
             >
               <span className="flex-grow-0 menu-icon">
@@ -106,7 +109,7 @@ function NavMenu({ menus }: Props) {
               </span>
               <div className="flex-grow text-box">{item.title}</div>
               {item.badge && <span className="menu-badge">{item.badge}</span>}
-            </NavLink>
+            </div>
           )}
           {/* only for menulabel */}
           {item.isHeadr && !item.child && (

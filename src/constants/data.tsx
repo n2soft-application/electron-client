@@ -38,12 +38,51 @@ import ssl from "../assets/images/e-commerce/cart-icon/ssl.png";
 import stripe from "../assets/images/e-commerce/cart-icon/stripe.png";
 import truck from "../assets/images/e-commerce/cart-icon/truck.png";
 import vougepay from "../assets/images/e-commerce/cart-icon/vougepay.png";
+import Dashboard from "../pages/dashboard/Dashboard";
+import BankingPage from "../pages/example/dashboard/banking";
+import IconsPage from "../pages/example/icon/IconsPage";
+import MapPage from "../pages/example/map/MapPage";
+import ChatPage from "../pages/example/chat/ChatPage";
+import TodoPage from "../pages/example/todo/TodoPage";
+import Typography from "../pages/example/components/typography/Typography";
+import Colors from "../pages/example/components/colors/Colors";
+import AlertPage from "../pages/example/components/alert/AlertPage";
+import ButtonPage from "../pages/example/components/button/ButtonPage";
+import CardPage from "../pages/example/components/card/CardPage";
+import CarouselPage from "../pages/example/components/carousel/CarouselPage";
+import DropdownPage from "../pages/example/components/dropdown/DropdownPage";
+import ImagePage from "../pages/example/components/image/ImagePage";
+import ModalPage from "../pages/example/components/modal/ModalPage";
+import ProgressPage from "../pages/example/components/progress/ProgressPage";
+import PlaceholderPage from "../pages/example/components/placeholder/PlaceholderPage";
+import AccordionPage from "../pages/example/components/accordion/AccordionPage";
+import BadgePage from "../pages/example/components/badge/BadgePage";
+import PaginationPage from "../pages/example/components/pagination/PaginationPage";
+import VideoPage from "../pages/example/components/video/VideoPage";
+import TooltipPage from "../pages/example/components/tooltip/TooltipPage";
+import InputPage from "../pages/example/form/InputPage";
+import InputGroupPage from "../pages/example/form/InputGroupPage";
+import InputLayoutPage from "../pages/example/form/InputLayoutPage";
+import FormValidationPage from "../pages/example/form/validation/FormValidationPage";
+import FormWizardPage from "../pages/example/form/wizard/FormWizardPage";
+import InputMaskPage from "../pages/example/form/InputMaskPage";
+import FileInputPage from "../pages/example/form/file/FileInputPage";
+import FormRepeaterPage from "../pages/example/form/FormRepeaterPage";
+import TextareaPage from "../pages/example/form/TextareaPage";
+import CheckboxPage from "../pages/example/form/CheckboxPage";
+import RadioButtonPage from "../pages/example/form/RadioButtonPage";
+import SwitchPage from "../pages/example/form/SwitchPage";
+import SelectPage from "../pages/example/form/select/SelectPage";
+import DateTimePickerPage from "../pages/example/form/DateTimePickerPage";
+import BasicTablePage from "../pages/example/table/BasicTablePage";
+import AppexChartPage from "../pages/example/chart/appex-chart/AppexChartPage";
 
 export type MenuItemType = {
   isHeadr?: boolean;
   title: string;
   icon?: string;
   link?: string;
+  element?: React.ComponentType | null;
   badge?: string;
   isOpen?: boolean;
   isHide?: boolean;
@@ -54,12 +93,14 @@ export type MenuItemType = {
 export type MenuItemChildType = {
   childtitle?: string;
   childlink?: string;
+  childElement?: React.ComponentType | null;
   multi_menu?: MenuItemChildMultiType[];
 };
 
 export type MenuItemChildMultiType = {
   multiTitle: string;
   multiLink: string;
+  multiElement?: React.ComponentType | null;
   badge?: string;
 };
 
@@ -77,22 +118,27 @@ const sampleMenuItems: MenuItemType[] = [
       {
         childtitle: "Analytics Dashboard",
         childlink: "dashboard",
+        childElement: null,
       },
       {
         childtitle: "Ecommerce Dashboard",
         childlink: "ecommerce",
+        childElement: null,
       },
       {
         childtitle: "Project  Dashbaord",
         childlink: "project",
+        childElement: null,
       },
       {
         childtitle: " CRM Dashbaord",
         childlink: "crm",
+        childElement: null,
       },
       {
         childtitle: "Banking Dashboard",
         childlink: "banking",
+        childElement: BankingPage,
       },
     ],
   },
@@ -113,6 +159,7 @@ const sampleMenuItems: MenuItemType[] = [
     isHide: true,
     icon: "heroicons-outline:chat",
     link: "chat",
+    element: ChatPage,
   },
 
   {
@@ -120,6 +167,7 @@ const sampleMenuItems: MenuItemType[] = [
     isHide: true,
     icon: "heroicons-outline:mail",
     link: "email",
+    element: null,
   },
 
   {
@@ -127,12 +175,14 @@ const sampleMenuItems: MenuItemType[] = [
     isHide: true,
     icon: "heroicons-outline:view-boards",
     link: "kanban",
+    element: null,
   },
   {
     title: "Calender",
     isHide: true,
     icon: "heroicons-outline:calendar",
     link: "calender",
+    element: null,
   },
 
   {
@@ -140,6 +190,7 @@ const sampleMenuItems: MenuItemType[] = [
     isHide: true,
     icon: "heroicons-outline:clipboard-check",
     link: "todo",
+    element: TodoPage,
   },
 
   {
@@ -151,10 +202,12 @@ const sampleMenuItems: MenuItemType[] = [
       {
         childtitle: "Projects",
         childlink: "projects",
+        childElement: null,
       },
       {
         childtitle: "Project Details",
         childlink: "project-details",
+        childElement: null,
       },
     ],
   },
@@ -170,19 +223,23 @@ const sampleMenuItems: MenuItemType[] = [
           {
             multiTitle: "Products",
             multiLink: "products",
+            multiElement: null,
           },
           {
             multiTitle: "Products Details",
             multiLink: "products/1",
+            multiElement: null,
           },
 
           {
             multiTitle: "Cart",
             multiLink: "cart",
+            multiElement: null,
           },
           {
             multiTitle: "Wishlist",
             multiLink: "wishlist",
+            multiElement: null,
           },
         ],
       },
@@ -193,32 +250,38 @@ const sampleMenuItems: MenuItemType[] = [
           {
             multiTitle: "Orders",
             multiLink: "orders",
+            multiElement: null,
             badge: "soon",
           },
 
           {
             multiTitle: "Add Product",
             multiLink: "add-product",
+            multiElement: null,
             badge: "soon",
           },
           {
             multiTitle: "Edit Product",
             multiLink: "edit-product",
+            multiElement: null,
             badge: "soon",
           },
           {
             multiTitle: "Customers",
             multiLink: "customers",
+            multiElement: null,
             badge: "soon",
           },
           {
             multiTitle: "Sellers",
             multiLink: "sellers",
+            multiElement: null,
             badge: "soon",
           },
           {
             multiTitle: "Invoice",
             multiLink: "invoice-ecommerce",
+            multiElement: null,
             badge: "soon",
           },
         ],
@@ -237,50 +300,62 @@ const sampleMenuItems: MenuItemType[] = [
       {
         childtitle: "Signin One",
         childlink: "/",
+        childElement: null,
       },
       {
         childtitle: "Signin Two",
         childlink: "/login2",
+        childElement: null,
       },
       {
         childtitle: "Signin Three",
         childlink: "/login3",
+        childElement: null,
       },
       {
         childtitle: "Signup One",
         childlink: "/reg",
+        childElement: null,
       },
       {
         childtitle: "Signup Two",
         childlink: "/reg2",
+        childElement: null,
       },
       {
         childtitle: "Signup Three",
         childlink: "/reg3",
+        childElement: null,
       },
       {
         childtitle: "Forget Password One",
         childlink: "/forgot-password",
+        childElement: null,
       },
       {
         childtitle: "Forget Password Two",
         childlink: "/forgot-password2",
+        childElement: null,
       },
       {
         childtitle: "Forget Password Three",
         childlink: "/forgot-password3",
+        childElement: null,
       },
       {
         childtitle: "Lock Screen One",
         childlink: "/lock-screen",
+        childElement: null,
       },
       {
         childtitle: "Lock Screen Two",
         childlink: "/lock-screen2",
+        childElement: null,
       },
       {
         childtitle: "Lock Screen Three",
         childlink: "/lock-screen3",
+        childElement: null,
       },
     ],
   },
@@ -293,47 +368,58 @@ const sampleMenuItems: MenuItemType[] = [
       {
         childtitle: "Invoice",
         childlink: "invoice",
+        childElement: null,
       },
       {
         childtitle: "Pricing",
         childlink: "pricing",
+        childElement: null,
       },
       // {
       //   childtitle: "Testimonial",
       //   childlink: "testimonial",
+      //   childElement: null
       // },
       {
         childtitle: "FAQ",
         childlink: "faq",
+        childElement: null,
       },
       {
         childtitle: "Blog",
         childlink: "blog",
+        childElement: null,
       },
       {
         childtitle: "Blank page",
         childlink: "blank-page",
+        childElement: null,
       },
       {
         childtitle: "Prfoile",
         childlink: "profile",
+        childElement: null,
       },
       {
         childtitle: "Settings",
         childlink: "settings",
+        childElement: null,
       },
       {
         childtitle: "404 page",
         childlink: "/404",
+        childElement: null,
       },
 
       {
         childtitle: "Coming Soon",
         childlink: "/coming-soon",
+        childElement: null,
       },
       {
         childtitle: "Under Maintanance page",
         childlink: "/under-construction",
+        childElement: null,
       },
     ],
   },
@@ -349,10 +435,12 @@ const sampleMenuItems: MenuItemType[] = [
       {
         childtitle: "Basic",
         childlink: "basic",
+        childElement: null,
       },
       {
         childtitle: "Statistic",
         childlink: "statistic",
+        childElement: null,
       },
     ],
   },
@@ -364,66 +452,82 @@ const sampleMenuItems: MenuItemType[] = [
       {
         childtitle: "Typography",
         childlink: "typography",
+        childElement: Typography,
       },
       {
         childtitle: "Colors",
         childlink: "colors",
+        childElement: Colors,
       },
       {
         childtitle: "Alert",
         childlink: "alert",
+        childElement: AlertPage,
       },
       {
         childtitle: "Button",
         childlink: "button",
+        childElement: ButtonPage,
       },
       {
         childtitle: "Card",
         childlink: "card",
+        childElement: CardPage,
       },
       {
         childtitle: "Carousel",
         childlink: "carousel",
+        childElement: CarouselPage,
       },
       {
         childtitle: "Dropdown",
         childlink: "dropdown",
+        childElement: DropdownPage,
       },
       {
         childtitle: "Image",
         childlink: "image",
+        childElement: ImagePage,
       },
       {
         childtitle: "Modal",
         childlink: "modal",
+        childElement: ModalPage,
       },
       {
         childtitle: "Progress bar",
         childlink: "progress-bar",
+        childElement: ProgressPage,
       },
       {
         childtitle: "Placeholder",
         childlink: "placeholder",
+        childElement: PlaceholderPage,
       },
       {
         childtitle: "Tab & Accordion",
         childlink: "tab-accordion",
+        childElement: AccordionPage,
       },
       {
         childtitle: "Badges",
         childlink: "badges",
+        childElement: BadgePage,
       },
       {
         childtitle: "Paginatins",
         childlink: "paginations",
+        childElement: PaginationPage,
       },
       {
         childtitle: "Video",
         childlink: "video",
+        childElement: VideoPage,
       },
       {
         childtitle: "Tooltip & Popover",
         childlink: "tooltip-popover",
+        childElement: TooltipPage,
       },
     ],
   },
@@ -435,58 +539,72 @@ const sampleMenuItems: MenuItemType[] = [
       {
         childtitle: "Input",
         childlink: "input",
+        childElement: InputPage,
       },
       {
         childtitle: "Input group",
         childlink: "input-group",
+        childElement: InputGroupPage,
       },
       {
         childtitle: "Input layout",
         childlink: "input-layout",
+        childElement: InputLayoutPage,
       },
       {
         childtitle: "Form validation",
         childlink: "form-validation",
+        childElement: FormValidationPage,
       },
       {
         childtitle: "Wizard",
         childlink: "form-wizard",
+        childElement: FormWizardPage,
       },
       {
         childtitle: "Input mask",
         childlink: "input-mask",
+        childElement: InputMaskPage,
       },
       {
         childtitle: "File input",
         childlink: "file-input",
+        childElement: FileInputPage,
       },
       {
         childtitle: "Form repeater",
         childlink: "form-repeater",
+        childElement: FormRepeaterPage,
       },
       {
         childtitle: "Textarea",
         childlink: "textarea",
+        childElement: TextareaPage,
       },
       {
         childtitle: "Checkbox",
         childlink: "checkbox",
+        childElement: CheckboxPage,
       },
       {
         childtitle: "Radio button",
         childlink: "radio-button",
+        childElement: RadioButtonPage,
       },
       {
         childtitle: "Switch",
         childlink: "switch",
+        childElement: SwitchPage,
       },
       {
         childtitle: "Select & Vue select",
         childlink: "select",
+        childElement: SelectPage,
       },
       {
         childtitle: "Date time picker",
         childlink: "date-time-picker",
+        childElement: DateTimePickerPage,
       },
     ],
   },
@@ -498,10 +616,12 @@ const sampleMenuItems: MenuItemType[] = [
       {
         childtitle: "Basic Table",
         childlink: "table-basic",
+        childElement: BasicTablePage,
       },
       {
         childtitle: "React Table",
         childlink: "react-table",
+        childElement: null,
       },
     ],
   },
@@ -513,14 +633,17 @@ const sampleMenuItems: MenuItemType[] = [
       {
         childtitle: "Apex chart",
         childlink: "appex-chart",
+        childElement: AppexChartPage,
       },
       {
         childtitle: "Chart js",
         childlink: "chartjs",
+        childElement: null,
       },
       {
         childtitle: "Recharts",
         childlink: "recharts",
+        childElement: null,
       },
     ],
   },
@@ -528,11 +651,13 @@ const sampleMenuItems: MenuItemType[] = [
     title: "Map",
     icon: "heroicons-outline:map",
     link: "map",
+    element: MapPage,
   },
   {
     title: "Icons",
     icon: "heroicons-outline:emoji-happy",
     link: "icons",
+    element: IconsPage,
   },
   {
     title: "Multi Level",
@@ -542,6 +667,7 @@ const sampleMenuItems: MenuItemType[] = [
       {
         childtitle: "Level 1.1",
         childlink: "icons",
+        childElement: null,
       },
       {
         childtitle: "Level 1.2",
@@ -550,10 +676,12 @@ const sampleMenuItems: MenuItemType[] = [
           {
             multiTitle: "Level 2.1",
             multiLink: "Level-2",
+            multiElement: null,
           },
           {
             multiTitle: "Level 2.2",
             multiLink: "Level-2.3",
+            multiElement: null,
           },
         ],
       },
@@ -571,6 +699,7 @@ export const menuItems: MenuItemType[] = [
       {
         childtitle: "대시보드",
         childlink: "home/dashboard",
+        childElement: Dashboard,
       },
     ],
   },
@@ -585,26 +714,32 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "심사진행목록",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "심사접수진행상태",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "적합성확인목록",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "결재대기목록",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "전자계약대기목록",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "대출등록대기목록",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -614,10 +749,12 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "대출완료목록",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "대출완료(당대환)목록",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -627,22 +764,27 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "대외플랫폼접수현황",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "상담원심사현황",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "심사현황",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "심사부결현황",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "심사첨부파일등록현황",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -652,18 +794,22 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "사전거절(PreScreen)대상",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "심사배정상담원",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "심사배정룰",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "상품별 기준금리관리",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -681,26 +827,32 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "채권현황목록",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "여신거래내역",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "대출완제목록",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "초본열람대상명세",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "방문관리명세",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "채권배정현황(실시간)",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -710,26 +862,32 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "개인회생목록",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "워크아웃목록",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "파산관리명세",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "사망관리명세",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "법무관리목록",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "법원결정문관리명세",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -739,10 +897,12 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "특수채권현황",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "특수채권회수내역",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -752,30 +912,37 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "CIS신용도판단및공공정보",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "CIS대부면체",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "채무불이행정보(신용정보사)",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "KCB연체정보",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "대지급정보",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "주민등록번호변경정보",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "일단위연체관리정보",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -785,14 +952,17 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "채권담당자배덩Rule관리",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "채권팀배정Rule관리",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "채권(엑셀)이수관",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -802,6 +972,7 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "DM양식관리",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -819,30 +990,37 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "가상계좌발급",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "가상계좌거래명세",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "CMS출금명세(온라인)",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "완제계좌가수금조회",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "이기종시제관리",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "온라인수납관리",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "플랫폼사 수수료정산",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -852,34 +1030,42 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "민원내역",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "대출계약철회",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "금리인하요구권",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "제증명신청",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "CMS신청",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "CMS신청(변경)",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "개명신청",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "1:1문의",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -889,42 +1075,52 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "본인인증내역",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "고객조회",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "맴버십내역",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "포인트적립내역",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "쿠폰신청내역",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "마케팅동의내역",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "이벤트응모내역",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "추가대출대상자업로드",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "두낫콜현황(중앙회)",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "SMS수신거부(080)",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -934,18 +1130,22 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "일일현황",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "일일실적현황",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "중금리공시자료",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "가계대출월보",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -955,18 +1155,22 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "자산건전성분류계산",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "자산건전성분류계산결과",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "자산건전성기초파일업로드",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "사업자휴폐업조회",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -976,18 +1180,22 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "UMS개별발송",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "UMS발송승인명세",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "UMS발송이력",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "FAX/MO수신이력",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -997,26 +1205,32 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "탬플릿 관리",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "ActionPlan기준",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "ActionPlan실행내역",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "가상팩스번호",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "가상팩스배정이력",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "쿠폰 관리",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -1026,22 +1240,27 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "서식 정보설정",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "발송 대상명세",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "발송 승인",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "발송 이력",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "발송대상액셀목록",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -1060,6 +1279,7 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "상품관리",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -1069,14 +1289,17 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "매입채권등록",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "매입채권명세",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "상환스케줄/조건표 등록",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -1086,6 +1309,7 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "채권명세",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -1095,10 +1319,12 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "입금이력",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "신용회복입금등록",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -1108,14 +1334,17 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "일마감현황",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "월별 회계처리",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "신정원 개인대출집중",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -1133,6 +1362,7 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "공통코드",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -1142,6 +1372,7 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "메뉴관리",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -1151,10 +1382,12 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "팀(파트)",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "사용자",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -1164,6 +1397,7 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -1173,6 +1407,7 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -1182,6 +1417,7 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -1191,6 +1427,7 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -1200,6 +1437,7 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -1217,6 +1455,7 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -1226,6 +1465,7 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "고객목록",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -1235,10 +1475,12 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "사업목록",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "기타안건목록",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -1248,34 +1490,42 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "신청목록",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "부의목록",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "심의목록",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "심의결과목록",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "승인목록",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "부결목록",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "계좌연결대상목록",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "통합목록",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -1285,10 +1535,12 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "대출계좌목록",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "유가증권계좌목록",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
@@ -1298,38 +1550,47 @@ export const menuItems: MenuItemType[] = [
           {
             multiTitle: "원장조회(여신)",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "원장조회(유가증권)",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "문서관리목록",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "기준항목관리",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "PF현황 엑셀업로드",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "자산건전성 엑셀업로드",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "심의위원회관리",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "리스크평가 엑셀업로드",
             multiLink: "",
+            multiElement: null,
           },
           {
             multiTitle: "사업유형코드관리",
             multiLink: "",
+            multiElement: null,
           },
         ],
       },
