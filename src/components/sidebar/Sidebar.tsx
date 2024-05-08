@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import SimpleBar from "simplebar-react";
 import useSemiDark from "../../hooks/layout/useSemiDark";
 import useSidebar from "../../hooks/layout/useSidebar";
@@ -8,7 +8,18 @@ import SidebarLogo from "./SidebarLogo";
 
 import { menuItems } from "../../constants/data";
 
-function Sidebar() {
+type Props = {
+  activeTab: string;
+  setActiveTab: Dispatch<SetStateAction<string>>;
+  handleTabOpen: (
+    name: string,
+    href: string,
+    element: React.ComponentType | null,
+    e?: any
+  ) => void;
+};
+
+function Sidebar({ activeTab, setActiveTab, handleTabOpen }: Props) {
   const scrollableNodeRef = useRef<HTMLDivElement | null>(null);
   const [scroll, setScroll] = useState(false);
   const [collapsed, setMenuCollapsed] = useSidebar();
@@ -61,7 +72,12 @@ function Sidebar() {
           className="sidebar-menu px-4 h-[calc(100%-80px)]"
           scrollableNodeProps={{ ref: scrollableNodeRef }}
         >
-          <NavMenu menus={menuItems} />
+          <NavMenu
+            menus={menuItems}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            handleTabOpen={handleTabOpen}
+          />
           {/* {!collapsed && (
             <div className="relative p-4 mt-24 mb-16 text-center text-white bg-slate-900 rounded-2xl">
               <img

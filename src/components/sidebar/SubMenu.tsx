@@ -2,9 +2,7 @@ import { Collapse } from "react-collapse";
 import { MenuItemType } from "../../constants/data";
 import Icon from "../icons/Icon";
 import Multilevel from "./Multilevel";
-import useTabMenu from "../../hooks/layout/useTabMenu";
-import { useRecoilState } from "recoil";
-import { activeTabTypeState } from "../../state/layout/layoutAtom";
+import { Dispatch, SetStateAction } from "react";
 
 type Props = {
   activeSubmenu: number | null;
@@ -12,6 +10,14 @@ type Props = {
   index: number;
   toggleMultiMenu: (index: number) => void;
   activeMultiMenu: number | null;
+  activeTab: string;
+  setActiveTab: Dispatch<SetStateAction<string>>;
+  handleTabOpen: (
+    name: string,
+    href: string,
+    element: React.ComponentType | null,
+    e?: any
+  ) => void;
 };
 
 function SubMenu({
@@ -20,10 +26,10 @@ function SubMenu({
   index,
   toggleMultiMenu,
   activeMultiMenu,
+  activeTab,
+  setActiveTab,
+  handleTabOpen,
 }: Props) {
-  const { handleTabOpen } = useTabMenu();
-  const [activeTab, setActiveTab] = useRecoilState(activeTabTypeState);
-
   return (
     <Collapse isOpened={activeSubmenu === index}>
       <ul className="space-y-4 sub-menu">
@@ -61,6 +67,8 @@ function SubMenu({
                   activeMultiMenu={activeMultiMenu}
                   j={j}
                   subItem={subItem}
+                  setActiveTab={setActiveTab}
+                  handleTabOpen={handleTabOpen}
                 />
               </div>
             ) : (

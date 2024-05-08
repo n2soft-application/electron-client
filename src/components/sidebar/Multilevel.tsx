@@ -4,23 +4,28 @@ import {
   MenuItemChildType,
 } from "../../constants/data";
 import Badge from "../badge/Badge";
-import useTabMenu from "../../hooks/layout/useTabMenu";
-import { useSetRecoilState } from "recoil";
-import { activeTabTypeState } from "../../state/layout/layoutAtom";
+import { Dispatch, SetStateAction } from "react";
 
 const LockLink = ({
   children,
   item,
+  setActiveTab,
+  handleTabOpen,
 }: {
   children:
     | any
     | React.ReactNode
     | ((props: { isActive: boolean; isPending: boolean }) => React.ReactNode);
   item: MenuItemChildMultiType;
+  setActiveTab: Dispatch<SetStateAction<string>>;
+  handleTabOpen: (
+    name: string,
+    href: string,
+    element: React.ComponentType | null,
+    e?: any
+  ) => void;
 }) => {
   const { multiTitle, badge, multiLink, multiElement } = item;
-  const { handleTabOpen } = useTabMenu();
-  const setActiveTab = useSetRecoilState(activeTabTypeState);
 
   return (
     <>
@@ -57,17 +62,30 @@ const Multilevel = ({
   activeMultiMenu,
   j,
   subItem,
+  setActiveTab,
+  handleTabOpen,
 }: {
   subItem: MenuItemChildType;
   j: number;
   activeMultiMenu: number | null;
+  setActiveTab: Dispatch<SetStateAction<string>>;
+  handleTabOpen: (
+    name: string,
+    href: string,
+    element: React.ComponentType | null,
+    e?: any
+  ) => void;
 }) => {
   return (
     <Collapse isOpened={activeMultiMenu === j}>
       <ul className="space-y-[14px] pl-4">
         {subItem?.multi_menu?.map((item, i) => (
           <li key={i} className=" first:pt-[14px]">
-            <LockLink item={item}>
+            <LockLink
+              item={item}
+              setActiveTab={setActiveTab}
+              handleTabOpen={handleTabOpen}
+            >
               {({ isActive }: { isActive: boolean }) => (
                 <span
                   className={`${

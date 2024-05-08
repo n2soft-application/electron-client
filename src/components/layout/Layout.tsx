@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { Suspense, useEffect } from "react";
+import { useEffect, useState } from "react";
 import useContentWidth from "../../hooks/layout/useContentWidth";
 import useMenuHidden from "../../hooks/layout/useMenuHidden";
 import useMenuLayout from "../../hooks/layout/useMenuLayout";
@@ -14,10 +13,7 @@ import Sidebar from "../sidebar/Sidebar";
 import Footer from "./Footer";
 import Header from "./Header";
 import Icon from "../icons/Icon";
-import useTabMenu from "../../hooks/layout/useTabMenu";
 import { menuItems } from "../../constants/data";
-import { activeTabTypeState } from "../../state/layout/layoutAtom";
-import { useRecoilState } from "recoil";
 
 function Layout() {
   const { width, breakpoints } = useWidth();
@@ -26,8 +22,14 @@ function Layout() {
   const [menuType] = useMenuLayout();
   const [menuHidden] = useMenuHidden();
   const [mobileMenu, setMobileMenu] = useMobileMenu();
-  const { tabMenu, handleTabOpen, handleTabClose } = useTabMenu();
-  const [activeTab, setActiveTab] = useRecoilState(activeTabTypeState);
+  const [tabMenu, setTabMenu] = useState<
+    Array<{
+      name: string;
+      href: string;
+      component: React.ComponentType | null;
+    }>
+  >([]);
+  const [activeTab, setActiveTab] = useState<string>("home/dashboard");
 
   useEffect(() => {
     handleTabOpen(findTitle(activeTab), activeTab, findElement(activeTab));
@@ -77,6 +79,44 @@ function Layout() {
     return element;
   };
 
+  // 탭 열기
+  const handleTabOpen = (
+    name: string,
+    href: string,
+    element: React.ComponentType | null,
+    e?: any
+  ) => {
+    if (tabMenu.every((t: { href: string }) => t.href !== href)) {
+      // 탭메뉴에 없는 새로운 메뉴라면
+      if (tabMenu.length >= 10) {
+        // 10개 넘으면 추가 X
+        alert("탭은 최대 10개까지 추가 가능합니다.");
+        e.preventDefault();
+      } else {
+        // 10개 안넘으면 추가 O
+        setTabMenu([
+          ...tabMenu,
+          { name: name, href: href, component: element },
+        ]);
+      }
+    }
+  };
+
+  // 탭 닫기
+  const handleTabClose = (tab: { name: string; href: string }) => {
+    let updatedTabs = [...tabMenu];
+    if (tab.href === activeTab) {
+      const currentIndex = updatedTabs.findIndex((t) => t.href === tab.href);
+      if (updatedTabs[currentIndex + 1]) {
+        setActiveTab(updatedTabs[currentIndex + 1].href);
+      } else if (updatedTabs[updatedTabs.length - 2]) {
+        setActiveTab(updatedTabs[updatedTabs.length - 2].href);
+      }
+    }
+    updatedTabs = updatedTabs.filter((t) => t.href !== tab.href);
+    setTabMenu(updatedTabs);
+  };
+
   const switchHeaderClass = () => {
     if (menuType === "horizontal" || menuHidden) {
       return "ltr:ml-0 rtl:mr-0";
@@ -91,7 +131,11 @@ function Layout() {
     <div className="">
       <Header className={width > breakpoints.xl ? switchHeaderClass() : ""} />
       {menuType === "vertical" && width > breakpoints.xl && !menuHidden && (
-        <Sidebar />
+        <Sidebar
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          handleTabOpen={handleTabOpen}
+        />
       )}
 
       <MobileMenu
@@ -100,6 +144,9 @@ function Layout() {
             ? "left-0 visible opacity-100 z-[9999]"
             : "left-[-300px] invisible opacity-0 z-[-999]"
         }`}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        handleTabOpen={handleTabOpen}
       />
       {/* mobile menu overlay*/}
       {width < breakpoints.xl && mobileMenu && (
@@ -151,47 +198,19 @@ function Layout() {
                 ))}
               </div>
             </div>
-            <Suspense fallback={<Loading />}>
-              <motion.div
-                key={activeTab}
-                initial="pageInitial"
-                animate="pageAnimate"
-                exit="pageExit"
-                variants={{
-                  pageInitial: {
-                    opacity: 0,
-                    // y: 50,
-                  },
-                  pageAnimate: {
-                    opacity: 1,
-                    // y: 0,
-                  },
-                  pageExit: {
-                    opacity: 0,
-                    // y: -50,
-                  },
-                }}
-                transition={{
-                  type: "tween",
-                  ease: "easeInOut",
-                  duration: 0.5,
-                }}
-              >
-                <div className="p-6">
-                  {/* <Breadcrumbs /> */}
-                  {tabMenu.map((tab, i) => (
-                    <div
-                      key={i}
-                      style={{
-                        display: activeTab === tab.href ? "block" : "none",
-                      }}
-                    >
-                      {tab.component ? <tab.component /> : <>none</>}
-                    </div>
-                  ))}
+            <div className="p-6">
+              {/* <Breadcrumbs /> */}
+              {tabMenu.map((tab, i) => (
+                <div
+                  key={i}
+                  style={{
+                    display: activeTab === tab.href ? "block" : "none",
+                  }}
+                >
+                  {tab.component ? <tab.component /> : <>none</>}
                 </div>
-              </motion.div>
-            </Suspense>
+              ))}
+            </div>
           </div>
         </div>
       </main>

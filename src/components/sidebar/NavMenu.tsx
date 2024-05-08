@@ -1,18 +1,22 @@
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { MenuItemType } from "../../constants/data";
 import useMobileMenu from "../../hooks/layout/useMobileMenu";
 import Icon from "../icons/Icon";
 import SubMenu from "./SubMenu";
-import useTabMenu from "../../hooks/layout/useTabMenu";
-import { useRecoilState } from "recoil";
-import { activeTabTypeState } from "../../state/layout/layoutAtom";
 
 type Props = {
   menus: MenuItemType[];
+  activeTab: string;
+  setActiveTab: Dispatch<SetStateAction<string>>;
+  handleTabOpen: (
+    name: string,
+    href: string,
+    element: React.ComponentType | null,
+    e?: any
+  ) => void;
 };
 
-function NavMenu({ menus }: Props) {
-  const { handleTabOpen } = useTabMenu();
+function NavMenu({ menus, activeTab, setActiveTab, handleTabOpen }: Props) {
   const [activeSubmenu, setActiveSubmenu] = useState<number | null>(null);
 
   const toggleSubmenu = (index: number) => {
@@ -22,7 +26,7 @@ function NavMenu({ menus }: Props) {
       setActiveSubmenu(index);
     }
   };
-  const [activeTab, setActiveTab] = useRecoilState(activeTabTypeState);
+
   const [mobileMenu, setMobileMenu] = useMobileMenu();
   const [activeMultiMenu, setMultiMenu] = useState<number | null>(null);
 
@@ -149,6 +153,9 @@ function NavMenu({ menus }: Props) {
             index={i}
             toggleMultiMenu={toggleMultiMenu}
             activeMultiMenu={activeMultiMenu}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            handleTabOpen={handleTabOpen}
           />
         </li>
       ))}
