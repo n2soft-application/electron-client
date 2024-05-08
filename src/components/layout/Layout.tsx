@@ -107,6 +107,8 @@ function Layout() {
           { name: name, href: href, component: element },
         ]);
       }
+    } else {
+      setActiveTab(href);
     }
   };
 
