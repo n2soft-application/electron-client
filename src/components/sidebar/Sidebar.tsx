@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SimpleBar from "simplebar-react";
 import useSemiDark from "../../hooks/layout/useSemiDark";
 import useSidebar from "../../hooks/layout/useSidebar";
@@ -10,7 +10,6 @@ import { menuItems } from "../../constants/data";
 
 type Props = {
   activeTab: string;
-  setActiveTab: (href: string) => void;
   handleTabOpen: (
     name: string,
     href: string,
@@ -19,7 +18,7 @@ type Props = {
   ) => void;
 };
 
-function Sidebar({ activeTab, setActiveTab, handleTabOpen }: Props) {
+function Sidebar({ activeTab, handleTabOpen }: Props) {
   const scrollableNodeRef = useRef<HTMLDivElement | null>(null);
   const [scroll, setScroll] = useState(false);
   const [collapsed, setMenuCollapsed] = useSidebar();
@@ -75,7 +74,6 @@ function Sidebar({ activeTab, setActiveTab, handleTabOpen }: Props) {
           <NavMenu
             menus={menuItems}
             activeTab={activeTab}
-            setActiveTab={setActiveTab}
             handleTabOpen={handleTabOpen}
           />
           {/* {!collapsed && (

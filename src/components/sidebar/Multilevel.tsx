@@ -8,12 +8,10 @@ import Badge from "../badge/Badge";
 const LockLink = ({
   children,
   item,
-  setActiveTab,
   handleTabOpen,
 }: {
   children: React.ReactNode;
   item: MenuItemChildMultiType;
-  setActiveTab: (href: string) => void;
   handleTabOpen: (
     name: string,
     href: string,
@@ -29,9 +27,8 @@ const LockLink = ({
         <span
           className={`text-slate-600 dark:text-slate-300 opacity-50
              text-sm flex space-x-3 rtl:space-x-reverse items-center cursor-pointer`}
-          onClick={(e) => {
-            setActiveTab(multiLink);
-            handleTabOpen(multiTitle, multiLink, multiElement ?? null, e);
+          onClick={() => {
+            handleTabOpen(multiTitle, multiLink, multiElement ?? null);
           }}
         >
           <span className="flex-none inline-block w-2 h-2 border rounded-full border-slate-600 dark:border-white"></span>
@@ -47,9 +44,8 @@ const LockLink = ({
       ) : (
         <div
           className="cursor-pointer"
-          onClick={(e) => {
-            setActiveTab(multiLink);
-            handleTabOpen(multiTitle, multiLink, multiElement ?? null, e);
+          onClick={() => {
+            handleTabOpen(multiTitle, multiLink, multiElement ?? null);
           }}
         >
           {children}
@@ -64,14 +60,12 @@ const Multilevel = ({
   j,
   subItem,
   activeTab,
-  setActiveTab,
   handleTabOpen,
 }: {
   subItem: MenuItemChildType;
   j: number;
   activeMultiMenu: number | null;
   activeTab: string;
-  setActiveTab: (href: string) => void;
   handleTabOpen: (
     name: string,
     href: string,
@@ -84,11 +78,7 @@ const Multilevel = ({
       <ul className="space-y-[14px] pl-4">
         {subItem?.multi_menu?.map((item, i) => (
           <li key={i} className=" first:pt-[14px]">
-            <LockLink
-              item={item}
-              setActiveTab={setActiveTab}
-              handleTabOpen={handleTabOpen}
-            >
+            <LockLink item={item} handleTabOpen={handleTabOpen}>
               <span
                 className={`${
                   item.multiTitle === activeTab

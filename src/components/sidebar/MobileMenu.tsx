@@ -16,7 +16,6 @@ import Icon from "../icons/Icon";
 type Props = {
   className: string;
   activeTab: string;
-  setActiveTab: (href: string) => void;
   handleTabOpen: (
     name: string,
     href: string,
@@ -28,7 +27,6 @@ type Props = {
 const MobileMenu = ({
   className = "custom-class",
   activeTab,
-  setActiveTab,
   handleTabOpen,
 }: Props) => {
   const scrollableNodeRef = useRef<HTMLDivElement | null>(null);
@@ -99,7 +97,6 @@ const MobileMenu = ({
         <NavMenu
           menus={menuItems}
           activeTab={activeTab}
-          setActiveTab={setActiveTab}
           handleTabOpen={handleTabOpen}
         />
         <div className="relative p-4 mt-24 mb-24 text-center text-white bg-slate-900 lg:mb-10 rounded-2xl">

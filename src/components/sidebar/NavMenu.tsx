@@ -7,7 +7,6 @@ import SubMenu from "./SubMenu";
 type Props = {
   menus: MenuItemType[];
   activeTab: string;
-  setActiveTab: (href: string) => void;
   handleTabOpen: (
     name: string,
     href: string,
@@ -16,7 +15,7 @@ type Props = {
   ) => void;
 };
 
-function NavMenu({ menus, activeTab, setActiveTab, handleTabOpen }: Props) {
+function NavMenu({ menus, activeTab, handleTabOpen }: Props) {
   const [activeSubmenu, setActiveSubmenu] = useState<number | null>(null);
 
   const toggleSubmenu = (index: number) => {
@@ -98,13 +97,11 @@ function NavMenu({ menus, activeTab, setActiveTab, handleTabOpen }: Props) {
           {!item.child && !item.isHeadr && (
             <div
               className="menu-link"
-              onClick={(e) => {
-                setActiveTab(item.link ?? "");
+              onClick={() => {
                 handleTabOpen(
                   item.title,
                   item.link ?? "",
-                  item.element ?? null,
-                  e
+                  item.element ?? null
                 );
               }}
             >
@@ -154,7 +151,6 @@ function NavMenu({ menus, activeTab, setActiveTab, handleTabOpen }: Props) {
             toggleMultiMenu={toggleMultiMenu}
             activeMultiMenu={activeMultiMenu}
             activeTab={activeTab}
-            setActiveTab={setActiveTab}
             handleTabOpen={handleTabOpen}
           />
         </li>

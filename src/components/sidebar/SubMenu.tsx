@@ -10,7 +10,6 @@ type Props = {
   toggleMultiMenu: (index: number) => void;
   activeMultiMenu: number | null;
   activeTab: string;
-  setActiveTab: (href: string) => void;
   handleTabOpen: (
     name: string,
     href: string,
@@ -26,7 +25,6 @@ function SubMenu({
   toggleMultiMenu,
   activeMultiMenu,
   activeTab,
-  setActiveTab,
   handleTabOpen,
 }: Props) {
   return (
@@ -67,19 +65,16 @@ function SubMenu({
                   j={j}
                   subItem={subItem}
                   activeTab={activeTab}
-                  setActiveTab={setActiveTab}
                   handleTabOpen={handleTabOpen}
                 />
               </div>
             ) : (
               <div
-                onClick={(e) => {
-                  setActiveTab(subItem.childlink ?? "");
+                onClick={() => {
                   handleTabOpen(
                     subItem.childtitle ?? "",
                     subItem.childlink ?? "",
-                    subItem.childElement ?? null,
-                    e
+                    subItem.childElement ?? null
                   );
                 }}
               >

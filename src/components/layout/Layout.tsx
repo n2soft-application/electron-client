@@ -6,7 +6,6 @@ import useMobileMenu from "../../hooks/layout/useMobileMenu";
 import useSidebar from "../../hooks/layout/useSidebar";
 import useWidth from "../../hooks/layout/useWidth";
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
-import Loading from "../loading/Loading";
 import Setting from "../setting/Setting";
 import MobileMenu from "../sidebar/MobileMenu";
 import Sidebar from "../sidebar/Sidebar";
@@ -16,6 +15,7 @@ import Icon from "../icons/Icon";
 import { menuItems } from "../../constants/data";
 import { useRecoilState } from "recoil";
 import { activeTabTypeState } from "../../state/layout/layoutAtom";
+import Dashboard from "../../pages/dashboard/Dashboard";
 
 function Layout() {
   const { width, breakpoints } = useWidth();
@@ -35,8 +35,14 @@ function Layout() {
   //   const [activeTab, setActiveTab] = useRecoilState(activeTabTypeState);
 
   useEffect(() => {
-    handleTabOpen(findTitle(activeTab), activeTab, findElement(activeTab));
+    if (activeTab === "home/dashboard") {
+      handleTabOpen("대시보드", "home/dashboard", Dashboard);
+    }
   }, [activeTab]);
+
+  //   useEffect(() => {
+  //     handleTabOpen(findTitle(activeTab), activeTab, findElement(activeTab));
+  //   }, [activeTab]);
 
   const findTitle = (link: string) => {
     let title = "";
@@ -86,17 +92,16 @@ function Layout() {
   const handleTabOpen = (
     name: string,
     href: string,
-    element: React.ComponentType | null,
-    e?: any
+    element: React.ComponentType | null
   ) => {
     if (tabMenu.every((t: { href: string }) => t.href !== href)) {
       // 탭메뉴에 없는 새로운 메뉴라면
       if (tabMenu.length >= 10) {
         // 10개 넘으면 추가 X
         alert("탭은 최대 10개까지 추가 가능합니다.");
-        e.preventDefault();
       } else {
         // 10개 안넘으면 추가 O
+        setActiveTab(href);
         setTabMenu([
           ...tabMenu,
           { name: name, href: href, component: element },
@@ -134,11 +139,7 @@ function Layout() {
     <div className="">
       <Header className={width > breakpoints.xl ? switchHeaderClass() : ""} />
       {menuType === "vertical" && width > breakpoints.xl && !menuHidden && (
-        <Sidebar
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-          handleTabOpen={handleTabOpen}
-        />
+        <Sidebar activeTab={activeTab} handleTabOpen={handleTabOpen} />
       )}
 
       <MobileMenu
@@ -148,7 +149,6 @@ function Layout() {
             : "left-[-300px] invisible opacity-0 z-[-999]"
         }`}
         activeTab={activeTab}
-        setActiveTab={setActiveTab}
         handleTabOpen={handleTabOpen}
       />
       {/* mobile menu overlay*/}
