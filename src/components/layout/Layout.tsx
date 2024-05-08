@@ -14,6 +14,8 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Icon from "../icons/Icon";
 import { menuItems } from "../../constants/data";
+import { useRecoilState } from "recoil";
+import { activeTabTypeState } from "../../state/layout/layoutAtom";
 
 function Layout() {
   const { width, breakpoints } = useWidth();
@@ -30,6 +32,7 @@ function Layout() {
     }>
   >([]);
   const [activeTab, setActiveTab] = useState<string>("home/dashboard");
+  //   const [activeTab, setActiveTab] = useRecoilState(activeTabTypeState);
 
   useEffect(() => {
     handleTabOpen(findTitle(activeTab), activeTab, findElement(activeTab));
@@ -200,9 +203,9 @@ function Layout() {
             </div>
             <div className="p-6">
               {/* <Breadcrumbs /> */}
-              {tabMenu.map((tab, i) => (
+              {tabMenu.map((tab) => (
                 <div
-                  key={i}
+                  key={tab.href}
                   style={{
                     display: activeTab === tab.href ? "block" : "none",
                   }}

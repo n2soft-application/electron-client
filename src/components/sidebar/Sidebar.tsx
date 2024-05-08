@@ -10,7 +10,7 @@ import { menuItems } from "../../constants/data";
 
 type Props = {
   activeTab: string;
-  setActiveTab: Dispatch<SetStateAction<string>>;
+  setActiveTab: (href: string) => void;
   handleTabOpen: (
     name: string,
     href: string,

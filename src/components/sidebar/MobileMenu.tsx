@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SimpleBar from "simplebar-react";
 import NavMenu from "./NavMenu";
 
@@ -16,7 +16,7 @@ import Icon from "../icons/Icon";
 type Props = {
   className: string;
   activeTab: string;
-  setActiveTab: Dispatch<SetStateAction<string>>;
+  setActiveTab: (href: string) => void;
   handleTabOpen: (
     name: string,
     href: string,

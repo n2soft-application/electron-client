@@ -104,17 +104,17 @@ export type activeTabType = string;
 export const activeTabTypeState = atom<activeTabType>({
   key: "activeTabTypeState",
   default: "home/dashboard",
+  effects_UNSTABLE: [persistAtom],
 });
 
 // 현재 탭 리스트
 export type TabMenuType = Array<{
   name: string;
   href: string;
-  component: React.ComponentType | null;
 }>;
 export const tabMenuTypeState = atom<TabMenuType>({
   key: "tabMenuTypeState",
-  default: [{ name: "대시보드", href: "home/dashboard", component: Dashboard }],
+  default: [{ name: "대시보드", href: "home/dashboard" }],
 });
 
 export type FavMenuType = Array<{ name: string; href: string }>;

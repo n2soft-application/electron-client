@@ -2,7 +2,6 @@ import { Collapse } from "react-collapse";
 import { MenuItemType } from "../../constants/data";
 import Icon from "../icons/Icon";
 import Multilevel from "./Multilevel";
-import { Dispatch, SetStateAction } from "react";
 
 type Props = {
   activeSubmenu: number | null;
@@ -11,7 +10,7 @@ type Props = {
   toggleMultiMenu: (index: number) => void;
   activeMultiMenu: number | null;
   activeTab: string;
-  setActiveTab: Dispatch<SetStateAction<string>>;
+  setActiveTab: (href: string) => void;
   handleTabOpen: (
     name: string,
     href: string,
@@ -67,6 +66,7 @@ function SubMenu({
                   activeMultiMenu={activeMultiMenu}
                   j={j}
                   subItem={subItem}
+                  activeTab={activeTab}
                   setActiveTab={setActiveTab}
                   handleTabOpen={handleTabOpen}
                 />

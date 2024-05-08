@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { MenuItemType } from "../../constants/data";
 import useMobileMenu from "../../hooks/layout/useMobileMenu";
 import Icon from "../icons/Icon";
@@ -7,7 +7,7 @@ import SubMenu from "./SubMenu";
 type Props = {
   menus: MenuItemType[];
   activeTab: string;
-  setActiveTab: Dispatch<SetStateAction<string>>;
+  setActiveTab: (href: string) => void;
   handleTabOpen: (
     name: string,
     href: string,
@@ -49,40 +49,40 @@ function NavMenu({ menus, activeTab, setActiveTab, handleTabOpen }: Props) {
     return false;
   };
 
-  //   useEffect(() => {
-  //     let submenuIndex = null;
-  //     let multiMenuIndex = null;
-  //     menus.forEach((item, i) => {
-  //       if (isLocationMatch(item.link)) {
-  //         submenuIndex = i;
-  //       }
+  useEffect(() => {
+    let submenuIndex = null;
+    let multiMenuIndex = null;
+    menus.forEach((item, i) => {
+      if (isLocationMatch(item.link)) {
+        submenuIndex = i;
+      }
 
-  //       if (item.child) {
-  //         item.child.forEach((childItem, j) => {
-  //           if (isLocationMatch(childItem.childlink)) {
-  //             submenuIndex = i;
-  //           }
+      if (item.child) {
+        item.child.forEach((childItem, j) => {
+          if (isLocationMatch(childItem.childlink)) {
+            submenuIndex = i;
+          }
 
-  //           if (childItem.multi_menu) {
-  //             childItem.multi_menu.forEach((nestedItem) => {
-  //               if (isLocationMatch(nestedItem.multiLink)) {
-  //                 submenuIndex = i;
-  //                 multiMenuIndex = j;
-  //               }
-  //             });
-  //           }
-  //         });
-  //       }
-  //     });
-  //     document.title = `리테일금융시스템 | ${activeTab}`;
+          if (childItem.multi_menu) {
+            childItem.multi_menu.forEach((nestedItem) => {
+              if (isLocationMatch(nestedItem.multiLink)) {
+                submenuIndex = i;
+                multiMenuIndex = j;
+              }
+            });
+          }
+        });
+      }
+    });
+    document.title = `리테일금융시스템 | ${activeTab}`;
 
-  //     setActiveSubmenu(submenuIndex);
-  //     setMultiMenu(multiMenuIndex);
-  //     // dispatch(toggleActiveChat(false));
-  //     if (mobileMenu) {
-  //       setMobileMenu(false);
-  //     }
-  //   }, [activeTab]);
+    setActiveSubmenu(submenuIndex);
+    setMultiMenu(multiMenuIndex);
+    // dispatch(toggleActiveChat(false));
+    if (mobileMenu) {
+      setMobileMenu(false);
+    }
+  }, [activeTab]);
 
   return (
     <ul>

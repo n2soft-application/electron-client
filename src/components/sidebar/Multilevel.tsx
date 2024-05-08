@@ -4,7 +4,6 @@ import {
   MenuItemChildType,
 } from "../../constants/data";
 import Badge from "../badge/Badge";
-import { Dispatch, SetStateAction } from "react";
 
 const LockLink = ({
   children,
@@ -12,12 +11,9 @@ const LockLink = ({
   setActiveTab,
   handleTabOpen,
 }: {
-  children:
-    | any
-    | React.ReactNode
-    | ((props: { isActive: boolean; isPending: boolean }) => React.ReactNode);
+  children: React.ReactNode;
   item: MenuItemChildMultiType;
-  setActiveTab: Dispatch<SetStateAction<string>>;
+  setActiveTab: (href: string) => void;
   handleTabOpen: (
     name: string,
     href: string,
@@ -33,6 +29,10 @@ const LockLink = ({
         <span
           className={`text-slate-600 dark:text-slate-300 opacity-50 cursor-not-allowed
              text-sm flex space-x-3 rtl:space-x-reverse items-center `}
+          onClick={(e) => {
+            setActiveTab(multiLink);
+            handleTabOpen(multiTitle, multiLink, multiElement ?? null, e);
+          }}
         >
           <span className="flex-none inline-block w-2 h-2 border rounded-full border-slate-600 dark:border-white"></span>
           <span className="flex flex-1 space-x-2 truncate rtl:space-x-reverse">
@@ -45,14 +45,14 @@ const LockLink = ({
           </span>
         </span>
       ) : (
-        <button
+        <div
           onClick={(e) => {
             setActiveTab(multiLink);
             handleTabOpen(multiTitle, multiLink, multiElement ?? null, e);
           }}
         >
           {children}
-        </button>
+        </div>
       )}
     </>
   );
@@ -62,13 +62,15 @@ const Multilevel = ({
   activeMultiMenu,
   j,
   subItem,
+  activeTab,
   setActiveTab,
   handleTabOpen,
 }: {
   subItem: MenuItemChildType;
   j: number;
   activeMultiMenu: number | null;
-  setActiveTab: Dispatch<SetStateAction<string>>;
+  activeTab: string;
+  setActiveTab: (href: string) => void;
   handleTabOpen: (
     name: string,
     href: string,
@@ -86,24 +88,22 @@ const Multilevel = ({
               setActiveTab={setActiveTab}
               handleTabOpen={handleTabOpen}
             >
-              {({ isActive }: { isActive: boolean }) => (
+              <span
+                className={`${
+                  item.multiTitle === activeTab
+                    ? " text-black dark:text-white font-medium"
+                    : "text-slate-600 dark:text-slate-300"
+                } text-sm flex space-x-3 rtl:space-x-reverse items-center transition-all duration-150`}
+              >
                 <span
                   className={`${
-                    isActive
-                      ? " text-black dark:text-white font-medium"
-                      : "text-slate-600 dark:text-slate-300"
-                  } text-sm flex space-x-3 rtl:space-x-reverse items-center transition-all duration-150`}
-                >
-                  <span
-                    className={`${
-                      isActive
-                        ? " bg-slate-900 dark:bg-slate-300 ring-4 ring-opacity-[15%] ring-black-500 dark:ring-slate-300 dark:ring-opacity-20"
-                        : ""
-                    } h-2 w-2 rounded-full border border-slate-600 dark:border-white inline-block flex-none`}
-                  ></span>
-                  <span className="flex-1">{item.multiTitle}</span>
-                </span>
-              )}
+                    item.multiTitle === activeTab
+                      ? " bg-slate-900 dark:bg-slate-300 ring-4 ring-opacity-[15%] ring-black-500 dark:ring-slate-300 dark:ring-opacity-20"
+                      : ""
+                  } h-2 w-2 rounded-full border border-slate-600 dark:border-white inline-block flex-none`}
+                ></span>
+                <span className="flex-1">{item.multiTitle}</span>
+              </span>
             </LockLink>
           </li>
         ))}
