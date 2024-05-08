@@ -76,6 +76,11 @@ import SelectPage from "../pages/example/form/select/SelectPage";
 import DateTimePickerPage from "../pages/example/form/DateTimePickerPage";
 import BasicTablePage from "../pages/example/table/BasicTablePage";
 import AppexChartPage from "../pages/example/chart/appex-chart/AppexChartPage";
+import CommonCodePage from "../pages/preferences/code/common/CommonCodePage";
+import Team from "../pages/preferences/team/Team";
+import MenuManagement from "../pages/menumanagement/MenuManagement";
+import ScreenManagement from "../pages/screenmanagement/ScreenManagement";
+import User from "../pages/preferences/user/User";
 
 export type MenuItemType = {
   isHeadr?: boolean;
@@ -1351,99 +1356,6 @@ export const menuItems: MenuItemType[] = [
     ],
   },
   {
-    title: "시스템",
-    icon: "heroicons-outline:cog",
-    isHide: false,
-    isMultiple: true,
-    child: [
-      {
-        childtitle: "코드관리",
-        multi_menu: [
-          {
-            multiTitle: "공통코드",
-            multiLink: "",
-            multiElement: null,
-          },
-        ],
-      },
-      {
-        childtitle: "메뉴권한",
-        multi_menu: [
-          {
-            multiTitle: "메뉴관리",
-            multiLink: "",
-            multiElement: null,
-          },
-        ],
-      },
-      {
-        childtitle: "사용자",
-        multi_menu: [
-          {
-            multiTitle: "팀(파트)",
-            multiLink: "",
-            multiElement: null,
-          },
-          {
-            multiTitle: "사용자",
-            multiLink: "",
-            multiElement: null,
-          },
-        ],
-      },
-      {
-        childtitle: "이력조회",
-        multi_menu: [
-          {
-            multiTitle: "",
-            multiLink: "",
-            multiElement: null,
-          },
-        ],
-      },
-      {
-        childtitle: "전문관리",
-        multi_menu: [
-          {
-            multiTitle: "",
-            multiLink: "",
-            multiElement: null,
-          },
-        ],
-      },
-      {
-        childtitle: "배치관리",
-        multi_menu: [
-          {
-            multiTitle: "",
-            multiLink: "",
-            multiElement: null,
-          },
-        ],
-      },
-      {
-        childtitle: "개인정보파기관리",
-        multi_menu: [
-          {
-            multiTitle: "",
-            multiLink: "",
-            multiElement: null,
-          },
-        ],
-      },
-      {
-        childtitle: "공공마이데이터",
-        multi_menu: [
-          {
-            multiTitle: "",
-            multiLink: "",
-            multiElement: null,
-          },
-        ],
-      },
-    ],
-  },
-  {
     title: "기업금융",
     icon: "heroicons-outline:home",
     isHide: false,
@@ -1589,6 +1501,104 @@ export const menuItems: MenuItemType[] = [
           },
           {
             multiTitle: "사업유형코드관리",
+            multiLink: "",
+            multiElement: null,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "시스템",
+    icon: "heroicons-outline:cog",
+    isHide: false,
+    isMultiple: true,
+    child: [
+      {
+        childtitle: "코드관리",
+        multi_menu: [
+          {
+            multiTitle: "공통코드",
+            multiLink: "system/commoncode",
+            multiElement: CommonCodePage,
+          },
+        ],
+      },
+      {
+        childtitle: "메뉴권한",
+        multi_menu: [
+          {
+            multiTitle: "메뉴관리",
+            multiLink: "system/menumanagement",
+            multiElement: MenuManagement,
+          },
+          {
+            multiTitle: "화면관리",
+            multiLink: "system/screenmanagement",
+            multiElement: ScreenManagement,
+          },
+        ],
+      },
+      {
+        childtitle: "사용자",
+        multi_menu: [
+          {
+            multiTitle: "팀(파트)",
+            multiLink: "system/team",
+            multiElement: Team,
+          },
+          {
+            multiTitle: "사용자",
+            multiLink: "system/user",
+            multiElement: User,
+          },
+        ],
+      },
+      {
+        childtitle: "이력조회",
+        multi_menu: [
+          {
+            multiTitle: "",
+            multiLink: "",
+            multiElement: null,
+          },
+        ],
+      },
+      {
+        childtitle: "전문관리",
+        multi_menu: [
+          {
+            multiTitle: "",
+            multiLink: "",
+            multiElement: null,
+          },
+        ],
+      },
+      {
+        childtitle: "배치관리",
+        multi_menu: [
+          {
+            multiTitle: "",
+            multiLink: "",
+            multiElement: null,
+          },
+        ],
+      },
+      {
+        childtitle: "개인정보파기관리",
+        multi_menu: [
+          {
+            multiTitle: "",
+            multiLink: "",
+            multiElement: null,
+          },
+        ],
+      },
+      {
+        childtitle: "공공마이데이터",
+        multi_menu: [
+          {
+            multiTitle: "",
             multiLink: "",
             multiElement: null,
           },

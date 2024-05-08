@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 import { recoilPersist } from "../persist";
-import Dashboard from "../../pages/dashboard/Dashboard";
+import { IMenu1Depth } from "../../api/services/menuService";
 
 const { persistAtom } = recoilPersist();
 
@@ -120,6 +120,12 @@ export const tabMenuTypeState = atom<TabMenuType>({
 export type FavMenuType = Array<{ name: string; href: string }>;
 export const favMenuTypeState = atom<FavMenuType>({
   key: "favMenuTypeState",
+  default: [],
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const menuState = atom<IMenu1Depth[]>({
+  key: "menuState",
   default: [],
   effects_UNSTABLE: [persistAtom],
 });

@@ -82,7 +82,7 @@ const TextInput = ({
         {name && !isMask && (
           <input
             type={type === "password" && open === true ? "text" : type}
-            // {...register(name)}
+            {...register(name)}
             {...rest}
             className={`${
               error ? " has-error" : " "
@@ -109,7 +109,7 @@ const TextInput = ({
         )}
         {name && isMask && (
           <Cleave
-            // {...register(name)}
+            {...register(name)}
             {...rest}
             placeholder={placeholder}
             options={options}

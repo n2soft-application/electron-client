@@ -173,7 +173,7 @@ function Layout() {
             }
           >
             <div className="overflow-x-auto bg-white dark:bg-slate-800">
-              <div className="flex h-10 border-r divide-x w-fit border-slate-200 dark:border-slate-700 dark:divide-slate-700">
+              <div className="flex border-r divide-x w-fit border-slate-200 dark:border-slate-700 dark:divide-slate-700">
                 {tabMenu.map((tab, index) => (
                   <button key={index} onClick={() => setActiveTab(tab.href)}>
                     <div

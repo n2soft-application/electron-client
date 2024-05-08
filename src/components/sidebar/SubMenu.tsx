@@ -29,9 +29,9 @@ function SubMenu({
 }: Props) {
   return (
     <Collapse isOpened={activeSubmenu === index}>
-      <ul className="space-y-4 sub-menu">
+      <ul className="space-y-2 sub-menu">
         {item.child?.map((subItem, j) => (
-          <li key={j} className="block pl-4 pr-1 first:pt-4 last:pb-4">
+          <li key={j} className="block pl-4 pr-1 first:pt-2 last:pb-2">
             {subItem?.multi_menu ? (
               <div>
                 <div

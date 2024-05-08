@@ -75,7 +75,7 @@ const Multilevel = ({
 }) => {
   return (
     <Collapse isOpened={activeMultiMenu === j}>
-      <ul className="space-y-[14px] pl-4">
+      <ul className="pl-4 space-y-2">
         {subItem?.multi_menu?.map((item, i) => (
           <li key={i} className=" first:pt-[14px]">
             <LockLink item={item} handleTabOpen={handleTabOpen}>
