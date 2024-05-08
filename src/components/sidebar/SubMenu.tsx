@@ -88,7 +88,7 @@ function SubMenu({
                     subItem.childlink === activeTab
                       ? "text-black dark:text-white font-medium"
                       : "text-slate-600 dark:text-slate-300"
-                  } text-sm flex space-x-3 items-center transition-all duration-150 rtl:space-x-reverse`}
+                  } text-sm flex space-x-3 items-center transition-all duration-150 rtl:space-x-reverse cursor-pointer`}
                 >
                   <span
                     className={`${

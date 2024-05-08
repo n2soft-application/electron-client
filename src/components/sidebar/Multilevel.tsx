@@ -27,8 +27,8 @@ const LockLink = ({
     <>
       {item.badge ? (
         <span
-          className={`text-slate-600 dark:text-slate-300 opacity-50 cursor-not-allowed
-             text-sm flex space-x-3 rtl:space-x-reverse items-center `}
+          className={`text-slate-600 dark:text-slate-300 opacity-50
+             text-sm flex space-x-3 rtl:space-x-reverse items-center cursor-pointer`}
           onClick={(e) => {
             setActiveTab(multiLink);
             handleTabOpen(multiTitle, multiLink, multiElement ?? null, e);
@@ -46,6 +46,7 @@ const LockLink = ({
         </span>
       ) : (
         <div
+          className="cursor-pointer"
           onClick={(e) => {
             setActiveTab(multiLink);
             handleTabOpen(multiTitle, multiLink, multiElement ?? null, e);
