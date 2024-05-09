@@ -14,7 +14,11 @@ import Header from "./Header";
 import Icon from "../icons/Icon";
 import { menuItems } from "../../constants/data";
 import { useRecoilState } from "recoil";
-import { activeTabTypeState } from "../../state/layout/layoutAtom";
+import {
+  TabMenuType,
+  activeTabTypeState,
+  tabMenuTypeState,
+} from "../../state/layout/layoutAtom";
 import Dashboard from "../../pages/dashboard/Dashboard";
 
 function Layout() {
@@ -31,14 +35,27 @@ function Layout() {
       component: React.ComponentType | null;
     }>
   >([]);
-  const [activeTab, setActiveTab] = useState<string>("home/dashboard");
-  //   const [activeTab, setActiveTab] = useRecoilState(activeTabTypeState);
+  const [tabMenuState, setTabMenuState] =
+    useRecoilState<TabMenuType>(tabMenuTypeState);
+
+  //   const [activeTab, setActiveTab] = useState<string>("home/dashboard");
+  const [activeTab, setActiveTab] = useRecoilState(activeTabTypeState);
 
   useEffect(() => {
-    if (activeTab === "home/dashboard") {
-      handleTabOpen("대시보드", "home/dashboard", Dashboard);
+    setTabMenu(
+      tabMenuState.map(({ name, href }) => ({
+        name,
+        href,
+        component: findElement(href),
+      }))
+    );
+  }, []);
+
+  useEffect(() => {
+    if (tabMenu.length) {
+      setTabMenuState(tabMenu.map(({ name, href }) => ({ name, href })));
     }
-  }, [activeTab]);
+  }, [tabMenu]);
 
   //   useEffect(() => {
   //     handleTabOpen(findTitle(activeTab), activeTab, findElement(activeTab));

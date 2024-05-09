@@ -115,6 +115,7 @@ export type TabMenuType = Array<{
 export const tabMenuTypeState = atom<TabMenuType>({
   key: "tabMenuTypeState",
   default: [{ name: "대시보드", href: "home/dashboard" }],
+  effects_UNSTABLE: [persistAtom],
 });
 
 export type FavMenuType = Array<{ name: string; href: string }>;
