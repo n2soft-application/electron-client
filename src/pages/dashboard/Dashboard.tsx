@@ -1,16 +1,17 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Card from "../../components/card/Card";
 import CalendarView from "../../components/partials/widget/CalendarView";
-import TaskLists from "../../components/partials/widget/task-list";
-import RecentActivity from "../../components/partials/widget/recent-activity";
 import Profile from "../../components/partials/widget/profile";
-import LoanPerformanceChart from "./components/chart/LoanPerformanceChart";
-import LoanAmountChart from "./components/chart/LoanAmountChart";
+import RecentActivity from "../../components/partials/widget/recent-activity";
+import TaskLists from "../../components/partials/widget/task-list";
+import RealGridPage from "../example/realgrid/RealGridPage";
 import BalanceDelayChart from "./components/chart/BalanceDelayChart";
-import ProfitAndLossStatusChart from "./components/chart/ProfitAndLossStatusChart";
+import LoanAmountChart from "./components/chart/LoanAmountChart";
+import LoanPerformanceChart from "./components/chart/LoanPerformanceChart";
 import MonthlyBalanceChart from "./components/chart/MonthlyBalanceChart";
-import { Link } from "react-router-dom";
 import PerformanceStatusGroup from "./components/chart/PerformanceStatusGroup";
-import { useEffect, useState } from "react";
+import ProfitAndLossStatusChart from "./components/chart/ProfitAndLossStatusChart";
 
 function Dashboard() {
   const [popup, setPopup] = useState<Window | null>();
@@ -61,6 +62,7 @@ function Dashboard() {
     <div className="flex items-start gap-5">
       <div className="flex flex-col gap-5 w-96">
         <Profile />
+        <RealGridPage/>
         <Card
           title="TO-DO List"
           headerslot={

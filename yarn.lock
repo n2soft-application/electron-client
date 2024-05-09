@@ -13227,6 +13227,11 @@ readdirp@~3.6.0:
   dependencies:
     picomatch "^2.2.1"
 
+realgrid@^2.8.2:
+  version "2.8.2"
+  resolved "https://registry.yarnpkg.com/realgrid/-/realgrid-2.8.2.tgz#077062c1e9b514d0336244ccfac979fb2e4611dc"
+  integrity sha512-1PoHylciDTGzF292SKEJNyKmIJr53f1/I2E/JeXLhxPSHfNAEH5GENih7MWwK+Hf56kxR7u5G2sdZQWjrI2tNw==
+
 recast@^0.23.1, recast@^0.23.3:
   version "0.23.4"
   resolved "https://registry.yarnpkg.com/recast/-/recast-0.23.4.tgz#ca1bac7bfd3011ea5a28dfecb5df678559fb1ddf"
