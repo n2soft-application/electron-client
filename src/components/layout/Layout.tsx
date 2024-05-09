@@ -204,7 +204,7 @@ function Layout() {
               </div>
             </div>
             <div className="p-6">
-              {/* <Breadcrumbs /> */}
+              <Breadcrumbs activeTab={activeTab} />
               {tabMenu.map((tab) => (
                 <div
                   key={tab.href}
