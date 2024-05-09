@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { MenuItemType } from "../../constants/data";
 import useMobileMenu from "../../hooks/layout/useMobileMenu";
 import Icon from "../icons/Icon";
 import SubMenu from "./SubMenu";
+import useTabMenu from "../../hooks/layout/useTabMenu";
 
 type Props = {
   menus: MenuItemType[];
 };
 
 function NavMenu({ menus }: Props) {
+  const { handleTabOpen } = useTabMenu();
   const [activeSubmenu, setActiveSubmenu] = useState<number | null>(null);
 
   const toggleSubmenu = (index: number) => {
@@ -69,7 +71,7 @@ function NavMenu({ menus }: Props) {
         });
       }
     });
-    document.title = `THE NEXT  | ${locationName}`;
+    document.title = `리테일금융시스템 | ${locationName}`;
 
     setActiveSubmenu(submenuIndex);
     setMultiMenu(multiMenuIndex);
@@ -91,7 +93,14 @@ function NavMenu({ menus }: Props) {
         >
           {/* single menu with no childred*/}
           {!item.child && !item.isHeadr && (
-            <NavLink className="menu-link" to={item.link ?? ""}>
+            <NavLink
+              replace
+              className="menu-link"
+              to={item.link ?? ""}
+              onClick={(e) => {
+                handleTabOpen(item.title, item.link ?? "", e);
+              }}
+            >
               <span className="flex-grow-0 menu-icon">
                 <Icon icon={item.icon ?? ""} />
               </span>

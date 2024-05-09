@@ -24,12 +24,13 @@ yarn-error.log*
 
 
 ### Custom Ignore
-# yarn
-yarn.lock
-
 # electron
 out
 dist
 
 # storybook
 build-storybook.log
+storybook-static
+
+# firebase
+.firebase

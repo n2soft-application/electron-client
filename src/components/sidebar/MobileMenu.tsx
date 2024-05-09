@@ -3,8 +3,8 @@ import SimpleBar from "simplebar-react";
 import NavMenu from "./NavMenu";
 
 import { Link } from "react-router-dom";
-import MobileLogoWhite from "../../assets/images/logo/logo-c-white.svg";
-import MobileLogo from "../../assets/images/logo/logo-c.svg";
+import MobileLogoWhite from "../../assets/images/logo/logo-white.png";
+import MobileLogo from "../../assets/images/logo/logo.png";
 import svgRabitImage from "../../assets/images/svg/rabit.svg";
 import { menuItems } from "../../constants/data";
 import useDarkMode from "../../hooks/layout/useDarkMode";
@@ -36,19 +36,19 @@ const MobileMenu = ({ className = "custom-class" }) => {
     <div
       className={`${className} fixed  top-0 bg-white dark:bg-slate-800 shadow-lg  h-full   w-[248px]`}
     >
-      <div className="logo-segment flex justify-between items-center bg-white dark:bg-slate-800 z-[9] h-[85px]  px-4 ">
+      <div className="logo-segment flex justify-between items-center bg-white dark:bg-slate-800 z-[9] h-[85px] px-4 ">
         <Link to="/dashboard">
           <div className="flex items-center space-x-4">
             <div className="logo-icon">
               {!isDark && !isSemiDark ? (
-                <img src={MobileLogo} alt="" />
+                <img className="border rounded shadow" src={MobileLogo} alt="" />
               ) : (
-                <img src={MobileLogoWhite} alt="" />
+                <img className="border rounded shadow" src={MobileLogoWhite} alt="" />
               )}
             </div>
             <div>
-              <h1 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
-                THE NEXT
+              <h1 className="text-base font-semibold text-slate-900 dark:text-slate-100">
+              리테일금융시스템
               </h1>
             </div>
           </div>

@@ -12,11 +12,11 @@ function Skin() {
   return (
     <div>
       <h4 className="mb-2 text-base font-normal text-slate-600 dark:text-slate-300">
-        Skin
+        스킨
       </h4>
       <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
         <Radio
-          label="Default"
+          label="기본"
           name="skin"
           value="default"
           checked={skin === "default"}
@@ -24,7 +24,7 @@ function Skin() {
           className="w-4 h-4"
         />
         <Radio
-          label="Bordered"
+          label="경계 선"
           name="skin"
           value="bordered"
           checked={skin === "bordered"}

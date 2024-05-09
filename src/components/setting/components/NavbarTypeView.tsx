@@ -10,19 +10,19 @@ function NavbarTypeView() {
   };
   const navTypes = [
     {
-      label: "Sticky",
+      label: "고정",
       value: "sticky",
     },
     {
-      label: "Static",
+      label: "정적",
       value: "static",
     },
     {
-      label: "Floating",
+      label: "플로팅",
       value: "floating",
     },
     {
-      label: "Hidden",
+      label: "숨김",
       value: "hidden",
     },
   ];
@@ -30,7 +30,7 @@ function NavbarTypeView() {
   return (
     <div>
       <h4 className="mb-2 text-base font-normal text-slate-600 dark:text-slate-300">
-        Navbar Type
+        상단바 타입
       </h4>
       <div className="grid grid-cols-1 gap-3 md:grid-cols-4">
         {navTypes?.map((item, index) => (

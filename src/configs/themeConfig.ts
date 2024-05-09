@@ -1,6 +1,6 @@
 const themeConfig = {
   app: {
-    name: "THE NEXT Electron",
+    name: "리테일금융시스템",
   },
   // layout
   layout: {

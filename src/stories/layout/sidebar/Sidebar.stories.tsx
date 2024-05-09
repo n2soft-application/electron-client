@@ -11,7 +11,8 @@ const meta = {
     componentSubtitle: "사이드바",
     docs: {
       description: {
-        component: "",
+        component:
+          "사용자에게 웹 페이지의 측면에서 메뉴 항목이 표시되어 사용자가 빠르게 탐색하고 작업할 수 있도록 합니다.",
       },
     },
   },
@@ -21,9 +22,7 @@ const meta = {
     (Story: any) => (
       <RecoilRoot>
         <HashRouter>
-          <div>
-            <Story />
-          </div>
+          <Story />
         </HashRouter>
       </RecoilRoot>
     ),
@@ -34,18 +33,12 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  name: "Default",
-  storyName: "",
   args: {},
   parameters: {
     docs: {
       story: {
         inline: false,
-        iframeHeight: 700,
-      },
-      //   canvas: { sourceState: "shown" },
-      description: {
-        story: "기본 사이드바입니다",
+        iframeHeight: 1600,
       },
     },
   },

@@ -10,6 +10,9 @@ Object.defineProperty(app, "isPackaged", {
   },
 });
 
+//
+log.transports.file.level = "info";
+
 //-------------------------------------------------------------------
 // Logging
 //
@@ -29,23 +32,39 @@ log.info("App starting...");
 // for the app to show a window than to have to click "About" to see
 // that updates are working.
 //-------------------------------------------------------------------
+let updateWindow;
 let win;
 
 function sendStatusToWindow(text) {
   log.info(text);
-  win.webContents.send("message", text);
+  win?.webContents.send("message", text);
 }
+
+const createUpdateWindow = () => {
+  updateWindow = new BrowserWindow({
+    show: false,
+    width: 300,
+    height: 300,
+    frame: false,
+    webPreferences: {
+      nodeIntegration: true,
+    },
+  });
+
+  updateWindow.loadFile(path.join(__dirname, "../build/version.html"));
+  updateWindow.webContents.openDevTools({ mode: "detach" });
+};
 
 const createWindow = () => {
   win = new BrowserWindow({
     show: false,
     minWidth: 1200,
     minHeight: 800,
-    width: 1200,
-    height: 800,
+    width: 1600,
+    height: 960,
     // transparent: true,
     // frame: false,
-    // autoHideMenuBar: true,
+    autoHideMenuBar: true,
     // show: false,
     // titleBarStyle: 'hiddenInset',
     webPreferences: {
@@ -56,16 +75,15 @@ const createWindow = () => {
   });
 
   if (process.env.mode === "dev") {
-    win.loadURL("http://localhost:3000");
-    win.webContents.openDevTools();
+    win?.loadURL("http://localhost:3000");
+    win?.webContents.openDevTools({ mode: "detach" });
   } else {
     // win.loadURL(`file://${path.join(__dirname, '../build/index.html')}`)
-    // win.loadFile(path.join(__dirname, "../build/index.html"));
-    win.loadFile(path.join(__dirname, "../build/version.html"));
+    win?.loadFile(path.join(__dirname, "../build/index.html"));
   }
 
-  win.once("ready-to-show", () => win.show());
-  win.on("closed", () => {
+  win?.once("ready-to-show", () => win?.show());
+  win?.on("closed", () => {
     win = null;
   });
 };
@@ -79,64 +97,111 @@ autoUpdater.requestHeaders = {
   "Cache-Control":
     "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
 };
-autoUpdater.autoDownload = true;
+autoUpdater.autoDownload = false;
 autoUpdater.logger = log;
 autoUpdater.logger.transports.file.level = "info";
 
-sendStatusToWindow(autoUpdater)
+// 사용 가능한 업데이트가 있을 때 발생, 업데이트가 자동으로 다운로드
+autoUpdater.on("update-available", (info) => {
+  log.info("update-available...");
+  dialog
+    .showMessageBox(win, {
+      type: "info",
+      title: "업데이트 가능",
+      message: "새로운 버전이 있습니다. 다운로드하시겠습니까?",
+      buttons: ["업데이트", "나중에"],
+    })
+    .then((result) => {
+      if (result.response === 0) {
+        autoUpdater.downloadUpdate();
+      }
+    });
 
-autoUpdater.on('update-available', () => {
-  sendStatusToWindow('An Update is available....')
-  mainWindow.webContents.send('update_available')
-})
+  sendStatusToWindow("Update available.");
+});
 
-autoUpdater.on('update-downloaded', () => {
-  sendStatusToWindow('Update has been downloaded....')
-  mainWindow.webContents.send('update_downloaded')
-})
+autoUpdater.on("update-downloaded", () => {
+  log.info("update-downloaded...");
+  sendStatusToWindow("Update has been downloaded....");
 
-ipcMain.on('restart_app', () => {
-  sendStatusToWindow('In onRestart_App')
-  autoUpdater.quitAndInstall()
-})
+  dialog
+    .showMessageBox({
+      title: "업데이트 설치",
+      message:
+        "업데이트가 다운로드되었습니다. 앱을 재시작하여 업데이트를 적용하시겠습니까?",
+    })
+    .then((result) => {
+      if (result.response === 0) {
+        autoUpdater.quitAndInstall();
+      }
+    });
+});
 
-autoUpdater.on('checking-for-update', function () {
-  sendStatusToWindow('Checking for update...')
-})
+ipcMain.on("restart_app", () => {
+  sendStatusToWindow("In onRestart_App");
+  autoUpdater.quitAndInstall();
+});
 
-autoUpdater.on('update-not-available', function (info) {
-  sendStatusToWindow('Update not available.')
-})
+// 업데이트가 시작되었는지 확인할 때 발생합니다.
+autoUpdater.on("checking-for-update", () => {
+  log.info("checking-for-update...");
+  sendStatusToWindow("checking-for-update...");
+});
 
-autoUpdater.on('error', function (err) {
-  sendStatusToWindow('We have an error in auto-updater: ')
-  sendStatusToWindow(String(err))
-})
+// 사용 가능한 업데이트가 없을 때 발생
+autoUpdater.on("update-not-available", (info) => {
+  log.info("update-not-available...");
+  sendStatusToWindow("Update not available.");
 
-autoUpdater.on('download-progress', function (progressObj) {
-  let log_message = 'Download speed: ' + progressObj.bytesPerSecond
+  updateWindow.close();
+  createWindow();
+
+  // dialog.showMessageBox(win, {
+  //   type: "info",
+  //   buttons: ["확인"],
+  //   message: "현재 사용 가능한 업데이트가 없습니다.",
+  // });
+});
+
+// 업데이트하는 동안 오류가 발생하면 발생
+autoUpdater.on("error", (err) => {
+  log.info("error...");
+  sendStatusToWindow("Error in auto-updater. " + err);
+
+  updateWindow.close();
+  createWindow();
+
+  // dialog.showMessageBox(win, {
+  //   type: "error",
+  //   buttons: ["확인"],
+  //   message: "Error in auto-updater. " + err,
+  // });
+});
+
+autoUpdater.on("download-progress", function (progressObj) {
+  let log_message = "Download speed: " + progressObj.bytesPerSecond;
+  log_message = log_message + " - Downloaded " + progressObj.percent + "%";
   log_message =
-    log_message + ' - Downloaded ' + parseInt(progressObj.percent) + '%'
-  log_message =
-    log_message + ' (' + progressObj.transferred + '/' + progressObj.total + ')'
-  sendStatusToWindow(log_message)
-})
+    log_message +
+    " (" +
+    progressObj.transferred +
+    "/" +
+    progressObj.total +
+    ")";
+  sendStatusToWindow(log_message);
+});
 
 // Check for an update 10sec after Program Starts
-setTimeout(function () {
-  sendStatusToWindow('We are checking for updates and notifying user...')
-  autoUpdater.checkForUpdatesAndNotify()
-}, 10000)
+// setTimeout(function () {
+//   sendStatusToWindow('We are checking for updates and notifying user...')
+//   autoUpdater.checkForUpdatesAndNotify()
+// }, 10000)
 
 // Check for an update every 2min.
-setInterval(function () {
-  sendStatusToWindow('We are checking for updates and notifying user...')
-  autoUpdater.checkForUpdatesAndNotify()
-}, 120000)
-
-function sendStatusToWindow(message) {
-  log.info(message)
-}
+// setInterval(function () {
+//   sendStatusToWindow('We are checking for updates and notifying user...')
+//   autoUpdater.checkForUpdatesAndNotify()
+// }, 120000)
 
 /**
  * TitleBar Event [START]
@@ -178,7 +243,7 @@ ipcMain.on("app-version", (event) => {
 // app quits.
 //-------------------------------------------------------------------
 app.whenReady().then(() => {
-  createWindow();
+  createUpdateWindow();
 
   ipcMain.handle("ping", () => "pong");
 

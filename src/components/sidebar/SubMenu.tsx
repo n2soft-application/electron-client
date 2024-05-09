@@ -1,6 +1,7 @@
 import { Collapse } from "react-collapse";
-import { MenuItemType } from "../../constants/data";
 import { NavLink } from "react-router-dom";
+import { MenuItemType } from "../../constants/data";
+import useTabMenu from "../../hooks/layout/useTabMenu";
 import Icon from "../icons/Icon";
 import Multilevel from "./Multilevel";
 
@@ -19,10 +20,13 @@ function SubMenu({
   toggleMultiMenu,
   activeMultiMenu,
 }: Props) {
-  return <Collapse isOpened={activeSubmenu === index}>
-     <ul className="space-y-4 sub-menu ">
+  const { handleTabOpen } = useTabMenu();
+
+  return (
+    <Collapse isOpened={activeSubmenu === index}>
+      <ul className="space-y-2 sub-menu">
         {item.child?.map((subItem, j) => (
-          <li key={j} className="block pl-4 pr-1 first:pt-4 last:pb-4">
+          <li key={j} className="block pl-4 pr-1 first:pt-2 last:pb-2">
             {subItem?.multi_menu ? (
               <div>
                 <div
@@ -58,12 +62,22 @@ function SubMenu({
                 />
               </div>
             ) : (
-              <NavLink to={subItem.childlink ?? ''}>
+              <NavLink
+                replace
+                to={subItem.childlink ?? ""}
+                onClick={(e) => {
+                  handleTabOpen(
+                    subItem.childtitle ?? "",
+                    subItem.childlink ?? "",
+                    e
+                  );
+                }}
+              >
                 {({ isActive }) => (
                   <span
                     className={`${
                       isActive
-                        ? " text-black dark:text-white font-medium"
+                        ? "text-black dark:text-white font-medium"
                         : "text-slate-600 dark:text-slate-300"
                     } text-sm flex space-x-3 items-center transition-all duration-150 rtl:space-x-reverse`}
                   >
@@ -82,7 +96,8 @@ function SubMenu({
           </li>
         ))}
       </ul>
-  </Collapse>;
+    </Collapse>
+  );
 }
 
 export default SubMenu;

@@ -47,6 +47,7 @@ export type MenuItemType = {
   badge?: string;
   isOpen?: boolean;
   isHide?: boolean;
+  isMultiple?: boolean;
   child?: MenuItemChildType[];
 };
 
@@ -62,58 +63,15 @@ export type MenuItemChildMultiType = {
   badge?: string;
 };
 
-export const menuItems: MenuItemType[] = [
-  {
-    isHeadr: true,
-    title: "시스템",
-  },
-  {
-    title: "메뉴관리",
-    icon: "heroicons-outline:bars-4",
-    isHide: true,
-    child: [
-      {
-        childtitle: "메뉴관리",
-        childlink: "menu/default",
-      },
-    ],
-  },
-  {
-    title: "코드관리",
-    icon: "heroicons:chevron-up-down",
-    isHide: true,
-    child: [
-      {
-        childtitle: "공통코드",
-        childlink: "code/common",
-      },
-    ],
-  },
-  {
-    title: "사용자관리",
-    icon: "heroicons-outline:user",
-    isHide: true,
-    child: [
-      {
-        childtitle: "팀(파트)",
-        childlink: "person/team",
-      },
-      {
-        childtitle: "사용자",
-        childlink: "person/default",
-      },
-    ],
-  },
-
+const sampleMenuItems: MenuItemType[] = [
   {
     isHeadr: true,
     title: "menu",
   },
-
   {
     title: "Dashboard",
     icon: "heroicons-outline:home",
-    isOpen: true,
+    link: "#",
     isHide: true,
     child: [
       {
@@ -603,6 +561,790 @@ export const menuItems: MenuItemType[] = [
   },
 ];
 
+export const menuItems: MenuItemType[] = [
+  {
+    title: "메인",
+    icon: "heroicons-outline:home",
+    isOpen: true,
+    isHide: true,
+    child: [
+      {
+        childtitle: "대시보드",
+        childlink: "home/dashboard",
+      },
+    ],
+  },
+  {
+    title: "심사관리",
+    icon: "heroicons-outline:building-library",
+    isHide: false,
+    child: [
+      {
+        childtitle: "심사진행목록",
+        multi_menu: [
+          {
+            multiTitle: "심사진행목록",
+            multiLink: "",
+          },
+          {
+            multiTitle: "심사접수진행상태",
+            multiLink: "",
+          },
+          {
+            multiTitle: "적합성확인목록",
+            multiLink: "",
+          },
+          {
+            multiTitle: "결재대기목록",
+            multiLink: "",
+          },
+          {
+            multiTitle: "전자계약대기목록",
+            multiLink: "",
+          },
+          {
+            multiTitle: "대출등록대기목록",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "심사완료",
+        multi_menu: [
+          {
+            multiTitle: "대출완료목록",
+            multiLink: "",
+          },
+          {
+            multiTitle: "대출완료(당대환)목록",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "현황조회",
+        multi_menu: [
+          {
+            multiTitle: "대외플랫폼접수현황",
+            multiLink: "",
+          },
+          {
+            multiTitle: "상담원심사현황",
+            multiLink: "",
+          },
+          {
+            multiTitle: "심사현황",
+            multiLink: "",
+          },
+          {
+            multiTitle: "심사부결현황",
+            multiLink: "",
+          },
+          {
+            multiTitle: "심사첨부파일등록현황",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "기준관리",
+        multi_menu: [
+          {
+            multiTitle: "사전거절(PreScreen)대상",
+            multiLink: "",
+          },
+          {
+            multiTitle: "심사배정상담원",
+            multiLink: "",
+          },
+          {
+            multiTitle: "심사배정룰",
+            multiLink: "",
+          },
+          {
+            multiTitle: "상품별 기준금리관리",
+            multiLink: "",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "채권관리",
+    icon: "heroicons-outline:document-chart-bar",
+    isHide: false,
+    isMultiple: true,
+    child: [
+      {
+        childtitle: "채권현황",
+        multi_menu: [
+          {
+            multiTitle: "채권현황목록",
+            multiLink: "",
+          },
+          {
+            multiTitle: "여신거래내역",
+            multiLink: "",
+          },
+          {
+            multiTitle: "대출완제목록",
+            multiLink: "",
+          },
+          {
+            multiTitle: "초본열람대상명세",
+            multiLink: "",
+          },
+          {
+            multiTitle: "방문관리명세",
+            multiLink: "",
+          },
+          {
+            multiTitle: "채권배정현황(실시간)",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "사고채권",
+        multi_menu: [
+          {
+            multiTitle: "개인회생목록",
+            multiLink: "",
+          },
+          {
+            multiTitle: "워크아웃목록",
+            multiLink: "",
+          },
+          {
+            multiTitle: "파산관리명세",
+            multiLink: "",
+          },
+          {
+            multiTitle: "사망관리명세",
+            multiLink: "",
+          },
+          {
+            multiTitle: "법무관리목록",
+            multiLink: "",
+          },
+          {
+            multiTitle: "법원결정문관리명세",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "특수채권",
+        multi_menu: [
+          {
+            multiTitle: "특수채권현황",
+            multiLink: "",
+          },
+          {
+            multiTitle: "특수채권회수내역",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "조기경보",
+        multi_menu: [
+          {
+            multiTitle: "CIS신용도판단및공공정보",
+            multiLink: "",
+          },
+          {
+            multiTitle: "CIS대부면체",
+            multiLink: "",
+          },
+          {
+            multiTitle: "채무불이행정보(신용정보사)",
+            multiLink: "",
+          },
+          {
+            multiTitle: "KCB연체정보",
+            multiLink: "",
+          },
+          {
+            multiTitle: "대지급정보",
+            multiLink: "",
+          },
+          {
+            multiTitle: "주민등록번호변경정보",
+            multiLink: "",
+          },
+          {
+            multiTitle: "일단위연체관리정보",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "배정관리",
+        multi_menu: [
+          {
+            multiTitle: "채권담당자배덩Rule관리",
+            multiLink: "",
+          },
+          {
+            multiTitle: "채권팀배정Rule관리",
+            multiLink: "",
+          },
+          {
+            multiTitle: "채권(엑셀)이수관",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "기준관리",
+        multi_menu: [
+          {
+            multiTitle: "DM양식관리",
+            multiLink: "",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "업무지원",
+    icon: "heroicons-outline:chart-pie",
+    isHide: false,
+    isMultiple: true,
+    child: [
+      {
+        childtitle: "회계관리",
+        multi_menu: [
+          {
+            multiTitle: "가상계좌발급",
+            multiLink: "",
+          },
+          {
+            multiTitle: "가상계좌거래명세",
+            multiLink: "",
+          },
+          {
+            multiTitle: "CMS출금명세(온라인)",
+            multiLink: "",
+          },
+          {
+            multiTitle: "완제계좌가수금조회",
+            multiLink: "",
+          },
+          {
+            multiTitle: "이기종시제관리",
+            multiLink: "",
+          },
+          {
+            multiTitle: "온라인수납관리",
+            multiLink: "",
+          },
+          {
+            multiTitle: "플랫폼사 수수료정산",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "사후관리",
+        multi_menu: [
+          {
+            multiTitle: "민원내역",
+            multiLink: "",
+          },
+          {
+            multiTitle: "대출계약철회",
+            multiLink: "",
+          },
+          {
+            multiTitle: "금리인하요구권",
+            multiLink: "",
+          },
+          {
+            multiTitle: "제증명신청",
+            multiLink: "",
+          },
+          {
+            multiTitle: "CMS신청",
+            multiLink: "",
+          },
+          {
+            multiTitle: "CMS신청(변경)",
+            multiLink: "",
+          },
+          {
+            multiTitle: "개명신청",
+            multiLink: "",
+          },
+          {
+            multiTitle: "1:1문의",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "고객관리",
+        multi_menu: [
+          {
+            multiTitle: "본인인증내역",
+            multiLink: "",
+          },
+          {
+            multiTitle: "고객조회",
+            multiLink: "",
+          },
+          {
+            multiTitle: "맴버십내역",
+            multiLink: "",
+          },
+          {
+            multiTitle: "포인트적립내역",
+            multiLink: "",
+          },
+          {
+            multiTitle: "쿠폰신청내역",
+            multiLink: "",
+          },
+          {
+            multiTitle: "마케팅동의내역",
+            multiLink: "",
+          },
+          {
+            multiTitle: "이벤트응모내역",
+            multiLink: "",
+          },
+          {
+            multiTitle: "추가대출대상자업로드",
+            multiLink: "",
+          },
+          {
+            multiTitle: "두낫콜현황(중앙회)",
+            multiLink: "",
+          },
+          {
+            multiTitle: "SMS수신거부(080)",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "경영정보",
+        multi_menu: [
+          {
+            multiTitle: "일일현황",
+            multiLink: "",
+          },
+          {
+            multiTitle: "일일실적현황",
+            multiLink: "",
+          },
+          {
+            multiTitle: "중금리공시자료",
+            multiLink: "",
+          },
+          {
+            multiTitle: "가계대출월보",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "자산건전성",
+        multi_menu: [
+          {
+            multiTitle: "자산건전성분류계산",
+            multiLink: "",
+          },
+          {
+            multiTitle: "자산건전성분류계산결과",
+            multiLink: "",
+          },
+          {
+            multiTitle: "자산건전성기초파일업로드",
+            multiLink: "",
+          },
+          {
+            multiTitle: "사업자휴폐업조회",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "UMS",
+        multi_menu: [
+          {
+            multiTitle: "UMS개별발송",
+            multiLink: "",
+          },
+          {
+            multiTitle: "UMS발송승인명세",
+            multiLink: "",
+          },
+          {
+            multiTitle: "UMS발송이력",
+            multiLink: "",
+          },
+          {
+            multiTitle: "FAX/MO수신이력",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "기준관리(업무)",
+        multi_menu: [
+          {
+            multiTitle: "탬플릿 관리",
+            multiLink: "",
+          },
+          {
+            multiTitle: "ActionPlan기준",
+            multiLink: "",
+          },
+          {
+            multiTitle: "ActionPlan실행내역",
+            multiLink: "",
+          },
+          {
+            multiTitle: "가상팩스번호",
+            multiLink: "",
+          },
+          {
+            multiTitle: "가상팩스배정이력",
+            multiLink: "",
+          },
+          {
+            multiTitle: "쿠폰 관리",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "QUPID",
+        multi_menu: [
+          {
+            multiTitle: "서식 정보설정",
+            multiLink: "",
+          },
+          {
+            multiTitle: "발송 대상명세",
+            multiLink: "",
+          },
+          {
+            multiTitle: "발송 승인",
+            multiLink: "",
+          },
+          {
+            multiTitle: "발송 이력",
+            multiLink: "",
+          },
+          {
+            multiTitle: "발송대상액셀목록",
+            multiLink: "",
+          },
+        ],
+      },
+    ],
+  },
+
+  {
+    title: "NPL채권",
+    icon: "heroicons-outline:swatch",
+    isHide: false,
+    isMultiple: true,
+    child: [
+      {
+        childtitle: "기준채권",
+        multi_menu: [
+          {
+            multiTitle: "상품관리",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "매입",
+        multi_menu: [
+          {
+            multiTitle: "매입채권등록",
+            multiLink: "",
+          },
+          {
+            multiTitle: "매입채권명세",
+            multiLink: "",
+          },
+          {
+            multiTitle: "상환스케줄/조건표 등록",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "채권",
+        multi_menu: [
+          {
+            multiTitle: "채권명세",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "상환",
+        multi_menu: [
+          {
+            multiTitle: "입금이력",
+            multiLink: "",
+          },
+          {
+            multiTitle: "신용회복입금등록",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "통계",
+        multi_menu: [
+          {
+            multiTitle: "일마감현황",
+            multiLink: "",
+          },
+          {
+            multiTitle: "월별 회계처리",
+            multiLink: "",
+          },
+          {
+            multiTitle: "신정원 개인대출집중",
+            multiLink: "",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "기업금융",
+    icon: "heroicons-outline:home",
+    isHide: false,
+    isMultiple: true,
+    child: [
+      {
+        childtitle: "홈",
+        multi_menu: [
+          {
+            multiTitle: "",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "고객관리",
+        multi_menu: [
+          {
+            multiTitle: "고객목록",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "사업관리",
+        multi_menu: [
+          {
+            multiTitle: "사업목록",
+            multiLink: "",
+          },
+          {
+            multiTitle: "기타안건목록",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "신청관리",
+        multi_menu: [
+          {
+            multiTitle: "신청목록",
+            multiLink: "",
+          },
+          {
+            multiTitle: "부의목록",
+            multiLink: "",
+          },
+          {
+            multiTitle: "심의목록",
+            multiLink: "",
+          },
+          {
+            multiTitle: "심의결과목록",
+            multiLink: "",
+          },
+          {
+            multiTitle: "승인목록",
+            multiLink: "",
+          },
+          {
+            multiTitle: "부결목록",
+            multiLink: "",
+          },
+          {
+            multiTitle: "계좌연결대상목록",
+            multiLink: "",
+          },
+          {
+            multiTitle: "통합목록",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "계정관리",
+        multi_menu: [
+          {
+            multiTitle: "대출계좌목록",
+            multiLink: "",
+          },
+          {
+            multiTitle: "유가증권계좌목록",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "DB정보관리",
+        multi_menu: [
+          {
+            multiTitle: "원장조회(여신)",
+            multiLink: "",
+          },
+          {
+            multiTitle: "원장조회(유가증권)",
+            multiLink: "",
+          },
+          {
+            multiTitle: "문서관리목록",
+            multiLink: "",
+          },
+          {
+            multiTitle: "기준항목관리",
+            multiLink: "",
+          },
+          {
+            multiTitle: "PF현황 엑셀업로드",
+            multiLink: "",
+          },
+          {
+            multiTitle: "자산건전성 엑셀업로드",
+            multiLink: "",
+          },
+          {
+            multiTitle: "심의위원회관리",
+            multiLink: "",
+          },
+          {
+            multiTitle: "리스크평가 엑셀업로드",
+            multiLink: "",
+          },
+          {
+            multiTitle: "사업유형코드관리",
+            multiLink: "",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "시스템",
+    icon: "heroicons-outline:cog",
+    isHide: false,
+    isMultiple: true,
+    child: [
+      {
+        childtitle: "코드관리",
+        multi_menu: [
+          {
+            multiTitle: "공통코드",
+            multiLink: "system/commoncode",
+          },
+        ],
+      },
+      {
+        childtitle: "메뉴권한",
+        multi_menu: [
+          {
+            multiTitle: "메뉴관리",
+            multiLink: "system/menumanagement",
+          },
+          {
+            multiTitle: "화면관리",
+            multiLink: "system/screenmanagement",
+          },
+        ],
+      },
+      {
+        childtitle: "사용자",
+        multi_menu: [
+          {
+            multiTitle: "팀(파트)",
+            multiLink: "system/team",
+          },
+          {
+            multiTitle: "사용자",
+            multiLink: "system/user",
+          },
+        ],
+      },
+      {
+        childtitle: "이력조회",
+        multi_menu: [
+          {
+            multiTitle: "",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "전문관리",
+        multi_menu: [
+          {
+            multiTitle: "",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "배치관리",
+        multi_menu: [
+          {
+            multiTitle: "",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "개인정보파기관리",
+        multi_menu: [
+          {
+            multiTitle: "",
+            multiLink: "",
+          },
+        ],
+      },
+      {
+        childtitle: "공공마이데이터",
+        multi_menu: [
+          {
+            multiTitle: "",
+            multiLink: "",
+          },
+        ],
+      },
+    ],
+  },
+];
+
+if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
+  menuItems.push(...sampleMenuItems);
+}
+
 export const topMenu: {
   title: string;
   icon: string;
@@ -1030,6 +1772,27 @@ export const message = [
     hasnotifaction: false,
     image: User4,
     link: "#",
+  },
+];
+
+export const favorite = [
+  {
+    title: "심사진행목록",
+  },
+  {
+    title: "결재대기목록",
+  },
+  {
+    title: "채권현황목록",
+  },
+  {
+    title: "대출완제목록",
+  },
+  {
+    title: "초본열람대상명세",
+  },
+  {
+    title: "상담원심사현황",
   },
 ];
 

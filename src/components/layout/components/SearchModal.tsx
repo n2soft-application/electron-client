@@ -54,7 +54,7 @@ function SearchModal() {
           onClick={openModal}
         >
           <Icon icon="heroicons-outline:search" />
-          <span className="hidden xl:inline-block">Search... </span>
+          <span className="hidden xl:inline-block">검색... </span>
         </button>
       </div>
 
@@ -95,7 +95,7 @@ function SearchModal() {
                       </div>
                       <Combobox.Input
                         className="flex-1 w-full bg-transparent border-none outline-none focus:outline-none dark:placeholder:text-slate-300 dark:text-slate-200"
-                        placeholder="Search..."
+                        placeholder="검색..."
                         onChange={(event) => setQuery(event.target.value)}
                       />
                     </div>

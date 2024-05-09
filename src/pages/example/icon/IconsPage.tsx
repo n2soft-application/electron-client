@@ -2,7 +2,7 @@ import Icon from "../../../components/icons/Icon";
 import Tooltip from "../../../components/tooltip/Tooltip";
 import useSkin from "../../../hooks/layout/useSkin";
 
-const icons = [
+export const icons = [
   {
     name: "heroicons:academic-cap",
   },

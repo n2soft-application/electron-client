@@ -1,13 +1,5 @@
 import React from "react";
 import type { Preview } from "@storybook/react";
-import {
-  Title,
-  Subtitle,
-  Description,
-  Primary,
-  Controls,
-  Stories,
-} from "@storybook/blocks";
 import DocumentationTemplate from "./DocumentationTemplate.mdx";
 import "../src/index.css";
 
@@ -25,29 +17,24 @@ const preview: Preview = {
       controls: {
         sort: "requiredFirst", // 정렬
       },
-      //   page: () => (
-      //     <>
-      //       <Title />
-      //       <Subtitle />
-      //       <Description />
-      //       <Primary />
-      //       <Controls />
-      //       <Stories />
-      //     </>
-      //   ),
       page: DocumentationTemplate,
     },
     options: {
       storySort: {
-        method: "configure",
+        method: "alphabetical",
         includeNames: true,
         order: [
+          "가이드",
+          "Foundations",
+          ["*", ["Docs", "Default", "AllTypes"]],
           "Components",
-          ["Badge", "Checkbox", "Loading", "Tooltip", "Dropdown", "Card"],
+          ["*", ["Docs", "Default", "AllTypes"]],
+          "Forms",
+          ["*", ["Docs", "Default", "AllTypes"]],
           "Layout",
-          ["Header", "Footer", "Sidebar"],
+          ["*", ["Docs", "Default", "AllTypes"]],
           "Example",
-          ["Button", "Page", "Header"],
+          ["*", ["Docs", "*"]],
           "*",
         ],
       },

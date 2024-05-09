@@ -6,11 +6,11 @@ const meta = {
   title: "Layout/Footer",
   component: Footer,
   parameters: {
-    // layout: "centered",
+    layout: "centered",
     componentSubtitle: "푸터",
     docs: {
       description: {
-        component: "",
+        component: "사용자에게 웹 페이지의 하단에서 필요한 정보를 제공합니다.",
       },
     },
   },
@@ -33,15 +33,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  name: "Default",
-  storyName: "",
   args: {},
-  parameters: {
-    docs: {
-      canvas: { sourceState: "shown" },
-      description: {
-        story: "기본 푸터입니다",
-      },
-    },
-  },
 };

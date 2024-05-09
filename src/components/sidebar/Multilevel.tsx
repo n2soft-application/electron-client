@@ -1,9 +1,10 @@
 import { Collapse } from "react-collapse";
 import { NavLink, To } from "react-router-dom";
 import {
-    MenuItemChildMultiType,
-    MenuItemChildType,
+  MenuItemChildMultiType,
+  MenuItemChildType,
 } from "../../constants/data";
+import useTabMenu from "../../hooks/layout/useTabMenu";
 import Badge from "../badge/Badge";
 
 const LockLink = ({
@@ -17,7 +18,9 @@ const LockLink = ({
     | ((props: { isActive: boolean; isPending: boolean }) => React.ReactNode);
   item: MenuItemChildMultiType;
 }) => {
-  const { multiTitle, badge } = item;
+  const { multiTitle, badge, multiLink } = item;
+  const { handleTabOpen } = useTabMenu();
+
   return (
     <>
       {item.badge ? (
@@ -36,7 +39,15 @@ const LockLink = ({
           </span>
         </span>
       ) : (
-        <NavLink to={to}>{children}</NavLink>
+        <NavLink
+          replace
+          to={to}
+          onClick={(e) => {
+            handleTabOpen(multiTitle, multiLink, e);
+          }}
+        >
+          {children}
+        </NavLink>
       )}
     </>
   );
@@ -53,11 +64,11 @@ const Multilevel = ({
 }) => {
   return (
     <Collapse isOpened={activeMultiMenu === j}>
-      <ul className="space-y-[14px] pl-4">
+      <ul className="pl-4 space-y-2">
         {subItem?.multi_menu?.map((item, i) => (
-          <li key={i} className=" first:pt-[14px]">
+          <li key={i} className=" first:pt-2">
             <LockLink to={item.multiLink} item={item}>
-              {({ isActive }: { isActive: any }) => (
+              {({ isActive }: { isActive: boolean }) => (
                 <span
                   className={`${
                     isActive

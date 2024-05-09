@@ -1,63 +1,62 @@
-const Checkbox = (props: {
-  extra?: string;
-  color?:
-    | "red"
-    | "blue"
-    | "green"
-    | "yellow"
-    | "orange"
-    | "teal"
-    | "navy"
-    | "lime"
-    | "cyan"
-    | "pink"
-    | "purple"
-    | "amber"
-    | "indigo"
-    | "gray";
-  [x: string]: any;
-}) => {
-  const { extra, color, ...rest } = props;
+import CheckImage from "../../assets/images/icon/ck-white.svg";
+
+type Props = {
+  id?: string;
+  disabled?: boolean;
+  label?: string;
+  value: boolean;
+  name?: string;
+  onChange?: () => void;
+  activeClass?: string;
+};
+
+const Checkbox = ({
+  id,
+  disabled = false,
+  label,
+  value = false,
+  name,
+  onChange,
+  activeClass = "ring-black-500  bg-slate-900 dark:bg-slate-700 dark:ring-slate-700 ",
+}: Props) => {
   return (
-    <input
-      type="checkbox"
-      className={`before:content-[url('../src/assets/svg/checked.svg')] before:text-white before:opacity-0 before:h-4 before:w-4 
-	  before:absolute before:left-1/2 before:-translate-x-1/2 before:checked:opacity-100 relative flex h-[20px] min-h-[20px] w-[20px] min-w-[20px] appearance-none items-center 
-      justify-center rounded-md border border-gray-300 text-white/0 outline-none transition duration-[0.2s]
-      checked:border-none checked:text-white hover:cursor-pointer dark:border-white/10 ${
-        color === "red"
-          ? "checked:border-none checked:bg-red-500 dark:checked:bg-red-400"
-          : color === "blue"
-          ? "checked:border-none checked:bg-blue-500 dark:checked:bg-blue-400"
-          : color === "green"
-          ? "checked:border-none checked:bg-green-500 dark:checked:bg-green-400"
-          : color === "yellow"
-          ? "checked:border-none checked:bg-yellow-500 dark:checked:bg-yellow-400"
-          : color === "orange"
-          ? "checked:border-none checked:bg-orange-500 dark:checked:bg-orange-400"
-          : color === "teal"
-          ? "checked:border-none checked:bg-teal-500 dark:checked:bg-teal-400"
-          : color === "navy"
-          ? "checked:border-none checked:bg-navy-500 dark:checked:bg-navy-400"
-          : color === "lime"
-          ? "checked:border-none checked:bg-lime-500 dark:checked:bg-lime-400"
-          : color === "cyan"
-          ? "checked:border-none checked:bg-cyan-500 dark:checked:bg-cyan-400"
-          : color === "pink"
-          ? "checked:border-none checked:bg-pink-500 dark:checked:bg-pink-400"
-          : color === "purple"
-          ? "checked:border-none checked:bg-purple-500 dark:checked:bg-purple-400"
-          : color === "amber"
-          ? "checked:border-none checked:bg-amber-500 dark:checked:bg-amber-400"
-          : color === "indigo"
-          ? "checked:border-none checked:bg-indigo-500 dark:checked:bg-indigo-400"
-          : color === "gray"
-          ? "checked:border-none checked:bg-gray-500 dark:checked:bg-gray-400"
-          : "checked:bg-brand-500 dark:checked:bg-brand-400"
-      } ${extra}`}
-      name="weekly"
-      {...rest}
-    />
+    <label
+      className={`flex items-center ${
+        disabled ? " cursor-not-allowed opacity-50" : "cursor-pointer"
+      }`}
+      htmlFor={id}
+    >
+      <input
+        type="checkbox"
+        className="hidden"
+        name={name}
+        checked={value}
+        onChange={onChange}
+        id={id}
+        disabled={disabled}
+      />
+      <span
+        className={`h-4 w-4 border flex-none border-slate-100 dark:border-slate-800 rounded
+        inline-flex mr-3 rtl:ml-3 relative transition-all duration-150
+        ${
+          value
+            ? activeClass + " ring-2 ring-offset-2 dark:ring-offset-slate-800 "
+            : "bg-slate-100 dark:bg-slate-600 dark:border-slate-600"
+        }
+        `}
+      >
+        {value && (
+          <img
+            src={CheckImage}
+            alt=""
+            className="h-[10px] w-[10px] block m-auto"
+          />
+        )}
+      </span>
+      <span className="text-sm leading-6 capitalize text-slate-500 dark:text-slate-400">
+        {label}
+      </span>
+    </label>
   );
 };
 

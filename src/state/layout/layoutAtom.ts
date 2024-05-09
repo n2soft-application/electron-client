@@ -1,5 +1,6 @@
 import { atom } from "recoil";
 import { recoilPersist } from "../persist";
+import { IMenu1Depth } from "../../api/services/menuService";
 
 const { persistAtom } = recoilPersist();
 
@@ -39,7 +40,7 @@ export const typeState = atom<Type>({
 export type FooterType = "static" | "sticky" | "hidden";
 export const footerTypeState = atom<FooterType>({
   key: "footerTypeState",
-  default: "static",
+  default: "hidden",
   effects_UNSTABLE: [persistAtom],
 });
 
@@ -95,5 +96,25 @@ type CustomizerType = boolean;
 export const customizerTypeState = atom<CustomizerType>({
   key: "customizerTypeState",
   default: false,
+  effects_UNSTABLE: [persistAtom],
+});
+
+export type TabMenuType = Array<{ name: string; href: string }>;
+export const tabMenuTypeState = atom<TabMenuType>({
+  key: "tabMenuTypeState",
+  default: [{ name: "대시보드", href: "home/dashboard" }],
+  effects_UNSTABLE: [persistAtom],
+});
+
+export type FavMenuType = Array<{ name: string; href: string }>;
+export const favMenuTypeState = atom<FavMenuType>({
+  key: "favMenuTypeState",
+  default: [],
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const menuState = atom<IMenu1Depth[]>({
+  key: "menuState",
+  default: [],
   effects_UNSTABLE: [persistAtom],
 });

@@ -7,11 +7,12 @@ const meta = {
   title: "Layout/Header",
   component: Header,
   parameters: {
-    // layout: "centered",
+    layout: "centered",
     componentSubtitle: "헤더",
     docs: {
       description: {
-        component: "",
+        component:
+          "사용자에게 웹 페이지의 상단에서 앱을 탐색하고 상호작용하는데 필요한 주요 요소를 제공합니다.",
       },
     },
   },
@@ -25,7 +26,9 @@ const meta = {
     (Story: any) => (
       <RecoilRoot>
         <HashRouter>
-          <Story />
+          <div className="w-[600px]">
+            <Story />
+          </div>
         </HashRouter>
       </RecoilRoot>
     ),
@@ -36,15 +39,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  name: "Default",
-  storyName: "",
   args: {},
-  parameters: {
-    docs: {
-      canvas: { sourceState: "shown" },
-      description: {
-        story: "기본 헤더입니다",
-      },
-    },
-  },
 };
