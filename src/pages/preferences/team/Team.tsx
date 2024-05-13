@@ -224,7 +224,6 @@ function Team() {
       },
     ]);
 
-
     return () => {
       dp.clearRows();
       gv.destroy();
@@ -249,47 +248,15 @@ function Team() {
   return (
     <div>
       {/* RealGrid */}
-      <div
-        style={{ height: "500px", width: "100%" }}
-        ref={realgridElement}
-      ></div>
+
       <Card>
         <div className="-mx-6 overflow-x-auto">
           <div className="inline-block min-w-full align-middle">
             <div className="overflow-hidden ">
-              <table className="min-w-full divide-y table-fixed divide-slate-100 dark:divide-slate-700">
-                <thead className="bg-slate-200 dark:bg-slate-700">
-                  <tr>
-                    {columns.map((column, i) => (
-                      <th
-                        key={i}
-                        scope="col"
-                        className="text-center table-th text-[14px]"
-                      >
-                        {column.label}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody className="text-center bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
-                  {teamList.map((team, i) => (
-                    <tr
-                      key={i}
-                      className="hover:bg-slate-200 dark:hover:bg-slate-700"
-                    >
-                      <td className="table-td">-</td>
-                      <td className="table-td">{team.branchCode}</td>
-                      <td className="table-td">-</td>
-                      <td className="table-td">{team.code}</td>
-                      <td className="table-td">{team.name}</td>
-                      <td className="table-td">{team.priority}</td>
-                      <td className="table-td">{team.telephoneNumber}</td>
-                      <td className="table-td">{team.faxNumber}</td>
-                      <td className="table-td">{team.useYn}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <div
+                className="h-[500px] min-w-full divide-y table-fixed divide-slate-100 dark:divide-slate-700"
+                ref={realgridElement}
+              ></div>
             </div>
           </div>
         </div>
