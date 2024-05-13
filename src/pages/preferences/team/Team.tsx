@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
-import Card from "../../../components/card/Card";
+import { useEffect, useRef, useState } from "react";
+import { GridView, LocalDataProvider, ValueType } from "realgrid";
 import { ITeam, TeamService } from "../../../api/services/teamService";
+import Card from "../../../components/card/Card";
+import "../../../pages/example/realgrid/style/realgrid-style.css";
 
 const columns = [
   {
@@ -73,6 +75,162 @@ const bottomRows = bottomTableData.slice(0, 7);
 
 function Team() {
   const [teamList, setTeamList] = useState<ITeam[]>([]);
+  const realgridElement = useRef<HTMLDivElement | null>(null);
+  const dp = new LocalDataProvider(true);
+
+  useEffect(() => {
+    const container = realgridElement.current;
+    const gv = new GridView(container as any);
+
+    gv.setDataSource(dp);
+    dp.setFields([
+      {
+        fieldName: "branchCode",
+        dataType: ValueType.TEXT,
+      },
+      {
+        fieldName: "code",
+        dataType: ValueType.TEXT,
+      },
+      {
+        fieldName: "name",
+        dataType: ValueType.NUMBER,
+      },
+      {
+        fieldName: "priority",
+        dataType: ValueType.TEXT,
+      },
+      {
+        fieldName: "telephoneNumber",
+        dataType: ValueType.TEXT,
+      },
+      {
+        fieldName: "faxNumber",
+        dataType: ValueType.TEXT,
+      },
+      {
+        fieldName: "useYn",
+        dataType: ValueType.TEXT,
+      },
+    ]);
+    gv.setColumns([
+      {
+        name: "branchCode",
+        fieldName: "branchCode",
+        type: "data",
+        width: "80",
+        styles: {
+          textAlignment: "center",
+        },
+        header: {
+          text: "지점코드",
+          showTooltip: true,
+          tooltip: '<span style="color: red;">이름</span>',
+        },
+        renderer: {
+          type: "text",
+          showTooltip: true,
+        },
+      },
+      {
+        name: "-",
+        fieldName: "-",
+        type: "data",
+        width: "150",
+        styles: {
+          textAlignment: "center",
+        },
+        header: {
+          text: "지점명",
+          showTooltip: false,
+        },
+      },
+      {
+        name: "code",
+        fieldName: "code",
+        type: "data",
+        width: "220",
+        styles: {
+          textAlignment: "center",
+        },
+        header: "팀(파트)코드",
+      },
+      {
+        name: "name",
+        fieldName: "name",
+        type: "data",
+        width: "130",
+        styles: {
+          textAlignment: "center",
+        },
+        header: {
+          text: "팀(파트)명",
+          showTooltip: false,
+        },
+        numberFormat: "0",
+      },
+      {
+        name: "priority",
+        fieldName: "priority",
+        type: "data",
+        width: "130",
+        styles: {
+          textAlignment: "center",
+        },
+        header: {
+          text: "보기순서",
+          showTooltip: false,
+        },
+        numberFormat: "0",
+      },
+      {
+        name: "telephoneNumber",
+        fieldName: "telephoneNumber",
+        type: "data",
+        width: "300",
+        styles: {
+          textAlignment: "center",
+        },
+        header: {
+          text: "대표번호",
+          showTooltip: false,
+        },
+      },
+      {
+        name: "faxNumber",
+        fieldName: "faxNumber",
+        type: "data",
+        width: "300",
+        styles: {
+          textAlignment: "center",
+        },
+        header: {
+          text: "팩스번호",
+          showTooltip: false,
+        },
+      },
+      {
+        name: "useYn",
+        fieldName: "useYn",
+        type: "data",
+        width: "50",
+        styles: {
+          textAlignment: "center",
+        },
+        header: {
+          text: "사용여부",
+          showTooltip: false,
+        },
+      },
+    ]);
+
+
+    return () => {
+      dp.clearRows();
+      gv.destroy();
+      dp.destroy();
+    };
+  }, []);
 
   useEffect(() => {
     findAll();
@@ -83,12 +241,18 @@ function Team() {
       const response = await TeamService.getTeam();
       if (response.status === "OK") {
         setTeamList(response.data);
+        dp.setRows(response.data);
       }
     } catch (error) {}
   };
 
   return (
     <div>
+      {/* RealGrid */}
+      <div
+        style={{ height: "500px", width: "100%" }}
+        ref={realgridElement}
+      ></div>
       <Card>
         <div className="-mx-6 overflow-x-auto">
           <div className="inline-block min-w-full align-middle">
@@ -107,7 +271,7 @@ function Team() {
                     ))}
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700 text-center">
+                <tbody className="text-center bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
                   {teamList.map((team, i) => (
                     <tr
                       key={i}
@@ -149,7 +313,7 @@ function Team() {
                     ))}
 
                     {bottomRows.map((row, i) => (
-                      <tr>
+                      <tr key={i}>
                         <td className="w-[150px] pl-2">{row.부서지점}</td>
                         {secondColumns.map((column, i) => (
                           <th
@@ -169,14 +333,14 @@ function Team() {
                   <tr>
                     {first2Columns.map((column, i) => (
                       <th
-                        key="i"
+                        key={i}
                         className="bg-slate-200 dark:bg-slate-700 text-center table-th text-[14px]"
                       >
                         {column.label}
                       </th>
                     ))}
                     {bottomRows.map((row, i) => (
-                      <tr>
+                      <tr key={i}>
                         <td className="w-[150px] pl-2">{row.대표번호}</td>
                         {second2Columns.map((column, i) => (
                           <th
