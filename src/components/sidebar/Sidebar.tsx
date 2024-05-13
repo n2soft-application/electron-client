@@ -10,7 +10,17 @@ import { menuItems } from "../../constants/data";
 import { MenuService } from "../../api/services/menuService";
 import { storageKey } from "../../constants/constants";
 
-function Sidebar() {
+type Props = {
+  activeTab: string;
+  handleTabOpen: (
+    name: string,
+    href: string,
+    element: React.ComponentType | null,
+    e?: any
+  ) => void;
+};
+
+function Sidebar({ activeTab, handleTabOpen }: Props) {
   const scrollableNodeRef = useRef<HTMLDivElement | null>(null);
   const [scroll, setScroll] = useState(false);
   const [collapsed, setMenuCollapsed] = useSidebar();
@@ -94,8 +104,9 @@ function Sidebar() {
           scrollableNodeProps={{ ref: scrollableNodeRef }}
         >
           <NavMenu
-            // menus={JSON.parse(localStorage.getItem(storageKey.menu) ?? "{}")}
             menus={menuItems}
+            activeTab={activeTab}
+            handleTabOpen={handleTabOpen}
           />
           {/* {!collapsed && (
             <div className="relative p-4 mt-24 mb-16 text-center text-white bg-slate-900 rounded-2xl">

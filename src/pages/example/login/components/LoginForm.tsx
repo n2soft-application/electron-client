@@ -8,7 +8,6 @@ import TextInput from "../../../../components/form/TextInput";
 function LoginForm() {
   const navigate = useNavigate();
   const [checked, setChecked] = useState(false);
-
   const {
     register,
     formState: { errors },
@@ -16,7 +15,7 @@ function LoginForm() {
   } = useForm({});
 
   const onSubmit = async (data: any) => {
-    navigate("/home/dashboard");
+    navigate("/main/");
   };
 
   return (

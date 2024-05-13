@@ -64,7 +64,7 @@ const columnCharthome2: { series: any; options: ApexOptions } = {
         show: false,
       },
     },
-    colors: [colors.warning],
+    // colors: [colors.warning],
     grid: {
       show: false,
     },
@@ -133,7 +133,7 @@ const columnCharthome3: { series: any; options: ApexOptions } = {
         show: false,
       },
     },
-    colors: [colors.info],
+    // colors: [colors.info],
     grid: {
       show: false,
     },
@@ -202,7 +202,7 @@ const columnCharthome4: { series: any; options: ApexOptions } = {
         show: false,
       },
     },
-    colors: [colors.success],
+    // colors: [colors.success],
     grid: {
       show: false,
     },

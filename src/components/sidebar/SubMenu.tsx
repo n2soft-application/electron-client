@@ -11,6 +11,13 @@ type Props = {
   index: number;
   toggleMultiMenu: (index: number) => void;
   activeMultiMenu: number | null;
+  activeTab: string;
+  handleTabOpen: (
+    name: string,
+    href: string,
+    element: React.ComponentType | null,
+    e?: any
+  ) => void;
 };
 
 function SubMenu({
@@ -19,9 +26,9 @@ function SubMenu({
   index,
   toggleMultiMenu,
   activeMultiMenu,
+  activeTab,
+  handleTabOpen,
 }: Props) {
-  const { handleTabOpen } = useTabMenu();
-
   return (
     <Collapse isOpened={activeSubmenu === index}>
       <ul className="space-y-2 sub-menu">
@@ -59,39 +66,37 @@ function SubMenu({
                   activeMultiMenu={activeMultiMenu}
                   j={j}
                   subItem={subItem}
+                  activeTab={activeTab}
+                  handleTabOpen={handleTabOpen}
                 />
               </div>
             ) : (
-              <NavLink
-                replace
-                to={subItem.childlink ?? ""}
-                onClick={(e) => {
+              <div
+                onClick={() => {
                   handleTabOpen(
                     subItem.childtitle ?? "",
                     subItem.childlink ?? "",
-                    e
+                    subItem.childElement ?? null
                   );
                 }}
               >
-                {({ isActive }) => (
+                <span
+                  className={`${
+                    subItem.childlink === activeTab
+                      ? "text-black dark:text-white font-medium"
+                      : "text-slate-600 dark:text-slate-300"
+                  } text-sm flex space-x-3 items-center transition-all duration-150 rtl:space-x-reverse cursor-pointer`}
+                >
                   <span
                     className={`${
-                      isActive
-                        ? "text-black dark:text-white font-medium"
-                        : "text-slate-600 dark:text-slate-300"
-                    } text-sm flex space-x-3 items-center transition-all duration-150 rtl:space-x-reverse`}
-                  >
-                    <span
-                      className={`${
-                        isActive
-                          ? " bg-slate-900 dark:bg-slate-300 ring-4 ring-opacity-[15%] ring-black-500 dark:ring-slate-300 dark:ring-opacity-20"
-                          : ""
-                      } h-2 w-2 rounded-full border border-slate-600 dark:border-white inline-block flex-none`}
-                    ></span>
-                    <span className="flex-1">{subItem.childtitle}</span>
-                  </span>
-                )}
-              </NavLink>
+                      subItem.childlink === activeTab
+                        ? " bg-slate-900 dark:bg-slate-300 ring-4 ring-opacity-[15%] ring-black-500 dark:ring-slate-300 dark:ring-opacity-20"
+                        : ""
+                    } h-2 w-2 rounded-full border border-slate-600 dark:border-white inline-block flex-none`}
+                  ></span>
+                  <span className="flex-1">{subItem.childtitle}</span>
+                </span>
+              </div>
             )}
           </li>
         ))}

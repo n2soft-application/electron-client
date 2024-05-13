@@ -99,7 +99,19 @@ export const customizerTypeState = atom<CustomizerType>({
   effects_UNSTABLE: [persistAtom],
 });
 
-export type TabMenuType = Array<{ name: string; href: string }>;
+// 현재 활성화된 탭
+export type activeTabType = string;
+export const activeTabTypeState = atom<activeTabType>({
+  key: "activeTabTypeState",
+  default: "home/dashboard",
+  effects_UNSTABLE: [persistAtom],
+});
+
+// 현재 탭 리스트
+export type TabMenuType = Array<{
+  name: string;
+  href: string;
+}>;
 export const tabMenuTypeState = atom<TabMenuType>({
   key: "tabMenuTypeState",
   default: [{ name: "대시보드", href: "home/dashboard" }],

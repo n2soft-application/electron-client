@@ -13,7 +13,22 @@ import useSemiDark from "../../hooks/layout/useSemiDark";
 import useSkin from "../../hooks/layout/useSkin";
 import Icon from "../icons/Icon";
 
-const MobileMenu = ({ className = "custom-class" }) => {
+type Props = {
+  className: string;
+  activeTab: string;
+  handleTabOpen: (
+    name: string,
+    href: string,
+    element: React.ComponentType | null,
+    e?: any
+  ) => void;
+};
+
+const MobileMenu = ({
+  className = "custom-class",
+  activeTab,
+  handleTabOpen,
+}: Props) => {
   const scrollableNodeRef = useRef<HTMLDivElement | null>(null);
   const [scroll, setScroll] = useState(false);
   useEffect(() => {
@@ -41,14 +56,22 @@ const MobileMenu = ({ className = "custom-class" }) => {
           <div className="flex items-center space-x-4">
             <div className="logo-icon">
               {!isDark && !isSemiDark ? (
-                <img className="border rounded shadow" src={MobileLogo} alt="" />
+                <img
+                  className="border rounded shadow"
+                  src={MobileLogo}
+                  alt=""
+                />
               ) : (
-                <img className="border rounded shadow" src={MobileLogoWhite} alt="" />
+                <img
+                  className="border rounded shadow"
+                  src={MobileLogoWhite}
+                  alt=""
+                />
               )}
             </div>
             <div>
               <h1 className="text-base font-semibold text-slate-900 dark:text-slate-100">
-              리테일금융시스템
+                리테일금융시스템
               </h1>
             </div>
           </div>
@@ -71,7 +94,11 @@ const MobileMenu = ({ className = "custom-class" }) => {
         className="sidebar-menu px-4 h-[calc(100%-80px)]"
         scrollableNodeProps={{ ref: scrollableNodeRef }}
       >
-        <NavMenu menus={menuItems} />
+        <NavMenu
+          menus={menuItems}
+          activeTab={activeTab}
+          handleTabOpen={handleTabOpen}
+        />
         <div className="relative p-4 mt-24 mb-24 text-center text-white bg-slate-900 lg:mb-10 rounded-2xl">
           <img
             src={svgRabitImage}

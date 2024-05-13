@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { MenuItemType } from "../../constants/data";
 import useMobileMenu from "../../hooks/layout/useMobileMenu";
 import Icon from "../icons/Icon";
 import SubMenu from "./SubMenu";
-import useTabMenu from "../../hooks/layout/useTabMenu";
 
 type Props = {
   menus: MenuItemType[];
+  activeTab: string;
+  handleTabOpen: (
+    name: string,
+    href: string,
+    element: React.ComponentType | null,
+    e?: any
+  ) => void;
 };
 
-function NavMenu({ menus }: Props) {
-  const { handleTabOpen } = useTabMenu();
+function NavMenu({ menus, activeTab, handleTabOpen }: Props) {
   const [activeSubmenu, setActiveSubmenu] = useState<number | null>(null);
 
   const toggleSubmenu = (index: number) => {
@@ -22,8 +26,6 @@ function NavMenu({ menus }: Props) {
     }
   };
 
-  const location = useLocation();
-  const locationName = location.pathname.replace("/", "");
   const [mobileMenu, setMobileMenu] = useMobileMenu();
   const [activeMultiMenu, setMultiMenu] = useState<number | null>(null);
 
@@ -38,8 +40,8 @@ function NavMenu({ menus }: Props) {
   const isLocationMatch = (targetLocation: string | undefined) => {
     if (targetLocation) {
       return (
-        locationName === targetLocation ||
-        locationName.startsWith(`${targetLocation}/`)
+        activeTab === targetLocation ||
+        activeTab.startsWith(`${targetLocation}/`)
       );
     }
 
@@ -71,7 +73,7 @@ function NavMenu({ menus }: Props) {
         });
       }
     });
-    document.title = `리테일금융시스템 | ${locationName}`;
+    document.title = `리테일금융시스템 | ${activeTab}`;
 
     setActiveSubmenu(submenuIndex);
     setMultiMenu(multiMenuIndex);
@@ -79,7 +81,7 @@ function NavMenu({ menus }: Props) {
     if (mobileMenu) {
       setMobileMenu(false);
     }
-  }, [location]);
+  }, [activeTab]);
 
   return (
     <ul>
@@ -89,16 +91,18 @@ function NavMenu({ menus }: Props) {
           className={` single-sidebar-menu
         ${item.child ? "item-has-children" : ""}
         ${activeSubmenu === i ? "open" : ""}
-        ${locationName === item.link ? "menu-item-active" : ""}`}
+        ${activeTab === item.link ? "menu-item-active" : ""}`}
         >
           {/* single menu with no childred*/}
           {!item.child && !item.isHeadr && (
-            <NavLink
-              replace
+            <div
               className="menu-link"
-              to={item.link ?? ""}
-              onClick={(e) => {
-                handleTabOpen(item.title, item.link ?? "", e);
+              onClick={() => {
+                handleTabOpen(
+                  item.title,
+                  item.link ?? "",
+                  item.element ?? null
+                );
               }}
             >
               <span className="flex-grow-0 menu-icon">
@@ -106,7 +110,7 @@ function NavMenu({ menus }: Props) {
               </span>
               <div className="flex-grow text-box">{item.title}</div>
               {item.badge && <span className="menu-badge">{item.badge}</span>}
-            </NavLink>
+            </div>
           )}
           {/* only for menulabel */}
           {item.isHeadr && !item.child && (
@@ -146,6 +150,8 @@ function NavMenu({ menus }: Props) {
             index={i}
             toggleMultiMenu={toggleMultiMenu}
             activeMultiMenu={activeMultiMenu}
+            activeTab={activeTab}
+            handleTabOpen={handleTabOpen}
           />
         </li>
       ))}
