@@ -4,7 +4,6 @@ import useMenuHidden from "../../hooks/layout/useMenuHidden";
 import useMenuLayout from "../../hooks/layout/useMenuLayout";
 import useMobileMenu from "../../hooks/layout/useMobileMenu";
 import useSidebar from "../../hooks/layout/useSidebar";
-import useTabMenu from "../../hooks/layout/useTabMenu";
 import useWidth from "../../hooks/layout/useWidth";
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
 import Setting from "../setting/Setting";
@@ -20,7 +19,6 @@ import {
   activeTabTypeState,
   tabMenuTypeState,
 } from "../../state/layout/layoutAtom";
-import Dashboard from "../../pages/dashboard/Dashboard";
 
 function Layout() {
   const { width, breakpoints } = useWidth();

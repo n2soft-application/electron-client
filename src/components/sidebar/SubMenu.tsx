@@ -1,7 +1,5 @@
 import { Collapse } from "react-collapse";
-import { NavLink } from "react-router-dom";
 import { MenuItemType } from "../../constants/data";
-import useTabMenu from "../../hooks/layout/useTabMenu";
 import Icon from "../icons/Icon";
 import Multilevel from "./Multilevel";
 
