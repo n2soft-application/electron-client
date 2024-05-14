@@ -60,28 +60,7 @@ function Layout() {
   //     handleTabOpen(findTitle(activeTab), activeTab, findElement(activeTab));
   //   }, [activeTab]);
 
-  const findTitle = (link: string) => {
-    let title = "";
-    menuItems.map((item) => {
-      if (item.child) {
-        item.child.map((i) => {
-          if (i.multi_menu) {
-            i.multi_menu.map((m) => {
-              if (m.multiLink === link) {
-                title = m.multiTitle;
-              }
-            });
-          } else if (i.childlink === link) {
-            title = i.childtitle ?? "";
-          }
-        });
-      } else if (item.link === link) {
-        title = item.title;
-      }
-    });
-    return title;
-  };
-
+  // href로 element 찾기
   const findElement = (link: string) => {
     let element = null;
     menuItems.map((item) => {
@@ -155,7 +134,10 @@ function Layout() {
 
   return (
     <div className="">
-      <Header className={width > breakpoints.xl ? switchHeaderClass() : ""} />
+      <Header
+        className={width > breakpoints.xl ? switchHeaderClass() : ""}
+        handleTabOpen={handleTabOpen}
+      />
       {menuType === "vertical" && width > breakpoints.xl && !menuHidden && (
         <Sidebar activeTab={activeTab} handleTabOpen={handleTabOpen} />
       )}

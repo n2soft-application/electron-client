@@ -17,9 +17,15 @@ import SwitchDark from "./components/SwitchDark";
 
 type Props = {
   className?: string | undefined;
+  handleTabOpen: (
+    name: string,
+    href: string,
+    element: React.ComponentType | null,
+    e?: any
+  ) => void;
 };
 
-function Header({ className }: Props) {
+function Header({ className, handleTabOpen }: Props) {
   const [collapsed, setCollapsed] = useSidebar();
   const { width, breakpoints } = useWidth();
   const navbarType = useRecoilValue(navbarTypeState);
@@ -121,7 +127,9 @@ function Header({ className }: Props) {
             <SwitchDark />
             <MonoChrome />
             {/* <HeaderCart /> */}
-            {width >= breakpoints.md && <Favorite />}
+            {width >= breakpoints.md && (
+              <Favorite handleTabOpen={handleTabOpen} />
+            )}
             {/* {width >= breakpoints.md && <Message />} */}
             {/* {width >= breakpoints.md && <Notification />} */}
             {width >= breakpoints.md && <Profile />}
