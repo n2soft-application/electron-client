@@ -81,6 +81,9 @@ function Team() {
   useEffect(() => {
     const container = realgridElement.current;
     const gv = new GridView(container as any);
+    gv.setEditOptions({
+      editable: false,
+    });
 
     gv.setDataSource(dp);
     dp.setFields([
@@ -224,6 +227,14 @@ function Team() {
       },
     ]);
 
+    gv.onCellClicked = () => {
+      console.log("onCellClicked");
+    };
+
+    gv.onCellDblClicked = () => {
+      console.log("onCellDblClicked");
+    };
+
     return () => {
       dp.clearRows();
       gv.destroy();
@@ -279,20 +290,7 @@ function Team() {
                       </th>
                     ))}
 
-                    {bottomRows.map((row, i) => (
-                      <tr key={i}>
-                        <td className="w-[150px] pl-2">{row.부서지점}</td>
-                        {secondColumns.map((column, i) => (
-                          <th
-                            key={i}
-                            className="bg-slate-200 dark:bg-slate-700 text-center table-th text-[14px] w-[130px]"
-                          >
-                            {column.label}
-                          </th>
-                        ))}
-                        <td className="w-[150px] pl-2">{row.팀파트코드}</td>
-                      </tr>
-                    ))}
+
                   </tr>
                 </thead>
 
