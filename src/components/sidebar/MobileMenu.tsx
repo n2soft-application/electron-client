@@ -12,22 +12,18 @@ import useMobileMenu from "../../hooks/layout/useMobileMenu";
 import useSemiDark from "../../hooks/layout/useSemiDark";
 import useSkin from "../../hooks/layout/useSkin";
 import Icon from "../icons/Icon";
+import { TabMenuListType } from "../../state/layout/layoutAtom";
 
 type Props = {
   className: string;
-  activeTab: string;
-  handleTabOpen: (
-    name: string,
-    href: string,
-    element: React.ComponentType | null,
-    e?: any
-  ) => void;
+  tabMenu: TabMenuListType;
+  setTabMenu: (tabMenu: TabMenuListType) => void;
 };
 
 const MobileMenu = ({
   className = "custom-class",
-  activeTab,
-  handleTabOpen,
+  tabMenu,
+  setTabMenu,
 }: Props) => {
   const scrollableNodeRef = useRef<HTMLDivElement | null>(null);
   const [scroll, setScroll] = useState(false);
@@ -94,11 +90,7 @@ const MobileMenu = ({
         className="sidebar-menu px-4 h-[calc(100%-80px)]"
         scrollableNodeProps={{ ref: scrollableNodeRef }}
       >
-        <NavMenu
-          menus={menuItems}
-          activeTab={activeTab}
-          handleTabOpen={handleTabOpen}
-        />
+        <NavMenu menus={menuItems} tabMenu={tabMenu} setTabMenu={setTabMenu} />
         <div className="relative p-4 mt-24 mb-24 text-center text-white bg-slate-900 lg:mb-10 rounded-2xl">
           <img
             src={svgRabitImage}

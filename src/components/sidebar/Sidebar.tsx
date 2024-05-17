@@ -9,18 +9,14 @@ import SidebarLogo from "./SidebarLogo";
 import { menuItems } from "../../constants/data";
 import { MenuService } from "../../api/services/menuService";
 import { storageKey } from "../../constants/constants";
+import { TabMenuListType } from "../../state/layout/layoutAtom";
 
 type Props = {
-  activeTab: string;
-  handleTabOpen: (
-    name: string,
-    href: string,
-    element: React.ComponentType | null,
-    e?: any
-  ) => void;
+  tabMenu: TabMenuListType;
+  setTabMenu: (tabMenu: TabMenuListType) => void;
 };
 
-function Sidebar({ activeTab, handleTabOpen }: Props) {
+function Sidebar({ tabMenu, setTabMenu }: Props) {
   const scrollableNodeRef = useRef<HTMLDivElement | null>(null);
   const [scroll, setScroll] = useState(false);
   const [collapsed, setMenuCollapsed] = useSidebar();
@@ -105,8 +101,8 @@ function Sidebar({ activeTab, handleTabOpen }: Props) {
         >
           <NavMenu
             menus={menuItems}
-            activeTab={activeTab}
-            handleTabOpen={handleTabOpen}
+            tabMenu={tabMenu}
+            setTabMenu={setTabMenu}
           />
           {/* {!collapsed && (
             <div className="relative p-4 mt-24 mb-16 text-center text-white bg-slate-900 rounded-2xl">

@@ -12,13 +12,8 @@ import Sidebar from "../sidebar/Sidebar";
 import Footer from "./Footer";
 import Header from "./Header";
 import Icon from "../icons/Icon";
-import { menuItems } from "../../constants/data";
-import { useRecoilState } from "recoil";
-import {
-  TabMenuType,
-  activeTabTypeState,
-  tabMenuTypeState,
-} from "../../state/layout/layoutAtom";
+import useTabMenu from "../../hooks/layout/useTabMenu";
+import { TabMenuListType } from "../../state/layout/layoutAtom";
 
 function Layout() {
   const { width, breakpoints } = useWidth();
@@ -27,18 +22,16 @@ function Layout() {
   const [menuType] = useMenuLayout();
   const [menuHidden] = useMenuHidden();
   const [mobileMenu, setMobileMenu] = useMobileMenu();
-  const [tabMenu, setTabMenu] = useState<
-    Array<{
-      name: string;
-      href: string;
-      component: React.ComponentType | null;
-    }>
-  >([]);
-  const [tabMenuState, setTabMenuState] =
-    useRecoilState<TabMenuType>(tabMenuTypeState);
+  const [tabMenu, setTabMenu] = useState<TabMenuListType>([]);
 
-  //   const [activeTab, setActiveTab] = useState<string>("home/dashboard");
-  const [activeTab, setActiveTab] = useRecoilState(activeTabTypeState);
+  const {
+    activeTab,
+    setActiveTab,
+    tabMenuState,
+    setTabMenuState,
+    findElement,
+    handleTabClose,
+  } = useTabMenu();
 
   useEffect(() => {
     setTabMenu(
@@ -56,72 +49,6 @@ function Layout() {
     }
   }, [tabMenu]);
 
-  //   useEffect(() => {
-  //     handleTabOpen(findTitle(activeTab), activeTab, findElement(activeTab));
-  //   }, [activeTab]);
-
-  // href로 element 찾기
-  const findElement = (link: string) => {
-    let element = null;
-    menuItems.map((item) => {
-      if (item.child) {
-        item.child.map((i) => {
-          if (i.multi_menu) {
-            i.multi_menu.map((m) => {
-              if (m.multiLink === link) {
-                element = m.multiElement;
-              }
-            });
-          } else if (i.childlink === link) {
-            element = i.childElement;
-          }
-        });
-      } else if (item.link === link) {
-        element = item.element;
-      }
-    });
-    return element;
-  };
-
-  // 탭 열기
-  const handleTabOpen = (
-    name: string,
-    href: string,
-    element: React.ComponentType | null
-  ) => {
-    if (tabMenu.every((t: { href: string }) => t.href !== href)) {
-      // 탭메뉴에 없는 새로운 메뉴라면
-      if (tabMenu.length >= 10) {
-        // 10개 넘으면 추가 X
-        alert("탭은 최대 10개까지 추가 가능합니다.");
-      } else {
-        // 10개 안넘으면 추가 O
-        setActiveTab(href);
-        setTabMenu([
-          ...tabMenu,
-          { name: name, href: href, component: element },
-        ]);
-      }
-    } else {
-      setActiveTab(href);
-    }
-  };
-
-  // 탭 닫기
-  const handleTabClose = (tab: { name: string; href: string }) => {
-    let updatedTabs = [...tabMenu];
-    if (tab.href === activeTab) {
-      const currentIndex = updatedTabs.findIndex((t) => t.href === tab.href);
-      if (updatedTabs[currentIndex + 1]) {
-        setActiveTab(updatedTabs[currentIndex + 1].href);
-      } else if (updatedTabs[updatedTabs.length - 2]) {
-        setActiveTab(updatedTabs[updatedTabs.length - 2].href);
-      }
-    }
-    updatedTabs = updatedTabs.filter((t) => t.href !== tab.href);
-    setTabMenu(updatedTabs);
-  };
-
   const switchHeaderClass = () => {
     if (menuType === "horizontal" || menuHidden) {
       return "ltr:ml-0 rtl:mr-0";
@@ -136,10 +63,11 @@ function Layout() {
     <div className="">
       <Header
         className={width > breakpoints.xl ? switchHeaderClass() : ""}
-        handleTabOpen={handleTabOpen}
+        tabMenu={tabMenu}
+        setTabMenu={setTabMenu}
       />
       {menuType === "vertical" && width > breakpoints.xl && !menuHidden && (
-        <Sidebar activeTab={activeTab} handleTabOpen={handleTabOpen} />
+        <Sidebar tabMenu={tabMenu} setTabMenu={setTabMenu} />
       )}
 
       <MobileMenu
@@ -148,8 +76,8 @@ function Layout() {
             ? "left-0 visible opacity-100 z-[9999]"
             : "left-[-300px] invisible opacity-0 z-[-999]"
         }`}
-        activeTab={activeTab}
-        handleTabOpen={handleTabOpen}
+        tabMenu={tabMenu}
+        setTabMenu={setTabMenu}
       />
       {/* mobile menu overlay*/}
       {width < breakpoints.xl && mobileMenu && (
@@ -187,10 +115,8 @@ function Layout() {
                       {tab.href !== "home/dashboard" && (
                         <div
                           className="p-0.5 rounded-full"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            handleTabClose(tab);
+                          onClick={() => {
+                            handleTabClose(tabMenu, setTabMenu, tab.href);
                           }}
                         >
                           <Icon icon="heroicons:x-mark-16-solid" width="20px" />

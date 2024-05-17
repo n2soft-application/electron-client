@@ -4,22 +4,22 @@ import {
   MenuItemChildType,
 } from "../../constants/data";
 import Badge from "../badge/Badge";
+import { TabMenuListType } from "../../state/layout/layoutAtom";
+import useTabMenu from "../../hooks/layout/useTabMenu";
 
 const LockLink = ({
   children,
   item,
-  handleTabOpen,
+  tabMenu,
+  setTabMenu,
 }: {
   children: React.ReactNode;
   item: MenuItemChildMultiType;
-  handleTabOpen: (
-    name: string,
-    href: string,
-    element: React.ComponentType | null,
-    e?: any
-  ) => void;
+  tabMenu: TabMenuListType;
+  setTabMenu: (tabMenu: TabMenuListType) => void;
 }) => {
   const { multiTitle, badge, multiLink, multiElement } = item;
+  const { handleTabOpen } = useTabMenu();
 
   return (
     <>
@@ -28,7 +28,11 @@ const LockLink = ({
           className={`text-slate-600 dark:text-slate-300 opacity-50
              text-sm flex space-x-3 rtl:space-x-reverse items-center cursor-pointer`}
           onClick={() => {
-            handleTabOpen(multiTitle, multiLink, multiElement ?? null);
+            handleTabOpen(tabMenu, setTabMenu, {
+              name: multiTitle,
+              href: multiLink,
+              component: multiElement ?? null,
+            });
           }}
         >
           <span className="flex-none inline-block w-2 h-2 border rounded-full border-slate-600 dark:border-white"></span>
@@ -45,7 +49,11 @@ const LockLink = ({
         <div
           className="cursor-pointer"
           onClick={() => {
-            handleTabOpen(multiTitle, multiLink, multiElement ?? null);
+            handleTabOpen(tabMenu, setTabMenu, {
+              name: multiTitle,
+              href: multiLink,
+              component: multiElement ?? null,
+            });
           }}
         >
           {children}
@@ -59,26 +67,23 @@ const Multilevel = ({
   activeMultiMenu,
   j,
   subItem,
-  activeTab,
-  handleTabOpen,
+  tabMenu,
+  setTabMenu,
 }: {
   subItem: MenuItemChildType;
   j: number;
   activeMultiMenu: number | null;
-  activeTab: string;
-  handleTabOpen: (
-    name: string,
-    href: string,
-    element: React.ComponentType | null,
-    e?: any
-  ) => void;
+  tabMenu: TabMenuListType;
+  setTabMenu: (tabMenu: TabMenuListType) => void;
 }) => {
+  const { activeTab } = useTabMenu();
+
   return (
     <Collapse isOpened={activeMultiMenu === j}>
       <ul className="pl-4 space-y-2">
         {subItem?.multi_menu?.map((item, i) => (
           <li key={i} className=" first:pt-[14px]">
-            <LockLink item={item} handleTabOpen={handleTabOpen}>
+            <LockLink item={item} tabMenu={tabMenu} setTabMenu={setTabMenu}>
               <span
                 className={`${
                   item.multiTitle === activeTab

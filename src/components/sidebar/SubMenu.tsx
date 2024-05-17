@@ -2,6 +2,8 @@ import { Collapse } from "react-collapse";
 import { MenuItemType } from "../../constants/data";
 import Icon from "../icons/Icon";
 import Multilevel from "./Multilevel";
+import { TabMenuListType } from "../../state/layout/layoutAtom";
+import useTabMenu from "../../hooks/layout/useTabMenu";
 
 type Props = {
   activeSubmenu: number | null;
@@ -9,13 +11,8 @@ type Props = {
   index: number;
   toggleMultiMenu: (index: number) => void;
   activeMultiMenu: number | null;
-  activeTab: string;
-  handleTabOpen: (
-    name: string,
-    href: string,
-    element: React.ComponentType | null,
-    e?: any
-  ) => void;
+  tabMenu: TabMenuListType;
+  setTabMenu: (tabMenu: TabMenuListType) => void;
 };
 
 function SubMenu({
@@ -24,9 +21,11 @@ function SubMenu({
   index,
   toggleMultiMenu,
   activeMultiMenu,
-  activeTab,
-  handleTabOpen,
+  tabMenu,
+  setTabMenu,
 }: Props) {
+  const { activeTab, handleTabOpen } = useTabMenu();
+
   return (
     <Collapse isOpened={activeSubmenu === index}>
       <ul className="space-y-2 sub-menu">
@@ -64,18 +63,18 @@ function SubMenu({
                   activeMultiMenu={activeMultiMenu}
                   j={j}
                   subItem={subItem}
-                  activeTab={activeTab}
-                  handleTabOpen={handleTabOpen}
+                  tabMenu={tabMenu}
+                  setTabMenu={setTabMenu}
                 />
               </div>
             ) : (
               <div
                 onClick={() => {
-                  handleTabOpen(
-                    subItem.childtitle ?? "",
-                    subItem.childlink ?? "",
-                    subItem.childElement ?? null
-                  );
+                  handleTabOpen(tabMenu, setTabMenu, {
+                    name: subItem.childtitle ?? "",
+                    href: subItem.childlink ?? "",
+                    component: subItem.childElement ?? null,
+                  });
                 }}
               >
                 <span

@@ -2,11 +2,12 @@ import { Icon } from "@iconify/react";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { menuItems } from "../../constants/data";
 import { FavMenuType, favMenuTypeState } from "../../state/layout/layoutAtom";
+import useTabMenu from "../../hooks/layout/useTabMenu";
 
 function Breadcrumbs({ activeTab }: { activeTab: string }) {
   const [favMenu, setFavMenu] = useRecoilState<FavMenuType>(favMenuTypeState);
+  const { findTitle } = useTabMenu();
 
   const [isHide, setIsHide] = useState<boolean | undefined>(false);
   const [title, setTitle] = useState<Array<string>>([]);
@@ -14,33 +15,6 @@ function Breadcrumbs({ activeTab }: { activeTab: string }) {
   useEffect(() => {
     setTitle(findTitle(activeTab));
   }, [activeTab]);
-
-  const findTitle = (link: string) => {
-    let title: Array<string> = [];
-    if (link) {
-      menuItems.forEach((item) => {
-        if (item.child) {
-          item.child.forEach((i) => {
-            if (i.multi_menu) {
-              i.multi_menu.forEach((m) => {
-                if (m.multiLink === link) {
-                  title.push(item.title);
-                  title.push(i.childtitle ?? "");
-                  title.push(m.multiTitle);
-                }
-              });
-            } else if (i.childlink === link) {
-              title.push(item.title);
-              title.push(i.childtitle ?? "");
-            }
-          });
-        } else if (item.link === link) {
-          title.push(item.title);
-        }
-      });
-    }
-    return title;
-  };
 
   return (
     <>

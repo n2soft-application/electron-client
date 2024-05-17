@@ -5,7 +5,10 @@ import useRtl from "../../hooks/layout/useRtl";
 import useSidebar from "../../hooks/layout/useSidebar";
 import useSkin from "../../hooks/layout/useSkin";
 import useWidth from "../../hooks/layout/useWidth";
-import { navbarTypeState } from "../../state/layout/layoutAtom";
+import {
+  TabMenuListType,
+  navbarTypeState,
+} from "../../state/layout/layoutAtom";
 import Icon from "../icons/Icon";
 import Favorite from "./components/Favorite";
 import HorizentalMenu from "./components/HorizentalMenu";
@@ -17,15 +20,11 @@ import SwitchDark from "./components/SwitchDark";
 
 type Props = {
   className?: string | undefined;
-  handleTabOpen: (
-    name: string,
-    href: string,
-    element: React.ComponentType | null,
-    e?: any
-  ) => void;
+  tabMenu: TabMenuListType;
+  setTabMenu: (tabMenu: TabMenuListType) => void;
 };
 
-function Header({ className, handleTabOpen }: Props) {
+function Header({ className, tabMenu, setTabMenu }: Props) {
   const [collapsed, setCollapsed] = useSidebar();
   const { width, breakpoints } = useWidth();
   const navbarType = useRecoilValue(navbarTypeState);
@@ -128,7 +127,7 @@ function Header({ className, handleTabOpen }: Props) {
             <MonoChrome />
             {/* <HeaderCart /> */}
             {width >= breakpoints.md && (
-              <Favorite handleTabOpen={handleTabOpen} />
+              <Favorite tabMenu={tabMenu} setTabMenu={setTabMenu} />
             )}
             {/* {width >= breakpoints.md && <Message />} */}
             {/* {width >= breakpoints.md && <Notification />} */}

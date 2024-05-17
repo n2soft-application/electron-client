@@ -3,11 +3,11 @@ import Dropdown from "../../dropdown/Dropdown";
 import Icon from "../../icons/Icon";
 import {
   FavMenuType,
-  activeTabTypeState,
+  TabMenuListType,
   favMenuTypeState,
 } from "../../../state/layout/layoutAtom";
 import { useRecoilValue } from "recoil";
-import { menuItems } from "../../../constants/data";
+import useTabMenu from "../../../hooks/layout/useTabMenu";
 
 const favoritelabel = () => {
   return (
@@ -18,39 +18,13 @@ const favoritelabel = () => {
 };
 
 type Props = {
-  handleTabOpen: (
-    name: string,
-    href: string,
-    element: React.ComponentType | null,
-    e?: any
-  ) => void;
+  tabMenu: TabMenuListType;
+  setTabMenu: (tabMenu: TabMenuListType) => void;
 };
 
-function Favorite({ handleTabOpen }: Props) {
-  const activeTab = useRecoilValue(activeTabTypeState);
+function Favorite({ tabMenu, setTabMenu }: Props) {
   const favMenu = useRecoilValue<FavMenuType>(favMenuTypeState);
-
-  const findElement = (link: string) => {
-    let element = null;
-    menuItems.map((item) => {
-      if (item.child) {
-        item.child.map((i) => {
-          if (i.multi_menu) {
-            i.multi_menu.map((m) => {
-              if (m.multiLink === link) {
-                element = m.multiElement;
-              }
-            });
-          } else if (i.childlink === link) {
-            element = i.childElement;
-          }
-        });
-      } else if (item.link === link) {
-        element = item.element;
-      }
-    });
-    return element;
-  };
+  const { activeTab, findElement, handleTabOpen } = useTabMenu();
 
   return (
     <Dropdown
@@ -72,11 +46,11 @@ function Favorite({ handleTabOpen }: Props) {
                   : "text-slate-600 dark:text-slate-300"
               } block w-full px-4 py-2 text-sm  cursor-pointer`}
               onClick={() => {
-                handleTabOpen(
-                  item.name ?? "",
-                  item.href ?? "",
-                  findElement(item.href)
-                );
+                handleTabOpen(tabMenu, setTabMenu, {
+                  name: item.name ?? "",
+                  href: item.href ?? "",
+                  component: findElement(item.href),
+                });
               }}
             >
               <div className="flex space-x-3 ltr:text-left rtl:text-right rtl:space-x-reverse">

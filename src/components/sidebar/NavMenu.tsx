@@ -3,19 +3,17 @@ import { MenuItemType } from "../../constants/data";
 import useMobileMenu from "../../hooks/layout/useMobileMenu";
 import Icon from "../icons/Icon";
 import SubMenu from "./SubMenu";
+import { TabMenuListType } from "../../state/layout/layoutAtom";
+import useTabMenu from "../../hooks/layout/useTabMenu";
 
 type Props = {
   menus: MenuItemType[];
-  activeTab: string;
-  handleTabOpen: (
-    name: string,
-    href: string,
-    element: React.ComponentType | null,
-    e?: any
-  ) => void;
+  tabMenu: TabMenuListType;
+  setTabMenu: (tabMenu: TabMenuListType) => void;
 };
 
-function NavMenu({ menus, activeTab, handleTabOpen }: Props) {
+function NavMenu({ menus, tabMenu, setTabMenu }: Props) {
+  const { activeTab, handleTabOpen } = useTabMenu();
   const [activeSubmenu, setActiveSubmenu] = useState<number | null>(null);
 
   const toggleSubmenu = (index: number) => {
@@ -98,11 +96,11 @@ function NavMenu({ menus, activeTab, handleTabOpen }: Props) {
             <div
               className="menu-link"
               onClick={() => {
-                handleTabOpen(
-                  item.title,
-                  item.link ?? "",
-                  item.element ?? null
-                );
+                handleTabOpen(tabMenu, setTabMenu, {
+                  name: item.title ?? "",
+                  href: item.link ?? "",
+                  component: item.element ?? null,
+                });
               }}
             >
               <span className="flex-grow-0 menu-icon">
@@ -150,8 +148,8 @@ function NavMenu({ menus, activeTab, handleTabOpen }: Props) {
             index={i}
             toggleMultiMenu={toggleMultiMenu}
             activeMultiMenu={activeMultiMenu}
-            activeTab={activeTab}
-            handleTabOpen={handleTabOpen}
+            tabMenu={tabMenu}
+            setTabMenu={setTabMenu}
           />
         </li>
       ))}

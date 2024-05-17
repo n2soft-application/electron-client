@@ -108,11 +108,13 @@ export const activeTabTypeState = atom<activeTabType>({
 });
 
 // 현재 탭 리스트
-export type TabMenuType = Array<{
+export type TabMenuListType = Array<TabMenuType>;
+export type TabMenuType = {
   name: string;
   href: string;
-}>;
-export const tabMenuTypeState = atom<TabMenuType>({
+  component?: React.ComponentType | null;
+};
+export const tabMenuTypeState = atom<TabMenuListType>({
   key: "tabMenuTypeState",
   default: [{ name: "대시보드", href: "home/dashboard" }],
   effects_UNSTABLE: [persistAtom],
