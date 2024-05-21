@@ -115,7 +115,8 @@ function Layout() {
                       {tab.href !== "home/dashboard" && (
                         <div
                           className="p-0.5 rounded-full"
-                          onClick={() => {
+                          onClick={(e) => {
+                            e.stopPropagation();
                             handleTabClose(tabMenu, setTabMenu, tab.href);
                           }}
                         >
